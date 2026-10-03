@@ -33,6 +33,9 @@ export const viewport: Viewport = {
   ],
 }
 
+import { Header } from '@/components/sections/header'
+import { Footer } from '@/components/sections/footer'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -40,8 +43,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className="antialiased">
-        {children}
+      <body className="antialiased bg-[#09090b] text-[#f4f4f5] min-h-screen flex flex-col selection:bg-violet-500/30 selection:text-white">
+        <Header />
+        <div className="flex-1">{children}</div>
+        <Footer />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
