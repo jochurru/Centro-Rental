@@ -187,7 +187,7 @@ export const events: EventItem[] = [
   },
 ]
 
-// [PLACEHOLDER] Pasos de proceso genéricos
+// Pasos de proceso de trabajo
 export const processSteps: ProcessStep[] = [
   {
     number: '01',
@@ -243,7 +243,7 @@ export const rentalCategories: RentalCategory[] = [
   {
     id: 'estructuras-rigging',
     title: 'Estructuras & Rigging',
-    description: 'Trusses de aluminio, motores de elevación, torres elevadoras, escenarios modulares y anclajes certificados.',
+    description: 'Trusses de aluminio, sistemas de elevación, torres, escenarios modulares y soluciones de anclaje para montaje técnico.',
     specs: ['Estructuras de montaje profesional', 'Sistemas de elevación', 'Tarimas y escenarios modulares', 'Sistemas de anclaje y seguridad'],
     iconName: 'Layers',
   },
@@ -281,7 +281,7 @@ export const saleProducts: SaleProduct[] = [
     id: 'cat-iluminacion',
     title: 'Iluminación Escénica & Robótica',
     category: 'Iluminación',
-    description: 'Cabezales móviles, reflectores LED, consolas DMX y accesorios testeados en taller técnico.',
+    description: 'Cabezales móviles, reflectores LED, control DMX y accesorios de iluminación.',
     image: '/lighting-rig.webp',
     status: 'Catálogo oficial en Mercado Libre',
     mercadolibreUrl: siteConfig.mercadolibreUrl,

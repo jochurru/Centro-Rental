@@ -125,9 +125,9 @@ export default function VentaPage() {
           <div className="flex items-start gap-3.5 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
             <Wrench className="h-5 w-5 shrink-0 text-[#B5D448]" />
             <div>
-              <p className="text-sm font-medium text-white">Revisión técnica</p>
+              <p className="text-sm font-medium text-white">Revisión previa</p>
               <p className="mt-1 text-xs text-white/50">
-                Cada equipo es testeado y calibrado por técnicos antes de ser publicado.
+                Estado y funcionamiento detallados de forma transparente en cada publicación.
               </p>
             </div>
           </div>

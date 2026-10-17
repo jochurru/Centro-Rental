@@ -18,7 +18,7 @@ export function SalesPreview() {
         </div>
         <div className="flex flex-col items-start gap-3 md:items-end">
           <p className="max-w-[320px] text-sm leading-relaxed text-white/75">
-            Equipos testeados con compra protegida en nuestra tienda oficial de Mercado Libre.
+            Equipos disponibles con compra protegida en nuestra tienda oficial de Mercado Libre.
           </p>
           <Link
             href="/venta"

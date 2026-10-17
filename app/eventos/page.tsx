@@ -28,7 +28,7 @@ const portfolioEvents: PortfolioEvent[] = [
     category: 'Institucional & Gala',
     location: 'Teatro Colón · Ciudad de Buenos Aires',
     image: '/events/teatro-colon-unicef.jpg',
-    highlights: ['Iluminación escénica', 'Gala benéfica institucional'],
+    highlights: ['Gala institucional', 'Puesta en sala'],
     isFeatured: true,
   },
   {
@@ -37,7 +37,7 @@ const portfolioEvents: PortfolioEvent[] = [
     category: 'Lanzamiento de Marca',
     location: 'Hotel Sofitel · Buenos Aires',
     image: '/events/versace-sofitel.jpg',
-    highlights: ['Puesta escénica', 'Ambientación lumínica de show'],
+    highlights: ['Lanzamiento de producto', 'Puesta en salón'],
     isFeatured: true,
   },
   {
@@ -46,16 +46,16 @@ const portfolioEvents: PortfolioEvent[] = [
     category: 'Shows & Visuales',
     location: 'Teatro ND Ateneo · CABA',
     image: '/events/teatro-nd.jpg',
-    highlights: ['Pantalla LED modular', 'Visuales sincronizadas en vivo'],
+    highlights: ['Pantalla LED 2.8 (5x3 m)', 'Puesta escénica'],
     isFeatured: true,
   },
   {
-    slug: 'hotel-hilton-escenario-corporativo',
-    title: 'Hotel Hilton · Escenario y Pantalla Panorámica',
+    slug: 'hotel-hilton-evento-corporativo',
+    title: 'Hotel Hilton · Evento Corporativo',
     category: 'Corporativo & Congresos',
     location: 'Hotel Hilton · Puerto Madero',
     image: '/events/hotel-hilton.jpg',
-    highlights: ['Escenario integral', 'Pantalla panorámica'],
+    highlights: ['Convención corporativa', 'Montaje en salón'],
   },
   {
     slug: 'sandra-mihanovich-auditorio-belgrano',
@@ -63,7 +63,7 @@ const portfolioEvents: PortfolioEvent[] = [
     category: 'Recitales & Espectáculos',
     location: 'Auditorio Belgrano · Buenos Aires',
     image: '/events/sandra-mihanovich.jpg',
-    highlights: ['Iluminación de concierto', 'Refuerzo sonoro de sala'],
+    highlights: ['Recital en vivo', 'Puesta escénica'],
   },
   {
     slug: 'embajada-de-israel-transmision-oficial',
@@ -71,7 +71,7 @@ const portfolioEvents: PortfolioEvent[] = [
     category: 'Diplomático & Protocolar',
     location: 'Plaza Embajada de Israel · CABA',
     image: '/events/embajada-israel.jpg',
-    highlights: ['Streaming oficial en vivo', 'Microfonía protocolar'],
+    highlights: ['Transmisión por streaming', 'Acto conmemorativo'],
   },
   {
     slug: 'congreso-internacional-de-leasing',
@@ -79,15 +79,15 @@ const portfolioEvents: PortfolioEvent[] = [
     category: 'Congresos & Convenciones',
     location: 'Centro de Convenciones · Buenos Aires',
     image: '/events/congreso-leasing.jpg',
-    highlights: ['Soporte audiovisual integral', 'Pantallas de apoyo en plenario'],
+    highlights: ['Congreso internacional', 'Soporte audiovisual'],
   },
   {
-    slug: 'alvear-palace-hotel-gala-social',
-    title: 'Alvear Palace Hotel · Celebración y Ambientación',
+    slug: 'alvear-palace-hotel-casamiento',
+    title: 'Alvear Palace Hotel · Casamiento',
     category: 'Social & Institucional',
     location: 'Alvear Palace Hotel · Recoleta',
     image: '/events/alvear-palace.jpg',
-    highlights: ['Iluminación arquitectónica', 'Ambientación perimetral'],
+    highlights: ['Celebración social', 'Puesta en salón'],
   },
 ]
 
