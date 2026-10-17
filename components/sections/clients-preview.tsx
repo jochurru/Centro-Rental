@@ -1,16 +1,20 @@
 import Link from 'next/link'
-import { ArrowUpRight, CheckCircle2 } from 'lucide-react'
-import { featuredClients } from '@/data/site'
+import Image from 'next/image'
+import { ArrowUpRight } from 'lucide-react'
+import { confirmedClients } from '@/data/site'
 
 export function ClientsPreview() {
-  const previewClients = featuredClients.slice(0, 8)
+  const topClients = confirmedClients.slice(0, 8)
 
   return (
     <section className="section-padding border-t border-white/[0.06] bg-white/[0.01]">
       <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
         <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
-            <span className="eyebrow">Clientes & Trayectoria</span>
+            <span className="eyebrow flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
+              Clientes & Marcas
+            </span>
             <h2 className="section-title mt-4">
               Marcas que confían en<br />
               <span className="text-white">nuestra solvencia.</span>
@@ -29,25 +33,28 @@ export function ClientsPreview() {
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {previewClients.map((client) => (
+        {/* Brand wall: grilla limpia de logos reconocibles */}
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+          {topClients.map((client) => (
             <Link
               key={client.id}
               href="/clientes"
-              className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all hover:border-white/20 hover:bg-white/[0.04]"
+              className="group relative flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
             >
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-white/50">
-                  {client.category}
-                </span>
-                <ArrowUpRight
-                  size={14}
-                  className="text-white/40 opacity-0 transition-opacity group-hover:opacity-100 group-hover:text-white"
-                />
-              </div>
-              <h3 className="mt-3 text-lg font-medium text-white group-hover:text-zinc-100 transition-colors">
+              {client.logo ? (
+                <div className="flex h-16 w-full items-center justify-center rounded-xl bg-white px-4 py-2 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+                  <Image
+                    src={client.logo}
+                    alt={`Logo de ${client.name}`}
+                    width={120}
+                    height={46}
+                    className="max-h-full max-w-full object-contain filter grayscale contrast-125 opacity-80 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                  />
+                </div>
+              ) : null}
+              <span className="mt-3 text-center text-xs font-medium text-white/50 transition-colors group-hover:text-white">
                 {client.name}
-              </h3>
+              </span>
             </Link>
           ))}
         </div>

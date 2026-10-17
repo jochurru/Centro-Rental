@@ -1,56 +1,40 @@
 import Link from 'next/link'
-import { MoveRight, ShieldCheck, Cpu, Sparkles } from 'lucide-react'
+import { MoveRight } from 'lucide-react'
 
 export function Intro() {
   return (
     <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
-      <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-        <div className="lg:col-span-6">
-          <span className="eyebrow">Sobre Centro Rental</span>
-          <h2 className="section-title mt-4">
-            Ingeniería técnica para eventos{' '}
-            <span className="text-white">de alta exigencia.</span>
+      <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
+        {/* Columna Izquierda: Encabezado Editorial */}
+        <div className="lg:col-span-5">
+          <div className="flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/70">
+            <span className="h-2 w-2 rounded-full bg-[#B5D448]" />
+            Sobre Centro Rental
+          </div>
+          <h2 className="mt-5 text-balance text-3xl font-medium tracking-tight text-white sm:text-4xl lg:text-[2.6rem] lg:leading-[1.1]">
+            Soluciones técnicas integrales para escenarios reales.
           </h2>
-          <p className="mt-6 text-base leading-relaxed text-white/75">
-            Acompañamos a productores, empresas y marcas en la materialización de sus eventos con equipamiento de primer nivel y un equipo humano enfocado en la precisión operativa.
+        </div>
+
+        {/* Columna Derecha: Texto editorial breve, confiable y directo */}
+        <div className="flex flex-col justify-between gap-6 border-t border-white/10 pt-8 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0 lg:col-span-7 lg:pl-12">
+          <p className="text-balance text-lg font-normal leading-relaxed text-white/85 lg:text-xl">
+            Centro Rental desarrolla la infraestructura audiovisual y técnica de eventos corporativos, espectáculos y actos institucionales.
           </p>
-          <div className="mt-8">
+          <p className="text-base leading-relaxed text-white/60">
+            Sonido, iluminación, pantallas LED y coordinación técnica unificados en un mismo equipo operativo, garantizando precisión de montaje y respuesta en vivo.
+          </p>
+          <div className="pt-2">
             <Link
               href="/nosotros"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-[#B5D448] transition-colors hover:text-white"
+              className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#B5D448] transition-colors hover:text-white"
             >
-              Conocé nuestra historia y metodología
+              Conocé nuestra historia y trayectoria
               <MoveRight
-                size={15}
+                size={14}
                 className="transition-transform group-hover:translate-x-1"
               />
             </Link>
-          </div>
-        </div>
-
-        <div className="grid gap-4 sm:grid-cols-3 lg:col-span-6">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-            <Cpu className="h-6 w-6 text-[#B5D448]" />
-            <h3 className="mt-3 text-sm font-medium text-white">Tecnología de punta</h3>
-            <p className="mt-1 text-xs text-white/70">
-              Sistemas digitales y equipamiento de primeras marcas.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-            <ShieldCheck className="h-6 w-6 text-[#B5D448]" />
-            <h3 className="mt-3 text-sm font-medium text-white">Seguridad & Backup</h3>
-            <p className="mt-1 text-xs text-white/70">
-              Redundancia operativa y contingencia en cada montaje.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-            <Sparkles className="h-6 w-6 text-[#B5D448]" />
-            <h3 className="mt-3 text-sm font-medium text-white">Puesta en escena</h3>
-            <p className="mt-1 text-xs text-white/70">
-              Cuidado estético para que la técnica potencie el evento.
-            </p>
           </div>
         </div>
       </div>

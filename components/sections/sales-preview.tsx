@@ -1,76 +1,49 @@
 import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowUpRight } from 'lucide-react'
-import { saleProducts } from '@/data/site'
+import { ArrowUpRight, ShoppingBag } from 'lucide-react'
+import { siteConfig } from '@/data/site'
 
 export function SalesPreview() {
-  const previewList = saleProducts.slice(0, 3)
-
   return (
-    <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
-      <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-        <div>
-          <span className="eyebrow">Renovación de parque</span>
-          <h2 className="section-title mt-4">
-            Equipamiento en venta<br />
-            <span className="text-white">con garantía operativa.</span>
-          </h2>
-        </div>
-        <div className="flex flex-col items-start gap-3 md:items-end">
-          <p className="max-w-[320px] text-sm leading-relaxed text-white/75">
-            Equipos disponibles con compra protegida en nuestra tienda oficial de Mercado Libre.
-          </p>
-          <Link
-            href="/venta"
-            className="flex items-center gap-1.5 text-xs text-[#B5D448] hover:text-white transition-colors"
-          >
-            Ver productos en venta <ArrowUpRight size={13} />
-          </Link>
-        </div>
-      </div>
+    <section className="mx-auto max-w-[1320px] px-5 py-8 sm:py-12 lg:px-8">
+      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-r from-white/[0.03] via-white/[0.015] to-transparent p-6 sm:p-8 lg:p-10">
+        {/* Sutil halo ambiental */}
+        <div className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-[#B5D448]/5 blur-[70px]" />
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {previewList.map((prod) => (
-          <Link
-            key={prod.id}
-            href="/venta"
-            className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all hover:border-white/20 hover:bg-white/[0.04]"
-          >
-            <div className="relative aspect-[16/11] w-full bg-black/40">
-              <Image
-                src={prod.image}
-                alt={prod.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+        <div className="relative flex flex-col justify-between gap-6 sm:gap-8 lg:flex-row lg:items-center">
+          <div className="max-w-[620px]">
+            <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B5D448]">
+              <ShoppingBag size={14} />
+              <span>Renovación de parque</span>
+            </div>
+            <h3 className="mt-2.5 text-xl font-medium tracking-tight text-white sm:text-2xl">
+              Equipamiento en venta por renovación de parque.
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-white/60">
+              Consultá el stock actualizado de consolas, sonido, iluminación y pantallas en nuestra tienda oficial con compra protegida.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center lg:shrink-0">
+            <a
+              href={siteConfig.mercadolibreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold !text-[#09090b] transition-all hover:bg-[#B5D448] hover:shadow-[0_0_20px_rgba(181,212,72,0.3)]"
+            >
+              Ver tienda en Mercado Libre
+              <ArrowUpRight
+                size={15}
+                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 !text-[#09090b]"
               />
-              <div className="absolute left-3 top-3">
-                <span className="rounded-full border border-white/15 bg-black/60 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white backdrop-blur-sm">
-                  {prod.category}
-                </span>
-              </div>
-            </div>
-
-            <div className="flex flex-1 flex-col justify-between p-6">
-              <div>
-                <span className="text-[11px] text-emerald-400 font-medium">
-                  {prod.status}
-                </span>
-                <h3 className="mt-1 text-base font-medium text-white group-hover:text-zinc-100 transition-colors">
-                  {prod.title}
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-white/50 line-clamp-2">
-                  {prod.description}
-                </p>
-              </div>
-
-              <div className="mt-4 flex items-center gap-1 text-xs text-white/60 group-hover:text-white">
-                <span>Ver detalles y compra</span>
-                <ArrowUpRight size={13} />
-              </div>
-            </div>
-          </Link>
-        ))}
+            </a>
+            <Link
+              href="/venta"
+              className="inline-flex items-center gap-1.5 px-2 py-1 text-xs text-white/50 transition-colors hover:text-white"
+            >
+              Ver detalles de catálogo
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   )

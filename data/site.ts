@@ -113,35 +113,35 @@ export const tickerItems: string[] = [
   'Operación integral',
 ]
 
-// [PLACEHOLDER] Servicios genéricos
+// 4 pilares principales de servicio y capacidad técnica
 export const services: ServiceItem[] = [
   {
     number: '01',
     title: 'Sonido profesional',
-    description: 'Sistemas de audio que llenan cada espacio con claridad y potencia.',
+    description: 'Sistemas line array, microfonía y consolas digitales para eventos de cualquier escala.',
     image: '/sound-system.webp',
-    color: 'green',
+    color: '#B5D448',
   },
   {
     number: '02',
-    title: 'Iluminación',
-    description: 'Diseñamos atmósferas que transforman la energía de tu evento.',
+    title: 'Iluminación escénica',
+    description: 'Cabezales móviles, reflectores LED y control DMX para puestas arquitectónicas y shows.',
     image: '/lighting-rig.webp',
-    color: 'amber',
+    color: '#B5D448',
   },
   {
     number: '03',
     title: 'Pantallas LED',
-    description: 'Contenido que impacta. Resolución y escala para hacerte ver.',
+    description: 'Módulos LED de alta definición para escenarios, conferencias y fondos de impacto visual.',
     image: '/led-screen.webp',
-    color: 'cyan',
+    color: '#B5D448',
   },
   {
     number: '04',
     title: 'Producción técnica',
-    description: 'Una mirada integral para que todo funcione como fue pensado.',
+    description: 'Dirección operativa integral, montaje de estructuras, rigging y asistencia en vivo.',
     image: '/hero-event.webp',
-    color: 'rose',
+    color: '#B5D448',
   },
 ]
 

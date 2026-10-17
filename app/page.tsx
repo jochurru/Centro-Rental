@@ -1,41 +1,33 @@
 import { Hero } from '@/components/sections/hero'
-import { Ticker } from '@/components/sections/ticker'
 import { Intro } from '@/components/sections/intro'
 import { Services } from '@/components/sections/services'
-import { Equipment } from '@/components/sections/equipment'
 import { Events } from '@/components/sections/events'
-import { SalesPreview } from '@/components/sections/sales-preview'
 import { ClientsPreview } from '@/components/sections/clients-preview'
+import { SalesPreview } from '@/components/sections/sales-preview'
 import { CTASection } from '@/components/common/cta-section'
 
 export default function HomePage() {
   return (
     <div className="overflow-hidden">
-      {/* 1. Hero visual de alto impacto */}
+      {/* 1. Hero visual cinematográfico */}
       <Hero />
 
-      {/* 2. Ticker de conceptos técnicos */}
-      <Ticker />
-
-      {/* 3. Breve presentación editorial */}
+      {/* 2. Intro editorial breve y directa */}
       <Intro />
 
-      {/* 4. Capacidades y servicios con derivación a /alquiler */}
+      {/* 3. Servicios y 4 capacidades principales con derivación a /alquiler */}
       <Services />
 
-      {/* 5. Alquiler destacado de equipamiento con derivación a /alquiler */}
-      <Equipment />
-
-      {/* 6. Eventos destacados con derivación a /eventos */}
+      {/* 4. Eventos reales destacados con derivación a /eventos */}
       <Events />
 
-      {/* 7. Venta destacada con derivación a /venta y Mercado Libre */}
-      <SalesPreview />
-
-      {/* 8. Clientes destacados con derivación a /clientes */}
+      {/* 5. Clientes y marcas reconocibles con derivación a /clientes */}
       <ClientsPreview />
 
-      {/* 9. CTA final de conversión con derivación a /contacto */}
+      {/* 6. Venta compacta de equipamiento por renovación hacia Mercado Libre */}
+      <SalesPreview />
+
+      {/* 7. CTA final de conversión con GlowButton RGB aprobado */}
       <CTASection
         eyebrow="Hablemos de tu evento"
         title="Tu próximo escenario empieza con una buena conversación."
