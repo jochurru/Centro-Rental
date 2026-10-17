@@ -1,6 +1,6 @@
 # Informe de Curaduría de Contenido — Centro Rental 2.0
 
-- **Fecha**: 2026-10-03 18:37:11
+- **Fecha**: 2026-10-03 20:29:50
 - **Estado**: Selección preliminar lista para revisión manual (sin modificaciones en la landing).
 
 ## 1. Criterios de Selección Aplicados

@@ -1,33 +1,15 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import {
-  Volume2,
-  Lightbulb,
-  Tv,
-  Radio,
-  Layers,
-  Headphones,
-  Settings,
-  CheckCircle2,
-} from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
 import { PageHero } from '@/components/common/page-hero'
 import { CTASection } from '@/components/common/cta-section'
 import { rentalCategories, equipment } from '@/data/site'
+import { CategoryIcon } from '@/components/common/category-icons'
 
 export const metadata: Metadata = {
   title: 'Alquiler de Equipamiento | Centro Rental',
   description:
     'Alquiler de sistemas de sonido, iluminación, pantallas LED, streaming y estructuras técnicas para eventos en Buenos Aires.',
-}
-
-const iconMap: Record<string, React.ReactNode> = {
-  Volume2: <Volume2 className="h-6 w-6 text-violet-400" />,
-  Lightbulb: <Lightbulb className="h-6 w-6 text-amber-400" />,
-  Tv: <Tv className="h-6 w-6 text-cyan-400" />,
-  Radio: <Radio className="h-6 w-6 text-rose-400" />,
-  Layers: <Layers className="h-6 w-6 text-emerald-400" />,
-  Headphones: <Headphones className="h-6 w-6 text-indigo-400" />,
-  Settings: <Settings className="h-6 w-6 text-fuchsia-400" />,
 }
 
 export default function AlquilerPage() {
@@ -38,7 +20,7 @@ export default function AlquilerPage() {
         title={
           <>
             Equipamiento técnico para{' '}
-            <span className="hero-gradient-text">cada escala.</span>
+            <span className="text-[#B5D448]">cada escala.</span>
           </>
         }
         description="Proveemos sistemas de sonido de precisión, iluminación de diseño, pantallas LED de alta definición y estructuras homologadas para eventos de máxima exigencia."
@@ -50,29 +32,29 @@ export default function AlquilerPage() {
           <span className="eyebrow">Categorías de alquiler</span>
           <h2 className="section-title mt-4">
             Infraestructura técnica{' '}
-            <span className="text-white/35">homologada y testeada.</span>
+            <span className="text-white">homologada y testeada.</span>
           </h2>
-          <p className="mt-4 max-w-[540px] text-sm text-white/50">
+          <p className="mt-4 max-w-[540px] text-sm text-white/75">
             Cada equipo pasa por un control de calidad y calibración previa antes de salir a cada montaje.
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {rentalCategories.map((cat) => {
-            const icon = (cat.iconName && iconMap[cat.iconName]) || (
-              <Settings className="h-6 w-6 text-violet-400" />
-            )
-
             return (
               <div
                 key={cat.id}
                 className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-all hover:border-white/20 hover:bg-white/[0.04]"
               >
                 <div>
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03]">
-                    {icon}
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-[#0D0E12] transition-colors group-hover:border-[#B5D448]/40 group-hover:bg-[#121318]">
+                    <CategoryIcon
+                      categoryId={cat.id}
+                      iconName={cat.iconName}
+                      className="h-6 w-6 text-zinc-200 transition-colors group-hover:text-white"
+                    />
                   </div>
-                  <h3 className="text-lg font-medium text-white group-hover:text-violet-200 transition-colors">
+                  <h3 className="text-lg font-medium text-white group-hover:text-zinc-100 transition-colors">
                     {cat.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/55">
@@ -90,7 +72,7 @@ export default function AlquilerPage() {
                         key={spec}
                         className="flex items-center gap-2 text-xs text-white/70"
                       >
-                        <CheckCircle2 size={13} className="text-violet-400 shrink-0" />
+                        <CheckCircle2 size={13} className="text-[#B5D448] shrink-0" />
                         <span>{spec}</span>
                       </li>
                     ))}

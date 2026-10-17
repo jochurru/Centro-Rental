@@ -22,19 +22,20 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#09090b] via-[#09090b]/65 to-[#09090b]/10 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-[#09090b]/35 pointer-events-none" />
       <div className="ambient-orb absolute -right-20 top-1/3 h-80 w-80 rounded-full bg-violet-500/20 blur-[120px] pointer-events-none" />
+      <div className="ambient-orb absolute -left-20 bottom-1/4 h-72 w-72 rounded-full bg-[#B5D448]/10 blur-[140px] pointer-events-none" />
 
       <div className="relative mx-auto w-full max-w-[1320px] px-5 lg:px-8">
         <div className="max-w-[830px]">
-          <div className="mb-7 flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.28em] text-violet-300">
-            <span className="h-px w-8 bg-violet-400" />
+          <div className="mb-7 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-white/80">
+            <span className="h-px w-8 bg-[#B5D448]" />
             Producción técnica para eventos
           </div>
-          <h1 className="text-balance text-[clamp(3.3rem,8vw,7.8rem)] font-medium leading-[0.91] tracking-[-0.07em]">
-            Hacemos que tu evento <span className="hero-gradient-text">se vea,</span>
-            <br className="hidden sm:block" /> se escuche y{' '}
-            <span className="hero-gradient-text">se sienta.</span>
+          <h1 className="text-balance text-[clamp(3.3rem,8vw,7.8rem)] font-medium leading-[0.91] tracking-[-0.07em] text-white">
+            Hacemos que tu evento se vea,
+            <br className="hidden sm:block" /> se escuche y se{' '}
+            <span className="text-[#B5D448]">sienta.</span>
           </h1>
-          <p className="mt-8 max-w-[530px] text-base leading-relaxed text-white/60 lg:text-lg">
+          <p className="mt-8 max-w-[530px] text-base leading-relaxed text-white/75 lg:text-lg">
             Soluciones de sonido, iluminación, pantallas y equipamiento técnico para eventos que dejan marca.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -43,7 +44,7 @@ export function Hero() {
             </GlowButton>
             <Link
               href="/alquiler"
-              className="group flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm text-white transition-all hover:border-white/50 hover:bg-white/5"
+              className="group flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm text-white transition-all hover:border-[#B5D448]/50 hover:bg-white/5 hover:shadow-[0_0_20px_-4px_rgba(181,212,72,0.3)]"
             >
               Ver equipamiento{' '}
               <MoveRight
@@ -54,9 +55,9 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-16 flex items-center gap-5 text-[10px] uppercase tracking-[0.2em] text-white/35">
+        <div className="mt-16 flex items-center gap-5 text-[11px] uppercase tracking-[0.2em] text-white/60">
           <span className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399]" />
+            <span className="h-2 w-2 rounded-full bg-[#B5D448] shadow-[0_0_12px_#B5D448]" />
             {siteConfig.availability}
           </span>
           <span className="h-3 w-px bg-white/20" />
@@ -64,7 +65,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-9 right-8 hidden items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white/35 lg:flex">
+      <div className="absolute bottom-9 right-8 hidden items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white/60 lg:flex">
         <span>Scroll para explorar</span>
         <span className="h-10 w-px bg-gradient-to-b from-violet-400 to-transparent" />
       </div>

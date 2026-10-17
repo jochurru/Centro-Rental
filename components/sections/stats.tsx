@@ -8,10 +8,10 @@ export function Stats() {
           <span className="eyebrow">En números</span>
           <h2 className="section-title mt-4">
             Experiencia que<br />
-            <span className="text-white/35">se nota.</span>
+            <span className="text-white">se nota.</span>
           </h2>
         </div>
-        <p className="text-sm leading-relaxed text-white/45 md:pb-2">
+        <p className="text-sm leading-relaxed text-white/75 md:pb-2">
           Indicadores preparados para acompañar el crecimiento de tu próximo gran evento.
         </p>
       </div>
@@ -22,10 +22,10 @@ export function Stats() {
             key={stat.label}
             className="border-white/10 md:border-l md:pl-6 first:md:border-0 first:md:pl-0"
           >
-            <p className="text-4xl font-medium tracking-[-0.06em] md:text-5xl">
+            <p className="text-4xl font-medium tracking-[-0.06em] text-white md:text-5xl">
               {stat.number}
             </p>
-            <p className="mt-2 text-[10px] uppercase tracking-widest text-white/40">
+            <p className="mt-2 text-[10px] uppercase tracking-widest text-white/70">
               {stat.label}
             </p>
           </div>

@@ -35,7 +35,7 @@ export function Header() {
               >
                 {item.label}
                 {isActive && (
-                  <span className="absolute -bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-violet-400 shadow-[0_0_8px_#a78bfa]" />
+                  <span className="absolute -bottom-1 left-1/2 h-[2px] w-4 -translate-x-1/2 rounded-full bg-gradient-to-r from-violet-500 via-[#B5D448] to-violet-500 shadow-[0_0_8px_rgba(181,212,72,0.5)]" />
                 )}
               </Link>
             )
@@ -71,13 +71,13 @@ export function Header() {
                   onClick={() => setMobileOpen(false)}
                   className={`flex items-center justify-between rounded-lg px-3 py-3 text-sm transition-colors ${
                     isActive
-                      ? 'bg-white/[0.08] font-medium text-white'
+                      ? 'bg-white/[0.08] font-medium text-white border-l-2 border-[#B5D448]'
                       : 'text-white/70 hover:bg-white/[0.03] hover:text-white'
                   }`}
                 >
                   <span>{item.label}</span>
                   {isActive && (
-                    <span className="h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_6px_#a78bfa]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448] shadow-[0_0_6px_#B5D448]" />
                   )}
                 </Link>
               )

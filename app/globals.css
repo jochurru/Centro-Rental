@@ -4,26 +4,187 @@
 
 @custom-variant dark (&:is(.dark *));
 
-:root { color-scheme: dark; --background: #09090b; --foreground: #f4f4f5; --radius: 0.75rem; }
-@theme inline { --color-background: var(--background); --color-foreground: var(--foreground); --radius-sm: calc(var(--radius) * .6); --radius-md: calc(var(--radius) * .8); --radius-lg: var(--radius); --radius-xl: calc(var(--radius) * 1.4); }
+:root {
+  color-scheme: dark;
+
+  /* ==========================================================================
+     DESIGN TOKENS — CENTRO RENTAL 2.0
+     ========================================================================== */
+
+  /* Identidad Corporativa Histórica */
+  --brand-green: #B5D448;
+  --brand-green-rgb: 181, 212, 72;
+  --brand-white: #FFFFFF;
+  --brand-black: #09090B;
+  --brand-gray: #666666;
+  --brand-gray-light: #A1A1AA;
+  --brand-gray-dark: #27272A;
+
+  /* Identidad Escénica / Atmosférica (Iluminación & Espectáculo) */
+  --scenic-violet: #7C3AED;
+  --scenic-violet-rgb: 124, 58, 237;
+  --scenic-violet-light: #8B5CF6;
+  --scenic-magenta: #C026D3;
+  --scenic-magenta-rgb: 192, 38, 211;
+
+  /* Superficies Semánticas */
+  --surface-primary: #09090B;
+  --surface-secondary: #0D0D12;
+  --surface-tertiary: #14141B;
+  --surface-card: rgba(255, 255, 255, 0.025);
+  --surface-card-hover: rgba(255, 255, 255, 0.05);
+
+  /* Bordes & Líneas */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-accent: rgba(181, 212, 72, 0.35);
+
+  /* Textos */
+  --text-primary: #F4F4F5;
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-muted: rgba(255, 255, 255, 0.40);
+  --text-accent: #B5D448;
+
+  /* Gradiente Fluido Centro Rental (Firma Visual: Verde + Violeta + Magenta + Luz Blanca) */
+  --centro-flow-gradient: linear-gradient(
+    135deg,
+    #7C3AED 0%,
+    #C026D3 32%,
+    rgba(255, 255, 255, 0.95) 48%,
+    #B5D448 68%,
+    #7C3AED 100%
+  );
+
+  /* Halo Emisivo Ambilight (luz proyectada) */
+  --centro-flow-emissive: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.95) 0%,
+    rgba(192, 38, 211, 0.90) 30%,
+    rgba(181, 212, 72, 0.85) 65%,
+    rgba(124, 58, 237, 0.95) 100%
+  );
+
+  --background: var(--surface-primary);
+  --foreground: var(--text-primary);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-green: var(--brand-green);
+  --color-brand-white: var(--brand-white);
+  --color-brand-black: var(--brand-black);
+  --color-brand-gray: var(--brand-gray);
+  --color-scenic-violet: var(--scenic-violet);
+  --color-scenic-magenta: var(--scenic-magenta);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 [id] { scroll-margin-top: 80px; }
-body { margin: 0; background: #09090b; color: #f4f4f5; font-family: Arial, Helvetica, sans-serif; }
+body {
+  margin: 0;
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+}
 a { color: inherit; text-decoration: none; }
 
 .section-padding { padding-top: 8rem; padding-bottom: 8rem; }
-.eyebrow { color: rgb(167 139 250); font-size: 10px; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; }
-.section-title { font-size: clamp(2.5rem, 5vw, 4.8rem); font-weight: 500; letter-spacing: -.065em; line-height: .95; }
-.hero-gradient-text { background: linear-gradient(110deg, #c4b5fd 5%, #818cf8 42%, #e879f9 85%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero-grid { background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(to bottom, black, transparent 75%); opacity: .35; }
+.eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+  color: #FFFFFF;
+}
+.hero-gradient-text {
+  color: #B5D448;
+  font-weight: inherit;
+}
+.hero-grid {
+  background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 75%);
+  opacity: 0.35;
+}
 
-.logo-mark { display: flex; height: 25px; width: 25px; align-items: flex-end; gap: 3px; }
-.logo-mark span { display: block; width: 6px; border-radius: 2px 2px 0 0; background: linear-gradient(to top, #8b5cf6, #c4b5fd); }
-.logo-mark span:nth-child(1) { height: 12px; opacity: .55; }.logo-mark span:nth-child(2) { height: 19px; }.logo-mark span:nth-child(3) { height: 25px; opacity: .7; }
+/* ==========================================================================
+   ANIMACIÓN FLUIDA: CENTRO-FLOW
+   ========================================================================== */
+@keyframes centro-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
-/* --- GlowButton: Efecto Ambilight --- */
+.centro-flow {
+  background-image: var(--centro-flow-gradient);
+  background-size: 250% 250%;
+  animation: centro-flow 8s ease infinite;
+}
+
+/* Marca del Logo provisional */
+.logo-mark {
+  display: flex;
+  height: 25px;
+  width: 25px;
+  align-items: flex-end;
+  gap: 3px;
+}
+.logo-mark span {
+  display: block;
+  width: 6px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(to top, var(--scenic-violet), var(--brand-green));
+}
+.logo-mark span:nth-child(1) { height: 12px; opacity: 0.6; }
+.logo-mark span:nth-child(2) { height: 19px; opacity: 0.85; }
+.logo-mark span:nth-child(3) { height: 25px; opacity: 1; }
+
+/* ==========================================================================
+   GLOWBUTTON: AMBIENT GLOW RGB (Verde #B5D448, Azul #0284C7, Rojo #E11D48)
+   Basado estrictamente en los colores históricos del isotipo original.
+   - Cuerpo 100% negro profundo opaco (#09090B / #0D0E12)
+   - Texto blanco sólido (#FFFFFF)
+   - Borde sobrio institucional
+   - Animación lenta (10s), difusa (blur 22px) y elegante (no gamer, no saturada)
+   - En reposo: halo mínimo casi imperceptible (opacity ~0.15)
+   - En hover/focus: halo intensificado suavemente (opacity ~0.75)
+   - CERO violeta / magenta en el botón
+   ========================================================================== */
+
+@keyframes rgbAmbientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .glow-button {
   position: relative;
   display: inline-flex;
@@ -31,34 +192,45 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   overflow: visible;
   border-radius: 9999px;
-  background: linear-gradient(115deg, #7c3aed 0%, #8b5cf6 48%, #c026d3 100%);
-  color: #fff;
+  background: #09090B !important;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
   font-weight: 500;
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22), 0 4px 14px -2px rgba(124, 58, 237, 0.35);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+              0 2px 10px -2px rgba(0, 0, 0, 0.7);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.35s ease,
+              border-color 0.35s ease,
+              background-color 0.35s ease,
               box-shadow 0.35s ease;
   will-change: transform;
 }
 
-/* Capa 1: Halo de contacto / light bleed desde los bordes */
+/* Halo proyectado exterior RGB ambiental (Verde, Azul, Rojo del logo) */
 .glow-button::before {
   content: '';
   position: absolute;
   z-index: -1;
-  inset: -2px;
+  inset: -6px -10px;
   border-radius: inherit;
-  background: linear-gradient(115deg, rgba(147, 51, 234, 0.95), rgba(192, 38, 211, 0.9));
-  filter: blur(14px);
-  opacity: 0.25;
-  transform: scale(0.92);
+  background: linear-gradient(
+    115deg,
+    rgba(181, 212, 72, 0.55) 0%,
+    rgba(2, 132, 199, 0.45) 45%,
+    rgba(225, 29, 72, 0.40) 80%,
+    rgba(181, 212, 72, 0.55) 100%
+  );
+  background-size: 240% 240%;
+  animation: rgbAmbientFlow 10s ease-in-out infinite;
+  filter: blur(20px);
+  opacity: 0.15;
+  transform: scale(0.96);
   transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               filter 0.4s ease;
   pointer-events: none;
 }
 
-/* Capa 2: Proyección Ambilight atmosférica difusa hacia el fondo oscuro */
+/* Halo secundario exterior suave para profundidad difusa */
 .glow-button::after {
   content: '';
   position: absolute;
@@ -67,14 +239,14 @@ a { color: inherit; text-decoration: none; }
   border-radius: inherit;
   background: radial-gradient(
     ellipse at center,
-    rgba(168, 85, 247, 0.6) 0%,
-    rgba(139, 92, 246, 0.35) 42%,
-    rgba(192, 38, 211, 0.18) 70%,
+    rgba(181, 212, 72, 0.30) 0%,
+    rgba(2, 132, 199, 0.20) 50%,
+    rgba(225, 29, 72, 0.15) 80%,
     transparent 100%
   );
   filter: blur(28px);
   opacity: 0;
-  transform: scale(0.75);
+  transform: scale(0.85);
   transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
@@ -82,20 +254,31 @@ a { color: inherit; text-decoration: none; }
 
 .glow-button:hover {
   transform: translateY(-2px);
-  filter: brightness(1.06);
-  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
-              0 8px 24px -4px rgba(147, 51, 234, 0.45);
+  border-color: rgba(181, 212, 72, 0.65);
+  background: #0E0F14 !important;
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.2),
+              0 0 14px -3px rgba(181, 212, 72, 0.35);
 }
 
 .glow-button:hover::before {
-  opacity: 0.85;
-  transform: scale(1.04);
-  filter: blur(16px);
+  opacity: 0.75;
+  transform: scale(1.06);
+  filter: blur(22px);
 }
 
 .glow-button:hover::after {
-  opacity: 0.8;
-  transform: scale(1.22);
+  opacity: 0.65;
+  transform: scale(1.12);
+}
+
+.glow-button:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 4px;
+}
+
+.glow-button:active {
+  transform: translateY(0) scale(0.98);
+  filter: brightness(0.98);
 }
 
 .glow-button:active {
@@ -110,7 +293,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .glow-button-outline::before {
-  background: linear-gradient(115deg, rgba(147, 51, 234, 0.6), rgba(192, 38, 211, 0.5));
+  background: linear-gradient(115deg, rgba(124, 58, 237, 0.5), rgba(181, 212, 72, 0.4));
   opacity: 0;
   filter: blur(12px);
 }
@@ -120,21 +303,60 @@ a { color: inherit; text-decoration: none; }
 }
 
 .glow-button-outline:hover {
-  border-color: rgba(196, 181, 253, 0.5);
+  border-color: rgba(181, 212, 72, 0.5);
   background: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 0 20px -3px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 0 20px -3px rgba(181, 212, 72, 0.25);
 }
 
 .glow-button-outline:hover::before {
-  opacity: 0.5;
+  opacity: 0.6;
   transform: scale(1.02);
 }
 
 .service-card, .event-card, .equipment-feature { isolation: isolate; }
-.service-card::after { content: ''; position: absolute; inset: auto 0 0; height: 2px; background: linear-gradient(90deg, transparent, #a78bfa, transparent); opacity: 0; transition: opacity .4s; }
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brand-green), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
 .service-card:hover::after { opacity: 1; }
-.process-card { transition: border-color .3s, transform .3s; }.process-card:hover { border-color: rgba(167,139,250,.75); transform: translateY(-4px); }
+.process-card {
+  transition: border-color 0.3s, transform 0.3s;
+}
+.process-card:hover {
+  border-color: rgba(181, 212, 72, 0.5);
+  transform: translateY(-4px);
+}
 
-@media (max-width: 767px) { .section-padding { padding-top: 5.5rem; padding-bottom: 5.5rem; } .hero-grid { background-size: 48px 48px; } }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
-@layer base { * { border-color: rgba(255,255,255,.1); } }
+@media (max-width: 767px) {
+  .section-padding { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+  .hero-grid { background-size: 48px 48px; }
+}
+
+/* ==========================================================================
+   ACCESIBILIDAD: PREFERS-REDUCED-MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .centro-flow,
+  .glow-button,
+  .glow-button::before,
+  .glow-button::after {
+    animation: none !important;
+    background-position: 50% 50% !important;
+  }
+}
+
+@layer base {
+  * { border-color: rgba(255, 255, 255, 0.1); }
+}
+

@@ -1,6 +1,13 @@
 import Link from 'next/link'
+import { MapPin, Phone, Mail } from 'lucide-react'
 import { Logo } from '@/components/common/logo'
 import { footerNavItems, siteConfig } from '@/data/site'
+import {
+  InstagramIcon,
+  FacebookIcon,
+  WhatsAppIcon,
+  MercadoLibreIcon,
+} from '@/components/common/social-icons'
 
 export function Footer() {
   return (
@@ -8,15 +15,15 @@ export function Footer() {
       <div className="flex flex-col justify-between gap-12 md:flex-row">
         <div>
           <Logo />
-          <p className="mt-5 max-w-[250px] text-sm leading-relaxed text-white/40">
-            Producción técnica para eventos que se sienten.
+          <p className="mt-5 max-w-[280px] text-sm leading-relaxed text-white/50">
+            Producción técnica integral, equipamiento audiovisual y alquiler para eventos.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-16 gap-y-8 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-3">
           <div>
             <p className="eyebrow mb-4">Navegación</p>
-            <div className="flex flex-col gap-3 text-sm text-white/50">
+            <div className="flex flex-col gap-2.5 text-sm text-white/50">
               {footerNavItems.map((item) => (
                 <Link
                   key={item.label}
@@ -30,61 +37,84 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="eyebrow mb-4">Contacto</p>
-            <div className="flex flex-col gap-3 text-sm text-white/50">
-              <a href={siteConfig.whatsappUrl} className="hover:text-white">
-                WhatsApp
+            <p className="eyebrow mb-4">Contacto Directo</p>
+            <div className="flex flex-col gap-3 text-sm text-white/60">
+              <div className="flex items-start gap-2.5">
+                <MapPin size={15} className="mt-0.5 shrink-0 text-[#B5D448]" />
+                <span className="text-white/80 leading-snug">{siteConfig.address}</span>
+              </div>
+              <a
+                href={`tel:${siteConfig.phoneTel}`}
+                className="flex items-center gap-2.5 transition-colors hover:text-white"
+              >
+                <Phone size={15} className="shrink-0 text-[#B5D448]" />
+                <span>{siteConfig.phone}</span>
               </a>
-              <a href={`mailto:${siteConfig.email}`} className="hover:text-white">
-                Email
+              <a
+                href={siteConfig.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 transition-colors hover:text-white"
+              >
+                <WhatsAppIcon className="h-3.5 w-3.5 shrink-0 text-[#B5D448]" />
+                <span>{siteConfig.whatsappPhone}</span>
               </a>
-              <span>{siteConfig.locationShort}</span>
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="flex items-center gap-2.5 transition-colors hover:text-white"
+              >
+                <Mail size={15} className="shrink-0 text-[#B5D448]" />
+                <span>{siteConfig.email}</span>
+              </a>
             </div>
           </div>
 
           <div>
-            <p className="eyebrow mb-4">Canales</p>
-            <div className="flex flex-col gap-3 text-sm text-white/50">
+            <p className="eyebrow mb-4">Canales Oficiales</p>
+            <div className="flex flex-col gap-2.5 text-sm text-white/60">
+              <a
+                href={siteConfig.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2.5 transition-colors hover:text-white"
+              >
+                <WhatsAppIcon className="h-4 w-4 shrink-0 text-white/60 transition-colors group-hover:text-[#25D366]" />
+                <span>WhatsApp</span>
+              </a>
               <a
                 href={siteConfig.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors"
+                className="group flex items-center gap-2.5 transition-colors hover:text-white"
               >
-                <span className="flex h-4 w-4 items-center justify-center rounded-[5px] border border-current text-[9px]">
-                  ◎
-                </span>
-                Instagram
+                <InstagramIcon className="h-4 w-4 shrink-0 text-white/60 transition-colors group-hover:text-[#E4405F]" />
+                <span>Instagram</span>
               </a>
               <a
                 href={siteConfig.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors"
+                className="group flex items-center gap-2.5 transition-colors hover:text-white"
               >
-                <span className="flex h-4 w-4 items-center justify-center rounded-[5px] border border-current text-[9px] font-bold">
-                  f
-                </span>
-                Facebook
+                <FacebookIcon className="h-4 w-4 shrink-0 text-white/60 transition-colors group-hover:text-[#1877F2]" />
+                <span>Facebook</span>
               </a>
               <a
                 href={siteConfig.mercadolibreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors"
+                className="group flex items-center gap-2.5 transition-colors hover:text-white"
               >
-                <span className="flex h-4 w-4 items-center justify-center rounded-[5px] border border-current text-[8px] font-bold">
-                  ML
-                </span>
-                Mercado Libre
+                <MercadoLibreIcon className="h-4 w-4 shrink-0 text-white/60 transition-colors group-hover:text-[#FFE600]" />
+                <span>Mercado Libre</span>
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-14 flex flex-col justify-between gap-3 border-t border-white/10 pt-5 text-[10px] uppercase tracking-widest text-white/25 sm:flex-row">
-        <span>© {siteConfig.copyrightYear} Centro Rental</span>
+      <div className="mt-14 flex flex-col justify-between gap-3 border-t border-white/10 pt-5 text-[10px] uppercase tracking-widest text-white/30 sm:flex-row">
+        <span>© {siteConfig.copyrightYear} Centro Rental · {siteConfig.address}</span>
         <span>Todos los derechos reservados</span>
       </div>
     </footer>

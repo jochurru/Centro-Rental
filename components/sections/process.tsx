@@ -11,7 +11,7 @@ export function Process() {
           <span className="eyebrow">Así trabajamos</span>
           <h2 className="section-title mt-4">
             De la primera idea<br />
-            <span className="text-white/35">al último aplauso.</span>
+            <span className="text-white">al último aplauso.</span>
           </h2>
         </div>
 
@@ -21,11 +21,11 @@ export function Process() {
               key={item.number}
               className="process-card border-t border-white/15 pt-5"
             >
-              <span className="text-xs text-violet-300">{item.number}</span>
+              <span className="text-xs text-[#B5D448] font-medium">{item.number}</span>
               <h3 className="mt-14 text-lg font-medium tracking-tight">
                 {item.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/45">
+              <p className="mt-3 text-sm leading-relaxed text-white/75">
                 {item.text}
               </p>
             </div>

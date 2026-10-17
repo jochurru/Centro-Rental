@@ -21,12 +21,12 @@ export function Equipment() {
             <span className="eyebrow">El equipo detrás</span>
             <h2 className="section-title mt-4">
               Equipamiento que<br />
-              <span className="text-white/35">hace la diferencia.</span>
+              <span className="text-white">hace la diferencia.</span>
             </h2>
           </div>
           <Link
             href="/alquiler"
-            className="hidden items-center gap-2 text-xs text-white/60 transition hover:text-white sm:flex"
+            className="hidden items-center gap-2 text-xs text-[#B5D448] transition hover:text-white sm:flex"
           >
             Explorar alquiler <ArrowUpRight size={14} />
           </Link>
@@ -90,7 +90,7 @@ export function Equipment() {
                 </span>
                 <ArrowUpRight
                   size={15}
-                  className="mr-2 text-white/35 transition group-hover:text-white"
+                  className="mr-2 text-white/60 transition group-hover:text-white"
                 />
               </button>
             ))}

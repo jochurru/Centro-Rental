@@ -13,16 +13,16 @@ export function SalesPreview() {
           <span className="eyebrow">Renovación de parque</span>
           <h2 className="section-title mt-4">
             Equipamiento en venta<br />
-            <span className="text-white/35">con garantía operativa.</span>
+            <span className="text-white">con garantía operativa.</span>
           </h2>
         </div>
         <div className="flex flex-col items-start gap-3 md:items-end">
-          <p className="max-w-[320px] text-sm leading-relaxed text-white/45">
+          <p className="max-w-[320px] text-sm leading-relaxed text-white/75">
             Equipos testeados con compra protegida en nuestra tienda oficial de Mercado Libre.
           </p>
           <Link
             href="/venta"
-            className="flex items-center gap-1.5 text-xs text-violet-300 hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs text-[#B5D448] hover:text-white transition-colors"
           >
             Ver productos en venta <ArrowUpRight size={13} />
           </Link>

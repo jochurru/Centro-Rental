@@ -65,28 +65,11 @@ export default function EventosPage() {
         title={
           <>
             Producciones que{' '}
-            <span className="hero-gradient-text">dejan marca.</span>
+            <span className="text-[#B5D448]">dejan marca.</span>
           </>
         }
         description="Desde congresos y galas corporativas hasta recitales y lanzamientos exclusivos. Conocé cómo desplegamos nuestra infraestructura técnica en cada escenario."
-      >
-        <div className="flex flex-wrap items-center gap-2">
-          {['Todos los eventos', 'Corporativos', 'Festivales & Recitales', 'Lanzamientos', 'Institucionales'].map(
-            (tag, idx) => (
-              <span
-                key={tag}
-                className={`rounded-full px-3.5 py-1.5 text-xs transition-colors ${
-                  idx === 0
-                    ? 'bg-white/10 text-white font-medium border border-white/20'
-                    : 'bg-white/[0.03] text-white/50 border border-white/[0.06] hover:text-white'
-                }`}
-              >
-                {tag}
-              </span>
-            )
-          )}
-        </div>
-      </PageHero>
+      />
 
       {/* Grid de eventos */}
       <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">

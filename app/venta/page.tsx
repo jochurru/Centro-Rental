@@ -4,6 +4,7 @@ import { ArrowUpRight, ShieldCheck, Truck, Wrench } from 'lucide-react'
 import { PageHero } from '@/components/common/page-hero'
 import { CTASection } from '@/components/common/cta-section'
 import { saleProducts, siteConfig } from '@/data/site'
+import { MercadoLibreIcon } from '@/components/common/social-icons'
 
 export const metadata: Metadata = {
   title: 'Venta de Equipamiento | Centro Rental',
@@ -19,7 +20,7 @@ export default function VentaPage() {
         title={
           <>
             Equipamiento profesional{' '}
-            <span className="hero-gradient-text">en venta.</span>
+            <span className="text-[#B5D448]">en venta.</span>
           </>
         }
         description="Equipos de audio, iluminación y video profesional de primeras marcas. Operamos como catálogo oficial y canalizamos las compras a través de nuestra tienda protegida en Mercado Libre."
@@ -29,8 +30,8 @@ export default function VentaPage() {
       <section className="mx-auto max-w-[1320px] px-5 pt-12 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/[0.04] p-6 backdrop-blur-md sm:flex-row sm:p-8">
           <div className="flex items-center gap-4">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-yellow-400 font-bold text-black">
-              ML
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-yellow-400 p-2 text-black">
+              <MercadoLibreIcon className="h-7 w-7" />
             </span>
             <div>
               <p className="text-sm font-semibold text-white">
@@ -47,6 +48,7 @@ export default function VentaPage() {
             rel="noopener noreferrer"
             className="flex shrink-0 items-center gap-2 rounded-full border border-yellow-400/40 bg-yellow-400/10 px-5 py-2.5 text-xs font-medium text-yellow-300 transition-colors hover:bg-yellow-400/20"
           >
+            <MercadoLibreIcon className="h-4 w-4" />
             Ver catálogo completo en Mercado Libre
             <ArrowUpRight size={14} />
           </a>
@@ -107,8 +109,9 @@ export default function VentaPage() {
                   href={prod.mercadolibreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.05] py-2.5 text-xs font-medium text-white transition-colors hover:border-yellow-400/40 hover:bg-yellow-400/10 hover:text-yellow-300"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.05] py-2.5 text-xs font-medium text-white transition-all hover:border-[#FFE600]/40 hover:bg-[#FFE600]/10 hover:text-yellow-300"
                 >
+                  <MercadoLibreIcon className="h-3.5 w-3.5 text-yellow-300" />
                   Ver en Mercado Libre
                   <ArrowUpRight size={13} />
                 </a>

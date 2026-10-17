@@ -72,19 +72,19 @@ export interface ClientItem {
 
 export const siteConfig = {
   name: 'Centro Rental',
-  // [PLACEHOLDER] Número de WhatsApp de ejemplo
-  whatsappPhone: '5491100000000',
-  whatsappUrl:
-    'https://wa.me/5491100000000?text=Hola%20Centro%20Rental%2C%20quiero%20consultar%20por%20un%20evento.',
-  // [PLACEHOLDER] Email de contacto de ejemplo
-  email: 'hola@centrorental.com.ar',
   // Canales oficiales confirmados
+  address: 'Av. Belgrano 2450, Capital Federal',
+  phone: '(011) 15-4429-4224',
+  phoneTel: '+5491144294224',
+  whatsappPhone: '+5491144294224',
+  whatsappUrl:
+    'https://wa.me/5491144294224?text=Hola%20Centro%20Rental%2C%20quiero%20consultar%20por%20un%20evento.',
+  email: 'info@centrorental.com.ar',
   instagramUrl: 'https://www.instagram.com/centrorental',
   facebookUrl: 'https://www.facebook.com/CentroRental.com.ar',
   mercadolibreUrl: 'https://listado.mercadolibre.com.ar/_CustId_5954543',
-  // [PLACEHOLDER] Ubicación y disponibilidad de ejemplo
-  location: 'Buenos Aires · Argentina',
-  locationShort: 'Buenos Aires, AR',
+  location: 'Av. Belgrano 2450, Capital Federal',
+  locationShort: 'Capital Federal, Buenos Aires',
   availability: 'Disponibilidad 2026',
   copyrightYear: 2026,
 }

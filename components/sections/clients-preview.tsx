@@ -13,16 +13,16 @@ export function ClientsPreview() {
             <span className="eyebrow">Clientes & Sectores</span>
             <h2 className="section-title mt-4">
               Quienes confían en<br />
-              <span className="text-white/35">nuestra solvencia.</span>
+              <span className="text-white">nuestra solvencia.</span>
             </h2>
           </div>
           <div className="flex flex-col items-start gap-3 md:items-end">
-            <p className="max-w-[320px] text-sm leading-relaxed text-white/45">
+            <p className="max-w-[320px] text-sm leading-relaxed text-white/75">
               Desde recintos históricos hasta eventos masivos y lanzamientos de primer nivel.
             </p>
             <Link
               href="/clientes"
-              className="flex items-center gap-1.5 text-xs text-violet-300 hover:text-white transition-colors"
+              className="flex items-center gap-1.5 text-xs text-[#B5D448] hover:text-white transition-colors"
             >
               Conocer nuestros clientes <ArrowUpRight size={13} />
             </Link>

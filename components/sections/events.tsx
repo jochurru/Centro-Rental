@@ -14,16 +14,16 @@ export function Events() {
           <span className="eyebrow">Hecho realidad</span>
           <h2 className="section-title mt-4">
             Eventos que<br />
-            <span className="text-white/35">hablan por sí solos.</span>
+            <span className="text-white">hablan por sí solos.</span>
           </h2>
         </div>
         <div className="flex flex-col items-start gap-3 md:items-end">
-          <p className="max-w-[290px] text-sm leading-relaxed text-white/45">
+          <p className="max-w-[290px] text-sm leading-relaxed text-white/75">
             Una selección de proyectos donde la técnica se vuelve experiencia.
           </p>
           <Link
             href="/eventos"
-            className="flex items-center gap-1.5 text-xs text-violet-300 hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs text-[#B5D448] hover:text-white transition-colors"
           >
             Ver todos los eventos <ArrowUpRight size={13} />
           </Link>

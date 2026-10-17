@@ -18,7 +18,7 @@ export default function ClientesPage() {
         title={
           <>
             La confianza de quienes{' '}
-            <span className="hero-gradient-text">no pueden fallar.</span>
+            <span className="text-[#B5D448]">no pueden fallar.</span>
           </>
         }
         description="Trabajamos junto a productoras, instituciones, empresas y hoteles de primer nivel. En eventos de alta visibilidad, la solvencia técnica y el backup en vivo son indispensables."
@@ -30,9 +30,9 @@ export default function ClientesPage() {
           <span className="eyebrow">Sectores e instituciones</span>
           <h2 className="section-title mt-4">
             Presencia en los escenarios{' '}
-            <span className="text-white/35">más exigentes.</span>
+            <span className="text-white">más exigentes.</span>
           </h2>
-          <p className="mt-4 max-w-[560px] text-sm text-white/50">
+          <p className="mt-4 max-w-[560px] text-sm text-white/75">
             Nuestra estructura técnica se adapta tanto a la sobriedad protocolar de un teatro como a la potencia de un festival o la elegancia de una gala corporativa.
           </p>
         </div>
@@ -67,7 +67,7 @@ export default function ClientesPage() {
                 )}
               </div>
 
-              <div className="mt-6 border-t border-white/[0.06] pt-4 text-[11px] uppercase tracking-wider text-white/35">
+              <div className="mt-6 border-t border-white/[0.06] pt-4 text-[11px] uppercase tracking-wider text-white/60">
                 Producción & Cobertura técnica
               </div>
             </div>

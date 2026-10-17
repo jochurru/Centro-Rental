@@ -3,6 +3,7 @@ import {
   MessageCircle,
   Mail,
   MapPin,
+  Phone,
   Clock,
   ArrowUpRight,
 } from 'lucide-react'
@@ -10,6 +11,12 @@ import { PageHero } from '@/components/common/page-hero'
 import { GlowButton } from '@/components/common/glow-button'
 import { ContactForm } from '@/components/sections/contact-form'
 import { siteConfig } from '@/data/site'
+import {
+  InstagramIcon,
+  FacebookIcon,
+  WhatsAppIcon,
+  MercadoLibreIcon,
+} from '@/components/common/social-icons'
 
 export const metadata: Metadata = {
   title: 'Contacto | Centro Rental',
@@ -25,7 +32,7 @@ export default function ContactoPage() {
         title={
           <>
             Empecemos a planificar{' '}
-            <span className="hero-gradient-text">tu fecha.</span>
+            <span className="text-[#B5D448]">tu fecha.</span>
           </>
         }
         description="Estamos a tu disposición para evaluar requerimientos de riders, disponibilidad de fechas, presupuestos a medida y asesoramiento técnico directo."
@@ -39,9 +46,9 @@ export default function ContactoPage() {
               <span className="eyebrow">Canales directos</span>
               <h2 className="section-title mt-4">
                 Respuestas ágiles,{' '}
-                <span className="text-white/35">trato directo.</span>
+                <span className="text-white">trato directo.</span>
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-white/55">
+              <p className="mt-4 text-sm leading-relaxed text-white/75">
                 Para consultas inmediatas de disponibilidad o coordinación de urgencia, nuestro canal más directo es WhatsApp.
               </p>
 
@@ -58,19 +65,72 @@ export default function ContactoPage() {
                 </GlowButton>
               </div>
 
-              {/* Datos de contacto */}
+              {/* Datos de contacto oficiales */}
               <div className="mt-10 flex flex-col gap-5 border-t border-white/10 pt-8">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-violet-400">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#B5D448]/30 bg-white/[0.03] text-[#B5D448]">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-white/70">
+                      Dirección
+                    </p>
+                    <p className="mt-1 text-sm font-medium text-white">
+                      {siteConfig.address}
+                    </p>
+                    <p className="text-xs text-white/60">
+                      Depósito y logística operativa para eventos en CABA y GBA.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#B5D448]/30 bg-white/[0.03] text-[#B5D448]">
+                    <Phone size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-white/70">
+                      Teléfono
+                    </p>
+                    <a
+                      href={`tel:${siteConfig.phoneTel}`}
+                      className="mt-1 block text-sm font-medium text-white transition-colors hover:text-[#B5D448]"
+                    >
+                      {siteConfig.phone}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#B5D448]/30 bg-white/[0.03] text-[#B5D448]">
+                    <WhatsAppIcon className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-white/70">
+                      WhatsApp directo
+                    </p>
+                    <a
+                      href={siteConfig.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 block text-sm font-medium text-white transition-colors hover:text-[#B5D448]"
+                    >
+                      {siteConfig.whatsappPhone}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#B5D448]/30 bg-white/[0.03] text-[#B5D448]">
                     <Mail size={18} />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-white/40">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-white/70">
                       Correo electrónico
                     </p>
                     <a
                       href={`mailto:${siteConfig.email}`}
-                      className="mt-1 text-sm font-medium text-white transition-colors hover:text-violet-300"
+                      className="mt-1 block text-sm font-medium text-white transition-colors hover:text-[#B5D448]"
                     >
                       {siteConfig.email}
                     </a>
@@ -78,90 +138,88 @@ export default function ContactoPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-emerald-400">
-                    <MapPin size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-white/40">
-                      Ubicación operativa
-                    </p>
-                    <p className="mt-1 text-sm font-medium text-white">
-                      {siteConfig.location}
-                    </p>
-                    <p className="text-xs text-white/45">
-                      Montajes en CABA, GBA y traslados a todo el territorio nacional.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-amber-400">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/80">
                     <Clock size={18} />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-white/40">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-white/70">
                       Disponibilidad técnica
                     </p>
                     <p className="mt-1 text-sm font-medium text-white">
                       Lunes a Viernes · 9:00 a 19:00 hs
                     </p>
-                    <p className="text-xs text-white/45">
-                      Guardias operativas y soporte 24/7 durante días de función/evento.
+                    <p className="text-xs text-white/60">
+                      Guardias operativas y soporte técnico durante días de evento.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Canales oficiales verificados */}
+            {/* Canales oficiales verificados con íconos vectoriales */}
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-              <p className="text-xs font-semibold uppercase tracking-wider text-white/40">
+              <p className="text-xs font-semibold uppercase tracking-wider text-white/70">
                 Redes y canales oficiales
               </p>
               <div className="mt-4 flex flex-col gap-3 text-sm">
                 <a
+                  href={siteConfig.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between text-white/80 transition-colors hover:text-white"
+                >
+                  <span className="flex items-center gap-2.5">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/10 bg-white/[0.02] text-white/70 transition-colors group-hover:border-[#25D366]/40 group-hover:text-[#25D366]">
+                      <WhatsAppIcon className="h-3.5 w-3.5" />
+                    </span>
+                    WhatsApp oficial
+                  </span>
+                  <ArrowUpRight size={14} className="text-white/40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
+                </a>
+
+                <a
                   href={siteConfig.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between text-white/60 transition-colors hover:text-white"
+                  className="group flex items-center justify-between text-white/80 transition-colors hover:text-white"
                 >
-                  <span className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded border border-white/20 text-[10px]">
-                      ◎
+                  <span className="flex items-center gap-2.5">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/10 bg-white/[0.02] text-white/70 transition-colors group-hover:border-[#E4405F]/40 group-hover:text-[#E4405F]">
+                      <InstagramIcon className="h-3.5 w-3.5" />
                     </span>
                     Instagram oficial
                   </span>
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={14} className="text-white/40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
                 </a>
 
                 <a
                   href={siteConfig.facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between text-white/60 transition-colors hover:text-white"
+                  className="group flex items-center justify-between text-white/80 transition-colors hover:text-white"
                 >
-                  <span className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded border border-white/20 text-[10px] font-bold">
-                      f
+                  <span className="flex items-center gap-2.5">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/10 bg-white/[0.02] text-white/70 transition-colors group-hover:border-[#1877F2]/40 group-hover:text-[#1877F2]">
+                      <FacebookIcon className="h-3.5 w-3.5" />
                     </span>
                     Facebook oficial
                   </span>
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={14} className="text-white/40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
                 </a>
 
                 <a
                   href={siteConfig.mercadolibreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between text-white/60 transition-colors hover:text-white"
+                  className="group flex items-center justify-between text-white/80 transition-colors hover:text-white"
                 >
-                  <span className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded border border-yellow-500/40 text-[9px] font-bold text-yellow-300">
-                      ML
+                  <span className="flex items-center gap-2.5">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/10 bg-white/[0.02] text-white/70 transition-colors group-hover:border-[#FFE600]/40 group-hover:text-[#FFE600]">
+                      <MercadoLibreIcon className="h-3.5 w-3.5" />
                     </span>
                     Tienda en Mercado Libre
                   </span>
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={14} className="text-white/40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
                 </a>
               </div>
             </div>
