@@ -139,13 +139,14 @@ export function ContactForm() {
           </div>
 
           <div className="pt-2">
-            <button
+            <GlowButton
               type="submit"
-              className="glow-button flex w-full items-center justify-center gap-2 py-4 text-sm"
+              showArrow={false}
+              className="w-full justify-center py-4 text-sm"
             >
               <Send size={15} />
               Enviar solicitud de presupuesto
-            </button>
+            </GlowButton>
             <p className="mt-3 text-center text-[11px] text-white/60">
               Tus datos se utilizarán exclusivamente para elaborar la cotización técnica.
             </p>

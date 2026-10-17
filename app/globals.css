@@ -252,7 +252,8 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
-.glow-button:hover {
+.glow-button:hover,
+.glow-button:focus-visible {
   transform: translateY(-2px);
   border-color: rgba(181, 212, 72, 0.65);
   background: #0E0F14 !important;
@@ -260,14 +261,16 @@ a { color: inherit; text-decoration: none; }
               0 0 14px -3px rgba(181, 212, 72, 0.35);
 }
 
-.glow-button:hover::before {
+.glow-button:hover::before,
+.glow-button:focus-visible::before {
   opacity: 0.75;
   transform: scale(1.06);
   filter: blur(22px);
 }
 
-.glow-button:hover::after {
-  opacity: 0.65;
+.glow-button:hover::after,
+.glow-button:focus-visible::after {
+  opacity: 0.70;
   transform: scale(1.12);
 }
 
@@ -281,36 +284,40 @@ a { color: inherit; text-decoration: none; }
   filter: brightness(0.98);
 }
 
-.glow-button:active {
-  transform: translateY(0) scale(0.98);
-  filter: brightness(0.98);
-}
-
 .glow-button-outline {
-  background: transparent;
+  background: transparent !important;
   border: 1px solid rgba(255, 255, 255, 0.22);
   box-shadow: none;
 }
 
 .glow-button-outline::before {
-  background: linear-gradient(115deg, rgba(124, 58, 237, 0.5), rgba(181, 212, 72, 0.4));
+  background: linear-gradient(
+    115deg,
+    rgba(181, 212, 72, 0.45) 0%,
+    rgba(2, 132, 199, 0.35) 50%,
+    rgba(225, 29, 72, 0.30) 100%
+  );
+  background-size: 200% 200%;
+  animation: rgbAmbientFlow 12s ease-in-out infinite;
   opacity: 0;
-  filter: blur(12px);
+  filter: blur(14px);
 }
 
 .glow-button-outline::after {
   display: none;
 }
 
-.glow-button-outline:hover {
-  border-color: rgba(181, 212, 72, 0.5);
-  background: rgba(255, 255, 255, 0.04);
+.glow-button-outline:hover,
+.glow-button-outline:focus-visible {
+  border-color: rgba(181, 212, 72, 0.6);
+  background: rgba(255, 255, 255, 0.04) !important;
   box-shadow: 0 0 20px -3px rgba(181, 212, 72, 0.25);
 }
 
-.glow-button-outline:hover::before {
-  opacity: 0.6;
-  transform: scale(1.02);
+.glow-button-outline:hover::before,
+.glow-button-outline:focus-visible::before {
+  opacity: 0.65;
+  transform: scale(1.04);
 }
 
 .service-card, .event-card, .equipment-feature { isolation: isolate; }
@@ -350,7 +357,8 @@ a { color: inherit; text-decoration: none; }
   .centro-flow,
   .glow-button,
   .glow-button::before,
-  .glow-button::after {
+  .glow-button::after,
+  .glow-button-outline::before {
     animation: none !important;
     background-position: 50% 50% !important;
   }
