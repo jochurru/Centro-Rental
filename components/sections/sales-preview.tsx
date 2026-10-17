@@ -56,7 +56,7 @@ export function SalesPreview() {
                 <span className="text-[11px] text-emerald-400 font-medium">
                   {prod.status}
                 </span>
-                <h3 className="mt-1 text-base font-medium text-white group-hover:text-violet-200 transition-colors">
+                <h3 className="mt-1 text-base font-medium text-white group-hover:text-zinc-100 transition-colors">
                   {prod.title}
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-white/50 line-clamp-2">

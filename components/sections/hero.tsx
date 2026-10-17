@@ -21,7 +21,7 @@ export function Hero() {
       <div className="hero-grid absolute inset-0 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-r from-[#09090b] via-[#09090b]/65 to-[#09090b]/10 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-[#09090b]/35 pointer-events-none" />
-      <div className="ambient-orb absolute -right-20 top-1/3 h-80 w-80 rounded-full bg-violet-500/20 blur-[120px] pointer-events-none" />
+      <div className="ambient-orb absolute -right-20 top-1/3 h-80 w-80 rounded-full bg-[#0284C7]/8 blur-[140px] pointer-events-none" />
       <div className="ambient-orb absolute -left-20 bottom-1/4 h-72 w-72 rounded-full bg-[#B5D448]/10 blur-[140px] pointer-events-none" />
 
       <div className="relative mx-auto w-full max-w-[1320px] px-5 lg:px-8">
@@ -67,7 +67,7 @@ export function Hero() {
 
       <div className="absolute bottom-9 right-8 hidden items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white/60 lg:flex">
         <span>Scroll para explorar</span>
-        <span className="h-10 w-px bg-gradient-to-b from-violet-400 to-transparent" />
+        <span className="h-10 w-px bg-gradient-to-b from-[#B5D448]/60 to-transparent" />
       </div>
     </section>
   )

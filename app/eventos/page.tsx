@@ -23,37 +23,71 @@ interface PortfolioEvent {
 // Catálogo estructural preparado para futuras rutas individuales /eventos/[slug]
 const portfolioEvents: PortfolioEvent[] = [
   {
-    slug: 'gala-corporativa-buenos-aires',
-    title: 'Gala Anual Corporativa',
-    category: 'Corporativo',
-    location: 'Buenos Aires',
-    image: '/event-1.webp',
-    highlights: ['Pantalla LED central', 'Iluminación perimetral', 'Microfonía inalámbrica'],
+    slug: 'teatro-colon-gala-unicef',
+    title: 'Teatro Colón · Gala UNICEF',
+    category: 'Institucional & Gala',
+    location: 'Teatro Colón · Ciudad de Buenos Aires',
+    image: '/events/teatro-colon-unicef.jpg',
+    highlights: ['Iluminación escénica', 'Gala benéfica institucional'],
     isFeatured: true,
   },
   {
-    slug: 'festival-musica-san-isidro',
-    title: 'Festival & Concierto en Vivo',
-    category: 'Festivales & Shows',
-    location: 'San Isidro',
-    image: '/event-2.webp',
-    highlights: ['Line Array suspendido', 'Consola digital', 'Cabezales móviles Beam'],
+    slug: 'versace-sofitel-lanzamiento-eros',
+    title: 'Versace · Presentación Perfume Eros',
+    category: 'Lanzamiento de Marca',
+    location: 'Hotel Sofitel · Buenos Aires',
+    image: '/events/versace-sofitel.jpg',
+    highlights: ['Puesta escénica', 'Ambientación lumínica de show'],
+    isFeatured: true,
   },
   {
-    slug: 'lanzamiento-automotriz-palermo',
-    title: 'Lanzamiento de Marca & Experiencia',
-    category: 'Lanzamientos',
-    location: 'Palermo',
-    image: '/event-3.webp',
-    highlights: ['Iluminación de producto', 'Sonido envolvente', 'Pantallas de apoyo'],
+    slug: 'teatro-nd-pantalla-led',
+    title: 'Teatro ND · Pantalla LED 5x3',
+    category: 'Shows & Visuales',
+    location: 'Teatro ND Ateneo · CABA',
+    image: '/events/teatro-nd.jpg',
+    highlights: ['Pantalla LED modular', 'Visuales sincronizadas en vivo'],
+    isFeatured: true,
   },
   {
-    slug: 'cumbre-institucional-conferencias',
-    title: 'Cumbre Institucional & Plenario',
-    category: 'Institucional',
-    location: 'Buenos Aires',
-    image: '/hero-event.webp',
-    highlights: ['Traducción simultánea', 'Streaming multicámara', 'Monitoreo de escenario'],
+    slug: 'hotel-hilton-escenario-corporativo',
+    title: 'Hotel Hilton · Escenario y Pantalla Panorámica',
+    category: 'Corporativo & Congresos',
+    location: 'Hotel Hilton · Puerto Madero',
+    image: '/events/hotel-hilton.jpg',
+    highlights: ['Escenario integral', 'Pantalla panorámica'],
+  },
+  {
+    slug: 'sandra-mihanovich-auditorio-belgrano',
+    title: 'Sandra Mihanovich en Vivo',
+    category: 'Recitales & Espectáculos',
+    location: 'Auditorio Belgrano · Buenos Aires',
+    image: '/events/sandra-mihanovich.jpg',
+    highlights: ['Iluminación de concierto', 'Refuerzo sonoro de sala'],
+  },
+  {
+    slug: 'embajada-de-israel-transmision-oficial',
+    title: 'Embajada de Israel · Acto Conmemorativo',
+    category: 'Diplomático & Protocolar',
+    location: 'Plaza Embajada de Israel · CABA',
+    image: '/events/embajada-israel.jpg',
+    highlights: ['Streaming oficial en vivo', 'Microfonía protocolar'],
+  },
+  {
+    slug: 'congreso-internacional-de-leasing',
+    title: 'Congreso Internacional de Leasing',
+    category: 'Congresos & Convenciones',
+    location: 'Centro de Convenciones · Buenos Aires',
+    image: '/events/congreso-leasing.jpg',
+    highlights: ['Soporte audiovisual integral', 'Pantallas de apoyo en plenario'],
+  },
+  {
+    slug: 'alvear-palace-hotel-gala-social',
+    title: 'Alvear Palace Hotel · Celebración y Ambientación',
+    category: 'Social & Institucional',
+    location: 'Alvear Palace Hotel · Recoleta',
+    image: '/events/alvear-palace.jpg',
+    highlights: ['Iluminación arquitectónica', 'Ambientación perimetral'],
   },
 ]
 
@@ -77,7 +111,7 @@ export default function EventosPage() {
           <p className="text-xs uppercase tracking-widest text-white/40">
             Mostrando casos seleccionados
           </p>
-          <div className="flex items-center gap-2 text-xs text-violet-300">
+          <div className="flex items-center gap-2 text-xs text-[#B5D448]">
             <Sparkles size={13} />
             <span>Producción técnica integral</span>
           </div>
@@ -114,10 +148,10 @@ export default function EventosPage() {
               {/* Event information */}
               <div className="flex flex-1 flex-col justify-between p-6">
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-wider text-violet-300">
+                  <p className="text-xs font-medium uppercase tracking-wider text-white/60">
                     {item.location}
                   </p>
-                  <h2 className="mt-2 text-xl font-medium tracking-tight text-white group-hover:text-violet-200 transition-colors">
+                  <h2 className="mt-2 text-xl font-medium tracking-tight text-white group-hover:text-zinc-100 transition-colors">
                     {item.title}
                   </h2>
                 </div>

@@ -1,9 +1,6 @@
 /**
  * Datos estáticos del sitio Centro Rental.
- *
- * NOTA IMPORTANTE SOBRE PLACEHOLDERS:
- * Todos los datos marcados con [PLACEHOLDER] son valores genéricos o ficticios
- * pendientes de ser confirmados/reemplazados por los datos comerciales del cliente.
+ * Contenido comercial verificado y saneado según fuentes históricas y catálogo oficial.
  */
 
 export interface NavItem {
@@ -66,7 +63,7 @@ export interface ClientItem {
   id: string
   name: string
   category: string
-  verified: boolean
+  logo?: string
   description?: string
 }
 
@@ -123,7 +120,7 @@ export const services: ServiceItem[] = [
     title: 'Sonido profesional',
     description: 'Sistemas de audio que llenan cada espacio con claridad y potencia.',
     image: '/sound-system.webp',
-    color: 'violet',
+    color: 'green',
   },
   {
     number: '02',
@@ -148,7 +145,6 @@ export const services: ServiceItem[] = [
   },
 ]
 
-// [PLACEHOLDER] Equipamiento ficticio / catálogo de muestra
 export const equipment: EquipmentItem[] = [
   {
     title: 'Sistema Line Array',
@@ -163,31 +159,30 @@ export const equipment: EquipmentItem[] = [
     image: '/lighting-rig.webp',
   },
   {
-    title: 'Pantalla LED P3',
+    title: 'Pantalla LED Modular',
     category: 'Video',
     description: 'Alta definición para interiores y exteriores.',
     image: '/led-screen.webp',
   },
 ]
 
-// [PLACEHOLDER] Eventos de muestra ficticios
 export const events: EventItem[] = [
   {
-    image: '/event-1.webp',
-    type: 'Evento corporativo',
-    location: 'Buenos Aires',
+    image: '/events/teatro-colon-unicef.jpg',
+    type: 'Teatro Colón · Gala UNICEF',
+    location: 'Teatro Colón · Buenos Aires',
     className: 'md:col-span-7 md:row-span-2',
   },
   {
-    image: '/event-2.webp',
-    type: 'Festival & música',
-    location: 'San Isidro',
+    image: '/events/versace-sofitel.jpg',
+    type: 'Versace · Lanzamiento Perfume Eros',
+    location: 'Hotel Sofitel · Buenos Aires',
     className: 'md:col-span-5',
   },
   {
-    image: '/event-3.webp',
-    type: 'Lanzamiento de marca',
-    location: 'Palermo',
+    image: '/events/teatro-nd.jpg',
+    type: 'Teatro ND · Pantalla LED 5x3',
+    location: 'Teatro ND Ateneo · CABA',
     className: 'md:col-span-5',
   },
 ]
@@ -216,52 +211,40 @@ export const processSteps: ProcessStep[] = [
   },
 ]
 
-// [PLACEHOLDER] Estadísticas con valores de muestra (+XX / +XXX)
-export const stats: StatItem[] = [
-  { number: '+XX', label: 'Años de experiencia' },
-  { number: '+XXX', label: 'Eventos realizados' },
-  { number: '+XX', label: 'Equipos disponibles' },
-  { number: '+XXX', label: 'Clientes atendidos' },
-]
-
-/**
- * Categorías estructurales para la página /alquiler.
- * No inventar especificaciones no verificadas.
- */
 export const rentalCategories: RentalCategory[] = [
   {
     id: 'sonido',
     title: 'Sonido profesional',
     description: 'Sistemas line array, microfonía inalámbrica, consolas digitales y monitoreo para eventos corporativos y masivos.',
-    specs: ['Line Array', 'Consolas digitales', 'Microfonía RF', 'Sistemas de PA'],
+    specs: ['Sistemas Line Array', 'Consolas digitales', 'Microfonía inalámbrica', 'Sistemas de PA'],
     iconName: 'Volume2',
   },
   {
     id: 'iluminacion',
     title: 'Iluminación escénica y ambiental',
     description: 'Cabezales móviles, luminarias LED, wash, efectos beam, consolas de iluminación DMX y diseño lumínico integral.',
-    specs: ['Cabezales móviles Beam/Spot', 'Barras LED Wash', 'Control DMX / GrandMA', 'Iluminación perimetral'],
+    specs: ['Cabezales móviles Beam y Spot', 'Barras LED Wash', 'Control DMX profesional', 'Iluminación perimetral'],
     iconName: 'Lightbulb',
   },
   {
     id: 'pantallas-led',
     title: 'Pantallas LED',
     description: 'Módulos LED de alta resolución para interior y exterior, procesadores de video y configuración a medida.',
-    specs: ['Pitch fino indoor', 'P3 / P4 outdoor', 'Procesadores NovaStar', 'Estructuras modulares'],
+    specs: ['Módulos indoor de pitch fino', 'Sistemas modulares para exterior', 'Procesamiento de video', 'Estructuras de montaje'],
     iconName: 'Tv',
   },
   {
     id: 'streaming-broadcast',
     title: 'Streaming & Broadcast',
-    description: 'Cámaras HD/4K, switchers de video, encoders de transmisión y enlace directo para eventos híbridos y transmisiones en vivo.',
-    specs: ['Cámaras PTZ y robóticas', 'Switchers Blackmagic', 'Encoders dedicados', 'Monitoreo multiview'],
+    description: 'Cámaras para producción multicámara, switchers de video, encoders de transmisión y enlace directo para eventos híbridos.',
+    specs: ['Cámaras para producción multicámara', 'Switchers y enrutamiento de video', 'Encoders dedicados', 'Monitoreo multiview'],
     iconName: 'Radio',
   },
   {
     id: 'estructuras-rigging',
     title: 'Estructuras & Rigging',
     description: 'Trusses de aluminio, motores de elevación, torres elevadoras, escenarios modulares y anclajes certificados.',
-    specs: ['Truss de aluminio homologado', 'Motores y poleas', 'Tarimas y escenarios', 'Certificación de carga'],
+    specs: ['Estructuras de montaje profesional', 'Sistemas de elevación', 'Tarimas y escenarios modulares', 'Sistemas de anclaje y seguridad'],
     iconName: 'Layers',
   },
   {
@@ -275,99 +258,76 @@ export const rentalCategories: RentalCategory[] = [
     id: 'produccion-tecnica',
     title: 'Producción técnica integral',
     description: 'Dirección de técnica general, coordinación de escenario, supervisión operativa y soporte de principio a fin.',
-    specs: ['Stage management', 'Dirección técnica', 'Operadores calificados', 'Planificación previa'],
+    specs: ['Coordinación de escenario', 'Dirección técnica', 'Operadores especializados', 'Planificación previa'],
     iconName: 'Settings',
   },
 ]
 
 /**
- * Productos de muestra para la página /venta.
- * Catálogo de referencia con derivación al canal oficial de Mercado Libre.
+ * Categorías generales para la sección /venta.
+ * Catálogo honesto con derivación al canal oficial de Mercado Libre donde se publican las unidades individuales.
  */
 export const saleProducts: SaleProduct[] = [
   {
-    id: 'prod-line-array',
-    title: 'Módulo de Line Array Pasivo/Activo',
-    category: 'Audio',
-    description: 'Módulo profesional para sistemas de sonorización de alta presión sonora y cobertura controlada.',
+    id: 'cat-audio',
+    title: 'Sistemas de Audio & Sonido',
+    category: 'Audio Profesional',
+    description: 'Consolas de mezcla, procesadores, potencias y cajas acústicas disponibles por renovación de parque.',
     image: '/sound-system.webp',
-    status: 'Disponible para cotización',
+    status: 'Catálogo oficial en Mercado Libre',
     mercadolibreUrl: siteConfig.mercadolibreUrl,
   },
   {
-    id: 'prod-moving-head',
-    title: 'Cabezal Móvil Beam 7R / Spot',
+    id: 'cat-iluminacion',
+    title: 'Iluminación Escénica & Robótica',
     category: 'Iluminación',
-    description: 'Luminaria robotizada con óptica de precisión, rueda de gobos y prismas para escenarios dinámicos.',
+    description: 'Cabezales móviles, reflectores LED, consolas DMX y accesorios testeados en taller técnico.',
     image: '/lighting-rig.webp',
-    status: 'Consultar stock',
+    status: 'Catálogo oficial en Mercado Libre',
     mercadolibreUrl: siteConfig.mercadolibreUrl,
   },
   {
-    id: 'prod-led-panel',
-    title: 'Gabinete Pantalla LED P3.91 Indoor/Outdoor',
+    id: 'cat-pantallas',
+    title: 'Pantallas LED & Procesamiento',
     category: 'Video',
-    description: 'Panel modular de alta tasa de refresco, brillo ajustable y sistema de armado rápido de aluminio.',
+    description: 'Módulos LED modulares, procesadores de video y accesorios de montaje para instalaciones fijas o eventos.',
     image: '/led-screen.webp',
-    status: 'Disponible para cotización',
+    status: 'Catálogo oficial en Mercado Libre',
     mercadolibreUrl: siteConfig.mercadolibreUrl,
   },
   {
-    id: 'prod-audio-mixer',
-    title: 'Consola Digital Multicanal',
-    category: 'Audio',
-    description: 'Mezcladora digital con preamplificadores de bajo ruido, procesamiento dinámico por canal e interfaz USB/Dante.',
-    image: '/sound-system.webp',
-    status: 'Consultar stock',
+    id: 'cat-estructuras',
+    title: 'Estructuras, Rigging & Cables',
+    category: 'Estructuras & Escenario',
+    description: 'Tramos de truss de aluminio, bases, elevadores, mangueras multipar y cableado técnico.',
+    image: '/hero-event.webp',
+    status: 'Catálogo oficial en Mercado Libre',
     mercadolibreUrl: siteConfig.mercadolibreUrl,
   },
 ]
 
 /**
- * Clientes y sectores para la página /clientes.
- * Estructura sobria para marcas e instituciones confirmadas.
+ * Clientes confirmados provenientes de la sección /clientes histórica del sitio original.
  */
-export const featuredClients: ClientItem[] = [
-  {
-    id: 'client-1',
-    name: 'Teatro Colón',
-    category: 'Instituciones & Cultura',
-    verified: true,
-    description: 'Producción técnica y equipamiento para galas y conciertos de prestigio.',
-  },
-  {
-    id: 'client-2',
-    name: 'UNICEF',
-    category: 'Organismos & Campañas',
-    verified: true,
-    description: 'Soporte audiovisual y técnico para eventos institucionales y transmisiones.',
-  },
-  {
-    id: 'client-3',
-    name: 'Sofitel',
-    category: 'Hotelería 5 Estrellas',
-    verified: true,
-    description: 'Infraestructura técnica para convenciones, lanzamientos y galas privadas.',
-  },
-  {
-    id: 'client-4',
-    name: 'Corporativos & Congresos',
-    category: 'Empresas & Negocios',
-    verified: true,
-    description: 'Convenciones anuales, lanzamientos de producto y asambleas corporativas.',
-  },
-  {
-    id: 'client-5',
-    name: 'Festivales & Recitales',
-    category: 'Espectáculos en vivo',
-    verified: true,
-    description: 'Escenarios principales con sonido line array e iluminación de gran escala.',
-  },
-  {
-    id: 'client-6',
-    name: 'Embajadas y Diplomacia',
-    category: 'Institucional internacional',
-    verified: true,
-    description: 'Sonorización protocolar, traducción simultánea y transmisiones seguras.',
-  },
+export const confirmedClients: ClientItem[] = [
+  { id: 'afa', name: 'AFA', category: 'Institución & Deporte', logo: '/clients/afa.gif' },
+  { id: 'playstation', name: 'PlayStation / Sony', category: 'Tecnología & Entretenimiento', logo: '/clients/playstation.gif' },
+  { id: 'loreal', name: "L'Oréal", category: 'Cosmética & Belleza', logo: '/clients/loreal.gif' },
+  { id: 'mcdonalds', name: "McDonald's", category: 'Gastronomía & Franquicias', logo: '/clients/mcdonalds.gif' },
+  { id: 'citroen', name: 'Citroën', category: 'Automotriz', logo: '/clients/citroen.gif' },
+  { id: 'mini', name: 'MINI / BMW Group', category: 'Automotriz', logo: '/clients/mini.gif' },
+  { id: 'sheraton', name: 'Sheraton Hotel', category: 'Hotelería & Convenciones', logo: '/clients/sheraton.gif' },
+  { id: 'banco-credicoop', name: 'Banco Credicoop', category: 'Banca & Finanzas', logo: '/clients/banco-credicoop.gif' },
+  { id: 'correo-argentino', name: 'Correo Argentino', category: 'Servicios Postales & Logística', logo: '/clients/correo-argentino.gif' },
+  { id: 'autopistas-del-sol', name: 'Autopistas del Sol', category: 'Infraestructura & Concesiones', logo: '/clients/autopistas-del-sol.gif' },
+  { id: 'eli-lilly', name: 'Eli Lilly', category: 'Farmacéutica & Salud', logo: '/clients/eli-lilly.gif' },
+  { id: 'sol-melia', name: 'Sol Meliá', category: 'Hotelería & Resorts', logo: '/clients/sol-melia.gif' },
+  { id: 'trilenium', name: 'Trilenium Casino', category: 'Entretenimiento & Eventos', logo: '/clients/trilenium.gif' },
+  { id: 'acde', name: 'ACDE', category: 'Asociaciones Empresariales', logo: '/clients/acde.gif' },
+  { id: 'aaba', name: 'AABA', category: 'Colegios Profesionales', logo: '/clients/aaba.gif' },
+  { id: 'atvc', name: 'ATVC', category: 'Telecomunicaciones & Cable', logo: '/clients/atvc.gif' },
+  { id: 'lidherma', name: 'Lidherma', category: 'Dermoestética & Cosmética', logo: '/clients/lidherma.gif' },
+  { id: 'megatlon', name: 'Megatlon', category: 'Fitness & Centros Deportivos', logo: '/clients/megatlon.gif' },
 ]
+
+export const featuredClients = confirmedClients

@@ -9,7 +9,7 @@ export function Ticker() {
           <Fragment key={item}>
             <span>{item}</span>
             {index < tickerItems.length - 1 && (
-              <span className="hidden h-1 w-1 rounded-full bg-violet-400 lg:block" />
+              <span className="hidden h-1 w-1 rounded-full bg-[#B5D448] lg:block" />
             )}
           </Fragment>
         ))}

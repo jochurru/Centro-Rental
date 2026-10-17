@@ -95,7 +95,7 @@ export default function VentaPage() {
                   <p className="text-[11px] font-medium text-emerald-400">
                     {prod.status}
                   </p>
-                  <h3 className="mt-1.5 text-base font-medium text-white group-hover:text-violet-200 transition-colors">
+                  <h3 className="mt-1.5 text-base font-medium text-white group-hover:text-zinc-100 transition-colors">
                     {prod.title}
                   </h3>
                   <p className="mt-2 text-xs leading-relaxed text-white/50">
@@ -123,7 +123,7 @@ export default function VentaPage() {
         {/* Reaseguros comerciales */}
         <div className="mt-16 grid gap-6 sm:grid-cols-3">
           <div className="flex items-start gap-3.5 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-            <Wrench className="h-5 w-5 shrink-0 text-violet-400" />
+            <Wrench className="h-5 w-5 shrink-0 text-[#B5D448]" />
             <div>
               <p className="text-sm font-medium text-white">Revisión técnica</p>
               <p className="mt-1 text-xs text-white/50">

@@ -47,7 +47,7 @@ export function Equipment() {
                 {String(activeEquipment + 1).padStart(2, '0')} / {String(equipment.length).padStart(2, '0')}
               </span>
               <div>
-                <span className="text-xs uppercase tracking-widest text-violet-300">
+                <span className="text-xs uppercase tracking-widest text-[#B5D448]">
                   {currentItem.category}
                 </span>
                 <h3 className="mt-2 text-3xl font-medium">{currentItem.title}</h3>
@@ -69,7 +69,7 @@ export function Equipment() {
                 onClick={() => setActiveEquipment(i)}
                 className={`group flex items-center gap-4 rounded-xl border p-3 text-left transition ${
                   activeEquipment === i
-                    ? 'border-violet-400/60 bg-violet-500/10'
+                    ? 'border-[#B5D448]/60 bg-[#B5D448]/10'
                     : 'border-white/10 bg-[#111114] hover:border-white/25'
                 }`}
               >

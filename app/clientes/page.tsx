@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { CheckCircle2, ShieldCheck, Award, Zap } from 'lucide-react'
+import Image from 'next/image'
+import { ShieldCheck, Award, Zap } from 'lucide-react'
 import { PageHero } from '@/components/common/page-hero'
 import { CTASection } from '@/components/common/cta-section'
 import { featuredClients } from '@/data/site'
@@ -37,7 +38,7 @@ export default function ClientesPage() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredClients.map((client) => (
             <div
               key={client.id}
@@ -45,30 +46,26 @@ export default function ClientesPage() {
             >
               <div>
                 <div className="mb-4 flex items-center justify-between">
-                  <span className="rounded-full border border-violet-500/20 bg-violet-500/10 px-3 py-1 text-[11px] font-medium text-violet-300">
+                  <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-medium text-white/60">
                     {client.category}
                   </span>
-                  {client.verified && (
-                    <span className="flex items-center gap-1 text-[11px] text-emerald-400">
-                      <CheckCircle2 size={13} />
-                      Confirmado
-                    </span>
-                  )}
                 </div>
 
-                <h3 className="mt-2 text-xl font-medium text-white group-hover:text-violet-200 transition-colors">
+                {client.logo && (
+                  <div className="mb-5 flex h-14 w-28 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] p-2">
+                    <Image
+                      src={client.logo}
+                      alt={client.name}
+                      width={100}
+                      height={45}
+                      className="max-h-full max-w-full object-contain filter grayscale contrast-125 opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                    />
+                  </div>
+                )}
+
+                <h3 className="mt-2 text-xl font-medium text-white group-hover:text-zinc-100 transition-colors">
                   {client.name}
                 </h3>
-
-                {client.description && (
-                  <p className="mt-3 text-sm leading-relaxed text-white/55">
-                    {client.description}
-                  </p>
-                )}
-              </div>
-
-              <div className="mt-6 border-t border-white/[0.06] pt-4 text-[11px] uppercase tracking-wider text-white/60">
-                Producción & Cobertura técnica
               </div>
             </div>
           ))}
@@ -88,7 +85,7 @@ export default function ClientesPage() {
 
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             <div className="flex flex-col items-center text-center p-4">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-violet-400">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-[#B5D448]">
                 <ShieldCheck size={22} />
               </div>
               <h4 className="text-base font-medium text-white">Redundancia y Backup</h4>

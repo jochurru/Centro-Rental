@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { PageHero } from '@/components/common/page-hero'
 import { CTASection } from '@/components/common/cta-section'
-import { processSteps, stats } from '@/data/site'
+import { processSteps } from '@/data/site'
 import { Sliders, ShieldCheck, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -108,37 +108,6 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Métricas e indicadores */}
-      <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-2 md:items-end">
-          <div>
-            <span className="eyebrow">Trayectoria</span>
-            <h2 className="section-title mt-4">
-              Experiencia que<br />
-              <span className="text-white">se nota.</span>
-            </h2>
-          </div>
-          <p className="text-sm leading-relaxed text-white/75 md:pb-2">
-            Indicadores preparados para respaldar la envergadura y continuidad de cada proyecto que asumimos.
-          </p>
-        </div>
-
-        <div className="mt-14 grid grid-cols-2 gap-y-10 border-y border-white/10 py-10 md:grid-cols-4 md:gap-0">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="border-white/10 md:border-l md:pl-6 first:md:border-0 first:md:pl-0"
-            >
-              <p className="text-4xl font-medium tracking-[-0.06em] text-white md:text-5xl">
-                {stat.number}
-              </p>
-              <p className="mt-2 text-[10px] uppercase tracking-widest text-white/40">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* CTA final */}
       <CTASection

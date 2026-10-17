@@ -35,7 +35,7 @@ export function Header() {
               >
                 {item.label}
                 {isActive && (
-                  <span className="absolute -bottom-1 left-1/2 h-[2px] w-4 -translate-x-1/2 rounded-full bg-gradient-to-r from-violet-500 via-[#B5D448] to-violet-500 shadow-[0_0_8px_rgba(181,212,72,0.5)]" />
+                  <span className="absolute -bottom-1 left-1/2 h-[2px] w-4 -translate-x-1/2 rounded-full bg-[#B5D448] shadow-[0_0_8px_rgba(181,212,72,0.6)]" />
                 )}
               </Link>
             )
