@@ -15,16 +15,16 @@ export function Events() {
         <div>
           <span className="eyebrow flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
-            Hecho realidad
+            Trayectoria en vivo
           </span>
           <h2 className="section-title mt-4">
-            Eventos que<br />
-            <span className="text-white">hablan por sí solos.</span>
+            Experiencia técnica en<br />
+            <span className="text-white">producciones reales.</span>
           </h2>
         </div>
         <div className="flex flex-col items-start gap-3 md:items-end">
-          <p className="max-w-[320px] text-sm leading-relaxed text-white/75">
-            Una selección de proyectos reales donde la técnica se vuelve experiencia.
+          <p className="max-w-[360px] text-sm leading-relaxed text-white/75">
+            Una selección de eventos corporativos, espectáculos y actos institucionales realizados con equipamiento y coordinación técnica propia.
           </p>
           <Link
             href="/eventos"
