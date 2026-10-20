@@ -92,23 +92,23 @@ export function InstallationsPreview() {
           {/* Columna Derecha: Composición visual y etapas del proyecto */}
           <div className="lg:col-span-5">
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#121318] p-6 sm:p-7">
-              <div className="relative h-44 w-full overflow-hidden rounded-xl">
+              <div className="relative h-48 w-full overflow-hidden rounded-xl border border-white/10 bg-black/40">
                 <Image
-                  src="/lighting-rig.webp"
-                  alt="Instalación y montaje técnico en espacios"
+                  src="/images/installations/audio-rack-showroom.webp"
+                  alt="Equipamiento de audio y procesamiento en showroom"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover opacity-60"
+                  className="object-cover opacity-85 transition-transform duration-500 hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#121318] via-[#121318]/50 to-transparent" />
-                <div className="absolute bottom-3 left-3 rounded-full border border-white/15 bg-black/70 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-white backdrop-blur-sm">
-                  Espacios Corporativos
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121318] via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3 rounded-full border border-white/15 bg-black/75 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-white backdrop-blur-sm">
+                  Equipamiento en exhibición
                 </div>
               </div>
 
               <div className="mt-5">
                 <p className="text-xs font-semibold uppercase tracking-wider text-white/50">
-                  Alcance del trabajo
+                  Alcance de integración
                 </p>
                 <ul className="mt-3 flex flex-col gap-2.5">
                   <li className="flex items-center gap-2.5 text-xs text-white/75">

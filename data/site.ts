@@ -47,6 +47,8 @@ export interface RentalCategory {
   description: string
   specs: string[]
   iconName?: string
+  image?: string
+  imageAlt?: string
 }
 
 export interface SpecialServiceItem {
@@ -56,6 +58,8 @@ export interface SpecialServiceItem {
   description: string
   specs: string[]
   iconName?: string
+  image?: string
+  imageAlt?: string
 }
 
 export interface InstallationItem {
@@ -65,6 +69,9 @@ export interface InstallationItem {
   description: string
   specs: string[]
   iconName?: string
+  image?: string
+  imageAlt?: string
+  imageLabel?: string
 }
 
 export interface SaleProduct {
@@ -202,15 +209,15 @@ export const events: EventItem[] = [
     className: 'md:col-span-7 md:row-span-2',
   },
   {
-    image: '/events/versace-sofitel.jpg',
-    type: 'Versace · Lanzamiento Perfume Eros',
-    location: 'Hotel Sofitel · Buenos Aires',
+    image: '/events/hotel-hilton.jpg',
+    type: 'Hotel Hilton · Evento Corporativo',
+    location: 'Hotel Hilton · Puerto Madero',
     className: 'md:col-span-5',
   },
   {
-    image: '/events/teatro-nd.jpg',
-    type: 'Teatro ND · Pantalla LED 5x3',
-    location: 'Teatro ND Ateneo · CABA',
+    image: '/events/versace-sofitel.jpg',
+    type: 'Versace · Lanzamiento Perfume Eros',
+    location: 'Hotel Sofitel · Buenos Aires',
     className: 'md:col-span-5',
   },
 ]
@@ -246,6 +253,8 @@ export const rentalCategories: RentalCategory[] = [
     description: 'Sistemas line array, microfonía inalámbrica, consolas digitales y monitoreo para eventos corporativos y masivos.',
     specs: ['Sistemas Line Array', 'Consolas digitales', 'Microfonía inalámbrica', 'Sistemas de PA'],
     iconName: 'Volume2',
+    image: '/images/rental/sonido-parlante-pa.webp',
+    imageAlt: 'Sistema de audio y bafle profesional sobre trípode',
   },
   {
     id: 'iluminacion',
@@ -260,6 +269,8 @@ export const rentalCategories: RentalCategory[] = [
     description: 'Pantallas LED modulares para interior y exterior, procesadores de video y estructuras de montaje a medida.',
     specs: ['Pantallas modulares indoor y outdoor', 'Procesadores de video', 'Estructuras de montaje', 'Configuración según el espacio'],
     iconName: 'Tv',
+    image: '/images/rental/pantalla-led-escenario.webp',
+    imageAlt: 'Pantalla LED modular de alta resolución en escenario',
   },
   {
     id: 'proyectores-pantallas',
@@ -267,6 +278,8 @@ export const rentalCategories: RentalCategory[] = [
     description: 'Proyectores y pantallas de proyección frontal y retroproyección con trípode o marco para reuniones y eventos.',
     specs: ['Proyectores para presentaciones y eventos', 'Pantallas con marco y trípode', 'Opciones de proyección frontal y trasera', 'Conectividad HDMI y video'],
     iconName: 'Projector',
+    image: '/images/rental/proyector-profesional.webp',
+    imageAlt: 'Proyector profesional de alta potencia óptica',
   },
   {
     id: 'smart-tvs-soportes',
@@ -274,6 +287,8 @@ export const rentalCategories: RentalCategory[] = [
     description: 'Pantallas de diversas medidas con soportes móviles de pie o de pared para stands, salas de reuniones y acreditaciones.',
     specs: ['Smart TVs para eventos y stands', 'Soportes de pie rodantes', 'Soportes de mesa y pared', 'Conexión HDMI y adaptadores'],
     iconName: 'Monitor',
+    image: '/images/rental/smart-tv-soporte-pie.webp',
+    imageAlt: 'Smart TV en soporte de pie móvil para exposiciones',
   },
   {
     id: 'starlink',
@@ -281,6 +296,8 @@ export const rentalCategories: RentalCategory[] = [
     description: 'Kits de internet satelital para eventos, transmisiones y producción en locaciones con conectividad limitada.',
     specs: ['Antena satelital Starlink', 'Router Wi-Fi', 'Conectividad para acreditaciones y producción', 'Cables y accesorios de conexión'],
     iconName: 'Wifi',
+    image: '/images/rental/starlink-kit-evento.webp',
+    imageAlt: 'Kit de internet satelital Starlink para eventos',
   },
   {
     id: 'streaming-broadcast',
@@ -288,6 +305,8 @@ export const rentalCategories: RentalCategory[] = [
     description: 'Equipamiento para transmisiones en vivo, switchers de video y captura de señal para eventos presenciales e híbridos.',
     specs: ['Cámaras para transmisión', 'Switchers de video', 'Equipos de codificación y streaming', 'Monitoreo de señal'],
     iconName: 'Radio',
+    image: '/images/services/streaming-operadores.webp',
+    imageAlt: 'Operadores en consola y switcher de streaming en vivo',
   },
   {
     id: 'camaras-video',
@@ -309,6 +328,8 @@ export const rentalCategories: RentalCategory[] = [
     description: 'Consolas de videojuegos para activaciones de marca, stands y áreas recreativas en eventos corporativos.',
     specs: ['Consolas PlayStation y Xbox', 'Mandos y cables de conexión', 'Conexión a pantallas y proyectores', 'Kits para stands y activaciones'],
     iconName: 'Gamepad',
+    image: '/images/rental/consola-playstation-5.webp',
+    imageAlt: 'Consola PlayStation 5 con mando para activaciones',
   },
   {
     id: 'estructuras-rigging',
@@ -330,6 +351,8 @@ export const rentalCategories: RentalCategory[] = [
     description: 'Cabinas para intérpretes, receptores y equipamiento de audio para conferencias multilingües.',
     specs: ['Cabinas para intérpretes', 'Receptores de audio para audiencia', 'Consolas para traducción', 'Accesorios de transmisión de audio'],
     iconName: 'Headphones',
+    image: '/images/rental/traduccion-auriculares.webp',
+    imageAlt: 'Central de traducción simultánea multicanal y auriculares',
   },
   {
     id: 'produccion-tecnica',
@@ -351,6 +374,8 @@ export const specialServices: SpecialServiceItem[] = [
     description: 'Transmisión de video en vivo para conferencias, congresos y presentaciones corporativas hacia plataformas digitales.',
     specs: ['Cámaras y conmutación de video', 'Codificación para streaming', 'Transmisión a plataformas digitales', 'Operación técnica en sala'],
     iconName: 'Radio',
+    image: '/images/services/streaming-operadores.webp',
+    imageAlt: 'Operadores técnicos en consolas de transmisión y streaming en vivo',
   },
   {
     id: 'traduccion',
@@ -359,6 +384,8 @@ export const specialServices: SpecialServiceItem[] = [
     description: 'Equipamiento para interpretación simultánea en congresos y conferencias corporativas con cabinas y receptores para la audiencia.',
     specs: ['Cabinas para intérpretes', 'Receptores de audio para asistentes', 'Consolas y micrófonos de interpretación', 'Distribución de señal de audio'],
     iconName: 'Headphones',
+    image: '/images/services/traduccion-simultanea-oei.webp',
+    imageAlt: 'Cumbre internacional con equipamiento de traducción simultánea OEI',
   },
   {
     id: 'starlink',
@@ -367,6 +394,8 @@ export const specialServices: SpecialServiceItem[] = [
     description: 'Provisión de internet satelital para eventos, transmisiones y acreditaciones en espacios con conectividad limitada.',
     specs: ['Antena satelital Starlink', 'Distribución de red Wi-Fi en el lugar', 'Conexión para acreditaciones y técnica', 'Puesta en funcionamiento en el evento'],
     iconName: 'Wifi',
+    image: '/images/services/starlink-instalacion-exterior.webp',
+    imageAlt: 'Antena Starlink montada en exterior para cobertura de eventos',
   },
   {
     id: 'escenarios-tarimas-vallas',
@@ -375,6 +404,8 @@ export const specialServices: SpecialServiceItem[] = [
     description: 'Montaje de escenarios, tarimas modulares y vallado para actos corporativos, conferencias y espectáculos.',
     specs: ['Tarimas modulares para escenario', 'Escenarios para actos y conferencias', 'Vallas de delimitación perimetral', 'Escaleras y accesorios de acceso'],
     iconName: 'Layers',
+    image: '/images/services/escenario-tarima-acde.webp',
+    imageAlt: 'Tarima modular alfombrada con atril institucional en convención ACDE',
   },
   {
     id: 'grupos-electrogenos',
@@ -391,6 +422,8 @@ export const specialServices: SpecialServiceItem[] = [
     description: 'Coordinación de áreas técnicas, soporte en escenario y armado general para eventos corporativos e institucionales.',
     specs: ['Coordinación técnica general', 'Asistencia en escenario y backstage', 'Técnicos y operadores de equipamiento', 'Planificación previa del montaje'],
     iconName: 'Settings',
+    image: '/images/services/produccion-backstage.webp',
+    imageAlt: 'Backstage de producción técnica con monitores de control y cableado',
   },
 ]
 
@@ -405,6 +438,9 @@ export const installationServices: InstallationItem[] = [
     description: 'Instalación de sistemas de sonido ambiental, pantallas, proyectores y distribución de señal audiovisual para oficinas, auditorios y espacios comerciales.',
     specs: ['Sonorización de salas y espacios comunes', 'Instalación de pantallas y proyectores', 'Conectividad y cableado de audio y video', 'Microfonía para salas de reunión'],
     iconName: 'Tv',
+    image: '/images/installations/audio-rack-showroom.webp',
+    imageAlt: 'Racks de procesamiento y equipamiento de audio Hi-Fi en showroom',
+    imageLabel: 'Equipamiento en exhibición',
   },
   {
     id: 'domotica-automatizacion',
@@ -413,6 +449,9 @@ export const installationServices: InstallationItem[] = [
     description: 'Integración de sistemas de automatización para iluminación, audio distribuido y control ambiental en oficinas y salas corporativas.',
     specs: ['Automatización de iluminación', 'Integración de audio en diferentes ambientes', 'Control ambiental y cortinados', 'Sistemas de control centralizado'],
     iconName: 'Cpu',
+    image: '/images/installations/pantalla-proyeccion-instalada.webp',
+    imageAlt: 'Pantalla retráctil motorizada instalada en salón polivalente',
+    imageLabel: 'Sistemas motorizados',
   },
   {
     id: 'camaras-seguridad',
@@ -421,6 +460,9 @@ export const installationServices: InstallationItem[] = [
     description: 'Instalación de circuitos cerrados de televisión y cámaras de seguridad para oficinas, depósitos, locales y predios comerciales.',
     specs: ['Cámaras para interior y exterior', 'Equipos de grabación de video', 'Instalación y cableado del sistema', 'Puesta en marcha y configuración'],
     iconName: 'Camera',
+    image: '/images/installations/seguridad-cctv-showroom.webp',
+    imageAlt: 'Panel de exhibición de cámaras de seguridad y videoporteros en showroom',
+    imageLabel: 'Soluciones de seguridad',
   },
   {
     id: 'control-acceso',
@@ -429,6 +471,9 @@ export const installationServices: InstallationItem[] = [
     description: 'Instalación de cerraduras electrónicas, lectores biométricos y sistemas de control de ingreso para oficinas y sectores restringidos.',
     specs: ['Cerraduras electrónicas y digitales', 'Lectores biométricos de huella', 'Dispositivos de apertura y pulsadores', 'Instalación y configuración del punto de acceso'],
     iconName: 'ShieldCheck',
+    image: '/images/installations/soportes-pantallas-showroom.webp',
+    imageAlt: 'Sistemas de fijación y soportes técnicos en exhibición',
+    imageLabel: 'Soportes e integración',
   },
 ]
 

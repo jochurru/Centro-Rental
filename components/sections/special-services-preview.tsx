@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowUpRight, Zap } from 'lucide-react'
 import { CategoryIcon } from '@/components/common/category-icons'
 
 const services = [
@@ -9,6 +10,9 @@ const services = [
     description:
       'Transmisión de video en vivo para conferencias y presentaciones hacia plataformas web y redes.',
     iconName: 'Radio',
+    image: '/images/services/streaming-operadores.webp',
+    imageAlt: 'Operadores técnicos en consolas de transmisión en vivo',
+    label: 'Control técnico',
   },
   {
     id: 'traduccion',
@@ -16,6 +20,9 @@ const services = [
     description:
       'Cabinas para intérpretes, consolas y receptores de audio para congresos y eventos multilingües.',
     iconName: 'Headphones',
+    image: '/images/services/traduccion-simultanea-oei.webp',
+    imageAlt: 'Cumbre internacional con equipamiento de traducción simultánea OEI',
+    label: 'Cumbre OEI',
   },
   {
     id: 'starlink',
@@ -23,6 +30,9 @@ const services = [
     description:
       'Provisión de internet satelital para transmisiones, acreditaciones y producción en locación.',
     iconName: 'Wifi',
+    image: '/images/services/starlink-instalacion-exterior.webp',
+    imageAlt: 'Antena Starlink instalada para cobertura satelital de eventos',
+    label: 'Conectividad en campo',
   },
   {
     id: 'grupos-electrogenos',
@@ -63,16 +73,44 @@ export function SpecialServicesPreview() {
             <Link
               key={service.id}
               href="/servicios"
-              className="group relative flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
+              className="group relative flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] p-4 sm:p-5 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
             >
               <div>
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-[#0D0E12] transition-colors group-hover:border-[#B5D448]/40 group-hover:bg-[#121318]">
-                  <CategoryIcon
-                    categoryId={service.id}
-                    iconName={service.iconName}
-                    className="h-5 w-5 text-zinc-300 transition-colors group-hover:text-white"
-                  />
-                </div>
+                {/* Header visual: Foto real donde hay evidencia, o bloque técnico iconográfico */}
+                {service.image ? (
+                  <div className="relative mb-4 h-32 w-full overflow-hidden rounded-lg border border-white/10 bg-black/40">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt || service.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between">
+                      <span className="rounded bg-black/70 px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider text-white/80 backdrop-blur-sm border border-white/10">
+                        {service.label}
+                      </span>
+                      <div className="flex h-6 w-6 items-center justify-center rounded bg-black/60 text-[#B5D448] backdrop-blur-sm">
+                        <CategoryIcon
+                          categoryId={service.id}
+                          iconName={service.iconName}
+                          className="h-3.5 w-3.5"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="relative mb-4 flex h-32 w-full flex-col items-center justify-center rounded-lg border border-dashed border-white/15 bg-white/[0.015] p-3 text-center transition-colors group-hover:border-white/25">
+                    <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-[#0D0E12] text-[#B5D448] transition-colors group-hover:border-[#B5D448]/40">
+                      <Zap className="h-5 w-5" />
+                    </div>
+                    <span className="text-[11px] font-medium text-white/50">
+                      Infraestructura eléctrica
+                    </span>
+                  </div>
+                )}
+
                 <h3 className="text-base font-medium text-white group-hover:text-zinc-100 transition-colors">
                   {service.title}
                 </h3>

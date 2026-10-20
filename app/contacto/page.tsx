@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import {
   MessageCircle,
   Mail,
@@ -67,20 +68,39 @@ export default function ContactoPage() {
 
               {/* Datos de contacto oficiales */}
               <div className="mt-10 flex flex-col gap-5 border-t border-white/10 pt-8">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#B5D448]/30 bg-white/[0.03] text-[#B5D448]">
-                    <MapPin size={18} />
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#B5D448]/30 bg-white/[0.03] text-[#B5D448]">
+                      <MapPin size={18} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-white/70">
+                        Showroom & Dirección
+                      </p>
+                      <p className="mt-1 text-sm font-medium text-white">
+                        {siteConfig.address}
+                      </p>
+                      <p className="text-xs text-white/60">
+                        Atención personalizada, retiros de rental y showroom técnico en CABA.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-white/70">
-                      Dirección
-                    </p>
-                    <p className="mt-1 text-sm font-medium text-white">
-                      {siteConfig.address}
-                    </p>
-                    <p className="text-xs text-white/60">
-                      Depósito y logística operativa para eventos en CABA y GBA.
-                    </p>
+
+                  {/* Fotografía real de la fachada para reconocimiento visual */}
+                  <div className="relative mt-1 h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-black/40">
+                    <Image
+                      src="/images/showroom/showroom-fachada.webp"
+                      alt="Fachada del showroom de Centro Rental en Av. Belgrano 2450"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      className="object-cover object-center"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute bottom-2.5 left-3 right-3">
+                      <span className="rounded bg-black/75 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-white/90 backdrop-blur-sm border border-white/10">
+                        Fachada Oficial · Av. Belgrano 2450
+                      </span>
+                    </div>
                   </div>
                 </div>
 

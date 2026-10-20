@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { CheckCircle2, ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 import { PageHero } from '@/components/common/page-hero'
@@ -46,16 +47,37 @@ export default function ServiciosPage() {
           {specialServices.map((service) => (
             <div
               key={service.id}
-              className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
+              className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-7 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
             >
               <div>
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-[#0D0E12] transition-colors group-hover:border-[#B5D448]/40 group-hover:bg-[#121318]">
-                  <CategoryIcon
-                    categoryId={service.id}
-                    iconName={service.iconName}
-                    className="h-6 w-6 text-zinc-200 transition-colors group-hover:text-white"
-                  />
-                </div>
+                {/* Evidencia fotográfica real o icono técnico */}
+                {service.image ? (
+                  <div className="relative mb-5 h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-black/40">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt || service.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                    <div className="absolute bottom-3 left-3 flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-black/70 text-zinc-200 backdrop-blur-sm group-hover:border-[#B5D448]/40 group-hover:text-white">
+                      <CategoryIcon
+                        categoryId={service.id}
+                        iconName={service.iconName}
+                        className="h-4 w-4"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-[#0D0E12] transition-colors group-hover:border-[#B5D448]/40 group-hover:bg-[#121318]">
+                    <CategoryIcon
+                      categoryId={service.id}
+                      iconName={service.iconName}
+                      className="h-6 w-6 text-zinc-200 transition-colors group-hover:text-white"
+                    />
+                  </div>
+                )}
 
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#B5D448]">
                   {service.subtitle}
@@ -65,7 +87,7 @@ export default function ServiciosPage() {
                   {service.title}
                 </h3>
 
-                <p className="mt-3 text-sm leading-relaxed text-white/55">
+                <p className="mt-2.5 text-sm leading-relaxed text-white/55">
                   {service.description}
                 </p>
               </div>

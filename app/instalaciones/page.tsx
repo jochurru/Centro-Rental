@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { CheckCircle2, ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 import { PageHero } from '@/components/common/page-hero'
@@ -46,16 +47,42 @@ export default function InstalacionesPage() {
           {installationServices.map((item) => (
             <div
               key={item.id}
-              className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-8 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
+              className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
             >
               <div>
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-[#0D0E12] transition-colors group-hover:border-[#B5D448]/40 group-hover:bg-[#121318]">
-                  <CategoryIcon
-                    categoryId={item.id}
-                    iconName={item.iconName}
-                    className="h-6 w-6 text-zinc-200 transition-colors group-hover:text-white"
-                  />
-                </div>
+                {/* Fotografía de equipamiento y soluciones en exhibición */}
+                {item.image ? (
+                  <div className="relative mb-6 h-48 w-full overflow-hidden rounded-xl border border-white/10 bg-black/40">
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt || item.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                      <span className="rounded bg-black/70 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white/90 backdrop-blur-sm border border-white/10">
+                        {item.imageLabel || 'Equipamiento en exhibición'}
+                      </span>
+                      <div className="flex h-7 w-7 items-center justify-center rounded bg-black/70 text-[#B5D448] backdrop-blur-sm">
+                        <CategoryIcon
+                          categoryId={item.id}
+                          iconName={item.iconName}
+                          className="h-4 w-4"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-[#0D0E12] transition-colors group-hover:border-[#B5D448]/40 group-hover:bg-[#121318]">
+                    <CategoryIcon
+                      categoryId={item.id}
+                      iconName={item.iconName}
+                      className="h-6 w-6 text-zinc-200 transition-colors group-hover:text-white"
+                    />
+                  </div>
+                )}
 
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#B5D448]">
                   {item.subtitle}

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { PageHero } from '@/components/common/page-hero'
 import { CTASection } from '@/components/common/cta-section'
 import { processSteps } from '@/data/site'
@@ -70,6 +71,92 @@ export default function NosotrosPage() {
               <p className="mt-2 text-xs leading-relaxed text-white/70">
                 Operadores y técnicos con experiencia en vivo que resuelven con rapidez y calidez.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Presencia e infraestructura real: Showroom propio en CABA */}
+      <section className="border-t border-white/[0.07] bg-white/[0.01] section-padding">
+        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+          <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <span className="eyebrow flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
+                Presencia e Infraestructura
+              </span>
+              <h2 className="section-title mt-4">
+                Local comercial y showroom{' '}
+                <span className="text-white">a la calle.</span>
+              </h2>
+            </div>
+            <p className="max-w-[420px] text-sm leading-relaxed text-white/70">
+              Un espacio físico permanente en Balvanera (CABA) para demostraciones de equipamiento, asesoramiento técnico personalizado y logística de retiros.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {/* Foto 1: Fachada */}
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#121318]">
+              <div className="relative h-64 sm:h-80 w-full overflow-hidden">
+                <Image
+                  src="/images/showroom/showroom-fachada.webp"
+                  alt="Fachada de Centro Rental en Av. Belgrano 2450"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="rounded bg-black/75 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white/90 backdrop-blur-sm border border-white/10">
+                    Fachada Oficial
+                  </span>
+                  <p className="mt-2 text-sm font-medium text-white">Av. Belgrano 2450</p>
+                  <p className="text-xs text-white/60">Marquesina y acceso sobre avenida principal</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Foto 2: Salón interior */}
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#121318]">
+              <div className="relative h-64 sm:h-80 w-full overflow-hidden">
+                <Image
+                  src="/images/showroom/showroom-interior.webp"
+                  alt="Salón interior de exhibición y tótems de Smart TV"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="rounded bg-black/75 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white/90 backdrop-blur-sm border border-white/10">
+                    Salón de Exhibición
+                  </span>
+                  <p className="mt-2 text-sm font-medium text-white">Área de Demostración</p>
+                  <p className="text-xs text-white/60">Tótems para pantallas y atención directa</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Foto 3: Puesto técnico */}
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#121318]">
+              <div className="relative h-64 sm:h-80 w-full overflow-hidden">
+                <Image
+                  src="/images/showroom/showroom-mostrador.webp"
+                  alt="Mostrador técnico de Centro Rental"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="rounded bg-black/75 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white/90 backdrop-blur-sm border border-white/10">
+                    Operación Física
+                  </span>
+                  <p className="mt-2 text-sm font-medium text-white">Mostrador & Retiros</p>
+                  <p className="text-xs text-white/60">Puesto de control y coordinación de entregas</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
