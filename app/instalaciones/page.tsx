@@ -38,7 +38,7 @@ export default function InstalacionesPage() {
             <span className="text-white">integrada a tu espacio.</span>
           </h2>
           <p className="mt-4 max-w-[560px] text-sm text-white/75">
-            Desarrollamos proyectos de instalación audiovisual, conectividad y seguridad con criterios de prolijidad, durabilidad y facilidad de operación diaria.
+            Desarrollamos proyectos de instalación audiovisual, conectividad y seguridad adaptados a las necesidades y características de cada espacio.
           </p>
         </div>
 
@@ -105,7 +105,7 @@ export default function InstalacionesPage() {
       <CTASection
         eyebrow="Asesoramiento técnico"
         title="Contanos las necesidades de tu espacio."
-        description="Analizamos el plano, los requerimientos de uso y diseñamos una solución técnica permanente con soporte e instalación profesional."
+        description="Analizamos los requerimientos de uso de cada espacio para proponer el equipamiento e instalación técnica correspondiente."
         primaryLabel="Solicitar presupuesto"
         primaryHref="/contacto"
         secondaryLabel="Ver servicios de eventos"

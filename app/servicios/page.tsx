@@ -23,7 +23,7 @@ export default function ServiciosPage() {
             <span className="text-[#B5D448]">cada escenario.</span>
           </>
         }
-        description="Infraestructura técnica, conectividad de alta demanda y soporte operativo para eventos corporativos, congresos internacionales y transmisiones en vivo."
+        description="Infraestructura técnica, conectividad y soporte operativo para eventos corporativos, congresos y transmisiones en vivo."
       />
 
       {/* Grid de servicios especiales */}
@@ -38,7 +38,7 @@ export default function ServiciosPage() {
             <span className="text-white">en acción.</span>
           </h2>
           <p className="mt-4 max-w-[560px] text-sm text-white/75">
-            Brindamos soluciones integradas con personal técnico capacitado y equipamiento preparado para responder en tiempo real ante las exigencias de cada producción.
+            Brindamos soluciones técnicas integradas con equipamiento y personal preparado para las exigencias de cada producción.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export default function ServiciosPage() {
 
               <div className="mt-6 border-t border-white/[0.06] pt-5">
                 <p className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-white/40">
-                  Prestaciones técnicas
+                  Equipamiento y alcance
                 </p>
                 <ul className="flex flex-col gap-2">
                   {service.specs.map((spec) => (
