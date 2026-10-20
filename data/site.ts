@@ -49,6 +49,8 @@ export interface RentalCategory {
   iconName?: string
   image?: string
   imageAlt?: string
+  secondaryImage?: string
+  secondaryImageAlt?: string
 }
 
 export interface SpecialServiceItem {
@@ -255,6 +257,8 @@ export const rentalCategories: RentalCategory[] = [
     iconName: 'Volume2',
     image: '/images/rental/sonido-parlante-pa.webp',
     imageAlt: 'Sistema de audio y bafle profesional sobre trípode',
+    secondaryImage: '/images/rental/sonido-consola-operador.webp',
+    secondaryImageAlt: 'Operadores técnicos en consola de audio en evento',
   },
   {
     id: 'iluminacion',
@@ -262,6 +266,8 @@ export const rentalCategories: RentalCategory[] = [
     description: 'Cabezales móviles, luminarias LED, wash, efectos beam, consolas de iluminación DMX y diseño lumínico integral.',
     specs: ['Cabezales móviles Beam y Spot', 'Barras LED Wash', 'Control DMX profesional', 'Iluminación perimetral'],
     iconName: 'Lightbulb',
+    image: '/images/rental/iluminacion-par-led.webp',
+    imageAlt: 'Iluminación ambiental con luminarias PAR LED en salón',
   },
   {
     id: 'pantallas-led',
@@ -271,6 +277,8 @@ export const rentalCategories: RentalCategory[] = [
     iconName: 'Tv',
     image: '/images/rental/pantalla-led-escenario.webp',
     imageAlt: 'Pantalla LED modular de alta resolución en escenario',
+    secondaryImage: '/images/rental/pantalla-led-hilton.webp',
+    secondaryImageAlt: 'Pantalla LED en salón corporativo de hotel',
   },
   {
     id: 'proyectores-pantallas',
@@ -280,6 +288,8 @@ export const rentalCategories: RentalCategory[] = [
     iconName: 'Projector',
     image: '/images/rental/proyector-profesional.webp',
     imageAlt: 'Proyector profesional de alta potencia óptica',
+    secondaryImage: '/images/rental/proyector-auditorio.webp',
+    secondaryImageAlt: 'Proyección institucional sobre pantalla en auditorio',
   },
   {
     id: 'smart-tvs-soportes',
@@ -289,6 +299,8 @@ export const rentalCategories: RentalCategory[] = [
     iconName: 'Monitor',
     image: '/images/rental/smart-tv-soporte-pie.webp',
     imageAlt: 'Smart TV en soporte de pie móvil para exposiciones',
+    secondaryImage: '/images/rental/smart-tv-pedestal.webp',
+    secondaryImageAlt: 'Smart TV sobre pedestal de pie metálico para reuniones',
   },
   {
     id: 'starlink',

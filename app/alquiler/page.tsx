@@ -5,6 +5,7 @@ import { PageHero } from '@/components/common/page-hero'
 import { CTASection } from '@/components/common/cta-section'
 import { rentalCategories, equipment } from '@/data/site'
 import { CategoryIcon } from '@/components/common/category-icons'
+import { RentalCardMedia } from '@/components/rental/rental-card-media'
 
 export const metadata: Metadata = {
   title: 'Alquiler de Equipamiento | Centro Rental',
@@ -52,23 +53,14 @@ export default function AlquilerPage() {
                 <div>
                   {/* Foto real donde existe evidencia histórica o icono técnico */}
                   {cat.image ? (
-                    <div className="relative mb-5 h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-black/40">
-                      <Image
-                        src={cat.image}
-                        alt={cat.imageAlt || cat.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-                      <div className="absolute bottom-3 left-3 flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-black/70 text-zinc-200 backdrop-blur-sm group-hover:border-[#B5D448]/40 group-hover:text-white">
-                        <CategoryIcon
-                          categoryId={cat.id}
-                          iconName={cat.iconName}
-                          className="h-4 w-4"
-                        />
-                      </div>
-                    </div>
+                    <RentalCardMedia
+                      categoryId={cat.id}
+                      iconName={cat.iconName}
+                      primaryImage={cat.image}
+                      primaryAlt={cat.imageAlt || cat.title}
+                      secondaryImage={cat.secondaryImage}
+                      secondaryAlt={cat.secondaryImageAlt}
+                    />
                   ) : (
                     <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-[#0D0E12] transition-colors group-hover:border-[#B5D448]/40 group-hover:bg-[#121318]">
                       <CategoryIcon

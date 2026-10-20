@@ -105,6 +105,14 @@ const portfolioEvents: PortfolioEvent[] = [
     image: '/events/alvear-palace.jpg',
     highlights: ['Celebración social', 'Puesta en salón'],
   },
+  {
+    slug: 'planta-nike-exo-logistica',
+    title: 'Planta Nike · Exo Logística',
+    category: 'Corporativo & Industrial',
+    location: 'Centro de Distribución · Esteban Echeverría',
+    image: '/images/events/nike-planta-exolog.webp',
+    highlights: ['Evento industrial', 'Sonido y proyección técnica'],
+  },
 ]
 
 export default function EventosPage() {
