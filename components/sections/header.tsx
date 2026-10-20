@@ -1,23 +1,38 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 import { Logo } from '@/components/common/logo'
 import { GlowButton } from '@/components/common/glow-button'
-import { navItems } from '@/data/site'
+import { primaryNavItems, moreNavItems, navItems } from '@/data/site'
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [moreOpen, setMoreOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
+
+  // Cerrar dropdown al hacer click fuera
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setMoreOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const isMoreActive = moreNavItems.some((item) => pathname.startsWith(item.href))
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/[0.06] bg-[#09090b]/70 backdrop-blur-xl">
       <div className="mx-auto flex h-[74px] max-w-[1320px] items-center justify-between px-5 lg:px-8">
         <Logo />
-        <nav className="hidden items-center gap-7 lg:flex">
-          {navItems.map((item) => {
+        <nav className="hidden items-center gap-6 xl:gap-7 lg:flex">
+          {primaryNavItems.map((item) => {
             const isActive =
               item.href === '/'
                 ? pathname === '/'
@@ -40,12 +55,68 @@ export function Header() {
               </Link>
             )
           })}
+
+          {/* Menú desplegable "Más" para páginas secundarias */}
+          <div
+            ref={dropdownRef}
+            className="relative"
+            onMouseEnter={() => setMoreOpen(true)}
+            onMouseLeave={() => setMoreOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setMoreOpen(!moreOpen)}
+              className={`relative flex items-center gap-1 py-1 text-[12px] transition-colors ${
+                isMoreActive
+                  ? 'font-medium text-white'
+                  : 'text-white/55 hover:text-white'
+              }`}
+            >
+              <span>Más</span>
+              <ChevronDown
+                size={12}
+                className={`transition-transform duration-200 ${
+                  moreOpen ? 'rotate-180 text-white' : 'text-white/50'
+                }`}
+              />
+              {isMoreActive && (
+                <span className="absolute -bottom-1 left-1/2 h-[2px] w-4 -translate-x-1/2 rounded-full bg-[#B5D448] shadow-[0_0_8px_rgba(181,212,72,0.6)]" />
+              )}
+            </button>
+
+            {moreOpen && (
+              <div className="absolute right-0 top-full mt-2 w-44 rounded-xl border border-white/10 bg-[#09090b]/95 p-1.5 shadow-2xl backdrop-blur-xl z-50">
+                {moreNavItems.map((subItem) => {
+                  const isSubActive = pathname.startsWith(subItem.href)
+                  return (
+                    <Link
+                      key={subItem.label}
+                      href={subItem.href}
+                      onClick={() => setMoreOpen(false)}
+                      className={`flex items-center justify-between rounded-lg px-3 py-2 text-[12px] transition-colors ${
+                        isSubActive
+                          ? 'bg-white/[0.08] font-medium text-white'
+                          : 'text-white/70 hover:bg-white/[0.04] hover:text-white'
+                      }`}
+                    >
+                      <span>{subItem.label}</span>
+                      {isSubActive && (
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448] shadow-[0_0_6px_#B5D448]" />
+                      )}
+                    </Link>
+                  )
+                })}
+              </div>
+            )}
+          </div>
         </nav>
+
         <div className="hidden lg:block">
           <GlowButton href="/contacto" className="px-5 py-2.5 text-[12px]">
             Solicitar presupuesto
           </GlowButton>
         </div>
+
         <button
           className="text-white lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -83,7 +154,7 @@ export function Header() {
               )
             })}
           </div>
-          <div className="mt-5 pt-3 border-t border-white/[0.06]">
+          <div className="mt-5 border-t border-white/[0.06] pt-3">
             <GlowButton
               href="/contacto"
               className="w-full"

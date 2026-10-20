@@ -23,19 +23,22 @@ export default function AlquilerPage() {
             <span className="text-[#B5D448]">cada escala.</span>
           </>
         }
-        description="Proveemos sistemas de sonido de precisión, iluminación de diseño, pantallas LED de alta definición y estructuras homologadas para eventos de máxima exigencia."
+        description="Proveemos sistemas de sonido de precisión, iluminación de diseño, pantallas LED, conectividad satelital y equipamiento audiovisual para eventos corporativos y masivos."
       />
 
-      {/* Grid de 7 categorías reales */}
+      {/* Catálogo ampliado de categorías de alquiler */}
       <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
         <div className="mb-12">
-          <span className="eyebrow">Categorías de alquiler</span>
+          <span className="eyebrow flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
+            Catálogo de alquiler
+          </span>
           <h2 className="section-title mt-4">
-            Infraestructura técnica{' '}
-            <span className="text-white">homologada y testeada.</span>
+            Equipamiento técnico para{' '}
+            <span className="text-white">cada necesidad.</span>
           </h2>
-          <p className="mt-4 max-w-[540px] text-sm text-white/75">
-            Cada equipo pasa por un control de calidad y calibración previa antes de salir a cada montaje.
+          <p className="mt-4 max-w-[560px] text-sm text-white/75">
+            Sonido, pantallas, proyectores, conectividad satelital, informática y estructuras preparadas para montajes exigentes.
           </p>
         </div>
 

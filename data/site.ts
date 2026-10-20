@@ -49,6 +49,24 @@ export interface RentalCategory {
   iconName?: string
 }
 
+export interface SpecialServiceItem {
+  id: string
+  title: string
+  subtitle: string
+  description: string
+  specs: string[]
+  iconName?: string
+}
+
+export interface InstallationItem {
+  id: string
+  title: string
+  subtitle: string
+  description: string
+  specs: string[]
+  iconName?: string
+}
+
 export interface SaleProduct {
   id: string
   title: string
@@ -86,14 +104,24 @@ export const siteConfig = {
   copyrightYear: 2026,
 }
 
-export const navItems: NavItem[] = [
+export const primaryNavItems: NavItem[] = [
   { label: 'Inicio', href: '/' },
-  { label: 'Eventos', href: '/eventos' },
   { label: 'Alquiler', href: '/alquiler' },
+  { label: 'Servicios', href: '/servicios' },
+  { label: 'Instalaciones', href: '/instalaciones' },
+  { label: 'Eventos', href: '/eventos' },
   { label: 'Venta', href: '/venta' },
+]
+
+export const moreNavItems: NavItem[] = [
   { label: 'Clientes', href: '/clientes' },
   { label: 'Nosotros', href: '/nosotros' },
   { label: 'Contacto', href: '/contacto' },
+]
+
+export const navItems: NavItem[] = [
+  ...primaryNavItems,
+  ...moreNavItems,
 ]
 
 export const footerNavItems: NavItem[] = [
@@ -234,6 +262,27 @@ export const rentalCategories: RentalCategory[] = [
     iconName: 'Tv',
   },
   {
+    id: 'proyectores-pantallas',
+    title: 'Proyectores y pantallas de proyección',
+    description: 'Proyectores de alta luminosidad y pantallas de proyección frontal y retroproyección con trípode o marco autoportante.',
+    specs: ['Proyectores de alta definición', 'Pantallas con marco y trípode', 'Formatos 16:9 y 4:3', 'Conectividad HDMI y video'],
+    iconName: 'Projector',
+  },
+  {
+    id: 'smart-tvs-soportes',
+    title: 'Smart TVs y soportes',
+    description: 'Pantallas de 43 a 75 pulgadas con soportes móviles de pie o de pared para stands, salas de reuniones y acreditaciones.',
+    specs: ['Smart TVs de 43" a 75"', 'Soportes de pie rodantes', 'Soportes de mesa y pared', 'Conexión HDMI y Wi-Fi'],
+    iconName: 'Monitor',
+  },
+  {
+    id: 'starlink',
+    title: 'Internet satelital Starlink',
+    description: 'Kits de internet satelital de alta velocidad y baja latencia para transmisiones, acreditaciones y producción técnica en terreno.',
+    specs: ['Antena satelital Starlink', 'Router Wi-Fi integrado', 'Baja latencia para streaming', 'Instalación y soporte en sitio'],
+    iconName: 'Wifi',
+  },
+  {
     id: 'streaming-broadcast',
     title: 'Streaming & Broadcast',
     description: 'Cámaras para producción multicámara, switchers de video, encoders de transmisión y enlace directo para eventos híbridos.',
@@ -241,11 +290,39 @@ export const rentalCategories: RentalCategory[] = [
     iconName: 'Radio',
   },
   {
+    id: 'camaras-video',
+    title: 'Cámaras & Video',
+    description: 'Cámaras profesionales, ópticas, trípodes y accesorios para registro de eventos y producción audiovisual en vivo.',
+    specs: ['Cámaras para video profesional', 'Trípodes fluidos', 'Monitores de referencia', 'Accesorios y cableado HDMI/SDI'],
+    iconName: 'Camera',
+  },
+  {
+    id: 'notebooks',
+    title: 'Notebooks & Computación',
+    description: 'Equipos portátiles para presentaciones, acreditaciones, control de sonido y gestión operativa de eventos.',
+    specs: ['Notebooks para conferencias', 'Procesadores de alto rendimiento', 'Salidas HDMI y video dedicadas', 'Accesorios y periféricos'],
+    iconName: 'Laptop',
+  },
+  {
+    id: 'consolas-gaming',
+    title: 'Consolas PS5 & Xbox',
+    description: 'Consolas de videojuegos de última generación con mandos y accesorios para activaciones de marca, stands y zonas recreativas.',
+    specs: ['PlayStation 5 y Xbox Series', 'Mandos inalámbricos adicionales', 'Cables HDMI de alta velocidad', 'Configuración para torneos y stands'],
+    iconName: 'Gamepad',
+  },
+  {
     id: 'estructuras-rigging',
     title: 'Estructuras & Rigging',
     description: 'Trusses de aluminio, sistemas de elevación, torres, escenarios modulares y soluciones de anclaje para montaje técnico.',
     specs: ['Estructuras de montaje profesional', 'Sistemas de elevación', 'Tarimas y escenarios modulares', 'Sistemas de anclaje y seguridad'],
     iconName: 'Layers',
+  },
+  {
+    id: 'biombos-soportes',
+    title: 'Biombos, paneles & soportes',
+    description: 'Biombos modulares, paneles divisorios y soportes autoportantes para delimitar espacios, backstage y señalética.',
+    specs: ['Biombos modulares para backstage', 'Soportes para cartelería y banners', 'Estructuras livianas autoportantes', 'Fácil reconfiguración en sala'],
+    iconName: 'PanelLeft',
   },
   {
     id: 'traduccion-simultanea',
@@ -260,6 +337,98 @@ export const rentalCategories: RentalCategory[] = [
     description: 'Dirección de técnica general, coordinación de escenario, supervisión operativa y soporte de principio a fin.',
     specs: ['Coordinación de escenario', 'Dirección técnica', 'Operadores especializados', 'Planificación previa'],
     iconName: 'Settings',
+  },
+]
+
+/**
+ * Servicios especiales operativos e históricos de Centro Rental (/servicios).
+ */
+export const specialServices: SpecialServiceItem[] = [
+  {
+    id: 'streaming',
+    title: 'Streaming & Transmisión en Vivo',
+    subtitle: 'Eventos híbridos y virtuales',
+    description: 'Transmisiones multicámara, codificación dedicada, enlace directo a plataformas y cobertura técnica integral para eventos corporativos e institucionales.',
+    specs: ['Producción multicámara en vivo', 'Switchers y encoders dedicados', 'Salida multicanal y web simultánea', 'Monitoreo técnico de transmisión'],
+    iconName: 'Radio',
+  },
+  {
+    id: 'traduccion',
+    title: 'Traducción Simultánea',
+    subtitle: 'Conferencias multilingües',
+    description: 'Sistemas para congresos internacionales con cabinas insonorizadas, consolas para intérpretes y receptores multicanal para los asistentes.',
+    specs: ['Cabinas acústicas insonorizadas', 'Receptores multicanal para audiencia', 'Consolas para intérpretes profesionales', 'Distribución de audio RF e infrarrojo'],
+    iconName: 'Headphones',
+  },
+  {
+    id: 'starlink',
+    title: 'Internet Satelital / Starlink',
+    subtitle: 'Conectividad de alta demanda',
+    description: 'Conectividad satelital de alta velocidad y baja latencia para transmisiones, acreditaciones y producción técnica en locaciones sin enlace terrestre.',
+    specs: ['Antenas satelitales de alta velocidad', 'Redes Wi-Fi dedicadas para producción', 'Enlace de backup y redundancia', 'Instalación y monitoreo en sitio'],
+    iconName: 'Wifi',
+  },
+  {
+    id: 'escenarios-tarimas-vallas',
+    title: 'Escenarios, Tarimas & Vallas',
+    subtitle: 'Infraestructura de montaje',
+    description: 'Montaje de escenarios modulares, tarimas regulables a medida, gradas y sistemas de vallado perimetral para actos, conferencias y espectáculos.',
+    specs: ['Tarimas modulares regulables en altura', 'Escenarios para interior y exterior', 'Vallas de contención perimetral', 'Escaleras y barandas de seguridad'],
+    iconName: 'Layers',
+  },
+  {
+    id: 'grupos-electrogenos',
+    title: 'Grupos Electrógenos & Energía',
+    subtitle: 'Suministro eléctrico ininterrumpido',
+    description: 'Generación eléctrica y tableros de distribución técnica para garantizar continuidad operativa y respaldo en eventos de cualquier escala.',
+    specs: ['Generadores para eventos', 'Tableros de distribución técnica', 'Cableado de potencia y acometidas', 'Supervisión de carga eléctrica en vivo'],
+    iconName: 'Zap',
+  },
+  {
+    id: 'produccion-tecnica',
+    title: 'Producción Técnica Integral',
+    subtitle: 'Coordinación y dirección en vivo',
+    description: 'Dirección de técnica general, coordinación de escenario, supervisión operativa y soporte de principio a fin para productoras y empresas.',
+    specs: ['Dirección técnica general', 'Coordinación de escenario y backstage', 'Operadores y técnicos especializados', 'Planificación previa y rider técnico'],
+    iconName: 'Settings',
+  },
+]
+
+/**
+ * Instalaciones fijas e integración permanente para espacios corporativos (/instalaciones).
+ */
+export const installationServices: InstallationItem[] = [
+  {
+    id: 'audio-video-fijo',
+    title: 'Audio & Video Fijo',
+    subtitle: 'Salas de reunión y auditorios',
+    description: 'Instalación y calibración permanente de sistemas de sonido ambiental, sonorización de auditorios, pantallas y distribución de señal para espacios corporativos.',
+    specs: ['Sonorización ambiental y de salas', 'Pantallas y proyectores fijos', 'Distribución de video y conectividad', 'Microfonía de mesa y conferencias'],
+    iconName: 'Tv',
+  },
+  {
+    id: 'domotica-automatizacion',
+    title: 'Domótica & Automatización',
+    subtitle: 'Control inteligente de espacios',
+    description: 'Automatización de iluminación, control de cortinados, audio distribuido y gestión centralizada de escenarios para oficinas y espacios comerciales.',
+    specs: ['Control centralizado de iluminación', 'Automatización de salas de reunión', 'Integración de audio multizona', 'Paneles táctiles y control por aplicación'],
+    iconName: 'Cpu',
+  },
+  {
+    id: 'camaras-seguridad',
+    title: 'Cámaras de Seguridad (CCTV)',
+    subtitle: 'Videovigilancia y monitoreo',
+    description: 'Sistemas de videovigilancia IP y analógica, monitoreo en tiempo real, grabación centralizada y configuración de accesos remotos seguros.',
+    specs: ['Cámaras IP para interior y exterior', 'Grabadores digitales y almacenamiento', 'Monitoreo en red y dispositivos móviles', 'Cableado estructurado de seguridad'],
+    iconName: 'Camera',
+  },
+  {
+    id: 'control-acceso',
+    title: 'Control de Acceso & Cerraduras Biométricas',
+    subtitle: 'Gestión y seguridad de accesos',
+    description: 'Sistemas de ingreso mediante huella digital, reconocimiento facial, tarjetas de proximidad o cerraduras electrónicas para áreas restringidas.',
+    specs: ['Lectores biométricos y de proximidad', 'Cerraduras electromagnéticas y digitales', 'Software de registro de accesos', 'Torniquetes y barreras peatonales'],
+    iconName: 'ShieldCheck',
   },
 ]
 

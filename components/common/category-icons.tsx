@@ -199,6 +199,155 @@ export function FohConsoleIcon({ className = 'h-6 w-6', ...props }: IconProps) {
 }
 
 /**
+ * Proyectores y pantallas de proyección
+ */
+export function ProjectorIcon({ className = 'h-6 w-6', ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <rect x="2" y="7" width="16" height="9" rx="1.5" stroke="currentColor" strokeWidth={1.75} />
+      <circle cx="10" cy="11.5" r="2.5" stroke="currentColor" strokeWidth={1.5} />
+      <circle cx="10" cy="11.5" r="1" fill="#B5D448" />
+      <path d="M18 9.5l3.5-1.5v7l-3.5-1.5" stroke="currentColor" strokeWidth={1.5} strokeLinejoin="round" />
+      <path d="M5 16v2M15 16v2" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+    </svg>
+  )
+}
+
+/**
+ * Smart TVs y soportes
+ */
+export function SmartTvIcon({ className = 'h-6 w-6', ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <rect x="2" y="3" width="20" height="13" rx="1.5" stroke="currentColor" strokeWidth={1.75} />
+      <circle cx="12" cy="14.5" r="0.75" fill="#B5D448" />
+      <path d="M10 16v5M14 16v5M6 21h12" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+      <circle cx="7" cy="22" r="0.8" fill="#B5D448" />
+      <circle cx="17" cy="22" r="0.8" fill="#B5D448" />
+    </svg>
+  )
+}
+
+/**
+ * Internet satelital Starlink
+ */
+export function StarlinkIcon({ className = 'h-6 w-6', ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <path d="M5 4l12-2 3 9-12 2L5 4z" stroke="currentColor" strokeWidth={1.75} strokeLinejoin="round" />
+      <path d="M11 12l-4 9M4 21h6" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+      <path d="M16 3a4 4 0 0 1 4 4" stroke="#B5D448" strokeWidth={1.5} strokeLinecap="round" />
+      <path d="M18 1a7 7 0 0 1 5 5" stroke="#B5D448" strokeWidth={1.25} strokeLinecap="round" />
+      <circle cx="11" cy="7.5" r="1" fill="#B5D448" />
+    </svg>
+  )
+}
+
+/**
+ * Notebooks & Computación
+ */
+export function NotebookIcon({ className = 'h-6 w-6', ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <rect x="4" y="4" width="16" height="11" rx="1.5" stroke="currentColor" strokeWidth={1.75} />
+      <circle cx="12" cy="6" r="0.75" fill="#B5D448" />
+      <path d="M2 18h20l-1.5 2.5H3.5L2 18z" stroke="currentColor" strokeWidth={1.5} strokeLinejoin="round" />
+      <path d="M10 18.5h4" stroke="#B5D448" strokeWidth={1.25} strokeLinecap="round" />
+    </svg>
+  )
+}
+
+/**
+ * Consolas gaming PS5 & Xbox
+ */
+export function GamepadIcon({ className = 'h-6 w-6', ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <path d="M6 12h12a4 4 0 0 1 4 4l-1 5a2 2 0 0 1-2 1.5 3 3 0 0 1-2.5-1.5L15 17H9l-1.5 4A3 3 0 0 1 5 22.5 2 2 0 0 1 3 21l-1-5a4 4 0 0 1 4-4z" stroke="currentColor" strokeWidth={1.75} strokeLinejoin="round" />
+      <path d="M6 15v4M4 17h4" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+      <circle cx="17.5" cy="15.5" r="1" fill="#B5D448" />
+      <circle cx="19.5" cy="17.5" r="0.75" fill="currentColor" />
+    </svg>
+  )
+}
+
+/**
+ * Biombos, paneles & soportes
+ */
+export function BiomboIcon({ className = 'h-6 w-6', ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <rect x="2" y="4" width="6" height="15" rx="0.75" stroke="currentColor" strokeWidth={1.5} />
+      <rect x="9" y="3" width="6" height="17" rx="0.75" stroke="currentColor" strokeWidth={1.75} />
+      <rect x="16" y="4" width="6" height="15" rx="0.75" stroke="currentColor" strokeWidth={1.5} />
+      <circle cx="8.5" cy="7" r="0.75" fill="#B5D448" />
+      <circle cx="8.5" cy="16" r="0.75" fill="#B5D448" />
+      <circle cx="15.5" cy="7" r="0.75" fill="#B5D448" />
+      <circle cx="15.5" cy="16" r="0.75" fill="#B5D448" />
+    </svg>
+  )
+}
+
+/**
+ * Grupos electrógenos & energía
+ */
+export function GeneratorIcon({ className = 'h-6 w-6', ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <rect x="3" y="5" width="18" height="13" rx="2" stroke="currentColor" strokeWidth={1.75} />
+      <line x1="6" y1="9" x2="10" y2="9" stroke="currentColor" strokeWidth={1.25} strokeLinecap="round" />
+      <line x1="6" y1="12" x2="10" y2="12" stroke="currentColor" strokeWidth={1.25} strokeLinecap="round" />
+      <path d="M14 8l-2 4h3l-2 4" stroke="#B5D448" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2 19h20" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+    </svg>
+  )
+}
+
+/**
+ * Cámaras de seguridad (CCTV)
+ */
+export function SecurityCamIcon({ className = 'h-6 w-6', ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <path d="M3 5v8M3 9h4" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+      <path d="M7 6l11-2 2 5-11 2L7 6z" stroke="currentColor" strokeWidth={1.75} strokeLinejoin="round" />
+      <circle cx="16" cy="8" r="1.5" stroke="currentColor" strokeWidth={1.5} />
+      <circle cx="16" cy="8" r="0.75" fill="#B5D448" />
+      <circle cx="19" cy="6" r="0.75" fill="#B5D448" />
+    </svg>
+  )
+}
+
+/**
+ * Control de acceso & cerraduras biométricas
+ */
+export function AccessControlIcon({ className = 'h-6 w-6', ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" strokeWidth={1.75} />
+      <circle cx="12" cy="9" r="3" stroke="currentColor" strokeWidth={1.5} />
+      <path d="M12 7.5a1.5 1.5 0 0 1 1.5 1.5M10.5 9a1.5 1.5 0 0 1 1.5-1.5" stroke="#B5D448" strokeWidth={1.25} strokeLinecap="round" />
+      <circle cx="12" cy="16" r="1" fill="#B5D448" />
+      <path d="M9 16h1M14 16h1" stroke="currentColor" strokeWidth={1.25} strokeLinecap="round" />
+    </svg>
+  )
+}
+
+/**
+ * Domótica & Automatización
+ */
+export function DomoticaIcon({ className = 'h-6 w-6', ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
+      <path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10z" stroke="currentColor" strokeWidth={1.75} strokeLinejoin="round" />
+      <circle cx="12" cy="14" r="2.5" stroke="currentColor" strokeWidth={1.5} />
+      <circle cx="12" cy="14" r="1" fill="#B5D448" />
+      <path d="M12 9v2.5M8 17l2-1.5M16 17l-2-1.5" stroke="#B5D448" strokeWidth={1.25} strokeLinecap="round" />
+    </svg>
+  )
+}
+
+/**
  * Helper unificado para obtener el ícono técnico correspondiente según ID de categoría.
  */
 export function CategoryIcon({
@@ -217,14 +366,41 @@ export function CategoryIcon({
       return <MovingHeadIcon className={className} />
     case 'pantallas-led':
       return <LedPanelIcon className={className} />
+    case 'proyectores-pantallas':
+      return <ProjectorIcon className={className} />
+    case 'smart-tvs-soportes':
+      return <SmartTvIcon className={className} />
+    case 'starlink':
+      return <StarlinkIcon className={className} />
     case 'streaming-broadcast':
+    case 'streaming':
       return <BroadcastCameraIcon className={className} />
+    case 'camaras-video':
+      return <BroadcastCameraIcon className={className} />
+    case 'notebooks':
+      return <NotebookIcon className={className} />
+    case 'consolas-gaming':
+      return <GamepadIcon className={className} />
     case 'estructuras-rigging':
+    case 'escenarios-tarimas-vallas':
       return <TrussIcon className={className} />
+    case 'biombos-soportes':
+      return <BiomboIcon className={className} />
     case 'traduccion-simultanea':
+    case 'traduccion':
       return <TranslationDeviceIcon className={className} />
     case 'produccion-tecnica':
       return <FohConsoleIcon className={className} />
+    case 'grupos-electrogenos':
+      return <GeneratorIcon className={className} />
+    case 'audio-video-fijo':
+      return <LedPanelIcon className={className} />
+    case 'domotica-automatizacion':
+      return <DomoticaIcon className={className} />
+    case 'camaras-seguridad':
+      return <SecurityCamIcon className={className} />
+    case 'control-acceso':
+      return <AccessControlIcon className={className} />
   }
 
   // Fallback por iconName histórico
@@ -235,12 +411,32 @@ export function CategoryIcon({
       return <MovingHeadIcon className={className} />
     case 'Tv':
       return <LedPanelIcon className={className} />
+    case 'Projector':
+      return <ProjectorIcon className={className} />
+    case 'Monitor':
+      return <SmartTvIcon className={className} />
+    case 'Wifi':
+      return <StarlinkIcon className={className} />
     case 'Radio':
       return <BroadcastCameraIcon className={className} />
+    case 'Camera':
+      return <BroadcastCameraIcon className={className} />
+    case 'Laptop':
+      return <NotebookIcon className={className} />
+    case 'Gamepad':
+      return <GamepadIcon className={className} />
     case 'Layers':
       return <TrussIcon className={className} />
+    case 'PanelLeft':
+      return <BiomboIcon className={className} />
     case 'Headphones':
       return <TranslationDeviceIcon className={className} />
+    case 'Zap':
+      return <GeneratorIcon className={className} />
+    case 'Cpu':
+      return <DomoticaIcon className={className} />
+    case 'ShieldCheck':
+      return <AccessControlIcon className={className} />
     case 'Settings':
     default:
       return <FohConsoleIcon className={className} />
