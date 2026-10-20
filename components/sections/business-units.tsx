@@ -5,7 +5,7 @@ const units = [
   {
     number: '01',
     title: 'Alquiler de Equipamiento',
-    tagline: 'Parque técnico disponible',
+    tagline: 'Rental audiovisual y tecnológico',
     description:
       'Equipamiento audiovisual, informática, conectividad y soporte técnico para empresas, eventos y producciones.',
     href: '/alquiler',
@@ -58,7 +58,7 @@ export function BusinessUnits() {
           <Link
             key={unit.number}
             href={unit.href}
-            className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-[#111114] p-8 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-[#15151a]"
+            className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-[#111114] p-6 sm:p-7 lg:p-8 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-[#15151a]"
           >
             <div>
               <div className="flex items-center justify-between">

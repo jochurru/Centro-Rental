@@ -24,7 +24,7 @@ export function Events() {
         </div>
         <div className="flex flex-col items-start gap-3 md:items-end">
           <p className="max-w-[360px] text-sm leading-relaxed text-white/75">
-            Una selección de eventos corporativos, espectáculos y actos institucionales realizados con equipamiento y coordinación técnica propia.
+            Una selección de eventos corporativos, espectáculos y actos institucionales realizados con equipamiento y coordinación técnica.
           </p>
           <Link
             href="/eventos"

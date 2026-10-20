@@ -32,12 +32,12 @@ const pillars = [
 
 export function InstallationsPreview() {
   return (
-    <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
-      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.03] via-[#101115] to-[#0a0a0d] p-8 sm:p-12 lg:p-16">
+    <section className="mx-auto max-w-[1320px] px-5 py-12 sm:py-16 lg:px-8 lg:py-20">
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.03] via-[#101115] to-[#0a0a0d] p-6 sm:p-10 lg:p-12">
         {/* Sutil halo ambiental */}
         <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-[#B5D448]/5 blur-[100px]" />
 
-        <div className="relative grid gap-10 lg:grid-cols-12 lg:items-center">
+        <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center">
           {/* Columna Izquierda: Información y pilares de integración */}
           <div className="lg:col-span-7">
             <span className="eyebrow flex items-center gap-2">
@@ -54,11 +54,11 @@ export function InstallationsPreview() {
               Soluciones de audio, video, automatización, cámaras de seguridad y control de acceso para espacios corporativos y comerciales.
             </p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="mt-7 grid gap-3 sm:grid-cols-2">
               {pillars.map((pillar) => (
                 <div
                   key={pillar.id}
-                  className="flex items-start gap-3 rounded-xl border border-white/[0.07] bg-white/[0.015] p-3.5 transition-colors hover:border-white/20"
+                  className="flex items-start gap-3 rounded-xl border border-white/[0.07] bg-white/[0.015] p-3 transition-colors hover:border-white/20"
                 >
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0c0d11]">
                     <CategoryIcon
@@ -75,7 +75,7 @@ export function InstallationsPreview() {
               ))}
             </div>
 
-            <div className="mt-8 pt-2">
+            <div className="mt-7 pt-1">
               <Link
                 href="/instalaciones"
                 className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-all hover:border-[#B5D448]/50 hover:bg-white/5 hover:text-white"
@@ -91,8 +91,8 @@ export function InstallationsPreview() {
 
           {/* Columna Derecha: Composición visual y etapas del proyecto */}
           <div className="lg:col-span-5">
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#121318] p-7">
-              <div className="relative h-48 w-full overflow-hidden rounded-xl">
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#121318] p-6 sm:p-7">
+              <div className="relative h-44 w-full overflow-hidden rounded-xl">
                 <Image
                   src="/lighting-rig.webp"
                   alt="Instalación y montaje técnico en espacios"
@@ -113,15 +113,15 @@ export function InstallationsPreview() {
                 <ul className="mt-3 flex flex-col gap-2.5">
                   <li className="flex items-center gap-2.5 text-xs text-white/75">
                     <CheckCircle2 size={13} className="text-[#B5D448] shrink-0" />
-                    <span>Relevamiento técnico y diseño del espacio</span>
+                    <span>Evaluación de necesidades del espacio</span>
                   </li>
                   <li className="flex items-center gap-2.5 text-xs text-white/75">
                     <CheckCircle2 size={13} className="text-[#B5D448] shrink-0" />
-                    <span>Tendido de cableado estructurado e interconexión</span>
+                    <span>Instalación e interconexión de equipamiento</span>
                   </li>
                   <li className="flex items-center gap-2.5 text-xs text-white/75">
                     <CheckCircle2 size={13} className="text-[#B5D448] shrink-0" />
-                    <span>Puesta en marcha, calibración y entrega</span>
+                    <span>Configuración y puesta en funcionamiento</span>
                   </li>
                 </ul>
               </div>

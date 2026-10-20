@@ -15,7 +15,7 @@ const quickLinks = [
 
 export function RentalQuickLinks() {
   return (
-    <section className="border-y border-white/[0.08] bg-[#0c0d10] py-6 sm:py-8">
+    <section className="border-y border-white/[0.08] bg-[#0c0d10] py-4 sm:py-5">
       <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           {/* Encabezado compacto */}

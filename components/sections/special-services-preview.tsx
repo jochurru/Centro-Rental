@@ -35,9 +35,9 @@ const services = [
 
 export function SpecialServicesPreview() {
   return (
-    <section className="border-t border-white/[0.06] bg-white/[0.01] py-16 sm:py-20">
+    <section className="border-t border-white/[0.06] bg-white/[0.01] py-12 sm:py-16">
       <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
-        <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <span className="eyebrow flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
