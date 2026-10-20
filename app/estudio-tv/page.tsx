@@ -29,43 +29,43 @@ const studioCapabilities = [
   {
     title: 'Ciclorama verde continuo',
     description:
-      'Superficie continua en pared y piso para croma keying sin sombras duras ni cortes visuales.',
+      'Superficie continua en pared y piso para producciones con chroma.',
     icon: Layers,
   },
   {
     title: 'Iluminación de estudio',
     description:
-      'Parrilla superior y luminarias LED difusas regulables para una cobertura lumínica uniforme.',
+      'Parrilla de iluminación y luminarias de estudio para el set.',
     icon: Sparkles,
   },
   {
     title: 'Control room integrado',
     description:
-      'Sala técnica adyacente para mezcla de audio, conmutación de video y operación centralizada.',
+      'Sala técnica para mezcla de audio, conmutación de video y operación centralizada.',
     icon: SlidersHorizontal,
   },
   {
     title: 'Monitoreo técnico en vivo',
     description:
-      'Pantallas multiview que permiten supervisar simultáneamente cada ángulo y señal del programa.',
+      'Monitoreo multiview de señales durante la operación.',
     icon: MonitorPlay,
   },
   {
     title: 'Producción virtual',
     description:
-      'Composición en tiempo real con escenografías digitales y fondos 3D para transmisiones híbridas.',
+      'Producción virtual con composición sobre ciclorama.',
     icon: Tv,
   },
   {
     title: 'Operación técnica en sala',
     description:
-      'Operadores de sonido, cámara y dirección técnica que asisten desde la preparación hasta el aire.',
+      'Operación técnica para grabaciones y transmisiones.',
     icon: Users,
   },
   {
     title: 'Área de maquillaje y camarines',
     description:
-      'Espacio acondicionado con espejos iluminados para la preparación y comodidad de conductores e invitados.',
+      'Espacio acondicionado con puestos de maquillaje y espejos iluminados.',
     icon: CheckCircle2,
   },
 ]
@@ -74,27 +74,27 @@ const studioCapabilities = [
 const useCases = [
   {
     title: 'Entrevistas corporativas & Podcasts',
-    description: 'Formato dinámico con dos o más panelistas para contenidos institucionales y difusión de marca.',
+    description: 'Grabación de entrevistas y contenidos de diálogo en set.',
   },
   {
     title: 'Webinars & Capacitaciones',
-    description: 'Transmisiones directas con soporte de presentaciones, moderación en vivo y audio limpio.',
+    description: 'Transmisiones en vivo con soporte de presentaciones y moderación.',
   },
   {
     title: 'Streaming multicanal',
-    description: 'Emisión simultánea a plataformas web, redes sociales y canales internos con control de señal.',
+    description: 'Emisión en vivo a plataformas web y canales digitales.',
   },
   {
     title: 'Producciones virtuales & Lanzamientos',
-    description: 'Puestas en escena digitales de alta sofisticación para presentaciones de producto y galas.',
+    description: 'Composición con escenografía digital para presentaciones de marca.',
   },
   {
     title: 'Presentaciones institucionales',
-    description: 'Grabación de mensajes ejecutivos, balances anuales y contenidos corporativos de alto estándar.',
+    description: 'Grabación de mensajes corporativos y comunicados institucionales.',
   },
   {
     title: 'Contenido audiovisual para marcas',
-    description: 'Sets versátiles adaptables con fondos sinfín o cromas para activaciones y campañas.',
+    description: 'Producción de piezas audiovisuales y material promocional en set.',
   },
 ]
 
@@ -104,35 +104,35 @@ const galleryPhotos = [
     src: '/images/studio/studio-control-room.webp',
     alt: 'Dirección técnica y consola de sonido en control room de estudio',
     caption: 'Control Room Integrado',
-    subtitle: 'Dirección técnica, intercom y mezcla de audio multicanal',
+    subtitle: 'Dirección técnica y mezcla de audio en sala de control',
     span: 'lg:col-span-8',
   },
   {
     src: '/images/studio/studio-chroma-interview.webp',
     alt: 'Grabación de entrevista sobre ciclorama verde continuo en estudio',
     caption: 'Set con Ciclorama Verde',
-    subtitle: 'Tomas en croma continuo para entrevistas y podcasts',
+    subtitle: 'Tomas en ciclorama verde para entrevistas y contenidos',
     span: 'lg:col-span-4',
   },
   {
     src: '/images/studio/studio-virtual-production.webp',
     alt: 'Composición y previsualización de set virtual 3D en tiempo real',
     caption: 'Producción Virtual en Vivo',
-    subtitle: 'Monitoreo y composición en tiempo real con fondos escénicos 3D',
+    subtitle: 'Composición y previsualización de set virtual en tiempo real',
     span: 'lg:col-span-4',
   },
   {
     src: '/images/studio/studio-multiview-control.webp',
     alt: 'Operadores en puestos de control con monitoreo multiview en vivo',
     caption: 'Monitoreo Multiview',
-    subtitle: 'Supervisión simultánea de señales de cámara y emisión',
+    subtitle: 'Supervisión multiview de señales durante la emisión',
     span: 'lg:col-span-4',
   },
   {
     src: '/images/studio/studio-makeup-room.webp',
     alt: 'Camarines y sala de maquillaje equipada con espejos iluminados',
     caption: 'Camarines & Maquillaje',
-    subtitle: 'Área dedicada para el confort de talentos e invitados',
+    subtitle: 'Puestos de maquillaje con espejos iluminados',
     span: 'lg:col-span-4',
   },
 ]
@@ -141,21 +141,21 @@ const galleryPhotos = [
 const relatedServices = [
   {
     title: 'Streaming & Transmisión',
-    description: 'Conectá tu emisión en vivo desde el estudio hacia cualquier plataforma web con estabilidad profesional.',
+    description: 'Transmisión en vivo desde el estudio hacia plataformas web y redes.',
     href: '/servicios',
     icon: Radio,
     tag: 'Servicio',
   },
   {
     title: 'Producción Técnica Integral',
-    description: 'Coordinación operativa, operadores de sonido, conmutación de video y soporte en vivo de principio a fin.',
+    description: 'Coordinación técnica, operadores y soporte durante la grabación.',
     href: '/servicios',
     icon: Settings,
     tag: 'Operación',
   },
   {
     title: 'Cámaras & Video Profesional',
-    description: 'Cámaras de alta resolución, ópticas, trípodes pesados y switchers multicanal para coberturas exigentes.',
+    description: 'Cámaras de video, trípodes y accesorios para registro y cobertura técnica.',
     href: '/alquiler',
     icon: Camera,
     tag: 'Alquiler',
@@ -250,7 +250,7 @@ export default function EstudioTvPage() {
               <span className="text-white">para cada producción.</span>
             </h2>
             <p className="mt-4 max-w-[560px] text-sm text-white/75">
-              Un entorno diseñado para minimizar tiempos de preparación y resolver la operación audiovisual con respaldo profesional.
+              Espacio técnico acondicionado para grabaciones en set, operación de sonido y conmutación de video.
             </p>
           </div>
 
@@ -377,7 +377,7 @@ export default function EstudioTvPage() {
       <CTASection
         eyebrow="Producción audiovisual"
         title="Contanos qué contenido necesitás producir."
-        description="Te asesoramos en el armado de tu set, agenda de grabación y soporte técnico para asegurar una realización impecable."
+        description="Te asesoramos en la planificación de tu grabación y requerimientos técnicos en estudio."
         primaryLabel="Consultar disponibilidad"
         primaryHref="/contacto"
         secondaryLabel="Ver todos los servicios"
