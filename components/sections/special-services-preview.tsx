@@ -5,6 +5,17 @@ import { CategoryIcon } from '@/components/common/category-icons'
 
 const services = [
   {
+    id: 'estudio-tv',
+    title: 'Estudio de TV & Producción Virtual',
+    description:
+      'Set con ciclorama verde continuo, iluminación de estudio, control técnico y camarines para grabaciones y streaming.',
+    iconName: 'Camera',
+    image: '/images/studio/studio-chroma-interview.webp',
+    imageAlt: 'Set de grabación en ciclorama verde para entrevistas y contenidos corporativos',
+    label: 'Set & Croma',
+    href: '/estudio-tv',
+  },
+  {
     id: 'streaming',
     title: 'Streaming & Transmisión en Vivo',
     description:
@@ -68,12 +79,18 @@ export function SpecialServicesPreview() {
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+          {services.map((service, index) => (
             <Link
               key={service.id}
-              href="/servicios"
-              className="group relative flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] p-4 sm:p-5 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
+              href={service.href || '/servicios'}
+              className={`group relative flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] p-4 sm:p-5 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04] ${
+                index === 4
+                  ? 'sm:col-span-2 lg:col-span-3'
+                  : index === 3
+                    ? 'sm:col-span-1 lg:col-span-3'
+                    : 'sm:col-span-1 lg:col-span-2'
+              }`}
             >
               <div>
                 {/* Header visual: Foto real donde hay evidencia, o bloque técnico iconográfico */}
@@ -83,7 +100,7 @@ export function SpecialServicesPreview() {
                       src={service.image}
                       alt={service.imageAlt || service.title}
                       fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -120,7 +137,7 @@ export function SpecialServicesPreview() {
               </div>
 
               <div className="mt-5 flex items-center gap-1 text-[11px] font-medium text-white/40 transition-colors group-hover:text-[#B5D448]">
-                <span>Detalles del servicio</span>
+                <span>{service.href ? 'Ver estudio y set' : 'Detalles del servicio'}</span>
                 <ArrowUpRight size={12} />
               </div>
             </Link>

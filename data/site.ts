@@ -62,6 +62,7 @@ export interface SpecialServiceItem {
   iconName?: string
   image?: string
   imageAlt?: string
+  href?: string
 }
 
 export interface InstallationItem {
@@ -388,6 +389,17 @@ export const specialServices: SpecialServiceItem[] = [
     iconName: 'Radio',
     image: '/images/services/streaming-operadores.webp',
     imageAlt: 'Operadores técnicos en consolas de transmisión y streaming en vivo',
+  },
+  {
+    id: 'estudio-tv',
+    title: 'Estudio de TV & Producción Virtual',
+    subtitle: 'Set profesional y control técnico',
+    description: 'Estudio equipado con ciclorama verde, iluminación, control técnico y operación audiovisual para grabaciones, streaming y producciones virtuales.',
+    specs: ['Ciclorama verde continuo', 'Iluminación de estudio y control técnico', 'Monitoreo técnico en vivo', 'Camarines y área técnica'],
+    iconName: 'Camera',
+    image: '/images/studio/studio-control-room.webp',
+    imageAlt: 'Dirección técnica y control room de estudio de TV en vivo',
+    href: '/estudio-tv',
   },
   {
     id: 'traduccion',

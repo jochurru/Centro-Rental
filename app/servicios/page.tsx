@@ -110,10 +110,10 @@ export default function ServiciosPage() {
 
                 <div className="mt-5 pt-3">
                   <Link
-                    href="/contacto"
+                    href={service.href || '/contacto'}
                     className="inline-flex items-center gap-1.5 text-xs text-white/50 group-hover:text-[#B5D448] transition-colors"
                   >
-                    Consultar por este servicio
+                    {service.href ? 'Ver detalles del estudio' : 'Consultar por este servicio'}
                     <ArrowUpRight size={13} />
                   </Link>
                 </div>

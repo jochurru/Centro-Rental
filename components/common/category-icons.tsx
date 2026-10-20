@@ -376,6 +376,7 @@ export function CategoryIcon({
     case 'streaming':
       return <BroadcastCameraIcon className={className} />
     case 'camaras-video':
+    case 'estudio-tv':
       return <BroadcastCameraIcon className={className} />
     case 'notebooks':
       return <NotebookIcon className={className} />
