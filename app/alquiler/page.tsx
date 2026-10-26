@@ -6,6 +6,7 @@ import { CTASection } from '@/components/common/cta-section'
 import { rentalCategories, equipment } from '@/data/site'
 import { CategoryIcon } from '@/components/common/category-icons'
 import { RentalCardMedia } from '@/components/rental/rental-card-media'
+import { RentalMediaGallery } from '@/components/rental/rental-media-gallery'
 
 export const metadata: Metadata = {
   title: 'Alquiler de Equipamiento | Centro Rental',
@@ -51,8 +52,15 @@ export default function AlquilerPage() {
                 className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-7 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
               >
                 <div>
-                  {/* Foto real donde existe evidencia histórica o icono técnico */}
-                  {cat.image ? (
+                  {/* Galería moderna con fotos reales históricas (emil-design-eng) o fallback dual / icono */}
+                  {cat.gallery && cat.gallery.length > 0 ? (
+                    <RentalMediaGallery
+                      categoryId={cat.id}
+                      iconName={cat.iconName}
+                      title={cat.title}
+                      items={cat.gallery}
+                    />
+                  ) : cat.image ? (
                     <RentalCardMedia
                       categoryId={cat.id}
                       iconName={cat.iconName}
