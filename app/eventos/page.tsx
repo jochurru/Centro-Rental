@@ -130,7 +130,7 @@ export default function EventosPage() {
       />
 
       {/* Grid de eventos */}
-      <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
+      <section className="section-padding mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
         <div className="mb-8 flex items-center justify-between">
           <p className="text-xs uppercase tracking-widest text-white/40">
             Mostrando casos seleccionados

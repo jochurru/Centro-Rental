@@ -46,8 +46,8 @@ const units = [
 
 export function BusinessUnits() {
   return (
-    <section className="py-16 sm:py-20 lg:py-24 mx-auto max-w-[1320px] px-5 lg:px-8">
-      <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+    <section className="py-12 sm:py-20 lg:py-24 mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
+      <div className="mb-8 sm:mb-12 flex flex-col justify-between gap-4 sm:gap-5 md:flex-row md:items-end">
         <div>
           <span className="eyebrow flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
@@ -63,16 +63,16 @@ export function BusinessUnits() {
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
         {units.map((unit) => (
           <Link
             key={unit.number}
             href={unit.href}
-            className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-[#111114] p-5 sm:p-6 lg:p-7 transition-[border-color,background-color,transform] duration-200 hover:border-[#B5D448]/40 hover:bg-[#15151a] active:scale-[0.99] motion-reduce:active:scale-100"
+            className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-[#111114] p-4 sm:p-6 lg:p-7 transition-[border-color,background-color,transform] duration-200 hover:border-[#B5D448]/40 hover:bg-[#15151a] active:scale-[0.99] motion-reduce:active:scale-100"
           >
             <div>
               {/* Franja fotográfica editorial */}
-              <div className="relative mb-5 h-40 sm:h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-black/40">
+              <div className="relative mb-4 sm:mb-5 h-36 sm:h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-black/40">
                 <Image
                   src={unit.image}
                   alt={unit.imageAlt}

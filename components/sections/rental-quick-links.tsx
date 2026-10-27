@@ -15,9 +15,9 @@ const quickLinks = [
 
 export function RentalQuickLinks() {
   return (
-    <section className="border-y border-white/[0.08] bg-[#0c0d10] py-4 sm:py-5">
-      <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+    <section className="border-y border-white/[0.08] bg-[#0c0d10] py-3.5 sm:py-5">
+      <div className="mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
+        <div className="flex flex-col gap-3 sm:gap-4 lg:flex-row lg:items-center lg:justify-between">
           {/* Encabezado compacto */}
           <div className="flex items-center gap-2.5 shrink-0">
             <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
@@ -26,13 +26,13 @@ export function RentalQuickLinks() {
             </span>
           </div>
 
-          {/* Chips compactos y navegables */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+          {/* Chips compactos y navegables: fila horizontal deslizable en mobile, wrap en desktop */}
+          <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto flex-nowrap sm:flex-wrap scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0 py-1">
             {quickLinks.map((item) => (
               <Link
                 key={item.label}
                 href="/alquiler"
-                className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-3.5 py-1.5 text-xs text-white/70 transition-[border-color,background-color,color,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/[0.06] hover:text-white active:scale-[0.97] motion-reduce:active:scale-100"
+                className="group shrink-0 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-3.5 py-1.5 text-xs text-white/70 transition-[border-color,background-color,color,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/[0.06] hover:text-white active:scale-[0.97] motion-reduce:active:scale-100"
               >
                 <CategoryIcon
                   categoryId={item.categoryId}
@@ -45,7 +45,7 @@ export function RentalQuickLinks() {
 
             <Link
               href="/alquiler"
-              className="inline-flex items-center gap-1 pl-1.5 text-xs font-medium text-[#B5D448] transition-colors hover:text-white"
+              className="shrink-0 inline-flex items-center gap-1 pl-1.5 pr-4 sm:pr-0 text-xs font-medium text-[#B5D448] transition-colors hover:text-white"
             >
               <span>Ver catálogo completo</span>
               <ArrowUpRight size={13} />

@@ -57,7 +57,7 @@ const services = [
 export function SpecialServicesPreview() {
   return (
     <section className="border-t border-white/[0.06] bg-white/[0.01] py-14 sm:py-18 lg:py-20">
-      <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+      <div className="mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
         <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <span className="eyebrow flex items-center gap-2">

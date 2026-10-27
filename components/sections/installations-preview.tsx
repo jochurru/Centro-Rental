@@ -32,8 +32,8 @@ const pillars = [
 
 export function InstallationsPreview() {
   return (
-    <section className="mx-auto max-w-[1320px] px-5 py-10 sm:py-14 lg:py-16 lg:px-8">
-      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.03] via-[#101115] to-[#0a0a0d] p-6 sm:p-10 lg:p-12">
+    <section className="mx-auto max-w-[1320px] px-4 sm:px-5 py-10 sm:py-14 lg:py-16 lg:px-8">
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.03] via-[#101115] to-[#0a0a0d] p-5 sm:p-10 lg:p-12">
         {/* Sutil halo ambiental */}
         <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-[#B5D448]/5 blur-[100px]" />
 
@@ -78,7 +78,7 @@ export function InstallationsPreview() {
             <div className="mt-7 pt-1">
               <Link
                 href="/instalaciones"
-                className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-[border-color,background-color,color,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/5 hover:text-white active:scale-[0.98] motion-reduce:active:scale-100"
+                className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-[border-color,background-color,color,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/5 hover:text-white active:scale-[0.98] motion-reduce:active:scale-100"
               >
                 Conocer instalaciones
                 <ArrowUpRight

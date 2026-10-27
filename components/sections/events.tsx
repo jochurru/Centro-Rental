@@ -9,7 +9,7 @@ export function Events() {
   return (
     <section
       id="eventos"
-      className="mx-auto max-w-[1320px] px-5 py-16 sm:py-20 lg:py-24 lg:px-8 scroll-mt-[74px]"
+      className="mx-auto max-w-[1320px] px-4 sm:px-5 py-12 sm:py-20 lg:py-24 lg:px-8 scroll-mt-[64px] sm:scroll-mt-[74px]"
     >
       <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
         <div>
@@ -41,7 +41,7 @@ export function Events() {
           <Link
             href="/eventos"
             key={featuredEvent.type}
-            className="event-card group relative h-[320px] overflow-hidden rounded-2xl border border-white/10 bg-black/40 transition-[border-color,transform] duration-200 hover:border-white/25 active:scale-[0.99] motion-reduce:active:scale-100 sm:h-[380px] md:col-span-7 md:h-full"
+            className="event-card group relative h-[280px] overflow-hidden rounded-2xl border border-white/10 bg-black/40 transition-[border-color,transform] duration-200 hover:border-white/25 active:scale-[0.99] motion-reduce:active:scale-100 sm:h-[380px] md:col-span-7 md:h-full"
           >
             <Image
               src={featuredEvent.image}
@@ -52,7 +52,7 @@ export function Events() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
 
-            <div className="absolute bottom-6 left-6 right-6 z-10 flex items-end justify-between gap-4">
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-10 flex items-end justify-between gap-4">
               <div>
                 <span className="rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-white backdrop-blur-md">
                   Gala Institucional
@@ -88,7 +88,7 @@ export function Events() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
 
-              <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between gap-4">
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5 z-10 flex items-end justify-between gap-4">
                 <div>
                   <h3 className="text-base font-medium text-white sm:text-lg">
                     {event.type}

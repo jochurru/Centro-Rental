@@ -26,7 +26,7 @@ export default function ClientesPage() {
       />
 
       {/* Grid de clientes y sectores */}
-      <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
+      <section className="section-padding mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
         <div className="mb-12">
           <span className="eyebrow">Sectores e instituciones</span>
           <h2 className="section-title mt-4">

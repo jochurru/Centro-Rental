@@ -28,7 +28,7 @@ export default function ServiciosPage() {
       />
 
       {/* Grid de servicios especiales */}
-      <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
+      <section className="section-padding mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
         <div className="mb-12">
           <span className="eyebrow flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />

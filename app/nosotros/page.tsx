@@ -26,7 +26,7 @@ export default function NosotrosPage() {
       />
 
       {/* Filosofía técnica */}
-      <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
+      <section className="section-padding mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-5">
             <span className="eyebrow">Nuestra forma de operar</span>
@@ -78,7 +78,7 @@ export default function NosotrosPage() {
 
       {/* Presencia e infraestructura real: Showroom propio en CABA */}
       <section className="border-t border-white/[0.07] bg-white/[0.01] section-padding">
-        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+        <div className="mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
           <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
               <span className="eyebrow flex items-center gap-2">
@@ -164,7 +164,7 @@ export default function NosotrosPage() {
 
       {/* Proceso de trabajo: De la primera idea al último aplauso */}
       <section className="border-y border-white/[0.07] bg-[#0d0d10] section-padding">
-        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+        <div className="mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
           <div className="mb-14 max-w-2xl">
             <span className="eyebrow">Metodología paso a paso</span>
             <h2 className="section-title mt-4">

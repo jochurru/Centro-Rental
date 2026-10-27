@@ -338,8 +338,14 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 767px) {
-  .section-padding { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+  .section-padding { padding-top: 4.5rem; padding-bottom: 4.5rem; }
   .hero-grid { background-size: 48px 48px; }
+  [id] { scroll-margin-top: 70px; }
+  .section-title {
+    font-size: clamp(1.85rem, 6.5vw, 2.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
 }
 
 /* ==========================================================================

@@ -191,7 +191,7 @@ export default function EstudioTvPage() {
       </PageHero>
 
       {/* Galería editorial con evidencia fotográfica real */}
-      <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
+      <section className="section-padding mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
         <div className="mb-10">
           <span className="eyebrow flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
@@ -239,7 +239,7 @@ export default function EstudioTvPage() {
 
       {/* Capacidades técnicas comprobadas */}
       <section className="section-padding border-t border-white/[0.06] bg-white/[0.01]">
-        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+        <div className="mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
           <div className="mb-12">
             <span className="eyebrow flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
@@ -282,7 +282,7 @@ export default function EstudioTvPage() {
 
       {/* Casos de Uso */}
       <section className="section-padding border-t border-white/[0.06]">
-        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+        <div className="mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
           <div className="mb-12">
             <span className="eyebrow flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
@@ -315,7 +315,7 @@ export default function EstudioTvPage() {
 
       {/* Relación con otros servicios técnicos */}
       <section className="section-padding border-t border-white/[0.06] bg-white/[0.01]">
-        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+        <div className="mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
           <div className="mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
               <span className="eyebrow flex items-center gap-2">

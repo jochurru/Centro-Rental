@@ -233,7 +233,7 @@ export function RentalMediaGallery({
       <div className="absolute bottom-2.5 inset-x-2.5 z-30 flex items-center justify-between gap-2">
         {/* Label verificada de la foto actual */}
         {currentItem?.label ? (
-          <div className="flex items-center truncate rounded-md border border-white/15 bg-black/80 px-2 py-0.5 text-[10px] font-medium text-white/90 backdrop-blur-md shadow-sm">
+          <div className="flex max-w-[170px] sm:max-w-none items-center truncate rounded-md border border-white/15 bg-black/80 px-2 py-0.5 text-[10px] font-medium text-white/90 backdrop-blur-md shadow-sm">
             <span className="truncate">{currentItem.label}</span>
           </div>
         ) : (

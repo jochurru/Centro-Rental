@@ -39,7 +39,7 @@ export default function ContactoPage() {
         description="Estamos a tu disposición para evaluar requerimientos de riders, disponibilidad de fechas, presupuestos a medida y asesoramiento técnico directo."
       />
 
-      <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
+      <section className="section-padding mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Canales directos de contacto */}
           <div className="flex flex-col justify-between gap-8 lg:col-span-5">

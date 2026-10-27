@@ -29,7 +29,7 @@ export default function AlquilerPage() {
       />
 
       {/* Catálogo ampliado de categorías de alquiler */}
-      <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
+      <section className="section-padding mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
         <div className="mb-12">
           <span className="eyebrow flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
@@ -111,7 +111,7 @@ export default function AlquilerPage() {
 
       {/* Muestra de equipamiento destacado */}
       <section className="section-padding border-t border-white/[0.06] bg-white/[0.01]">
-        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+        <div className="mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
           <div className="mb-10">
             <span className="eyebrow">Equipos destacados</span>
             <h2 className="section-title mt-4">

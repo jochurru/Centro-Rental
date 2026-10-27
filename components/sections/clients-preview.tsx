@@ -8,8 +8,8 @@ export function ClientsPreview() {
 
   return (
     <section className="border-t border-white/[0.06] bg-white/[0.01] py-14 sm:py-18 lg:py-20">
-      <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
-        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+      <div className="mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
+        <div className="mb-8 sm:mb-12 flex flex-col justify-between gap-4 sm:gap-5 md:flex-row md:items-end">
           <div>
             <span className="eyebrow flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
@@ -34,12 +34,12 @@ export function ClientsPreview() {
         </div>
 
         {/* Brand wall: grilla limpia de logos reconocibles */}
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-4">
           {topClients.map((client) => (
             <Link
               key={client.id}
               href="/clientes"
-              className="group relative flex flex-col items-center justify-center rounded-xl border border-white/[0.08] bg-[#101115] p-3.5 sm:p-4 transition-[border-color,transform] duration-150 hover:border-white/20 active:scale-[0.98] motion-reduce:active:scale-100"
+              className="group relative flex flex-col items-center justify-center rounded-xl border border-white/[0.08] bg-[#101115] p-3 sm:p-4 transition-[border-color,transform] duration-150 hover:border-white/20 active:scale-[0.98] motion-reduce:active:scale-100"
             >
               {client.logo ? (
                 <div className="flex h-14 w-full items-center justify-center rounded-md border border-black/[0.06] bg-[#FCFEFC] px-3.5 py-2">

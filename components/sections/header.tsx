@@ -46,7 +46,7 @@ export function Header() {
           : 'border-b border-white/[0.06] bg-[#09090b]/70 backdrop-blur-xl'
       }`}
     >
-      <div className="mx-auto flex h-[74px] max-w-[1320px] items-center justify-between px-5 lg:px-8">
+      <div className="mx-auto flex h-[64px] sm:h-[74px] max-w-[1320px] items-center justify-between px-4 sm:px-5 lg:px-8">
         <Logo />
         <nav className="hidden items-center gap-6 xl:gap-7 lg:flex">
           {primaryNavItems.map((item) => {
@@ -146,16 +146,18 @@ export function Header() {
         </div>
 
         <button
-          className="text-white lg:hidden"
+          type="button"
+          className="flex h-11 w-11 items-center justify-center rounded-lg text-white transition-[background-color,transform] duration-150 hover:bg-white/5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448] lg:hidden motion-reduce:active:scale-100"
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-expanded={mobileOpen}
           aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
         >
-          {mobileOpen ? <X /> : <Menu />}
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {mobileOpen && (
-        <nav className="animate-mobile-menu border-t border-white/[0.06] bg-[#09090b] px-5 pb-6 pt-4 lg:hidden">
+        <nav className="animate-mobile-menu max-h-[calc(100dvh-64px)] overflow-y-auto border-t border-white/[0.06] bg-[#09090b] px-4 sm:px-5 pb-6 pt-4 lg:hidden">
           <div className="flex flex-col gap-1">
             {navItems.map((item) => {
               const isActive =
@@ -168,7 +170,7 @@ export function Header() {
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`flex items-center justify-between rounded-lg px-3 py-3 text-sm transition-colors ${
+                  className={`flex min-h-[44px] items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#B5D448] ${
                     isActive
                       ? 'bg-white/[0.08] font-medium text-white border-l-2 border-[#B5D448]'
                       : 'text-white/70 hover:bg-white/[0.03] hover:text-white'

@@ -27,7 +27,7 @@ export default function VentaPage() {
       />
 
       {/* Banner oficial Mercado Libre */}
-      <section className="mx-auto max-w-[1320px] px-5 pt-12 lg:px-8">
+      <section className="mx-auto max-w-[1320px] px-4 sm:px-5 pt-8 sm:pt-12 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/[0.04] p-6 backdrop-blur-md sm:flex-row sm:p-8">
           <div className="flex items-center gap-4">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-yellow-400 p-2 text-black">
@@ -56,7 +56,7 @@ export default function VentaPage() {
       </section>
 
       {/* Grid de productos en venta */}
-      <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
+      <section className="section-padding mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
         <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <span className="eyebrow">Catálogo destacado</span>

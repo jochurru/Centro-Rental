@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[720px] items-end overflow-hidden pb-16 pt-32 sm:pb-20 lg:min-h-screen lg:pb-24 scroll-mt-[74px]"
+      className="relative flex min-h-[640px] sm:min-h-[720px] items-end overflow-hidden pb-12 pt-24 sm:pb-20 sm:pt-32 lg:min-h-screen lg:pb-24 scroll-mt-[64px] sm:scroll-mt-[74px]"
     >
       {/* Fotografía de producción técnica real con tratamiento cinematográfico */}
       <Image
@@ -29,33 +29,33 @@ export function Hero() {
       <div className="ambient-orb absolute -right-20 top-1/3 h-80 w-80 rounded-full bg-[#0284C7]/6 blur-[150px] pointer-events-none" />
       <div className="ambient-orb absolute -left-20 bottom-1/4 h-72 w-72 rounded-full bg-[#B5D448]/8 blur-[150px] pointer-events-none" />
 
-      <div className="relative mx-auto w-full max-w-[1320px] px-5 lg:px-8">
+      <div className="relative mx-auto w-full max-w-[1320px] px-4 sm:px-5 lg:px-8">
         <div className="max-w-[860px]">
           {/* Eyebrow comercial ampliado */}
-          <div className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/70">
+          <div className="mb-4 sm:mb-6 flex items-center gap-3 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] sm:tracking-[0.25em] text-white/70">
             <span className="h-px w-8 bg-[#B5D448]" />
             Alquiler · Servicios · Eventos · Instalaciones
           </div>
 
           {/* H1 principal sin gradiente de texto */}
-          <h1 className="text-balance text-[clamp(2.5rem,6.5vw,6.5rem)] font-medium leading-[0.96] tracking-[-0.05em] text-white">
+          <h1 className="text-balance text-[clamp(2.1rem,6.5vw,6.5rem)] font-medium leading-[0.98] sm:leading-[0.96] tracking-[-0.04em] sm:tracking-[-0.05em] text-white">
             Hacemos que tu evento o espacio se vea, se escuche y{' '}
             <span className="text-[#B5D448]">funcione.</span>
           </h1>
 
           {/* Bajada comercial */}
-          <p className="mt-6 max-w-[580px] text-base leading-relaxed text-white/75 sm:text-lg">
+          <p className="mt-4 sm:mt-6 max-w-[580px] text-sm sm:text-base leading-relaxed text-white/75 sm:text-lg">
             Alquiler de tecnología audiovisual, sonido, iluminación, pantallas, conectividad y soluciones técnicas para eventos, empresas e instalaciones.
           </p>
 
           {/* CTAs principales */}
-          <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
-            <GlowButton href="/contacto" className="px-7 py-3.5 text-sm font-medium">
+          <div className="mt-7 sm:mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <GlowButton href="/contacto" className="w-full sm:w-auto px-7 py-3.5 text-sm font-medium">
               Solicitar presupuesto
             </GlowButton>
             <Link
               href="/alquiler"
-              className="group flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm text-white transition-[border-color,background-color,box-shadow,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/5 hover:shadow-[0_0_20px_-4px_rgba(181,212,72,0.3)] active:scale-[0.98] motion-reduce:active:scale-100"
+              className="group flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm text-white transition-[border-color,background-color,box-shadow,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/5 hover:shadow-[0_0_20px_-4px_rgba(181,212,72,0.3)] active:scale-[0.98] motion-reduce:active:scale-100"
             >
               Ver equipamiento{' '}
               <MoveRight
@@ -67,7 +67,7 @@ export function Hero() {
         </div>
 
         {/* Metadatos con disponibilidad y showroom */}
-        <div className="mt-12 flex flex-wrap items-center gap-4 text-[11px] uppercase tracking-[0.18em] text-white/60 sm:mt-16 sm:gap-5">
+        <div className="mt-8 sm:mt-16 flex flex-wrap items-center gap-3 sm:gap-5 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-white/60">
           <span className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-[#B5D448] shadow-[0_0_12px_#B5D448]" />
             {siteConfig.availability}
