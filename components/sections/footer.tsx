@@ -11,7 +11,7 @@ import {
 
 export function Footer() {
   return (
-    <footer className="mx-auto max-w-[1320px] px-4 sm:px-5 pb-8 pt-12 sm:pt-14 lg:px-8">
+    <footer id="site-footer" className="mx-auto max-w-[1320px] px-4 sm:px-5 pb-8 pt-12 sm:pt-14 lg:px-8">
       <div className="flex flex-col justify-between gap-10 sm:gap-12 md:flex-row">
         <div>
           <Logo />

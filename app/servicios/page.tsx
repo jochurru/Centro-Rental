@@ -4,6 +4,7 @@ import { CheckCircle2, ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 import { PageHero } from '@/components/common/page-hero'
 import { CTASection } from '@/components/common/cta-section'
+import { SocialPortfolioBridge, type SocialBridgeImage } from '@/components/common/social-portfolio-bridge'
 import { specialServices } from '@/data/site'
 import { CategoryIcon } from '@/components/common/category-icons'
 
@@ -12,6 +13,24 @@ export const metadata: Metadata = {
   description:
     'Servicios técnicos para eventos: streaming profesional, traducción simultánea, internet satelital Starlink, escenarios, grupos electrógenos y producción integral.',
 }
+
+const socialBridgeImages: SocialBridgeImage[] = [
+  {
+    src: '/images/services/streaming-operadores.webp',
+    alt: 'Operadores técnicos en consolas de transmisión y streaming en vivo',
+    label: 'Streaming en vivo',
+  },
+  {
+    src: '/images/rental/iluminacion-control-dmx.webp',
+    alt: 'Consola de control DMX y luminarias en prueba técnica',
+    label: 'Pruebas técnicas',
+  },
+  {
+    src: '/images/services/starlink-instalacion-exterior.webp',
+    alt: 'Antena satelital Starlink montada en exterior para cobertura',
+    label: 'Conectividad en campo',
+  },
+]
 
 export default function ServiciosPage() {
   return (
@@ -122,6 +141,16 @@ export default function ServiciosPage() {
           ))}
         </div>
       </section>
+
+      {/* Extensión editorial en redes: Instagram & Facebook */}
+      <SocialPortfolioBridge
+        eyebrow="TRABAJO EN CAMPO"
+        title="Mirá nuestras soluciones en funcionamiento."
+        description="Sonido, iluminación, pantallas, streaming y producción técnica se entienden mejor cuando están trabajando en un evento real. En nuestras redes compartimos montajes, pruebas técnicas y producciones recientes."
+        instagramCtaLabel="Ver trabajos reales en Instagram"
+        facebookCtaLabel="Ver novedades en Facebook"
+        images={socialBridgeImages}
+      />
 
       {/* Cierre comercial con derivación a contacto */}
       <CTASection

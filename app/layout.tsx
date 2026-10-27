@@ -35,6 +35,7 @@ export const viewport: Viewport = {
 
 import { Header } from '@/components/sections/header'
 import { Footer } from '@/components/sections/footer'
+import { WhatsAppFloatingButton } from '@/components/common/whatsapp-floating-button'
 
 export default function RootLayout({
   children,
@@ -47,6 +48,7 @@ export default function RootLayout({
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />
+        <WhatsAppFloatingButton />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

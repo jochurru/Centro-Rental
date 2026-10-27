@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ArrowUpRight, Sparkles } from 'lucide-react'
 import { PageHero } from '@/components/common/page-hero'
 import { CTASection } from '@/components/common/cta-section'
+import { SocialPortfolioBridge, type SocialBridgeImage } from '@/components/common/social-portfolio-bridge'
 
 export const metadata: Metadata = {
   title: 'Eventos y Producciones | Centro Rental',
@@ -115,6 +116,24 @@ const portfolioEvents: PortfolioEvent[] = [
   },
 ]
 
+const socialBridgeImages: SocialBridgeImage[] = [
+  {
+    src: '/images/services/produccion-backstage.webp',
+    alt: 'Backstage de producción técnica con monitores de control y cableado',
+    label: 'Backstage',
+  },
+  {
+    src: '/images/rental/sonido-consola-operador.webp',
+    alt: 'Operadores técnicos en consola de audio en evento',
+    label: 'Operación en vivo',
+  },
+  {
+    src: '/images/rental/pantalla-led-montaje.webp',
+    alt: 'Estructura de montaje y armado de pantalla LED',
+    label: 'Montaje técnico',
+  },
+]
+
 export default function EventosPage() {
   return (
     <div className="min-h-screen">
@@ -195,6 +214,16 @@ export default function EventosPage() {
           ))}
         </div>
       </section>
+
+      {/* Extensión editorial en redes: Instagram & Facebook */}
+      <SocialPortfolioBridge
+        eyebrow="PORTFOLIO EN MOVIMIENTO"
+        title="El trabajo continúa fuera del escenario."
+        description="Esta es una selección de nuestros eventos. En Instagram compartimos montajes, operación técnica, backstage y producciones recientes."
+        instagramCtaLabel="Ver más trabajos en Instagram"
+        facebookCtaLabel="También estamos en Facebook"
+        images={socialBridgeImages}
+      />
 
       {/* CTA final */}
       <CTASection
