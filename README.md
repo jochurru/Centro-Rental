@@ -1,33 +1,74 @@
-# centro-rental
+# Centro Rental 2.0
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+Plataforma web y catálogo técnico institucional de Centro Rental: equipamiento audiovisual, sonido profesional, iluminación escénica, pantallas LED, producción integral, instalaciones fijas y estudio de TV.
 
-## Built with v0
+## Stack Tecnológico
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+- **Framework**: [Next.js 16](https://nextjs.org) (App Router)
+- **Biblioteca UI**: [React 19](https://react.dev)
+- **Lenguaje**: [TypeScript](https://www.typescriptlang.org)
+- **Estilos**: [Tailwind CSS v4](https://tailwindcss.com)
+- **Iconografía**: [Lucide React](https://lucide.dev)
+- **Gestor de Paquetes**: [pnpm](https://pnpm.io)
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_z6cgmOeBmW7n2Ec6fvu2eggTbBbT)
+## Arquitectura de Rutas
 
-## Getting Started
+| Ruta | Descripción |
+|---|---|
+| `/` | Portada institucional y resumen operativo de unidades de negocio |
+| `/alquiler` | Catálogo de equipamiento y galerías técnicas por categoría |
+| `/servicios` | Servicios técnicos especializados y producción de eventos |
+| `/estudio-tv` | Estudio de TV, ciclorama y producción virtual |
+| `/instalaciones` | Obras, integración e instalaciones fijas de audio y video |
+| `/eventos` | Registro fotográfico y técnico de coberturas realizadas |
+| `/venta` | Equipamiento audiovisual nuevo y de ocasión verificado |
+| `/clientes` | Clientes corporativos, instituciones y marcas atendidas |
+| `/nosotros` | Trayectoria institucional, equipo técnico e infraestructura |
+| `/contacto` | Canales de atención directa y solicitud de cotizaciones |
 
-First, run the development server:
+## Estructura del Proyecto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+```text
+├── app/                  # Rutas, layouts y páginas (Next.js App Router)
+│   ├── globals.css       # Tokens de diseño, gradientes y directivas CSS
+│   └── layout.tsx        # Shell global, header, footer y metadatos
+├── components/           # Componentes modulares organizados por ámbito
+│   ├── common/           # Componentes transversales (GlowButton, PageHero, etc.)
+│   ├── rental/           # Componentes del catálogo y galería interactiva
+│   └── sections/         # Secciones de contenido y bloques funcionales
+├── data/                 # Modelos de datos y contenido estructurado (site.ts)
+├── lib/                  # Utilidades compartidas (cn, helpers)
+└── public/               # Assets estáticos optimizados (imágenes, logos de marca)
+    ├── brand/            # Activos institucionales de identidad y logotipo
+    ├── events/           # Fotografías de coberturas técnicas
+    ├── images/           # Activos fotográficos de catálogo y servicios
+    └── services/         # Imágenes de servicios especializados
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Desarrollo Local
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Instalar dependencias:
+```bash
+pnpm install
+```
 
-## Learn More
+2. Iniciar servidor de desarrollo:
+```bash
+pnpm dev
+```
+La aplicación estará disponible en [http://localhost:3000](http://localhost:3000).
 
-To learn more, take a look at the following resources:
+3. Verificación de tipos TypeScript:
+```bash
+npx tsc --noEmit
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+4. Compilar para producción:
+```bash
+pnpm build
+```
+
+5. Ejecutar compilación de producción:
+```bash
+pnpm start
+```

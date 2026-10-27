@@ -8,14 +8,6 @@ export interface NavItem {
   href: string
 }
 
-export interface ServiceItem {
-  number: string
-  title: string
-  description: string
-  image: string
-  color: string
-}
-
 export interface EquipmentItem {
   title: string
   category: string
@@ -34,11 +26,6 @@ export interface ProcessStep {
   number: string
   title: string
   text: string
-}
-
-export interface StatItem {
-  number: string
-  label: string
 }
 
 export interface RentalGalleryItem {
@@ -149,45 +136,6 @@ export const footerNavItems: NavItem[] = [
   { label: 'Clientes', href: '/clientes' },
   { label: 'Nosotros', href: '/nosotros' },
   { label: 'Contacto', href: '/contacto' },
-]
-
-export const tickerItems: string[] = [
-  'Sonido de precisión',
-  'Diseño de iluminación',
-  'Visuales que impactan',
-  'Operación integral',
-]
-
-// 4 pilares principales de servicio y capacidad técnica
-export const services: ServiceItem[] = [
-  {
-    number: '01',
-    title: 'Sonido profesional',
-    description: 'Sistemas line array, microfonía y consolas digitales para eventos de cualquier escala.',
-    image: '/sound-system.webp',
-    color: '#B5D448',
-  },
-  {
-    number: '02',
-    title: 'Iluminación escénica',
-    description: 'Cabezales móviles, reflectores LED y control DMX para puestas arquitectónicas y shows.',
-    image: '/lighting-rig.webp',
-    color: '#B5D448',
-  },
-  {
-    number: '03',
-    title: 'Pantallas LED',
-    description: 'Módulos LED de alta definición para escenarios, conferencias y fondos de impacto visual.',
-    image: '/led-screen.webp',
-    color: '#B5D448',
-  },
-  {
-    number: '04',
-    title: 'Producción técnica',
-    description: 'Dirección operativa integral, montaje de estructuras, rigging y asistencia en vivo.',
-    image: '/hero-event.webp',
-    color: '#B5D448',
-  },
 ]
 
 export const equipment: EquipmentItem[] = [
