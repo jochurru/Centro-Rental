@@ -8,6 +8,7 @@ export interface SocialBridgeImage {
   src: string
   alt: string
   label?: string
+  href?: string
 }
 
 export interface SocialPortfolioBridgeProps {
@@ -19,6 +20,7 @@ export interface SocialPortfolioBridgeProps {
   instagramCtaLabel?: string
   facebookCtaLabel?: string
   images?: SocialBridgeImage[]
+  showFacebook?: boolean
   className?: string
 }
 
@@ -31,6 +33,7 @@ export function SocialPortfolioBridge({
   instagramCtaLabel = 'Ver más trabajos en Instagram',
   facebookCtaLabel = 'También estamos en Facebook',
   images,
+  showFacebook = true,
   className = '',
 }: SocialPortfolioBridgeProps) {
   const hasImages = Boolean(images && images.length > 0)
@@ -80,19 +83,21 @@ export function SocialPortfolioBridge({
               </a>
 
               {/* CTA Secundario: Facebook (opción secundaria sobria, no compite) */}
-              <a
-                href={facebookUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex min-h-[44px] items-center gap-2 px-3 py-2 text-xs sm:text-sm text-white/50 transition-colors hover:text-white active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0d10]"
-              >
-                <FacebookIcon className="h-3.5 w-3.5 text-white/40 transition-colors group-hover:text-white/70" />
-                <span>{facebookCtaLabel}</span>
-                <ArrowUpRight
-                  size={13}
-                  className="text-white/30 transition-colors group-hover:text-white/70"
-                />
-              </a>
+              {showFacebook && facebookUrl && (
+                <a
+                  href={facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex min-h-[44px] items-center gap-2 px-3 py-2 text-xs sm:text-sm text-white/50 transition-colors hover:text-white active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0d10]"
+                >
+                  <FacebookIcon className="h-3.5 w-3.5 text-white/40 transition-colors group-hover:text-white/70" />
+                  <span>{facebookCtaLabel}</span>
+                  <ArrowUpRight
+                    size={13}
+                    className="text-white/30 transition-colors group-hover:text-white/70"
+                  />
+                </a>
+              )}
             </div>
           </div>
 
@@ -103,10 +108,14 @@ export function SocialPortfolioBridge({
                 {images.slice(0, 3).map((img, idx) => (
                   <a
                     key={idx}
-                    href={instagramUrl}
+                    href={img.href || instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Ver registro en Instagram: ${img.label || img.alt}`}
+                    aria-label={
+                      img.href
+                        ? `Ver publicación en Instagram: ${img.label || img.alt}`
+                        : `Abrir Instagram de Centro Rental — ${img.label || img.alt}`
+                    }
                     className="group relative aspect-[4/5] overflow-hidden rounded-xl border border-white/10 bg-black/40 transition-[border-color] duration-150 hover:border-[#B5D448]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448]"
                   >
                     <Image
