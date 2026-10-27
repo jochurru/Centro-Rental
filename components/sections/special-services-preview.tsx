@@ -131,7 +131,7 @@ export function SpecialServicesPreview() {
                       <span className="rounded bg-black/60 px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider text-white/70 backdrop-blur-sm border border-white/10">
                         Infraestructura
                       </span>
-                      <span className="text-[10px] text-white/40 font-mono">Soporte 24/7</span>
+                      <span className="text-[10px] text-white/40 font-mono">Energía temporal</span>
                     </div>
                   </div>
                 )}
