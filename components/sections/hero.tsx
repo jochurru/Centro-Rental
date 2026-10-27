@@ -79,11 +79,6 @@ export function Hero() {
           </span>
         </div>
       </div>
-
-      <div className="absolute bottom-9 right-8 hidden items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white/60 lg:flex">
-        <span>Scroll para explorar</span>
-        <span className="h-10 w-px bg-gradient-to-b from-[#B5D448]/60 to-transparent" />
-      </div>
     </section>
   )
 }
