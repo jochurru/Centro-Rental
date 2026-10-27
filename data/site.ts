@@ -481,7 +481,7 @@ export const rentalCategories: RentalCategory[] = [
     specs: ['Consolas PlayStation y Xbox', 'Mandos y cables de conexión', 'Conexión a pantallas y proyectores', 'Kits para stands y activaciones'],
     iconName: 'Gamepad',
     image: '/images/rental/consola-playstation-5.webp',
-    imageAlt: 'Consola PlayStation 5 con mando para activaciones',
+    imageAlt: 'PlayStation 5 disponible para alquiler',
   },
   {
     id: 'estructuras-rigging',

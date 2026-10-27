@@ -7,6 +7,7 @@ import { rentalCategories, equipment } from '@/data/site'
 import { CategoryIcon } from '@/components/common/category-icons'
 import { RentalCardMedia } from '@/components/rental/rental-card-media'
 import { RentalMediaGallery } from '@/components/rental/rental-media-gallery'
+import { RentalDualConsoleMedia } from '@/components/rental/rental-dual-console-media'
 
 export const metadata: Metadata = {
   title: 'Alquiler de Equipamiento | Centro Rental',
@@ -53,7 +54,9 @@ export default function AlquilerPage() {
               >
                 <div>
                   {/* Galería moderna con fotos reales históricas (emil-design-eng) o fallback dual / icono */}
-                  {cat.gallery && cat.gallery.length > 0 ? (
+                  {cat.id === 'consolas-gaming' ? (
+                    <RentalDualConsoleMedia />
+                  ) : cat.gallery && cat.gallery.length > 0 ? (
                     <RentalMediaGallery
                       categoryId={cat.id}
                       iconName={cat.iconName}
