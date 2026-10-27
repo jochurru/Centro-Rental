@@ -68,7 +68,7 @@ export function BusinessUnits() {
           <Link
             key={unit.number}
             href={unit.href}
-            className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-[#111114] p-5 sm:p-6 lg:p-7 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-[#15151a]"
+            className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-[#111114] p-5 sm:p-6 lg:p-7 transition-[border-color,background-color,transform] duration-200 hover:border-[#B5D448]/40 hover:bg-[#15151a] active:scale-[0.99] motion-reduce:active:scale-100"
           >
             <div>
               {/* Franja fotográfica editorial */}
@@ -78,7 +78,7 @@ export function BusinessUnits() {
                   alt={unit.imageAlt}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111114] via-black/25 to-transparent" />
                 <div className="absolute bottom-2.5 left-3">
@@ -121,7 +121,7 @@ export function BusinessUnits() {
             </div>
 
             <div className="mt-6 pt-3">
-              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#B5D448] transition-all group-hover:translate-x-1 group-hover:text-white">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#B5D448] transition-[transform,color] duration-150 group-hover:translate-x-1 group-hover:text-white motion-reduce:group-hover:transform-none">
                 {unit.cta} <ArrowUpRight size={14} />
               </span>
             </div>

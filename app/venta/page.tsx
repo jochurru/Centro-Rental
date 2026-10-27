@@ -73,7 +73,7 @@ export default function VentaPage() {
           {saleProducts.map((prod) => (
             <div
               key={prod.id}
-              className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all hover:border-white/20 hover:bg-white/[0.04]"
+              className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-[border-color,background-color] duration-200 hover:border-white/20 hover:bg-white/[0.04]"
             >
               <div>
                 <div className="relative aspect-square w-full bg-black/50">
@@ -82,7 +82,7 @@ export default function VentaPage() {
                     alt={prod.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
                   />
                   <div className="absolute left-3 top-3">
                     <span className="rounded-full border border-white/15 bg-black/60 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white backdrop-blur-sm">
@@ -109,7 +109,7 @@ export default function VentaPage() {
                   href={prod.mercadolibreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.05] py-2.5 text-xs font-medium text-white transition-all hover:border-[#FFE600]/40 hover:bg-[#FFE600]/10 hover:text-yellow-300"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.05] py-2.5 text-xs font-medium text-white transition-[border-color,background-color,color,transform] duration-150 hover:border-[#FFE600]/40 hover:bg-[#FFE600]/10 hover:text-yellow-300 active:scale-[0.98] motion-reduce:active:scale-100"
                 >
                   <MercadoLibreIcon className="h-3.5 w-3.5 text-yellow-300" />
                   Ver en Mercado Libre

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef, useCallback } from 'react'
+import React, { useState, useRef, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -24,8 +24,45 @@ export function RentalMediaGallery({
   const [isTransitioning, setIsTransitioning] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const touchStartRef = useRef<{ x: number; y: number } | null>(null)
+  const isHoveredRef = useRef(false)
+  const autoplayTimerRef = useRef<NodeJS.Timeout | null>(null)
 
   const count = items.length
+
+  const clearAutoplay = useCallback(() => {
+    if (autoplayTimerRef.current) {
+      clearInterval(autoplayTimerRef.current)
+      autoplayTimerRef.current = null
+    }
+  }, [])
+
+  const resetAutoplay = useCallback(() => {
+    clearAutoplay()
+    if (!isHoveredRef.current || typeof window === 'undefined' || count <= 1) return
+    const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!hasFinePointer || prefersReduced || document.visibilityState !== 'visible') return
+
+    autoplayTimerRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % count)
+    }, 3000)
+  }, [clearAutoplay, count])
+
+  // Pausar autoplay cuando la pestaña pierde foco y reanudar si sigue en hover
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState !== 'visible') {
+        clearAutoplay()
+      } else if (isHoveredRef.current) {
+        resetAutoplay()
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      clearAutoplay()
+    }
+  }, [clearAutoplay, resetAutoplay])
 
   const goTo = useCallback(
     (nextIdx: number) => {
@@ -33,10 +70,11 @@ export function RentalMediaGallery({
       setIsTransitioning(true)
       const targetIndex = (nextIdx + count) % count
       setCurrentIndex(targetIndex)
+      resetAutoplay()
       const timer = setTimeout(() => setIsTransitioning(false), 260)
       return () => clearTimeout(timer)
     },
-    [count, currentIndex, isTransitioning]
+    [count, currentIndex, isTransitioning, resetAutoplay]
   )
 
   const handlePrev = useCallback(
@@ -71,6 +109,16 @@ export function RentalMediaGallery({
     [handleNext, handlePrev]
   )
 
+  const handleMouseEnter = () => {
+    isHoveredRef.current = true
+    resetAutoplay()
+  }
+
+  const handleMouseLeave = () => {
+    isHoveredRef.current = false
+    clearAutoplay()
+  }
+
   // Mobile touch gestures with vertical scroll preservation
   const handleTouchStart = (e: React.TouchEvent) => {
     const touch = e.touches[0]
@@ -104,6 +152,8 @@ export function RentalMediaGallery({
       aria-label={`Galería de fotos de ${title}`}
       tabIndex={0}
       onKeyDown={handleKeyDown}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       className="group/gallery relative mb-5 h-48 w-full select-none overflow-hidden rounded-xl border border-white/10 bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448]"
@@ -127,7 +177,7 @@ export function RentalMediaGallery({
               alt={item.alt}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover transition-transform duration-500 ease-out group-hover/gallery:scale-[1.03] motion-reduce:transition-none motion-reduce:transform-none motion-reduce:group-hover/gallery:scale-100"
+              className="object-cover transition-transform duration-200 ease-out group-hover/gallery:scale-[1.02] motion-reduce:transition-none motion-reduce:transform-none motion-reduce:group-hover/gallery:scale-100"
             />
           </div>
         )

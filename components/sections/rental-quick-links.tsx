@@ -32,7 +32,7 @@ export function RentalQuickLinks() {
               <Link
                 key={item.label}
                 href="/alquiler"
-                className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-3.5 py-1.5 text-xs text-white/70 transition-all duration-200 hover:border-[#B5D448]/50 hover:bg-white/[0.06] hover:text-white"
+                className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-3.5 py-1.5 text-xs text-white/70 transition-[border-color,background-color,color,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/[0.06] hover:text-white active:scale-[0.97] motion-reduce:active:scale-100"
               >
                 <CategoryIcon
                   categoryId={item.categoryId}

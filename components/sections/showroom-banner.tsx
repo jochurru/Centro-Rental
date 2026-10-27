@@ -42,7 +42,7 @@ export function ShowroomBanner() {
             <div className="mt-6 pt-1">
               <Link
                 href="/contacto"
-                className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-all hover:border-[#B5D448]/50 hover:bg-white/10 hover:text-white hover:shadow-[0_0_20px_-4px_rgba(181,212,72,0.3)]"
+                className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-[border-color,background-color,color,box-shadow,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/10 hover:text-white hover:shadow-[0_0_20px_-4px_rgba(181,212,72,0.3)] active:scale-[0.98] motion-reduce:active:scale-100"
               >
                 Ver contacto y ubicación
                 <ArrowUpRight
@@ -63,7 +63,7 @@ export function ShowroomBanner() {
                   alt="Fachada exterior de Centro Rental en Av. Belgrano 2450"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 30vw"
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover object-center transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
                 <div className="absolute bottom-3 left-3 right-3">
@@ -82,7 +82,7 @@ export function ShowroomBanner() {
                     alt="Exhibición de Starlink, consolas de gaming y audio en showroom"
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-center transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
                   <div className="absolute bottom-2.5 left-2.5 right-2.5">
@@ -99,7 +99,7 @@ export function ShowroomBanner() {
                     alt="Puesto operativo y mostrador de atención en showroom"
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-center transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
                   <div className="absolute bottom-2.5 left-2.5 right-2.5">

@@ -33,7 +33,7 @@ export function RentalCardMedia({
           alt={primaryAlt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
         <div className="absolute bottom-3 left-3 flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-black/70 text-zinc-200 backdrop-blur-sm group-hover:border-[#B5D448]/40 group-hover:text-white transition-colors">
@@ -58,7 +58,7 @@ export function RentalCardMedia({
           alt={primaryAlt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
         />
       </div>
 
@@ -74,7 +74,7 @@ export function RentalCardMedia({
           alt={secondaryAlt || primaryAlt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
         />
       </div>
 
@@ -104,7 +104,7 @@ export function RentalCardMedia({
           }}
           onMouseEnter={() => setActiveView(0)}
           className={cn(
-            'flex items-center gap-1 rounded-md px-2 py-1 text-[10px] font-medium tracking-wide transition-all duration-200',
+            'flex items-center gap-1 rounded-md px-2 py-1 text-[10px] font-medium tracking-wide transition-colors duration-150',
             activeView === 0
               ? 'bg-[#B5D448] text-black font-semibold shadow-sm'
               : 'text-white/60 hover:text-white'
@@ -122,7 +122,7 @@ export function RentalCardMedia({
           }}
           onMouseEnter={() => setActiveView(1)}
           className={cn(
-            'flex items-center gap-1 rounded-md px-2 py-1 text-[10px] font-medium tracking-wide transition-all duration-200',
+            'flex items-center gap-1 rounded-md px-2 py-1 text-[10px] font-medium tracking-wide transition-colors duration-150',
             activeView === 1
               ? 'bg-[#B5D448] text-black font-semibold shadow-sm'
               : 'text-white/60 hover:text-white'
@@ -141,7 +141,7 @@ export function RentalCardMedia({
           e.stopPropagation()
           setActiveView(activeView === 0 ? 1 : 0)
         }}
-        className="absolute bottom-2.5 right-2.5 z-30 flex items-center gap-1.5 rounded-md border border-white/25 bg-black/75 p-1 backdrop-blur-md shadow-md transition-all hover:border-[#B5D448]/70 hover:scale-105 active:scale-95"
+        className="absolute bottom-2.5 right-2.5 z-30 flex items-center gap-1.5 rounded-md border border-white/25 bg-black/75 p-1 backdrop-blur-md shadow-md transition-[border-color,transform] duration-150 hover:border-[#B5D448]/70 hover:scale-[1.03] active:scale-[0.97] motion-reduce:transform-none"
         title={activeView === 0 ? 'Ver en evento' : 'Ver equipo'}
         aria-label={activeView === 0 ? 'Ver en evento' : 'Ver equipo'}
       >

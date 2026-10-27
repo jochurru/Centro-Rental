@@ -49,7 +49,7 @@ export default function AlquilerPage() {
             return (
               <div
                 key={cat.id}
-                className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-7 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
+                className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-7 transition-[border-color,background-color] duration-200 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
               >
                 <div>
                   {/* Galería moderna con fotos reales históricas (emil-design-eng) o fallback dual / icono */}

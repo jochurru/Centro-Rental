@@ -47,7 +47,7 @@ export default function InstalacionesPage() {
           {installationServices.map((item) => (
             <div
               key={item.id}
-              className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
+              className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8 transition-[border-color,background-color] duration-200 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
             >
               <div>
                 {/* Fotografía de equipamiento y soluciones en exhibición */}
@@ -58,7 +58,7 @@ export default function InstalacionesPage() {
                       alt={item.imageAlt || item.title}
                       fill
                       sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">

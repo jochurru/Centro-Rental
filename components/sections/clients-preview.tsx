@@ -39,7 +39,7 @@ export function ClientsPreview() {
             <Link
               key={client.id}
               href="/clientes"
-              className="group relative flex flex-col items-center justify-center rounded-xl border border-white/[0.08] bg-[#101115] p-3.5 sm:p-4 transition-colors duration-300 hover:border-white/20"
+              className="group relative flex flex-col items-center justify-center rounded-xl border border-white/[0.08] bg-[#101115] p-3.5 sm:p-4 transition-[border-color,transform] duration-150 hover:border-white/20 active:scale-[0.98] motion-reduce:active:scale-100"
             >
               {client.logo ? (
                 <div className="flex h-14 w-full items-center justify-center rounded-md border border-black/[0.06] bg-[#FCFEFC] px-3.5 py-2">

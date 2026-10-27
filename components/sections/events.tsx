@@ -41,14 +41,14 @@ export function Events() {
           <Link
             href="/eventos"
             key={featuredEvent.type}
-            className="event-card group relative h-[320px] overflow-hidden rounded-2xl border border-white/10 bg-black/40 transition-all duration-500 hover:border-white/25 sm:h-[380px] md:col-span-7 md:h-full"
+            className="event-card group relative h-[320px] overflow-hidden rounded-2xl border border-white/10 bg-black/40 transition-[border-color,transform] duration-200 hover:border-white/25 active:scale-[0.99] motion-reduce:active:scale-100 sm:h-[380px] md:col-span-7 md:h-full"
           >
             <Image
               src={featuredEvent.image}
               alt={featuredEvent.type}
               fill
               sizes="(max-width: 768px) 100vw, 60vw"
-              className="object-cover transition duration-700 group-hover:scale-105"
+              className="object-cover transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
 
@@ -64,7 +64,7 @@ export function Events() {
                   {featuredEvent.location}
                 </p>
               </div>
-              <div className="rounded-full border border-white/20 bg-black/50 p-2.5 text-white/80 opacity-80 backdrop-blur-md transition-all group-hover:border-[#B5D448]/50 group-hover:bg-[#B5D448] group-hover:text-black group-hover:opacity-100">
+              <div className="rounded-full border border-white/20 bg-black/50 p-2.5 text-white/80 opacity-80 backdrop-blur-md transition-[border-color,background-color,color,opacity] duration-150 group-hover:border-[#B5D448]/50 group-hover:bg-[#B5D448] group-hover:text-black group-hover:opacity-100">
                 <ArrowUpRight size={16} />
               </div>
             </div>
@@ -77,14 +77,14 @@ export function Events() {
             <Link
               href="/eventos"
               key={event.type}
-              className="event-card group relative h-[220px] overflow-hidden rounded-2xl border border-white/10 bg-black/40 transition-all duration-500 hover:border-white/25 md:h-[calc(50%-8px)]"
+              className="event-card group relative h-[220px] overflow-hidden rounded-2xl border border-white/10 bg-black/40 transition-[border-color,transform] duration-200 hover:border-white/25 active:scale-[0.99] motion-reduce:active:scale-100 md:h-[calc(50%-8px)]"
             >
               <Image
                 src={event.image}
                 alt={event.type}
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-cover transition duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
 
@@ -97,7 +97,7 @@ export function Events() {
                     {event.location}
                   </p>
                 </div>
-                <div className="rounded-full border border-white/20 bg-black/50 p-2 text-white/80 opacity-80 backdrop-blur-md transition-all group-hover:border-[#B5D448]/50 group-hover:bg-[#B5D448] group-hover:text-black group-hover:opacity-100">
+                <div className="rounded-full border border-white/20 bg-black/50 p-2 text-white/80 opacity-80 backdrop-blur-md transition-[border-color,background-color,color,opacity] duration-150 group-hover:border-[#B5D448]/50 group-hover:bg-[#B5D448] group-hover:text-black group-hover:opacity-100">
                   <ArrowUpRight size={14} />
                 </div>
               </div>

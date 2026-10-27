@@ -42,7 +42,7 @@ export default function ClientesPage() {
           {featuredClients.map((client) => (
             <div
               key={client.id}
-              className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-all hover:border-white/20 hover:bg-white/[0.04]"
+              className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-[border-color,background-color] duration-200 hover:border-white/20 hover:bg-white/[0.04]"
             >
               <div>
                 <div className="mb-4 flex items-center justify-between">
@@ -58,7 +58,7 @@ export default function ClientesPage() {
                       alt={client.name}
                       width={100}
                       height={45}
-                      className="max-h-full max-w-full object-contain filter grayscale contrast-125 opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                      className="max-h-full max-w-full object-contain filter grayscale contrast-125 opacity-70 transition-[filter,opacity] duration-200 group-hover:grayscale-0 group-hover:opacity-100"
                     />
                   </div>
                 )}

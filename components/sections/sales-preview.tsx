@@ -28,7 +28,7 @@ export function SalesPreview() {
               href={siteConfig.mercadolibreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold !text-[#09090b] transition-all hover:bg-[#B5D448] hover:shadow-[0_0_20px_rgba(181,212,72,0.3)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold !text-[#09090b] transition-[background-color,box-shadow,transform] duration-150 hover:bg-[#B5D448] hover:shadow-[0_0_20px_rgba(181,212,72,0.3)] active:scale-[0.98] motion-reduce:active:scale-100"
             >
               Ver tienda en Mercado Libre
               <ArrowUpRight

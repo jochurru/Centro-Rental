@@ -78,7 +78,7 @@ export function InstallationsPreview() {
             <div className="mt-7 pt-1">
               <Link
                 href="/instalaciones"
-                className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-all hover:border-[#B5D448]/50 hover:bg-white/5 hover:text-white"
+                className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-[border-color,background-color,color,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/5 hover:text-white active:scale-[0.98] motion-reduce:active:scale-100"
               >
                 Conocer instalaciones
                 <ArrowUpRight
@@ -98,7 +98,7 @@ export function InstallationsPreview() {
                   alt="Equipamiento de audio y procesamiento en showroom"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover opacity-85 transition-transform duration-500 hover:scale-105"
+                  className="object-cover opacity-85 transition-transform duration-200 ease-out hover:scale-[1.02] motion-reduce:transform-none"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#121318] via-transparent to-transparent" />
                 <div className="absolute bottom-3 left-3 rounded-full border border-white/15 bg-black/75 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-white backdrop-blur-sm">

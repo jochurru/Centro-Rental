@@ -84,7 +84,7 @@ export function SpecialServicesPreview() {
             <Link
               key={service.id}
               href={service.href || '/servicios'}
-              className={`group relative flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] p-4 sm:p-5 transition-all duration-300 hover:border-[#B5D448]/40 hover:bg-white/[0.04] ${
+              className={`group relative flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] p-4 sm:p-5 transition-[border-color,background-color,transform] duration-200 hover:border-[#B5D448]/40 hover:bg-white/[0.04] active:scale-[0.99] motion-reduce:active:scale-100 ${
                 index === 4
                   ? 'sm:col-span-2 lg:col-span-3'
                   : index === 3
@@ -101,7 +101,7 @@ export function SpecialServicesPreview() {
                       alt={service.imageAlt || service.title}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                     <div className="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between">

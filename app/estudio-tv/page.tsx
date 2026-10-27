@@ -182,7 +182,7 @@ export default function EstudioTvPage() {
           </GlowButton>
           <Link
             href="/servicios"
-            className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm text-white transition-all hover:border-[#B5D448]/50 hover:bg-white/5"
+            className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm text-white transition-[border-color,background-color,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/5 active:scale-[0.98] motion-reduce:active:scale-100"
           >
             <span>Ver servicios</span>
             <ArrowUpRight size={14} className="text-white/60 group-hover:text-white transition-colors" />
@@ -211,7 +211,7 @@ export default function EstudioTvPage() {
           {galleryPhotos.map((photo, idx) => (
             <div
               key={photo.src}
-              className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:border-[#B5D448]/40 ${photo.span}`}
+              className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-[border-color] duration-200 hover:border-[#B5D448]/40 ${photo.span}`}
             >
               <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[340px] w-full overflow-hidden bg-black/60">
                 <Image
@@ -220,7 +220,7 @@ export default function EstudioTvPage() {
                   fill
                   priority={idx === 0}
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
@@ -260,7 +260,7 @@ export default function EstudioTvPage() {
               return (
                 <div
                   key={cap.title}
-                  className="group flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] p-6 transition-all hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
+                  className="group flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] p-6 transition-[border-color,background-color] duration-200 hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
                 >
                   <div>
                     <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-white/10 bg-[#0D0E12] text-[#B5D448] transition-colors group-hover:border-[#B5D448]/40 group-hover:bg-[#121318]">
@@ -298,7 +298,7 @@ export default function EstudioTvPage() {
             {useCases.map((uc) => (
               <div
                 key={uc.title}
-                className="rounded-xl border border-white/10 bg-white/[0.02] p-6 transition-all hover:border-white/20"
+                className="rounded-xl border border-white/10 bg-white/[0.02] p-6 transition-colors duration-200 hover:border-white/20"
               >
                 <div className="mb-3 flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448]" />
@@ -343,7 +343,7 @@ export default function EstudioTvPage() {
                 <Link
                   key={srv.title}
                   href={srv.href}
-                  className="group flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] p-6 transition-all hover:border-[#B5D448]/40 hover:bg-white/[0.04]"
+                  className="group flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.02] p-6 transition-[border-color,background-color,transform] duration-200 hover:border-[#B5D448]/40 hover:bg-white/[0.04] active:scale-[0.99] motion-reduce:active:scale-100"
                 >
                   <div>
                     <div className="mb-4 flex items-center justify-between">

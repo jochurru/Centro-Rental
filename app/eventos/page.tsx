@@ -145,7 +145,7 @@ export default function EventosPage() {
           {portfolioEvents.map((item) => (
             <article
               key={item.slug}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all hover:border-white/20 hover:bg-white/[0.04]"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-[border-color,background-color] duration-200 hover:border-white/20 hover:bg-white/[0.04]"
             >
               {/* Image banner */}
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/40">
@@ -154,7 +154,7 @@ export default function EventosPage() {
                   alt={item.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-200 ease-out group-hover:scale-[1.02] motion-reduce:transform-none"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent opacity-80" />
 

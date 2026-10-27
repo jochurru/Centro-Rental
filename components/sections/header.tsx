@@ -11,8 +11,19 @@ import { primaryNavItems, moreNavItems, navItems } from '@/data/site'
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
+
+  // Sincronizar estado de scroll para header dinámico
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Cerrar dropdown al hacer click fuera
   useEffect(() => {
@@ -28,7 +39,13 @@ export function Header() {
   const isMoreActive = moreNavItems.some((item) => pathname.startsWith(item.href))
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/[0.06] bg-[#09090b]/70 backdrop-blur-xl">
+    <header
+      className={`fixed left-0 right-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-200 ease-out motion-reduce:transition-none ${
+        isScrolled
+          ? 'border-b border-white/10 bg-[#09090b]/92 backdrop-blur-md'
+          : 'border-b border-white/[0.06] bg-[#09090b]/70 backdrop-blur-xl'
+      }`}
+    >
       <div className="mx-auto flex h-[74px] max-w-[1320px] items-center justify-between px-5 lg:px-8">
         <Logo />
         <nav className="hidden items-center gap-6 xl:gap-7 lg:flex">
@@ -62,6 +79,9 @@ export function Header() {
             className="relative"
             onMouseEnter={() => setMoreOpen(true)}
             onMouseLeave={() => setMoreOpen(false)}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') setMoreOpen(false)
+            }}
           >
             <button
               type="button"
@@ -87,7 +107,7 @@ export function Header() {
             </button>
 
             {moreOpen && (
-              <div className="absolute right-0 top-full pt-2 z-50">
+              <div className="absolute right-0 top-full pt-2 z-50 animate-menu-dropdown">
                 <div
                   role="menu"
                   className="w-44 rounded-xl border border-white/10 bg-[#09090b]/95 p-1.5 shadow-2xl backdrop-blur-xl"
@@ -135,7 +155,7 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <nav className="border-t border-white/[0.06] bg-[#09090b] px-5 pb-6 pt-4 lg:hidden">
+        <nav className="animate-mobile-menu border-t border-white/[0.06] bg-[#09090b] px-5 pb-6 pt-4 lg:hidden">
           <div className="flex flex-col gap-1">
             {navItems.map((item) => {
               const isActive =

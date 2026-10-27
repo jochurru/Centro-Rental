@@ -46,7 +46,7 @@ export function CTASection({
               {secondaryLabel && secondaryHref && (
                 <Link
                   href={secondaryHref}
-                  className="group flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm text-white transition-all hover:border-[#B5D448]/50 hover:bg-white/5 hover:shadow-[0_0_20px_-4px_rgba(181,212,72,0.3)]"
+                  className="group flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm text-white transition-[border-color,background-color,box-shadow,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/5 hover:shadow-[0_0_20px_-4px_rgba(181,212,72,0.3)] active:scale-[0.98] motion-reduce:active:scale-100"
                 >
                   {secondaryLabel}
                   <MoveRight
