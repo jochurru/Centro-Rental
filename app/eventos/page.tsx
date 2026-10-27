@@ -223,7 +223,6 @@ export default function EventosPage() {
         instagramCtaLabel="Ver más trabajos en Instagram"
         facebookCtaLabel="También estamos en Facebook"
         images={socialBridgeImages}
-        showFacebook={false}
       />
 
       {/* CTA final */}

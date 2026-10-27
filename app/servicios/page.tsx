@@ -150,7 +150,6 @@ export default function ServiciosPage() {
         instagramCtaLabel="Ver trabajos reales en Instagram"
         facebookCtaLabel="Ver novedades en Facebook"
         images={socialBridgeImages}
-        showFacebook={false}
       />
 
       {/* Cierre comercial con derivación a contacto */}
