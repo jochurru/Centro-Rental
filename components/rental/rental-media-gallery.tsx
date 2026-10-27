@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef, useCallback, useEffect } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -108,7 +108,7 @@ export function RentalMediaGallery({
       onTouchEnd={handleTouchEnd}
       className="group/gallery relative mb-5 h-48 w-full select-none overflow-hidden rounded-xl border border-white/10 bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448]"
     >
-      {/* Slides de imágenes con transiciones fluidas */}
+      {/* Slides de imágenes con transiciones específicas */}
       {items.map((item, index) => {
         const isActive = index === currentIndex
         return (
@@ -116,7 +116,7 @@ export function RentalMediaGallery({
             key={item.src}
             aria-hidden={!isActive}
             className={cn(
-              'absolute inset-0 transition-all duration-260 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none',
+              'absolute inset-0 transition-[opacity,transform] duration-260 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none',
               isActive
                 ? 'z-10 opacity-100 scale-100 motion-reduce:opacity-100'
                 : 'z-0 opacity-0 scale-[1.02] pointer-events-none motion-reduce:scale-100'
@@ -127,7 +127,6 @@ export function RentalMediaGallery({
               alt={item.alt}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              priority={index === 0}
               className="object-cover transition-transform duration-500 ease-out group-hover/gallery:scale-[1.03]"
             />
           </div>
@@ -154,24 +153,28 @@ export function RentalMediaGallery({
         </div>
       </div>
 
-      {/* Flechas de navegación previa y siguiente */}
+      {/* Flechas de navegación previa y siguiente con hit-target táctil accesible (mínimo 44px en mobile) */}
       {count > 1 && (
         <>
           <button
             type="button"
             onClick={handlePrev}
             aria-label="Ver imagen anterior"
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-30 flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-black/75 text-white/80 backdrop-blur-md transition-all duration-160 hover:border-[#B5D448]/60 hover:bg-black/90 hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448] sm:opacity-0 sm:group-hover/gallery:opacity-100 sm:focus-visible:opacity-100"
+            className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-30 flex h-11 w-11 sm:h-8 sm:w-8 items-center justify-center text-white/80 transition-[transform,opacity] duration-160 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448] sm:opacity-0 sm:group-hover/gallery:opacity-100 sm:focus-visible:opacity-100"
           >
-            <ChevronLeft size={16} />
+            <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-black/75 backdrop-blur-md transition-[background-color,border-color,color] hover:border-[#B5D448]/60 hover:bg-black/90 hover:text-white">
+              <ChevronLeft size={16} />
+            </span>
           </button>
           <button
             type="button"
             onClick={handleNext}
             aria-label="Ver siguiente imagen"
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-30 flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-black/75 text-white/80 backdrop-blur-md transition-all duration-160 hover:border-[#B5D448]/60 hover:bg-black/90 hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448] sm:opacity-0 sm:group-hover/gallery:opacity-100 sm:focus-visible:opacity-100"
+            className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-30 flex h-11 w-11 sm:h-8 sm:w-8 items-center justify-center text-white/80 transition-[transform,opacity] duration-160 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448] sm:opacity-0 sm:group-hover/gallery:opacity-100 sm:focus-visible:opacity-100"
           >
-            <ChevronRight size={16} />
+            <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-black/75 backdrop-blur-md transition-[background-color,border-color,color] hover:border-[#B5D448]/60 hover:bg-black/90 hover:text-white">
+              <ChevronRight size={16} />
+            </span>
           </button>
         </>
       )}
@@ -187,10 +190,10 @@ export function RentalMediaGallery({
           <div />
         )}
 
-        {/* Micro-dots de navegación directa */}
+        {/* Micro-dots de navegación directa con área táctil cómoda */}
         {count > 1 && (
           <div
-            className="flex items-center gap-1 rounded-full border border-white/15 bg-black/75 px-1.5 py-1 backdrop-blur-md shadow-sm"
+            className="flex items-center gap-0.5 rounded-full border border-white/15 bg-black/75 px-1 py-0.5 backdrop-blur-md shadow-sm"
             role="tablist"
             aria-label="Indicadores de fotos"
           >
@@ -208,13 +211,17 @@ export function RentalMediaGallery({
                     e.stopPropagation()
                     goTo(dotIdx)
                   }}
-                  className={cn(
-                    'h-1.5 rounded-full transition-all duration-200 ease-out active:scale-95 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#B5D448]',
-                    isDotActive
-                      ? 'w-4 bg-[#B5D448]'
-                      : 'w-1.5 bg-white/40 hover:bg-white/70'
-                  )}
-                />
+                  className="flex items-center justify-center p-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#B5D448] rounded-full active:scale-95"
+                >
+                  <span
+                    className={cn(
+                      'block h-1.5 rounded-full transition-[width,background-color,transform] duration-200 ease-out',
+                      isDotActive
+                        ? 'w-4 bg-[#B5D448]'
+                        : 'w-1.5 bg-white/40 hover:bg-white/70'
+                    )}
+                  />
+                </button>
               )
             })}
           </div>

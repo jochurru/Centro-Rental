@@ -270,7 +270,7 @@ export const rentalCategories: RentalCategory[] = [
     gallery: [
       {
         src: '/images/rental/sonido-parlante-pa.webp',
-        alt: 'Sistema de audio y bafle profesional sobre trípode',
+        alt: 'Sistema de audio y bafle sobre trípode',
         label: 'Sistema de PA',
       },
       {
@@ -280,17 +280,17 @@ export const rentalCategories: RentalCategory[] = [
       },
       {
         src: '/images/rental/sonido-consola-digital.webp',
-        alt: 'Consola digital multipista para mezcla y procesamiento en vivo',
+        alt: 'Consola digital para operación de sonido',
         label: 'Consola digital',
       },
       {
         src: '/images/rental/sonido-control-foh.webp',
-        alt: 'Puesto de control de sonido FOH en auditorio',
-        label: 'Control FOH en sala',
+        alt: 'Puesto de control de sonido en auditorio',
+        label: 'Control de sonido en sala',
       },
       {
         src: '/images/rental/sonido-microfonia-monitoreo.webp',
-        alt: 'Equipamiento de microfonía inalámbrica y monitoreo',
+        alt: 'Equipamiento de microfonía y monitoreo de audio',
         label: 'Microfonía & Monitoreo',
       },
     ],
@@ -306,28 +306,28 @@ export const rentalCategories: RentalCategory[] = [
     gallery: [
       {
         src: '/images/rental/iluminacion-par-led.webp',
-        alt: 'Iluminación ambiental con luminarias PAR LED en salón',
+        alt: 'Iluminación ambiental con luminarias PAR LED',
         label: 'Ambientación PAR LED',
       },
       {
         src: '/images/rental/iluminacion-cabezales-truss.webp',
-        alt: 'Cabezales móviles y efectos lumínicos montados en estructura truss',
+        alt: 'Cabezales móviles montados en estructura truss',
         label: 'Cabezales en truss',
       },
       {
         src: '/images/rental/iluminacion-cabezales-beam.webp',
-        alt: 'Efectos beam y cabezales móviles robotizados',
-        label: 'Efectos beam',
+        alt: 'Cabezales móviles con efectos de iluminación',
+        label: 'Efectos de iluminación',
       },
       {
         src: '/images/rental/iluminacion-ambientacion-salon.webp',
-        alt: 'Puesta de iluminación ambiental y decorativa para salón',
+        alt: 'Puesta de iluminación ambiental para salón',
         label: 'Ambientación de salón',
       },
       {
         src: '/images/rental/iluminacion-control-dmx.webp',
-        alt: 'Consolas de control DMX y luminarias LED',
-        label: 'Control DMX',
+        alt: 'Consola de control y luminarias de iluminación',
+        label: 'Control de iluminación',
       },
     ],
   },
@@ -344,7 +344,7 @@ export const rentalCategories: RentalCategory[] = [
     gallery: [
       {
         src: '/images/rental/pantalla-led-escenario.webp',
-        alt: 'Pantalla LED modular de alta resolución en escenario',
+        alt: 'Pantalla LED modular en escenario',
         label: 'Escenario modular',
       },
       {
@@ -354,22 +354,22 @@ export const rentalCategories: RentalCategory[] = [
       },
       {
         src: '/images/rental/pantalla-led-teatro-nd.webp',
-        alt: 'Pantalla LED 2.8 de 5x3 metros montada en Teatro ND',
-        label: 'Teatro ND 5×3 m',
+        alt: 'Pantalla LED de 5x3 metros en escenario de teatro',
+        label: 'Escenario de teatro',
       },
       {
         src: '/images/rental/pantalla-led-congreso.webp',
-        alt: 'Pantalla LED de gran formato en congreso y auditorio',
+        alt: 'Pantalla LED en sala de conferencias y auditorio',
         label: 'Auditorio & Congreso',
       },
       {
         src: '/images/rental/pantalla-led-montaje.webp',
-        alt: 'Estructura de soporte y montaje modular de módulos LED',
-        label: 'Montaje & Estructura',
+        alt: 'Estructura de montaje y armado de pantalla LED',
+        label: 'Montaje de pantalla LED',
       },
       {
         src: '/images/rental/pantalla-led-auditorio.webp',
-        alt: 'Pantalla LED formato panorámico en sala de eventos',
+        alt: 'Pantalla LED en formato panorámico',
         label: 'Formato panorámico',
       },
     ],
@@ -387,27 +387,27 @@ export const rentalCategories: RentalCategory[] = [
     gallery: [
       {
         src: '/images/rental/proyector-profesional.webp',
-        alt: 'Proyector profesional de alta potencia óptica',
-        label: 'Proyector profesional',
+        alt: 'Proyector para presentaciones y eventos',
+        label: 'Proyector de eventos',
       },
       {
         src: '/images/rental/proyector-auditorio.webp',
-        alt: 'Proyección institucional sobre pantalla en auditorio',
+        alt: 'Proyección sobre pantalla en auditorio',
         label: 'Proyección en auditorio',
       },
       {
         src: '/images/rental/proyector-pantalla-tripode.webp',
-        alt: 'Pantalla de proyección frontal con trípode',
+        alt: 'Pantalla de proyección con trípode',
         label: 'Pantalla con trípode',
       },
       {
         src: '/images/rental/proyector-pantalla-marco.webp',
-        alt: 'Pantalla panorámica con marco para conferencias',
-        label: 'Pantalla panorámica',
+        alt: 'Pantalla de proyección con marco',
+        label: 'Pantalla con marco',
       },
       {
         src: '/images/rental/proyector-evento-corporativo.webp',
-        alt: 'Puesta de proyección para eventos corporativos y conferencias',
+        alt: 'Proyector y pantalla instalados en evento corporativo',
         label: 'Evento corporativo',
       },
     ],
@@ -425,27 +425,27 @@ export const rentalCategories: RentalCategory[] = [
     gallery: [
       {
         src: '/images/rental/smart-tv-soporte-pie.webp',
-        alt: 'Smart TV en soporte de pie móvil para exposiciones',
+        alt: 'Smart TV en soporte de pie móvil',
         label: 'Soporte móvil de pie',
       },
       {
         src: '/images/rental/smart-tv-pedestal.webp',
-        alt: 'Smart TV sobre pedestal de pie metálico para reuniones',
+        alt: 'Smart TV sobre soporte pedestal para reuniones',
         label: 'Pedestal metálico',
       },
       {
         src: '/images/rental/smart-tv-soporte-movil.webp',
-        alt: 'Soporte rodante regulable para pantallas de gran formato',
+        alt: 'Smart TV en soporte rodante para eventos',
         label: 'Soporte rodante',
       },
       {
         src: '/images/rental/smart-tv-stand-expo.webp',
-        alt: 'Smart TV instalada en stand de exposición ferial',
+        alt: 'Smart TV instalada en stand de exposición',
         label: 'Stand de exposición',
       },
       {
         src: '/images/rental/smart-tv-acreditacion.webp',
-        alt: 'Pantalla sobre pedestal para recepción y acreditación',
+        alt: 'Pantalla sobre soporte para área de recepción y acreditación',
         label: 'Acreditación & Recepción',
       },
     ],
@@ -461,22 +461,22 @@ export const rentalCategories: RentalCategory[] = [
     gallery: [
       {
         src: '/images/rental/starlink-kit-evento.webp',
-        alt: 'Kit de internet satelital Starlink transportable para eventos',
+        alt: 'Kit de internet satelital Starlink para eventos',
         label: 'Kit satelital en valija',
       },
       {
         src: '/images/services/starlink-instalacion-exterior.webp',
-        alt: 'Antena Starlink montada en exterior para cobertura de eventos',
+        alt: 'Antena Starlink montada en exterior para cobertura',
         label: 'Antena exterior',
       },
       {
         src: '/images/rental/starlink-antena-router.webp',
-        alt: 'Antena y router satelital para despliegue rápido',
+        alt: 'Antena y router satelital para eventos',
         label: 'Antena & Router',
       },
       {
         src: '/images/rental/starlink-operacion-conectividad.webp',
-        alt: 'Distribución y verificación de conectividad satelital en locación',
+        alt: 'Puesto de conectividad y red en locación',
         label: 'Conectividad en locación',
       },
     ],
@@ -492,23 +492,23 @@ export const rentalCategories: RentalCategory[] = [
     gallery: [
       {
         src: '/images/services/streaming-operadores.webp',
-        alt: 'Operadores técnicos en consolas de transmisión y streaming en vivo',
+        alt: 'Operadores en consola y switcher de transmisión',
         label: 'Operación de streaming',
       },
       {
         src: '/images/rental/streaming-consola-multiview.webp',
-        alt: 'Consola técnica de emisión y monitoreo multiview',
+        alt: 'Consola de transmisión con monitores de vista múltiple',
         label: 'Monitoreo multiview',
       },
       {
         src: '/images/rental/streaming-set-vivo.webp',
-        alt: 'Set de transmisión y conmutación de señales en directo',
+        alt: 'Set de transmisión y conmutación de video',
         label: 'Set de transmisión',
       },
       {
         src: '/images/rental/streaming-switcher-broadcast.webp',
-        alt: 'Switcher de video broadcast y matriz de conmutación',
-        label: 'Switcher broadcast',
+        alt: 'Switcher y control de video para transmisión',
+        label: 'Switcher de video',
       },
     ],
   },
@@ -560,23 +560,23 @@ export const rentalCategories: RentalCategory[] = [
     gallery: [
       {
         src: '/images/rental/traduccion-auriculares.webp',
-        alt: 'Central de traducción simultánea multicanal y receptores',
+        alt: 'Central de traducción y receptores de audio',
         label: 'Receptores & Central',
       },
       {
         src: '/images/services/traduccion-simultanea-oei.webp',
-        alt: 'Cumbre internacional con equipamiento de traducción simultánea OEI',
-        label: 'Cumbre internacional OEI',
+        alt: 'Equipamiento de traducción en conferencia internacional',
+        label: 'Conferencia internacional',
       },
       {
         src: '/images/rental/traduccion-consola-interprete.webp',
-        alt: 'Consola de intérprete profesional y micrófono cuello de cisne',
-        label: 'Consola de intérprete',
+        alt: 'Consola de audio y micrófono para intérpretes',
+        label: 'Consola para intérpretes',
       },
       {
         src: '/images/rental/traduccion-cabina-insonorizada.webp',
-        alt: 'Cabina insonorizada para intérpretes de conferencias',
-        label: 'Cabina insonorizada',
+        alt: 'Cabina para intérpretes en sala de conferencias',
+        label: 'Cabina para intérpretes',
       },
     ],
   },
