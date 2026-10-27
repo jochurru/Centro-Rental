@@ -23,7 +23,7 @@ export function CTASection({
   secondaryHref,
 }: CTASectionProps) {
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32">
+    <section className="relative overflow-hidden py-20 sm:py-24 lg:py-28">
       <div className="relative mx-auto max-w-[1320px] px-5 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-8 sm:p-14 lg:p-20 text-center">
           {/* Subtle ambient backglow (sin violeta/magenta) */}

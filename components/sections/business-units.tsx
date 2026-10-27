@@ -46,7 +46,7 @@ const units = [
 
 export function BusinessUnits() {
   return (
-    <section className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8">
+    <section className="py-16 sm:py-20 lg:py-24 mx-auto max-w-[1320px] px-5 lg:px-8">
       <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
         <div>
           <span className="eyebrow flex items-center gap-2">
@@ -72,7 +72,7 @@ export function BusinessUnits() {
           >
             <div>
               {/* Franja fotográfica editorial */}
-              <div className="relative mb-5 h-36 w-full overflow-hidden rounded-xl border border-white/10 bg-black/40">
+              <div className="relative mb-5 h-40 sm:h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-black/40">
                 <Image
                   src={unit.image}
                   alt={unit.imageAlt}
@@ -89,7 +89,7 @@ export function BusinessUnits() {
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs tracking-wider text-white/40">
+                <span className="font-mono text-xs tracking-wider text-white/50">
                   UNIDAD · {unit.number}
                 </span>
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#B5D448]">

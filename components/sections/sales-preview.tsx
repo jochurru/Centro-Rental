@@ -4,7 +4,7 @@ import { siteConfig } from '@/data/site'
 
 export function SalesPreview() {
   return (
-    <section className="mx-auto max-w-[1320px] px-5 py-5 sm:py-8 lg:px-8">
+    <section className="mx-auto max-w-[1320px] px-5 py-8 sm:py-10 lg:py-12 lg:px-8">
       <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-r from-white/[0.03] via-white/[0.015] to-transparent p-6 sm:p-7 lg:p-8">
         {/* Sutil halo ambiental */}
         <div className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-[#B5D448]/5 blur-[70px]" />

@@ -24,7 +24,7 @@ export function PageHero({
       <div className="relative mx-auto max-w-[1320px] px-5 lg:px-8">
         <div className="max-w-[850px]">
           {eyebrow && (
-            <div className="mb-6 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-white/80">
+            <div className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/75">
               <span className="h-px w-8 bg-[#B5D448]" />
               {eyebrow}
             </div>

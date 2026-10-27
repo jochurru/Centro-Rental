@@ -32,7 +32,7 @@ const pillars = [
 
 export function InstallationsPreview() {
   return (
-    <section className="mx-auto max-w-[1320px] px-5 py-12 sm:py-16 lg:px-8 lg:py-20">
+    <section className="mx-auto max-w-[1320px] px-5 py-10 sm:py-14 lg:py-16 lg:px-8">
       <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.03] via-[#101115] to-[#0a0a0d] p-6 sm:p-10 lg:p-12">
         {/* Sutil halo ambiental */}
         <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-[#B5D448]/5 blur-[100px]" />
@@ -54,22 +54,22 @@ export function InstallationsPreview() {
               Soluciones de audio, video, automatización, cámaras de seguridad y control de acceso para espacios corporativos y comerciales.
             </p>
 
-            <div className="mt-7 grid gap-3 sm:grid-cols-2">
+            <div className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2 divide-y sm:divide-y-0 divide-white/[0.06]">
               {pillars.map((pillar) => (
                 <div
                   key={pillar.id}
-                  className="flex items-start gap-3 rounded-xl border border-white/[0.07] bg-white/[0.015] p-3 transition-colors hover:border-white/20"
+                  className="flex items-start gap-3.5 pt-3 sm:pt-0"
                 >
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0c0d11]">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03]">
                     <CategoryIcon
                       categoryId={pillar.id}
                       iconName={pillar.iconName}
                       className="h-4 w-4 text-[#B5D448]"
                     />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h4 className="text-sm font-medium text-white">{pillar.title}</h4>
-                    <p className="mt-0.5 text-xs text-white/50">{pillar.desc}</p>
+                    <p className="mt-0.5 text-xs leading-relaxed text-white/65">{pillar.desc}</p>
                   </div>
                 </div>
               ))}

@@ -56,7 +56,7 @@ const services = [
 
 export function SpecialServicesPreview() {
   return (
-    <section className="border-t border-white/[0.06] bg-white/[0.01] py-12 sm:py-16">
+    <section className="border-t border-white/[0.06] bg-white/[0.01] py-14 sm:py-18 lg:py-20">
       <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
         <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
@@ -118,13 +118,21 @@ export function SpecialServicesPreview() {
                     </div>
                   </div>
                 ) : (
-                  <div className="relative mb-4 flex h-32 w-full flex-col items-center justify-center rounded-lg border border-dashed border-white/15 bg-white/[0.015] p-3 text-center transition-colors group-hover:border-white/25">
-                    <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-[#0D0E12] text-[#B5D448] transition-colors group-hover:border-[#B5D448]/40">
-                      <Zap className="h-5 w-5" />
+                  <div className="relative mb-4 flex h-32 w-full flex-col justify-between rounded-lg border border-white/10 bg-[#0e0f13] p-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-white/50">
+                        Generación & Tableros
+                      </span>
+                      <div className="flex h-7 w-7 items-center justify-center rounded-md border border-white/10 bg-[#14151b] text-[#B5D448]">
+                        <Zap className="h-3.5 w-3.5" />
+                      </div>
                     </div>
-                    <span className="text-[11px] font-medium text-white/50">
-                      Infraestructura eléctrica
-                    </span>
+                    <div className="flex items-center justify-between">
+                      <span className="rounded bg-black/60 px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider text-white/70 backdrop-blur-sm border border-white/10">
+                        Infraestructura
+                      </span>
+                      <span className="text-[10px] text-white/40 font-mono">Soporte 24/7</span>
+                    </div>
                   </div>
                 )}
 
@@ -136,7 +144,7 @@ export function SpecialServicesPreview() {
                 </p>
               </div>
 
-              <div className="mt-5 flex items-center gap-1 text-[11px] font-medium text-white/40 transition-colors group-hover:text-[#B5D448]">
+              <div className="mt-5 flex items-center gap-1 text-[11px] font-medium text-white/60 transition-colors group-hover:text-[#B5D448]">
                 <span>{service.href ? 'Ver estudio y set' : 'Detalles del servicio'}</span>
                 <ArrowUpRight size={12} />
               </div>

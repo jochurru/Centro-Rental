@@ -9,7 +9,7 @@ export function Events() {
   return (
     <section
       id="eventos"
-      className="section-padding mx-auto max-w-[1320px] px-5 lg:px-8 scroll-mt-[74px]"
+      className="mx-auto max-w-[1320px] px-5 py-16 sm:py-20 lg:py-24 lg:px-8 scroll-mt-[74px]"
     >
       <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
         <div>
@@ -50,7 +50,7 @@ export function Events() {
               sizes="(max-width: 768px) 100vw, 60vw"
               className="object-cover transition duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
 
             <div className="absolute bottom-6 left-6 right-6 z-10 flex items-end justify-between gap-4">
               <div>
@@ -86,7 +86,7 @@ export function Events() {
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover transition duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
 
               <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between gap-4">
                 <div>

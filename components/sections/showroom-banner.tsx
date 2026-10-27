@@ -4,7 +4,7 @@ import { MapPin, ArrowUpRight } from 'lucide-react'
 
 export function ShowroomBanner() {
   return (
-    <section className="mx-auto max-w-[1320px] px-5 py-8 sm:py-12 lg:px-8">
+    <section className="mx-auto max-w-[1320px] px-5 py-10 sm:py-14 lg:py-16 lg:px-8">
       <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0e0f13] p-6 sm:p-8 lg:p-10">
         {/* Sutil resplandor de acento verde institucional */}
         <div className="pointer-events-none absolute -left-12 -top-12 h-56 w-56 rounded-full bg-[#B5D448]/5 blur-[90px]" />
