@@ -32,7 +32,7 @@ export function RentalQuickLinks() {
               <Link
                 key={item.label}
                 href="/alquiler"
-                className="group shrink-0 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-3.5 py-1.5 text-xs text-white/70 transition-[border-color,background-color,color,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/[0.06] hover:text-white active:scale-[0.97] motion-reduce:active:scale-100"
+                className="group shrink-0 inline-flex min-h-[44px] sm:min-h-0 items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-3.5 py-1.5 text-xs text-white/70 transition-[border-color,background-color,color,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/[0.06] hover:text-white active:scale-[0.97] motion-reduce:active:scale-100"
               >
                 <CategoryIcon
                   categoryId={item.categoryId}
@@ -45,7 +45,7 @@ export function RentalQuickLinks() {
 
             <Link
               href="/alquiler"
-              className="shrink-0 inline-flex items-center gap-1 pl-1.5 pr-4 sm:pr-0 text-xs font-medium text-[#B5D448] transition-colors hover:text-white"
+              className="shrink-0 inline-flex min-h-[44px] sm:min-h-0 items-center gap-1 pl-1.5 pr-4 sm:pr-0 text-xs font-medium text-[#B5D448] transition-colors hover:text-white active:scale-[0.98] motion-reduce:active:scale-100"
             >
               <span>Ver catálogo completo</span>
               <ArrowUpRight size={13} />
