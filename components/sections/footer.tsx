@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { MapPin, Phone, Mail } from 'lucide-react'
 import { Logo } from '@/components/common/logo'
 import { footerNavItems, siteConfig } from '@/data/site'
@@ -113,9 +114,27 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="mt-14 flex flex-col justify-between gap-3 border-t border-white/10 pt-5 text-[10px] uppercase tracking-widest text-white/30 sm:flex-row">
-        <span>© {siteConfig.copyrightYear} Centro Rental · {siteConfig.address}</span>
-        <span>Todos los derechos reservados</span>
+      <div className="mt-12 sm:mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-t border-white/10 pt-6">
+        <div className="flex flex-col gap-1.5 text-[10px] uppercase tracking-widest text-white/30">
+          <span>© {siteConfig.copyrightYear} Centro Rental · {siteConfig.address}</span>
+          <span>Todos los derechos reservados</span>
+        </div>
+
+        <a
+          href="http://qr.afip.gob.ar/?qr=XDVo5aT2OYUT69-ZqnKayA,,"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ver Data Fiscal de Centro Rental"
+          className="inline-flex min-h-[44px] items-center rounded transition-opacity duration-150 hover:opacity-80 active:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090b] motion-reduce:transition-none"
+        >
+          <Image
+            src="/brand/data-fiscal.png"
+            alt="Formulario 960/D - Data Fiscal Centro Rental"
+            width={75}
+            height={100}
+            className="h-auto w-[65px] rounded-[2px]"
+          />
+        </a>
       </div>
     </footer>
   )
