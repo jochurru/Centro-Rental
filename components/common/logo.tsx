@@ -5,34 +5,33 @@ import Image from 'next/image'
 interface LogoProps {
   className?: string
   priority?: boolean
-  variant?: 'original' | 'auto' | 'dark' | 'light' | 'mono' | 'mobile'
 }
 
 /**
  * Componente Logo oficial de Centro Rental.
  * 
- * Utiliza el logo histórico original real (content-source/raw/logos/logos_logo_b2549209.png):
- * - Esferas verde, azul, roja y órbita gris.
- * - Tipografía "CENTRO" en azul degradado original.
- * - Tipografía "RENTAL" en negro original.
- * - Subtítulo "SOUND & VISION" en gris oscuro original.
- * - Integrado dentro de una placa / cápsula blanca (#FFFFFF) sólida, limpia y equilibrada.
+ * Utiliza el logo histórico original auténtico (/brand/centro-rental-logo-original.png):
+ * - Esferas verde, azul, roja y órbita gris (RGB oficial).
+ * - Tipografía "CENTRO" en azul corporativo y "RENTAL" en negro original.
+ * - Subtítulo "SOUND & VISION" en gris corporativo original.
+ * - Contención: Placa técnica esbelta sobria (#FFFFFF) con bordes técnicos redondeados,
+ *   sin sombras de elevación, sin anillos de botón, con transición sobria y target táctil optimizado.
  */
 export function Logo({ className = '', priority = true }: LogoProps) {
   return (
     <Link
       href="/"
-      className={`group inline-flex items-center justify-center rounded-xl bg-white px-3.5 py-1.5 shadow-sm shadow-black/40 ring-1 ring-white/10 transition-all duration-200 hover:ring-white/30 hover:shadow-md ${className}`}
+      className={`group relative inline-flex items-center justify-center rounded-md bg-white px-2.5 py-1 border border-white/10 shadow-none transition-[opacity,transform] duration-[150ms] ease-out hover:opacity-95 active:scale-[0.99] motion-reduce:transition-none motion-reduce:transform-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448] focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090B] before:absolute before:-inset-y-2.5 before:-inset-x-1 sm:before:hidden ${className}`}
       aria-label="Centro Rental — Inicio"
     >
       {/* Contenedor del logo con proporciones nativas 587x75 (ratio ~7.82) */}
-      <span className="relative block h-[22px] w-[172px] sm:h-[28px] sm:w-[219px] md:h-[30px] md:w-[235px]">
+      <span className="relative block h-[18px] w-[141px] sm:h-[22px] sm:w-[172px] md:h-[24px] md:w-[188px]">
         <Image
           src="/brand/centro-rental-logo-original.png"
           alt="Centro Rental — Sound & Vision"
           fill
           priority={priority}
-          sizes="(max-width: 640px) 172px, (max-width: 768px) 219px, 235px"
+          sizes="(max-width: 640px) 141px, (max-width: 768px) 172px, 188px"
           className="object-contain"
         />
       </span>
