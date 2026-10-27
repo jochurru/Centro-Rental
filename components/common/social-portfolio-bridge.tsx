@@ -82,19 +82,19 @@ export function SocialPortfolioBridge({
                 />
               </a>
 
-              {/* CTA Secundario: Facebook (opción secundaria sobria, no compite) */}
+              {/* CTA Secundario: Facebook (mismo tratamiento de botón con acento azulado sobrio) */}
               {showFacebook && facebookUrl && (
                 <a
                   href={facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex min-h-[44px] items-center gap-2 px-3 py-2 text-xs sm:text-sm text-white/50 transition-colors hover:text-white active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0d10]"
+                  className="group inline-flex min-h-[44px] items-center gap-2.5 rounded-full border border-white/20 bg-white/[0.05] px-5 py-2.5 text-xs sm:text-sm font-medium text-white transition-[border-color,background-color,transform] duration-150 hover:border-[#60a5fa]/50 hover:bg-white/[0.09] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#60a5fa] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0d10]"
                 >
-                  <FacebookIcon className="h-3.5 w-3.5 text-white/40 transition-colors group-hover:text-white/70" />
+                  <FacebookIcon className="h-4 w-4 text-[#60a5fa] transition-transform duration-150 group-hover:scale-110 motion-reduce:transform-none" />
                   <span>{facebookCtaLabel}</span>
                   <ArrowUpRight
-                    size={13}
-                    className="text-white/30 transition-colors group-hover:text-white/70"
+                    size={14}
+                    className="text-white/50 transition-colors group-hover:text-white"
                   />
                 </a>
               )}
