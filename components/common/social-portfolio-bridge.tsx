@@ -67,14 +67,14 @@ export function SocialPortfolioBridge({
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
-              {/* CTA Principal: Instagram (jerarquía dominante) */}
+              {/* CTA Principal: Instagram (identidad magenta sobria de plataforma) */}
               <a
                 href={instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex min-h-[44px] items-center gap-2.5 rounded-full border border-white/20 bg-white/[0.05] px-5 py-2.5 text-xs sm:text-sm font-medium text-white transition-[border-color,background-color,transform] duration-150 hover:border-[#B5D448]/60 hover:bg-white/[0.09] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0d10]"
+                className="group inline-flex min-h-[44px] items-center gap-2.5 rounded-full border border-white/20 bg-white/[0.05] px-5 py-2.5 text-xs sm:text-sm font-medium text-white transition-[border-color,background-color,transform] duration-150 hover:border-[#E1306C]/60 hover:bg-white/[0.09] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E1306C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0d10]"
               >
-                <InstagramIcon className="h-4 w-4 text-[#B5D448] transition-transform duration-150 group-hover:scale-110 motion-reduce:transform-none" />
+                <InstagramIcon className="h-4 w-4 text-[#E1306C] transition-transform duration-150 group-hover:scale-110 motion-reduce:transform-none" />
                 <span>{instagramCtaLabel}</span>
                 <ArrowUpRight
                   size={14}
