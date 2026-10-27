@@ -2,26 +2,45 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://centrorental.vercel.app'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Centro Rental — Producción técnica para eventos',
-  description: 'Soluciones de sonido, iluminación, pantallas y equipamiento técnico para eventos que dejan marca.',
-  generator: 'v0.app',
+  description:
+    'Soluciones de sonido, iluminación, pantallas y equipamiento técnico para eventos que dejan marca.',
+  openGraph: {
+    title: 'Centro Rental — Producción técnica para eventos',
+    description:
+      'Soluciones de sonido, iluminación, pantallas y equipamiento técnico para eventos que dejan marca.',
+    siteName: 'Centro Rental',
+    type: 'website',
+    locale: 'es_AR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Centro Rental — Producción técnica para eventos',
+    description:
+      'Soluciones de sonido, iluminación, pantallas y equipamiento técnico para eventos que dejan marca.',
+  },
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
       {
         url: '/icon.svg',
         type: 'image/svg+xml',
       },
+      {
+        url: '/favicon.ico',
+        sizes: 'any',
+      },
     ],
-    apple: '/apple-icon.png',
+    apple: [
+      {
+        url: '/apple-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
   },
 }
 
