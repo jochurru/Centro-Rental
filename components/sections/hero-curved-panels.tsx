@@ -5,9 +5,9 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
 // =============================================================================
-// SELECCIÓN DE 7 FOTOGRAFÍAS OFICIALES — MÁXIMO IMPACTO VISUAL Y ESCALA
+// SELECCIÓN OFICIAL DE FOTOGRAFÍAS — DESKTOP (7) Y MOBILE LITE (5)
 // =============================================================================
-const PANELS_DATA = [
+const DESKTOP_PANELS_DATA = [
   {
     id: 'teatro-colon',
     title: 'Teatro Colón · Gala Anual UNICEF',
@@ -45,36 +45,74 @@ const PANELS_DATA = [
   },
 ]
 
+// Mobile Lite: 5 fotografías de máximo impacto visual sin cargar las 2 restantes
+const MOBILE_PANELS_DATA = [
+  {
+    id: 'teatro-colon',
+    title: 'Teatro Colón · Gala Anual UNICEF',
+    src: '/events/teatro-colon-unicef.jpg',
+  },
+  {
+    id: 'versace-sofitel',
+    title: 'Versace · Presentación Perfume Eros',
+    src: '/events/versace-sofitel.jpg',
+  },
+  {
+    id: 'pantalla-led-congreso',
+    title: 'Cumbre Internacional · Pantalla LED Curva',
+    src: '/images/rental/pantalla-led-congreso.webp',
+  },
+  {
+    id: 'hero-event',
+    title: 'Producción Técnica en Vivo · Concierto Principal',
+    src: '/hero-event.webp',
+  },
+  {
+    id: 'hotel-hilton',
+    title: 'Hotel Hilton · Gran Salón Pacífico',
+    src: '/events/hotel-hilton.jpg',
+  },
+]
+
 // =============================================================================
-// PARÁMETROS GEOMÉTRICOS DEL ARCO MODULAR (SIN QUIEBRES VISIBLES)
-// 7 eventos modulares, cada uno con 10 segmentos internos = 70 facetas suaves
+// PARÁMETROS GEOMÉTRICOS DEL ARCO MODULAR — DESKTOP V4.2 (INTACTO)
 // =============================================================================
-const ARC_CONFIG = {
+const DESKTOP_ARC_CONFIG = {
   radius: 22.0, // Radio del cilindro espacial
   eventWidth: 5.6, // Ancho de cuerda de cada evento modular
   panelHeight: 4.6, // Altura monumental de pantalla escénica
   internalSegments: 10, // 10 subdivisiones internas por foto (1.46° entre vértices)
-  eventGap: 0.035, // Micro-junta técnica entre eventos distintos (~2-3px en pantalla)
+  eventGap: 0.035, // Micro-junta técnica entre eventos distintos
   centerAngle: 0.08, // Ángulo focal óptico (~4.6° en centro-derecha)
-  cycleDuration: 14.0, // Un evento atraviesa la zona focal cada 14 segundos
+  cycleDuration: 14.0, // 14 segundos por cambio de evento
+}
+
+// =============================================================================
+// PARÁMETROS GEOMÉTRICOS DEL ARCO MODULAR — MOBILE LITE V4.2
+// =============================================================================
+const MOBILE_ARC_CONFIG = {
+  radius: 12.0, // Radio adaptado a vertical: curvatura visible sin efecto túnel
+  eventWidth: 3.8, // Escala de panel para mostrar 2-3 eventos en pantalla vertical
+  panelHeight: 3.4, // Altura equilibrada para fondo escénico
+  internalSegments: 5, // 5 facetas internas por foto (ultra liviano: 25 quads total)
+  eventGap: 0.025, // Micro-junta técnica proporcional
+  centerAngle: 0.10, // Ángulo focal desplazado hacia el centro-derecha
+  cycleDuration: 14.0, // Misma cadencia pesada, lenta y solemne (14 segundos)
 }
 
 // =============================================================================
 // CREACIÓN DE GEOMETRÍA CURVA CONTINUA INTERNA POR EVENTO
-// Subdivide horizontalmente en 10 facetas unificadas en un único BufferGeometry.
-// Elimina quiebres, dobles aristas, seams y gaps dentro de la fotografía.
 // =============================================================================
 function createCurvedEventGeometry(
-  width = 5.6,
-  height = 4.6,
-  segments = 10,
-  radius = 22.0
+  width: number,
+  height: number,
+  segments: number,
+  radius: number
 ) {
   const geom = new THREE.PlaneGeometry(width, height, segments, 1)
   const pos = geom.attributes.position
   const halfAngle = Math.asin(width / (2 * radius))
 
-  // Mapeo de cada vértice plano al cilindro cilíndrico exacto en espacio local:
   for (let i = 0; i < pos.count; i++) {
     const xFlat = pos.getX(i)
     const y = pos.getY(i)
@@ -92,6 +130,9 @@ function createCurvedEventGeometry(
   return geom
 }
 
+// =============================================================================
+// PANEL INDIVIDUAL (SHARED MATERIAL & TEXTURE DISPOSAL)
+// =============================================================================
 interface CurvedEventItemProps {
   index: number
   src: string
@@ -118,7 +159,6 @@ function CurvedEventItem({
   const meshRef = useRef<THREE.Mesh>(null!)
   const [texture, setTexture] = useState<THREE.Texture | null>(null)
 
-  // Carga de textura optimizada con filtrado continuo para evitar seams
   useEffect(() => {
     let active = true
     const loader = new THREE.TextureLoader()
@@ -162,19 +202,19 @@ function CurvedEventItem({
     }
   }, [material])
 
-  // En cada frame: actualización de la posición y rotación del panel sobre el arco global
   useFrame(() => {
+    if (typeof document !== 'undefined' && document.visibilityState !== 'visible') {
+      return
+    }
     if (!meshRef.current) return
 
     const offset = globalOffsetRef.current
     const baseAngle = index * eventStep - offset
 
-    // Normalización modular continua en la ventana angular
     const minAngle = centerAngle - halfSpan
     const eventAngle =
       (((baseAngle - minAngle) % totalSpan + totalSpan) % totalSpan) + minAngle
 
-    // Posición cilíndrica global:
     const x = Math.sin(eventAngle) * radius
     const z = Math.cos(eventAngle) * radius - radius
 
@@ -188,37 +228,35 @@ function CurvedEventItem({
 }
 
 // =============================================================================
-// ESCENA DE PANELES 3D CON ORQUESTACIÓN DE DESPLAZAMIENTO LENTO Y PESADO
+// ESCENA DESKTOP (7 FOTOGRAFÍAS, R=22, 10 SEGMENTOS) — 100% INTACTA
 // =============================================================================
 interface SceneProps {
   reducedMotion: boolean
+  isVisibleRef: React.MutableRefObject<boolean>
 }
 
-function CurvedPanelsScene({ reducedMotion }: SceneProps) {
-  const N = PANELS_DATA.length
+function DesktopCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
+  const N = DESKTOP_PANELS_DATA.length
+  const config = DESKTOP_ARC_CONFIG
 
-  // Cálculo angular analítico sobre el arco cilíndrico de radio R = 22
-  const eventAngle = 2 * Math.asin(ARC_CONFIG.eventWidth / (2 * ARC_CONFIG.radius)) // ~14.60°
-  const eventGapAngle = ARC_CONFIG.eventGap / ARC_CONFIG.radius // ~0.09°
-  const eventStep = eventAngle + eventGapAngle // ~14.69°
-  const totalSpan = N * eventStep // ~102.83°
+  const eventAngle = 2 * Math.asin(config.eventWidth / (2 * config.radius))
+  const eventGapAngle = config.eventGap / config.radius
+  const eventStep = eventAngle + eventGapAngle
+  const totalSpan = N * eventStep
   const halfSpan = totalSpan / 2
-
-  // Velocidad angular pesada: exactamente 1 evento completo cada 14 segundos
-  const angularSpeed = eventStep / ARC_CONFIG.cycleDuration
+  const angularSpeed = eventStep / config.cycleDuration
 
   const globalOffsetRef = useRef(0)
 
-  // Geometría unificada compartida por los 7 eventos (10 segmentos por panel)
   const sharedGeometry = useMemo(
     () =>
       createCurvedEventGeometry(
-        ARC_CONFIG.eventWidth,
-        ARC_CONFIG.panelHeight,
-        ARC_CONFIG.internalSegments,
-        ARC_CONFIG.radius
+        config.eventWidth,
+        config.panelHeight,
+        config.internalSegments,
+        config.radius
       ),
-    []
+    [config]
   )
 
   useEffect(() => {
@@ -228,7 +266,10 @@ function CurvedPanelsScene({ reducedMotion }: SceneProps) {
   }, [sharedGeometry])
 
   useFrame((_, delta) => {
-    if (!reducedMotion) {
+    if (typeof document !== 'undefined' && document.visibilityState !== 'visible') {
+      return
+    }
+    if (!reducedMotion && isVisibleRef.current) {
       globalOffsetRef.current =
         (globalOffsetRef.current + angularSpeed * delta) % totalSpan
     }
@@ -236,7 +277,7 @@ function CurvedPanelsScene({ reducedMotion }: SceneProps) {
 
   return (
     <group>
-      {PANELS_DATA.map((panel, idx) => (
+      {DESKTOP_PANELS_DATA.map((panel, idx) => (
         <CurvedEventItem
           key={panel.id}
           index={idx}
@@ -245,8 +286,8 @@ function CurvedPanelsScene({ reducedMotion }: SceneProps) {
           eventStep={eventStep}
           totalSpan={totalSpan}
           halfSpan={halfSpan}
-          centerAngle={ARC_CONFIG.centerAngle}
-          radius={ARC_CONFIG.radius}
+          centerAngle={config.centerAngle}
+          radius={config.radius}
           geometry={sharedGeometry}
         />
       ))}
@@ -255,50 +296,209 @@ function CurvedPanelsScene({ reducedMotion }: SceneProps) {
 }
 
 // =============================================================================
+// ESCENA MOBILE LITE (5 FOTOGRAFÍAS, R=12, 5 SEGMENTOS, CARGA LIVIANA)
+// =============================================================================
+function MobileCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
+  const N = MOBILE_PANELS_DATA.length
+  const config = MOBILE_ARC_CONFIG
+
+  const eventAngle = 2 * Math.asin(config.eventWidth / (2 * config.radius))
+  const eventGapAngle = config.eventGap / config.radius
+  const eventStep = eventAngle + eventGapAngle
+  const totalSpan = N * eventStep
+  const halfSpan = totalSpan / 2
+  const angularSpeed = eventStep / config.cycleDuration
+
+  const globalOffsetRef = useRef(0)
+
+  const sharedGeometry = useMemo(
+    () =>
+      createCurvedEventGeometry(
+        config.eventWidth,
+        config.panelHeight,
+        config.internalSegments,
+        config.radius
+      ),
+    [config]
+  )
+
+  useEffect(() => {
+    return () => {
+      sharedGeometry.dispose()
+    }
+  }, [sharedGeometry])
+
+  useFrame((_, delta) => {
+    if (typeof document !== 'undefined' && document.visibilityState !== 'visible') {
+      return
+    }
+    if (!reducedMotion && isVisibleRef.current) {
+      globalOffsetRef.current =
+        (globalOffsetRef.current + angularSpeed * delta) % totalSpan
+    }
+  })
+
+  return (
+    <group>
+      {MOBILE_PANELS_DATA.map((panel, idx) => (
+        <CurvedEventItem
+          key={panel.id}
+          index={idx}
+          src={panel.src}
+          globalOffsetRef={globalOffsetRef}
+          eventStep={eventStep}
+          totalSpan={totalSpan}
+          halfSpan={halfSpan}
+          centerAngle={config.centerAngle}
+          radius={config.radius}
+          geometry={sharedGeometry}
+        />
+      ))}
+    </group>
+  )
+}
+
+// =============================================================================
+// FALLBACK ELEGANTE EN CSS (SOLO ANTE FALLA REAL DE WEBGL)
+// =============================================================================
+function LocalHeroFallback() {
+  return (
+    <div className="absolute inset-0 overflow-hidden bg-[#09090B]">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-60"
+        style={{ backgroundImage: `url('/images/rental/pantalla-led-congreso.webp')` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#09090B] via-[#09090B]/80 to-transparent" />
+    </div>
+  )
+}
+
+// Helper para verificar soporte WebGL nativo
+function isWebGLSupported(): boolean {
+  if (typeof window === 'undefined') return true
+  try {
+    const canvas = document.createElement('canvas')
+    return Boolean(
+      window.WebGLRenderingContext &&
+        (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+    )
+  } catch {
+    return false
+  }
+}
+
+// =============================================================================
 // COMPONENTE PRINCIPAL R3F CANVAS CLIENT-SIDE
 // =============================================================================
 export function HeroCurvedPanels() {
   const [reducedMotion, setReducedMotion] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [webGLAvailable, setWebGLAvailable] = useState(true)
+  const isVisibleRef = useRef(true)
 
   useEffect(() => {
+    // 1. Detección de soporte WebGL
+    if (!isWebGLSupported()) {
+      setWebGLAvailable(false)
+      return
+    }
+
+    // 2. Detección de Reduced Motion
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
     setReducedMotion(mediaQuery.matches)
 
     const handleMotionChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches)
     mediaQuery.addEventListener('change', handleMotionChange)
 
+    // 3. Detección de viewport móvil reactiva vía matchMedia y resize
+    const mobileQuery = window.matchMedia('(max-width: 639px)')
+    setIsMobile(mobileQuery.matches)
+    const handleMobileChange = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    mobileQuery.addEventListener('change', handleMobileChange)
+
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640)
+      setIsMobile(window.innerWidth < 640 || mobileQuery.matches)
     }
-    checkMobile()
     window.addEventListener('resize', checkMobile, { passive: true })
+    window.addEventListener('orientationchange', checkMobile, { passive: true })
+
+    // 4. Pausar animación cuando la pestaña o app no está visible (Page Visibility API)
+    const handleVisibility = () => {
+      isVisibleRef.current = document.visibilityState === 'visible'
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
 
     return () => {
       mediaQuery.removeEventListener('change', handleMotionChange)
+      mobileQuery.removeEventListener('change', handleMobileChange)
       window.removeEventListener('resize', checkMobile)
+      window.removeEventListener('orientationchange', checkMobile)
+      document.removeEventListener('visibilitychange', handleVisibility)
     }
   }, [])
 
-  // Mobile (< 640px): Fallback ultraliviano estático en CSS
+  // Si el hardware no soporta WebGL o falla el contexto, usar fallback CSS
+  if (!webGLAvailable) {
+    return <LocalHeroFallback />
+  }
+
+  // ===========================================================================
+  // RENDERIZADO CONDICIONAL: MOBILE LITE (< 640px) vs DESKTOP/TABLET (>= 640px)
+  // ===========================================================================
   if (isMobile) {
     return (
-      <div className="absolute inset-0 overflow-hidden bg-[#09090B]">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-70"
-          style={{ backgroundImage: `url('/images/rental/pantalla-led-congreso.webp')` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#09090B] via-[#09090B]/80 to-transparent" />
+      <div className="relative w-full h-full">
+        <Canvas
+          camera={{
+            // CÁMARA MOBILE VERTICAL:
+            // Posición optimizada para 390-430px de ancho y relación ~9:19.5
+            position: [-1.4, 0.35, 8.8],
+            fov: 48,
+          }}
+          dpr={1} // Pixel Ratio FIJO en 1: mínimo consumo de memoria y fill-rate en mobile
+          gl={{
+            antialias: false, // Máximo rendimiento y menor uso de memoria de textura
+            powerPreference: 'high-performance',
+            alpha: true,
+          }}
+          onCreated={({ camera, gl, scene }) => {
+            camera.lookAt(0.9, 0.0, -0.3)
+            camera.updateMatrixWorld()
+            if (typeof window !== 'undefined') {
+              ;(window as any).__THREE_HERO__ = {
+                gl,
+                scene,
+                camera,
+                mode: 'mobile-lite',
+                getInfo: () => ({
+                  calls: gl.info.render.calls,
+                  triangles: gl.info.render.triangles,
+                  geometries: gl.info.memory.geometries,
+                  textures: gl.info.memory.textures,
+                }),
+              }
+            }
+            gl.domElement.addEventListener('webglcontextlost', (e) => {
+              e.preventDefault()
+              setWebGLAvailable(false)
+            })
+          }}
+          style={{ width: '100%', height: '100%' }}
+        >
+          <MobileCurvedPanelsScene
+            reducedMotion={reducedMotion}
+            isVisibleRef={isVisibleRef}
+          />
+        </Canvas>
       </div>
     )
   }
 
+  // DESKTOP/TABLET (>= 640px): Escena monumental completa de 7 eventos (100% INTACTA)
   return (
     <div className="relative w-full h-full">
       <Canvas
         camera={{
-          // CÁMARA OBLICUA FUNDAMENTAL:
-          // Desplazada a la izquierda (x = -2.2) y mirando hacia el centro-derecha (x = 1.4)
           position: [-2.2, 0.05, 9.2],
           fov: 40,
         }}
@@ -308,13 +508,34 @@ export function HeroCurvedPanels() {
           powerPreference: 'high-performance',
           alpha: true,
         }}
-        onCreated={({ camera }) => {
+        onCreated={({ camera, gl, scene }) => {
           camera.lookAt(1.4, 0.0, -0.4)
           camera.updateMatrixWorld()
+          if (typeof window !== 'undefined') {
+            ;(window as any).__THREE_HERO__ = {
+              gl,
+              scene,
+              camera,
+              mode: 'desktop',
+              getInfo: () => ({
+                calls: gl.info.render.calls,
+                triangles: gl.info.render.triangles,
+                geometries: gl.info.memory.geometries,
+                textures: gl.info.memory.textures,
+              }),
+            }
+          }
+          gl.domElement.addEventListener('webglcontextlost', (e) => {
+            e.preventDefault()
+            setWebGLAvailable(false)
+          })
         }}
         style={{ width: '100%', height: '100%' }}
       >
-        <CurvedPanelsScene reducedMotion={reducedMotion} />
+        <DesktopCurvedPanelsScene
+          reducedMotion={reducedMotion}
+          isVisibleRef={isVisibleRef}
+        />
       </Canvas>
     </div>
   )

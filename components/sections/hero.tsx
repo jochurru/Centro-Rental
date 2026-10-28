@@ -70,6 +70,9 @@ export function Hero() {
       {/* Máscara radial elíptica localizada sobre el bloque tipográfico */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_52%,rgba(9,9,11,0.98)_0%,rgba(9,9,11,0.92)_32%,rgba(9,9,11,0.5)_55%,transparent_75%)] pointer-events-none z-10" />
 
+      {/* Máscara radial focalizada para Mobile: protege legibilidad del H1 y 'funcione.' sin alterar desktop */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_42%_42%,rgba(9,9,11,0.88)_0%,rgba(9,9,11,0.50)_55%,transparent_82%)] pointer-events-none z-10 sm:hidden" />
+
       {/* Fusión superior sutil para navbar */}
       <div className="absolute inset-x-0 top-0 h-24 sm:h-32 bg-gradient-to-b from-[#09090B] via-[#09090B]/60 to-transparent pointer-events-none z-10" />
 
