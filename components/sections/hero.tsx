@@ -44,43 +44,52 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[640px] sm:min-h-[720px] lg:min-h-screen items-end lg:items-start overflow-hidden pb-12 pt-24 sm:pb-20 sm:pt-32 lg:pt-[156px] lg:pb-24 scroll-mt-[64px] sm:scroll-mt-[74px] bg-[#09090B]"
+      className="relative flex flex-col sm:flex sm:min-h-[720px] lg:min-h-screen sm:items-end lg:items-start overflow-hidden pb-12 pt-0 sm:pb-20 sm:pt-32 lg:pt-[124px] lg:pb-24 scroll-mt-[64px] sm:scroll-mt-[74px] bg-[#09090B]"
     >
       {/* ============================================================== */}
-      {/* CAPA 1: WEBGL CANVAS 3D (Arco modular de paneles con cámara oblicua) */}
+      {/* CAPA 1: WEBGL CANVAS 3D                                        */}
+      {/* Mobile: Franja escénica protagonista dedicada (36vh)           */}
+      {/* Desktop/Tablet: Fondo monumental completo (100% intacto)       */}
       {/* ============================================================== */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full select-none"
+        className="pointer-events-none select-none relative w-full h-[calc(36vh+68px)] min-h-[300px] max-h-[400px] pt-[68px] sm:pt-0 sm:absolute sm:inset-0 sm:h-full sm:w-full sm:min-h-0 sm:max-h-none sm:z-0 z-0 overflow-hidden"
       >
         <HeroCurvedPanels />
+
+        {/* Fusión inferior Mobile: transiciona suavemente hacia el fondo oscuro del texto */}
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#09090B] via-[#09090B]/60 to-transparent pointer-events-none z-10 sm:hidden" />
+
+        {/* Fusión superior Mobile: integración con header */}
+        <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#09090B] via-[#09090B]/40 to-transparent pointer-events-none z-10 sm:hidden" />
+
+        {/* Fusión lateral Mobile: bordes suaves para entrada/salida de paneles */}
+        <div className="absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-[#09090B]/60 to-transparent pointer-events-none z-10 sm:hidden" />
+        <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#09090B]/60 to-transparent pointer-events-none z-10 sm:hidden" />
       </div>
 
       {/* ============================================================== */}
       {/* CAPA 2: MÁSCARAS LOCALES DOM/CSS Y MÁXIMA LUMINOSIDAD          */}
-      {/* Protege 100% el texto a la izquierda sin velo oscuro global    */}
+      {/* Protege 100% el texto en Desktop sin afectar la franja mobile  */}
       {/* ============================================================== */}
 
       {/* Trama técnica milimétrica de fondo */}
-      <div className="hero-grid absolute inset-0 pointer-events-none opacity-20 z-10" />
+      <div className="hero-grid absolute inset-0 pointer-events-none opacity-20 z-10 hidden sm:block" />
 
-      {/* Gradiente horizontal local: Oscuro en zona de lectura (0-35%), 100% libre a la derecha */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#09090B] via-[#09090B]/95 via-32% to-transparent pointer-events-none z-10" />
+      {/* Gradiente horizontal local Desktop: Oscuro en zona de lectura (0-35%), 100% libre a la derecha */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#09090B] via-[#09090B]/95 via-32% to-transparent pointer-events-none z-10 hidden sm:block" />
 
-      {/* Máscara radial elíptica localizada sobre el bloque tipográfico */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_52%,rgba(9,9,11,0.98)_0%,rgba(9,9,11,0.92)_32%,rgba(9,9,11,0.5)_55%,transparent_75%)] pointer-events-none z-10" />
+      {/* Máscara radial elíptica localizada sobre el bloque tipográfico Desktop */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_52%,rgba(9,9,11,0.98)_0%,rgba(9,9,11,0.92)_32%,rgba(9,9,11,0.5)_55%,transparent_75%)] pointer-events-none z-10 hidden sm:block" />
 
-      {/* Máscara radial focalizada para Mobile: protege legibilidad del H1 y 'funcione.' sin alterar desktop */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_42%_42%,rgba(9,9,11,0.88)_0%,rgba(9,9,11,0.50)_55%,transparent_82%)] pointer-events-none z-10 sm:hidden" />
+      {/* Fusión superior sutil para navbar Desktop */}
+      <div className="absolute inset-x-0 top-0 h-24 sm:h-32 bg-gradient-to-b from-[#09090B] via-[#09090B]/60 to-transparent pointer-events-none z-10 hidden sm:block" />
 
-      {/* Fusión superior sutil para navbar */}
-      <div className="absolute inset-x-0 top-0 h-24 sm:h-32 bg-gradient-to-b from-[#09090B] via-[#09090B]/60 to-transparent pointer-events-none z-10" />
+      {/* Fusión inferior sobria hacia el siguiente bloque Desktop */}
+      <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-[#09090B] via-[#09090B]/70 to-transparent pointer-events-none z-10 hidden sm:block" />
 
-      {/* Fusión inferior sobria hacia el siguiente bloque */}
-      <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-[#09090B] via-[#09090B]/70 to-transparent pointer-events-none z-10" />
-
-      {/* Fusión lateral derecha suave para entrada de paneles */}
-      <div className="absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#09090B]/80 to-transparent pointer-events-none z-10" />
+      {/* Fusión lateral derecha suave para entrada de paneles Desktop */}
+      <div className="absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#09090B]/80 to-transparent pointer-events-none z-10 hidden sm:block" />
 
       {/* Ambient glow corporativo sutil (Azul técnico + Verde corporativo) */}
       <div className="ambient-orb absolute right-[10%] top-1/3 h-96 w-96 rounded-full bg-[#0284C7]/10 blur-[160px] pointer-events-none z-10" />
@@ -88,8 +97,10 @@ export function Hero() {
 
       {/* ============================================================== */}
       {/* CAPA 3: CONTENIDO COMERCIAL CENTRO RENTAL (100% INTACTO)        */}
+      {/* Mobile: Fluye naturalmente debajo de la Event Wall             */}
+      {/* Desktop: A la izquierda con max-w-[1320px]                     */}
       {/* ============================================================== */}
-      <div className="relative mx-auto w-full max-w-[1320px] px-4 sm:px-5 lg:px-8 z-20">
+      <div className="relative mx-auto w-full max-w-[1320px] px-4 sm:px-5 lg:px-8 z-20 -mt-6 sm:mt-0">
         <div className="max-w-[860px]">
           {/* Eyebrow comercial ampliado */}
           <div className="mb-4 sm:mb-6 flex items-center gap-3 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] sm:tracking-[0.25em] text-white/70">

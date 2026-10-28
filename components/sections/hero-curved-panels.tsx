@@ -339,7 +339,7 @@ function MobileCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
   })
 
   return (
-    <group>
+    <group scale={1.32} position={[0, 0.12, 0]}>
       {MOBILE_PANELS_DATA.map((panel, idx) => (
         <CurvedEventItem
           key={panel.id}
@@ -450,9 +450,8 @@ export function HeroCurvedPanels() {
       <div className="relative w-full h-full">
         <Canvas
           camera={{
-            // CÁMARA MOBILE VERTICAL:
-            // Posición optimizada para 390-430px de ancho y relación ~9:19.5
-            position: [-1.4, 0.35, 8.8],
+            // CÁMARA MOBILE VERTICAL V4.3.1 (AMPLIADA 76% COBERTURA ESCÉNICA):
+            position: [-1.35, 0.10, 7.2],
             fov: 48,
           }}
           dpr={1} // Pixel Ratio FIJO en 1: mínimo consumo de memoria y fill-rate en mobile
@@ -461,23 +460,9 @@ export function HeroCurvedPanels() {
             powerPreference: 'high-performance',
             alpha: true,
           }}
-          onCreated={({ camera, gl, scene }) => {
-            camera.lookAt(0.9, 0.0, -0.3)
+          onCreated={({ camera, gl }) => {
+            camera.lookAt(0.85, -0.05, -0.3)
             camera.updateMatrixWorld()
-            if (typeof window !== 'undefined') {
-              ;(window as any).__THREE_HERO__ = {
-                gl,
-                scene,
-                camera,
-                mode: 'mobile-lite',
-                getInfo: () => ({
-                  calls: gl.info.render.calls,
-                  triangles: gl.info.render.triangles,
-                  geometries: gl.info.memory.geometries,
-                  textures: gl.info.memory.textures,
-                }),
-              }
-            }
             gl.domElement.addEventListener('webglcontextlost', (e) => {
               e.preventDefault()
               setWebGLAvailable(false)
@@ -508,23 +493,9 @@ export function HeroCurvedPanels() {
           powerPreference: 'high-performance',
           alpha: true,
         }}
-        onCreated={({ camera, gl, scene }) => {
+        onCreated={({ camera, gl }) => {
           camera.lookAt(1.4, 0.0, -0.4)
           camera.updateMatrixWorld()
-          if (typeof window !== 'undefined') {
-            ;(window as any).__THREE_HERO__ = {
-              gl,
-              scene,
-              camera,
-              mode: 'desktop',
-              getInfo: () => ({
-                calls: gl.info.render.calls,
-                triangles: gl.info.render.triangles,
-                geometries: gl.info.memory.geometries,
-                textures: gl.info.memory.textures,
-              }),
-            }
-          }
           gl.domElement.addEventListener('webglcontextlost', (e) => {
             e.preventDefault()
             setWebGLAvailable(false)
