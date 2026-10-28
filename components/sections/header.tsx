@@ -13,7 +13,35 @@ export function Header() {
   const [moreOpen, setMoreOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const pathname = usePathname()
+
+  function openMoreMenu() {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+    setMoreOpen(true)
+  }
+
+  function scheduleCloseMoreMenu() {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+    }
+
+    closeTimeoutRef.current = setTimeout(() => {
+      setMoreOpen(false)
+    }, 180)
+  }
+
+  // Cleanup del timeout al desmontar
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current)
+      }
+    }
+  }, [])
 
   // Sincronizar estado de scroll para header dinámico
   useEffect(() => {
@@ -25,10 +53,29 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Cerrar dropdown al presionar tecla Escape
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape' && moreOpen) {
+        if (closeTimeoutRef.current) {
+          clearTimeout(closeTimeoutRef.current)
+          closeTimeoutRef.current = null
+        }
+        setMoreOpen(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [moreOpen])
+
   // Cerrar dropdown al hacer click fuera
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        if (closeTimeoutRef.current) {
+          clearTimeout(closeTimeoutRef.current)
+          closeTimeoutRef.current = null
+        }
         setMoreOpen(false)
       }
     }
@@ -46,7 +93,7 @@ export function Header() {
           : 'border-b border-white/[0.06] bg-[#09090b]/70 backdrop-blur-xl'
       }`}
     >
-      <div className="mx-auto flex h-[64px] sm:h-[74px] max-w-[1320px] items-center justify-between px-4 sm:px-5 lg:px-8">
+      <div className="mx-auto flex h-[68px] sm:h-[80px] lg:h-[92px] max-w-[1320px] items-center justify-between px-4 sm:px-5 lg:px-8">
         <Logo />
         <nav className="hidden items-center gap-6 xl:gap-7 lg:flex">
           {primaryNavItems.map((item) => {
@@ -77,15 +124,27 @@ export function Header() {
           <div
             ref={dropdownRef}
             className="relative"
-            onMouseEnter={() => setMoreOpen(true)}
-            onMouseLeave={() => setMoreOpen(false)}
+            onMouseEnter={openMoreMenu}
+            onMouseLeave={scheduleCloseMoreMenu}
             onKeyDown={(e) => {
-              if (e.key === 'Escape') setMoreOpen(false)
+              if (e.key === 'Escape') {
+                if (closeTimeoutRef.current) {
+                  clearTimeout(closeTimeoutRef.current)
+                  closeTimeoutRef.current = null
+                }
+                setMoreOpen(false)
+              }
             }}
           >
             <button
               type="button"
-              onClick={() => setMoreOpen(!moreOpen)}
+              onClick={() => {
+                if (closeTimeoutRef.current) {
+                  clearTimeout(closeTimeoutRef.current)
+                  closeTimeoutRef.current = null
+                }
+                setMoreOpen((prev) => !prev)
+              }}
               aria-expanded={moreOpen}
               aria-haspopup="menu"
               className={`relative flex items-center gap-1 py-1 text-[12px] transition-colors ${
@@ -107,7 +166,11 @@ export function Header() {
             </button>
 
             {moreOpen && (
-              <div className="absolute right-0 top-full pt-2 z-50 animate-menu-dropdown">
+              <div
+                className="absolute right-0 top-full pt-2 z-50 animate-menu-dropdown"
+                onMouseEnter={openMoreMenu}
+                onMouseLeave={scheduleCloseMoreMenu}
+              >
                 <div
                   role="menu"
                   className="w-44 rounded-xl border border-white/10 bg-[#09090b]/95 p-1.5 shadow-2xl backdrop-blur-xl"
@@ -119,7 +182,13 @@ export function Header() {
                         key={subItem.label}
                         href={subItem.href}
                         role="menuitem"
-                        onClick={() => setMoreOpen(false)}
+                        onClick={() => {
+                          if (closeTimeoutRef.current) {
+                            clearTimeout(closeTimeoutRef.current)
+                            closeTimeoutRef.current = null
+                          }
+                          setMoreOpen(false)
+                        }}
                         className={`flex items-center justify-between rounded-lg px-3 py-2 text-[12px] transition-colors ${
                           isSubActive
                             ? 'bg-white/[0.08] font-medium text-white'
