@@ -44,7 +44,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[640px] sm:min-h-[720px] items-end overflow-hidden pb-12 pt-24 sm:pb-20 sm:pt-32 lg:min-h-screen lg:pb-24 scroll-mt-[64px] sm:scroll-mt-[74px] bg-[#09090B]"
+      className="relative flex min-h-[640px] sm:min-h-[720px] lg:min-h-screen items-end lg:items-start overflow-hidden pb-12 pt-24 sm:pb-20 sm:pt-32 lg:pt-[156px] lg:pb-24 scroll-mt-[64px] sm:scroll-mt-[74px] bg-[#09090B]"
     >
       {/* ============================================================== */}
       {/* CAPA 1: WEBGL CANVAS 3D (Arco modular de paneles con cámara oblicua) */}

@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -8,32 +10,30 @@ interface LogoProps {
 }
 
 /**
- * Componente Logo oficial de Centro Rental.
+ * Componente Logo oficial de Centro Rental — Versión Oscura 3D.
  * 
- * Utiliza el logo histórico original auténtico (/brand/centro-rental-logo-original.png):
- * - Esferas verde, azul, roja y órbita gris (RGB oficial).
- * - Tipografía "CENTRO" en azul corporativo y "RENTAL" en negro original.
- * - Subtítulo "SOUND & VISION" en gris corporativo original.
- * - Contención: Placa técnica institucional rebalanceada (#FFFFFF) con bordes técnicos redondeados,
- *   micro-elevación sobria de 1px para presencia y anclaje en el header, micro-borde perceptible,
- *   transición ágil y target táctil accesible (>=44px).
+ * - Fondo negro integrado directamente en el header sin pastilla blanca.
+ * - Isotipo 3D oficial: esferas verde, azul y roja con órbita metálica reflectante.
+ * - Tipografía corporativa: "CENTRO" en azul tridimensional y "RENTAL" en metal cepillado.
+ * - Subtítulo oficial: "SOUND & VISION" ubicado debajo de CENTRO.
+ * - Fusión óptica perfecta con el fondo #09090B del header mediante mix-blend-screen.
+ * - Centrado verticalmente dentro de la altura del header sin desbordar el borde inferior.
  */
 export function Logo({ className = '', priority = true }: LogoProps) {
   return (
     <Link
       href="/"
-      className={`group relative inline-flex items-center justify-center rounded-md bg-white px-2.5 py-1 sm:px-3 sm:py-1.5 md:px-3.5 border border-white/20 shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition-[opacity,transform] duration-[150ms] ease-out hover:opacity-95 active:scale-[0.99] motion-reduce:transition-none motion-reduce:transform-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448] focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090B] before:absolute before:-inset-y-2.5 before:-inset-x-1 sm:before:hidden ${className}`}
+      className={`group relative inline-flex items-center justify-center transition-all duration-150 ease-out active:scale-[0.99] motion-reduce:transition-none motion-reduce:transform-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B5D448] focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090B] ${className}`}
       aria-label="Centro Rental — Inicio"
     >
-      {/* Contenedor del logo con proporciones nativas 587x75 (ratio ~7.8267) */}
-      <span className="relative block h-[20px] w-[157px] sm:h-[24px] sm:w-[188px] md:h-[28px] md:w-[219px]">
+      <span className="relative block h-[56px] w-[109px] sm:h-[74px] sm:w-[144px] lg:h-[88px] lg:w-[172px] transition-transform duration-200 group-hover:scale-[1.01]">
         <Image
-          src="/brand/centro-rental-logo-original.png"
+          src="/brand/centro-rental-logo-dark-3d.png"
           alt="Centro Rental — Sound & Vision"
           fill
           priority={priority}
-          sizes="(max-width: 640px) 157px, (max-width: 768px) 188px, 219px"
-          className="object-contain"
+          sizes="(max-width: 640px) 109px, (max-width: 1024px) 144px, 172px"
+          className="object-contain mix-blend-screen select-none"
         />
       </span>
     </Link>
