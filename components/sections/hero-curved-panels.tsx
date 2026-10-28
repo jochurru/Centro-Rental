@@ -45,7 +45,7 @@ const DESKTOP_PANELS_DATA = [
   },
 ]
 
-// Mobile Lite: 5 fotografías de máximo impacto visual sin cargar las 2 restantes
+// Mobile Lite V4.3.2: 5 fotografías curadas de máxima nitidez, contraste y legibilidad rápida
 const MOBILE_PANELS_DATA = [
   {
     id: 'teatro-colon',
@@ -63,9 +63,9 @@ const MOBILE_PANELS_DATA = [
     src: '/images/rental/pantalla-led-congreso.webp',
   },
   {
-    id: 'hero-event',
-    title: 'Producción Técnica en Vivo · Concierto Principal',
-    src: '/hero-event.webp',
+    id: 'pantalla-led-auditorio',
+    title: 'Auditorio Corporativo · Pantalla LED Curva',
+    src: '/images/rental/pantalla-led-auditorio.webp',
   },
   {
     id: 'hotel-hilton',
@@ -88,13 +88,13 @@ const DESKTOP_ARC_CONFIG = {
 }
 
 // =============================================================================
-// PARÁMETROS GEOMÉTRICOS DEL ARCO MODULAR — MOBILE LITE V4.2
+// PARÁMETROS GEOMÉTRICOS DEL ARCO MODULAR — MOBILE V4.3.2 (CURVA SUAVE CONTINUA)
 // =============================================================================
 const MOBILE_ARC_CONFIG = {
   radius: 12.0, // Radio adaptado a vertical: curvatura visible sin efecto túnel
   eventWidth: 3.8, // Escala de panel para mostrar 2-3 eventos en pantalla vertical
   panelHeight: 3.4, // Altura equilibrada para fondo escénico
-  internalSegments: 5, // 5 facetas internas por foto (ultra liviano: 25 quads total)
+  internalSegments: 16, // 16 subdivisiones internas por foto: curva analíticamente suave (1.13° entre vértices, cero facetas)
   eventGap: 0.025, // Micro-junta técnica proporcional
   centerAngle: 0.10, // Ángulo focal desplazado hacia el centro-derecha
   cycleDuration: 14.0, // Misma cadencia pesada, lenta y solemne (14 segundos)
@@ -296,8 +296,126 @@ function DesktopCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
 }
 
 // =============================================================================
-// ESCENA MOBILE LITE (5 FOTOGRAFÍAS, R=12, 5 SEGMENTOS, CARGA LIVIANA)
+// ESCENA MOBILE V4.3.2 (5 FOTOGRAFÍAS, R=12, 16 SEGMENTOS, COVER UV, ANTIALIAS)
 // =============================================================================
+interface MobileCurvedEventItemProps {
+  index: number
+  src: string
+  globalOffsetRef: React.MutableRefObject<number>
+  eventStep: number
+  totalSpan: number
+  halfSpan: number
+  centerAngle: number
+  radius: number
+  geometry: THREE.PlaneGeometry
+  panelWidth: number
+  panelHeight: number
+}
+
+function MobileCurvedEventItem({
+  index,
+  src,
+  globalOffsetRef,
+  eventStep,
+  totalSpan,
+  halfSpan,
+  centerAngle,
+  radius,
+  geometry,
+  panelWidth,
+  panelHeight,
+}: MobileCurvedEventItemProps) {
+  const meshRef = useRef<THREE.Mesh>(null!)
+  const [texture, setTexture] = useState<THREE.Texture | null>(null)
+
+  useEffect(() => {
+    let active = true
+    const loader = new THREE.TextureLoader()
+    loader.load(src, (tex) => {
+      if (!active) {
+        tex.dispose()
+        return
+      }
+      tex.colorSpace = THREE.SRGBColorSpace
+      tex.wrapS = THREE.ClampToEdgeWrapping
+      tex.wrapT = THREE.ClampToEdgeWrapping
+      tex.minFilter = THREE.LinearMipmapLinearFilter
+      tex.magFilter = THREE.LinearFilter
+      tex.generateMipmaps = true
+      tex.anisotropy = 4
+
+      // COVER MAPPING: Preserva proporciones reales 1:1, evita deformación o estiramiento
+      const img = tex.image
+      if (img && img.width && img.height) {
+        const imgAspect = img.width / img.height
+        const panelAspect = panelWidth / panelHeight
+        if (imgAspect > panelAspect) {
+          // La imagen es más ancha que el panel: ajusta altura al 100%, recorta costados
+          const scaleU = panelAspect / imgAspect
+          tex.repeat.set(scaleU, 1)
+          tex.offset.set((1 - scaleU) / 2, 0)
+        } else {
+          // La imagen es más alta que el panel: ajusta ancho al 100%, recorta arriba/abajo
+          const scaleV = imgAspect / panelAspect
+          tex.repeat.set(1, scaleV)
+          tex.offset.set(0, (1 - scaleV) / 2)
+        }
+      }
+
+      tex.needsUpdate = true
+      setTexture(tex)
+    })
+    return () => {
+      active = false
+    }
+  }, [src, panelWidth, panelHeight])
+
+  useEffect(() => {
+    return () => {
+      if (texture) texture.dispose()
+    }
+  }, [texture])
+
+  const material = useMemo(() => {
+    if (!texture) return null
+    return new THREE.MeshBasicMaterial({
+      map: texture,
+      toneMapped: false,
+      side: THREE.DoubleSide,
+    })
+  }, [texture])
+
+  useEffect(() => {
+    return () => {
+      if (material) material.dispose()
+    }
+  }, [material])
+
+  useFrame(() => {
+    if (typeof document !== 'undefined' && document.visibilityState !== 'visible') {
+      return
+    }
+    if (!meshRef.current) return
+
+    const offset = globalOffsetRef.current
+    const baseAngle = index * eventStep - offset
+
+    const minAngle = centerAngle - halfSpan
+    const eventAngle =
+      (((baseAngle - minAngle) % totalSpan + totalSpan) % totalSpan) + minAngle
+
+    const x = Math.sin(eventAngle) * radius
+    const z = Math.cos(eventAngle) * radius - radius
+
+    meshRef.current.position.set(x, 0, z)
+    meshRef.current.rotation.y = eventAngle
+  })
+
+  if (!material) return null
+
+  return <mesh ref={meshRef} geometry={geometry} material={material} />
+}
+
 function MobileCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
   const N = MOBILE_PANELS_DATA.length
   const config = MOBILE_ARC_CONFIG
@@ -339,9 +457,9 @@ function MobileCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
   })
 
   return (
-    <group scale={1.32} position={[0, 0.12, 0]}>
+    <group scale={1.30} position={[0, 0.12, 0]}>
       {MOBILE_PANELS_DATA.map((panel, idx) => (
-        <CurvedEventItem
+        <MobileCurvedEventItem
           key={panel.id}
           index={idx}
           src={panel.src}
@@ -352,6 +470,8 @@ function MobileCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
           centerAngle={config.centerAngle}
           radius={config.radius}
           geometry={sharedGeometry}
+          panelWidth={config.eventWidth}
+          panelHeight={config.panelHeight}
         />
       ))}
     </group>
@@ -450,13 +570,13 @@ export function HeroCurvedPanels() {
       <div className="relative w-full h-full">
         <Canvas
           camera={{
-            // CÁMARA MOBILE VERTICAL V4.3.1 (AMPLIADA 76% COBERTURA ESCÉNICA):
+            // CÁMARA MOBILE VERTICAL V4.3.2 (PROTAGONISTA, SUAVE Y NÍTIDA):
             position: [-1.35, 0.10, 7.2],
             fov: 48,
           }}
-          dpr={1} // Pixel Ratio FIJO en 1: mínimo consumo de memoria y fill-rate en mobile
+          dpr={[1, 1.5]} // DPR moderado: 1.5 en pantallas de alta densidad (Retina/OLED)
           gl={{
-            antialias: false, // Máximo rendimiento y menor uso de memoria de textura
+            antialias: true, // Hardware MSAA: bordes suaves sin escalones ni serrucho
             powerPreference: 'high-performance',
             alpha: true,
           }}
