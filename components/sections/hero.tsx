@@ -1,35 +1,92 @@
+'use client'
+
+import React from 'react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import Image from 'next/image'
 import { MoveRight, MapPin } from 'lucide-react'
 import { GlowButton } from '@/components/common/glow-button'
 import { siteConfig } from '@/data/site'
 
+// =============================================================================
+// COMPONENTE DE FALLBACK ELEGANTE
+// =============================================================================
+function HeroFallback() {
+  return (
+    <div
+      aria-hidden="true"
+      className="absolute inset-0 bg-[#09090B] overflow-hidden"
+    >
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-40 transition-opacity duration-700"
+        style={{ backgroundImage: `url('/images/rental/pantalla-led-congreso.webp')` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#09090B] via-[#09090B]/90 via-35% to-transparent" />
+      <div className="hero-grid absolute inset-0 opacity-15" />
+    </div>
+  )
+}
+
+// Carga client-only de la escena WebGL Three.js / React Three Fiber
+const HeroCurvedPanels = dynamic(
+  () =>
+    import('./hero-curved-panels').then((mod) => mod.HeroCurvedPanels),
+  {
+    ssr: false,
+    loading: () => <HeroFallback />,
+  }
+)
+
+// =============================================================================
+// HERO CENTRO RENTAL 2.0 — EVENT WALL WEBGL
+// Paneles modulares sobre arco cilíndrico 3D + cámara oblicua en perspectiva
+// =============================================================================
 export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[640px] sm:min-h-[720px] items-end overflow-hidden pb-12 pt-24 sm:pb-20 sm:pt-32 lg:min-h-screen lg:pb-24 scroll-mt-[64px] sm:scroll-mt-[74px]"
+      className="relative flex min-h-[640px] sm:min-h-[720px] items-end overflow-hidden pb-12 pt-24 sm:pb-20 sm:pt-32 lg:min-h-screen lg:pb-24 scroll-mt-[64px] sm:scroll-mt-[74px] bg-[#09090B]"
     >
-      {/* Fotografía de producción técnica real con tratamiento cinematográfico */}
-      <Image
-        src="/hero-event.webp"
-        alt="Producción técnica audiovisual, iluminación y pantallas en vivo"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center opacity-65"
-      />
+      {/* ============================================================== */}
+      {/* CAPA 1: WEBGL CANVAS 3D (Arco modular de paneles con cámara oblicua) */}
+      {/* ============================================================== */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full select-none"
+      >
+        <HeroCurvedPanels />
+      </div>
 
-      {/* Overlays cinematográficos de contraste y fusión hacia el fondo */}
-      <div className="hero-grid absolute inset-0 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#09090b] via-[#09090b]/85 to-[#09090b]/20 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/40 to-transparent pointer-events-none" />
+      {/* ============================================================== */}
+      {/* CAPA 2: MÁSCARAS LOCALES DOM/CSS Y MÁXIMA LUMINOSIDAD          */}
+      {/* Protege 100% el texto a la izquierda sin velo oscuro global    */}
+      {/* ============================================================== */}
 
-      {/* Ambient glow sutil en verde y azul institucional */}
-      <div className="ambient-orb absolute -right-20 top-1/3 h-80 w-80 rounded-full bg-[#0284C7]/6 blur-[150px] pointer-events-none" />
-      <div className="ambient-orb absolute -left-20 bottom-1/4 h-72 w-72 rounded-full bg-[#B5D448]/8 blur-[150px] pointer-events-none" />
+      {/* Trama técnica milimétrica de fondo */}
+      <div className="hero-grid absolute inset-0 pointer-events-none opacity-20 z-10" />
 
-      <div className="relative mx-auto w-full max-w-[1320px] px-4 sm:px-5 lg:px-8">
+      {/* Gradiente horizontal local: Oscuro en zona de lectura (0-35%), 100% libre a la derecha */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#09090B] via-[#09090B]/95 via-32% to-transparent pointer-events-none z-10" />
+
+      {/* Máscara radial elíptica localizada sobre el bloque tipográfico */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_52%,rgba(9,9,11,0.98)_0%,rgba(9,9,11,0.92)_32%,rgba(9,9,11,0.5)_55%,transparent_75%)] pointer-events-none z-10" />
+
+      {/* Fusión superior sutil para navbar */}
+      <div className="absolute inset-x-0 top-0 h-24 sm:h-32 bg-gradient-to-b from-[#09090B] via-[#09090B]/60 to-transparent pointer-events-none z-10" />
+
+      {/* Fusión inferior sobria hacia el siguiente bloque */}
+      <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-[#09090B] via-[#09090B]/70 to-transparent pointer-events-none z-10" />
+
+      {/* Fusión lateral derecha suave para entrada de paneles */}
+      <div className="absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#09090B]/80 to-transparent pointer-events-none z-10" />
+
+      {/* Ambient glow corporativo sutil (Azul técnico + Verde corporativo) */}
+      <div className="ambient-orb absolute right-[10%] top-1/3 h-96 w-96 rounded-full bg-[#0284C7]/10 blur-[160px] pointer-events-none z-10" />
+      <div className="ambient-orb absolute -left-12 bottom-1/4 h-80 w-80 rounded-full bg-[#B5D448]/8 blur-[160px] pointer-events-none z-10" />
+
+      {/* ============================================================== */}
+      {/* CAPA 3: CONTENIDO COMERCIAL CENTRO RENTAL (100% INTACTO)        */}
+      {/* ============================================================== */}
+      <div className="relative mx-auto w-full max-w-[1320px] px-4 sm:px-5 lg:px-8 z-20">
         <div className="max-w-[860px]">
           {/* Eyebrow comercial ampliado */}
           <div className="mb-4 sm:mb-6 flex items-center gap-3 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] sm:tracking-[0.25em] text-white/70">
