@@ -8,11 +8,35 @@ import { installationServices } from '@/data/site'
 import { CategoryIcon } from '@/components/common/category-icons'
 
 export const metadata: Metadata = {
-  title: 'Instalaciones Fijas & Integración | Centro Rental',
+  title: 'Instalaciones Audiovisuales e Integración en Buenos Aires | Centro Rental',
   description:
-    'Proyectos de integración técnica fija: audio y video corporativo, domótica, automatización, cámaras de seguridad y control de acceso.',
+    'Diseño e instalación de audio, video, automatización, cámaras, control de acceso y tecnología audiovisual para empresas, auditorios y espacios corporativos.',
   alternates: {
     canonical: '/instalaciones',
+  },
+  openGraph: {
+    title: 'Instalaciones Audiovisuales & Integración | Centro Rental',
+    description:
+      'Proyectos de audio, video, automatización y tecnología fija para salas, auditorios, oficinas y espacios comerciales.',
+    url: 'https://centrorental.com.ar/instalaciones',
+    siteName: 'Centro Rental',
+    locale: 'es_AR',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Centro Rental — Tecnología y Producción para Eventos',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Instalaciones Audiovisuales & Integración | Centro Rental',
+    description:
+      'Proyectos de audio, video, automatización y tecnología fija para salas, auditorios, oficinas y espacios comerciales.',
+    images: ['/opengraph-image'],
   },
 }
 

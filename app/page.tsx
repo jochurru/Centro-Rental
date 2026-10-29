@@ -12,8 +12,35 @@ import { CTASection } from '@/components/common/cta-section'
 import { siteConfig } from '@/data/site'
 
 export const metadata: Metadata = {
+  title: 'Centro Rental | Producción Técnica para Eventos en Buenos Aires',
+  description:
+    'Sonido, iluminación, pantallas LED, streaming y producción técnica integral para eventos corporativos y grandes producciones en Buenos Aires.',
   alternates: {
     canonical: '/',
+  },
+  openGraph: {
+    title: 'Centro Rental — Tecnología y Producción para Eventos',
+    description:
+      'Sonido, iluminación, pantallas LED, streaming y soluciones técnicas para eventos, producciones e instalaciones en Buenos Aires.',
+    url: 'https://centrorental.com.ar',
+    siteName: 'Centro Rental',
+    locale: 'es_AR',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Centro Rental — Tecnología y Producción para Eventos',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Centro Rental — Tecnología y Producción para Eventos',
+    description:
+      'Sonido, iluminación, pantallas LED, streaming y soluciones técnicas para eventos, producciones e instalaciones en Buenos Aires.',
+    images: ['/opengraph-image'],
   },
 }
 

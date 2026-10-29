@@ -6,11 +6,35 @@ import { processSteps } from '@/data/site'
 import { Sliders, ShieldCheck, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Nosotros | Centro Rental',
+  title: 'Sobre Centro Rental | Trayectoria Audiovisual en Buenos Aires',
   description:
-    'Historia, metodología, capacidad técnica y proceso de trabajo de Centro Rental en producción integral de eventos.',
+    'Conocé la trayectoria, metodología y capacidad técnica de Centro Rental en producción de eventos, alquiler audiovisual e instalaciones profesionales.',
   alternates: {
     canonical: '/nosotros',
+  },
+  openGraph: {
+    title: 'Sobre Centro Rental — Técnica, Equipo y Trayectoria',
+    description:
+      'Conocé cómo trabaja Centro Rental y el equipo técnico detrás de eventos, producciones e instalaciones audiovisuales.',
+    url: 'https://centrorental.com.ar/nosotros',
+    siteName: 'Centro Rental',
+    locale: 'es_AR',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Centro Rental — Tecnología y Producción para Eventos',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sobre Centro Rental — Técnica, Equipo y Trayectoria',
+    description:
+      'Conocé cómo trabaja Centro Rental y el equipo técnico detrás de eventos, producciones e instalaciones audiovisuales.',
+    images: ['/opengraph-image'],
   },
 }
 

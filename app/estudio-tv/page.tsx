@@ -19,11 +19,35 @@ import { CTASection } from '@/components/common/cta-section'
 import { GlowButton } from '@/components/common/glow-button'
 
 export const metadata: Metadata = {
-  title: 'Estudio de TV & Producción Virtual | Centro Rental',
+  title: 'Estudio de TV y Streaming en Buenos Aires | Centro Rental',
   description:
-    'Espacio equipado para grabaciones corporativas, entrevistas, streaming y producciones virtuales con ciclorama verde, iluminación de estudio, control técnico y camarines.',
+    'Estudio equipado con ciclorama verde, iluminación, control técnico, camarines y streaming para grabaciones, entrevistas y producciones corporativas.',
   alternates: {
     canonical: '/estudio-tv',
+  },
+  openGraph: {
+    title: 'Estudio de TV & Producción Virtual | Centro Rental',
+    description:
+      'Ciclorama verde, control técnico, iluminación y streaming para grabaciones y producciones audiovisuales en Buenos Aires.',
+    url: 'https://centrorental.com.ar/estudio-tv',
+    siteName: 'Centro Rental',
+    locale: 'es_AR',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Centro Rental — Tecnología y Producción para Eventos',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Estudio de TV & Producción Virtual | Centro Rental',
+    description:
+      'Ciclorama verde, control técnico, iluminación y streaming para grabaciones y producciones audiovisuales en Buenos Aires.',
+    images: ['/opengraph-image'],
   },
 }
 

@@ -10,11 +10,35 @@ import { RentalMediaGallery } from '@/components/rental/rental-media-gallery'
 import { RentalDualConsoleMedia } from '@/components/rental/rental-dual-console-media'
 
 export const metadata: Metadata = {
-  title: 'Alquiler de Equipamiento | Centro Rental',
+  title: 'Alquiler de Equipamiento Audiovisual en Buenos Aires | Centro Rental',
   description:
-    'Alquiler de sistemas de sonido, iluminación, pantallas LED, streaming y estructuras técnicas para eventos en Buenos Aires.',
+    'Alquiler de sonido profesional, iluminación, pantallas LED, proyectores, Smart TVs y equipamiento audiovisual para eventos en Buenos Aires.',
   alternates: {
     canonical: '/alquiler',
+  },
+  openGraph: {
+    title: 'Alquiler de Equipamiento Audiovisual | Centro Rental',
+    description:
+      'Sonido, iluminación, pantallas LED, proyectores y tecnología audiovisual para eventos de cualquier escala.',
+    url: 'https://centrorental.com.ar/alquiler',
+    siteName: 'Centro Rental',
+    locale: 'es_AR',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Centro Rental — Tecnología y Producción para Eventos',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Alquiler de Equipamiento Audiovisual | Centro Rental',
+    description:
+      'Sonido, iluminación, pantallas LED, proyectores y tecnología audiovisual para eventos de cualquier escala.',
+    images: ['/opengraph-image'],
   },
 }
 

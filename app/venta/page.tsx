@@ -7,11 +7,35 @@ import { saleProducts, siteConfig } from '@/data/site'
 import { MercadoLibreIcon } from '@/components/common/social-icons'
 
 export const metadata: Metadata = {
-  title: 'Venta de Equipamiento | Centro Rental',
+  title: 'Venta de Equipamiento Audiovisual Profesional | Centro Rental',
   description:
-    'Catálogo de equipamiento profesional audiovisual en venta. Equipos revisados con compra protegida en nuestra tienda oficial de Mercado Libre.',
+    'Equipamiento profesional de audio, iluminación y video en venta. Productos revisados y comercializados mediante la tienda oficial de Centro Rental en Mercado Libre.',
   alternates: {
     canonical: '/venta',
+  },
+  openGraph: {
+    title: 'Equipamiento Audiovisual Profesional en Venta | Centro Rental',
+    description:
+      'Audio, iluminación y video profesional en venta desde el parque técnico de Centro Rental.',
+    url: 'https://centrorental.com.ar/venta',
+    siteName: 'Centro Rental',
+    locale: 'es_AR',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Centro Rental — Tecnología y Producción para Eventos',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Equipamiento Audiovisual Profesional en Venta | Centro Rental',
+    description:
+      'Audio, iluminación y video profesional en venta desde el parque técnico de Centro Rental.',
+    images: ['/opengraph-image'],
   },
 }
 

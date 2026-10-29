@@ -20,11 +20,35 @@ import {
 } from '@/components/common/social-icons'
 
 export const metadata: Metadata = {
-  title: 'Contacto | Centro Rental',
+  title: 'Contacto y Presupuestos | Centro Rental Buenos Aires',
   description:
-    'Contactá a Centro Rental. Solicitá presupuestos para sonido, iluminación, pantallas y logística técnica para eventos.',
+    'Contactá a Centro Rental para solicitar presupuesto de sonido, iluminación, pantallas LED, streaming, alquiler audiovisual o producción técnica para eventos.',
   alternates: {
     canonical: '/contacto',
+  },
+  openGraph: {
+    title: 'Contacto & Presupuestos | Centro Rental',
+    description:
+      'Contanos tu evento, fecha y necesidades técnicas. Nuestro equipo prepara una propuesta audiovisual a medida.',
+    url: 'https://centrorental.com.ar/contacto',
+    siteName: 'Centro Rental',
+    locale: 'es_AR',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Centro Rental — Tecnología y Producción para Eventos',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contacto & Presupuestos | Centro Rental',
+    description:
+      'Contanos tu evento, fecha y necesidades técnicas. Nuestro equipo prepara una propuesta audiovisual a medida.',
+    images: ['/opengraph-image'],
   },
 }
 

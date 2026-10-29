@@ -6,11 +6,35 @@ import { CTASection } from '@/components/common/cta-section'
 import { featuredClients } from '@/data/site'
 
 export const metadata: Metadata = {
-  title: 'Clientes y Confianza | Centro Rental',
+  title: 'Clientes y Empresas que Confían en Centro Rental',
   description:
-    'Marcas, productoras e instituciones que confían en los servicios técnicos y equipamiento de Centro Rental.',
+    'Empresas, productoras, hoteles e instituciones confían en Centro Rental para eventos, montajes y soluciones técnicas audiovisuales de alta exigencia.',
   alternates: {
     canonical: '/clientes',
+  },
+  openGraph: {
+    title: 'Clientes & Trayectoria | Centro Rental',
+    description:
+      'Marcas, empresas e instituciones que confiaron en Centro Rental para producciones y servicios audiovisuales profesionales.',
+    url: 'https://centrorental.com.ar/clientes',
+    siteName: 'Centro Rental',
+    locale: 'es_AR',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Centro Rental — Tecnología y Producción para Eventos',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Clientes & Trayectoria | Centro Rental',
+    description:
+      'Marcas, empresas e instituciones que confiaron en Centro Rental para producciones y servicios audiovisuales profesionales.',
+    images: ['/opengraph-image'],
   },
 }
 

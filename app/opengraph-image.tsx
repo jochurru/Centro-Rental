@@ -10,9 +10,9 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function OpenGraphImage() {
-  // Cargar el logotipo oficial @2x de alta resolución en base64
+  // Cargar el logotipo oficial 3D oscuro aprobado en base64
   const logoBuffer = readFileSync(
-    join(process.cwd(), 'public/brand/centro-rental-logo-original@2x.png')
+    join(process.cwd(), 'public/brand/centro-rental-logo-dark-3d.png')
   )
   const logoBase64 = `data:image/png;base64,${logoBuffer.toString('base64')}`
 
@@ -26,37 +26,37 @@ export default async function OpenGraphImage() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#09090B',
+          backgroundColor: '#000000',
           position: 'relative',
         }}
       >
-        {/* Sutil halo ambiental corporativo (#B5D448) */}
+        {/* Marco perimetral sutil sobrio y técnico */}
         <div
           style={{
             position: 'absolute',
-            width: '640px',
-            height: '420px',
-            borderRadius: '9999px',
-            background:
-              'radial-gradient(ellipse at center, rgba(181, 212, 72, 0.08) 0%, rgba(9, 9, 11, 0) 70%)',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        />
-
-        {/* Marco técnico perimetral sutil */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 32,
+            inset: 28,
             border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: 24,
+            borderRadius: 20,
             display: 'flex',
           }}
         />
 
-        {/* Contenedor principal de marca */}
+        {/* Acento lumínico en la base inferior del card */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 28,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '400px',
+            height: '2px',
+            background:
+              'linear-gradient(90deg, rgba(181, 212, 72, 0) 0%, rgba(181, 212, 72, 0.6) 50%, rgba(181, 212, 72, 0) 100%)',
+            display: 'flex',
+          }}
+        />
+
+        {/* Contenedor central de marca */}
         <div
           style={{
             display: 'flex',
@@ -65,15 +65,15 @@ export default async function OpenGraphImage() {
             justifyContent: 'center',
           }}
         >
-          {/* Logotipo oficial de Centro Rental */}
+          {/* Logotipo oficial 3D oscuro de Centro Rental — fusión óptica 100% pura con #000000 */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={logoBase64}
             alt="Centro Rental"
-            width={645}
-            height={82}
+            width={436}
+            height={225}
             style={{
-              marginBottom: 44,
+              marginBottom: 34,
             }}
           />
 
@@ -82,56 +82,56 @@ export default async function OpenGraphImage() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 12,
-              marginBottom: 24,
+              gap: 14,
+              marginBottom: 18,
             }}
           >
             <div
               style={{
-                width: 8,
-                height: 8,
+                width: 7,
+                height: 7,
                 borderRadius: 4,
                 backgroundColor: '#B5D448',
               }}
             />
             <span
               style={{
-                fontSize: 26,
+                fontSize: 27,
                 fontWeight: 600,
                 color: '#ffffff',
                 letterSpacing: '-0.02em',
               }}
             >
-              Producción técnica para eventos
+              Tecnología y Producción para Eventos
             </span>
             <div
               style={{
-                width: 8,
-                height: 8,
+                width: 7,
+                height: 7,
                 borderRadius: 4,
                 backgroundColor: '#B5D448',
               }}
             />
           </div>
 
-          {/* Categorías de servicios (jerarquía menor, sobria) */}
+          {/* Categorías de servicios técnicos */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: 16,
-              fontSize: 16,
-              color: 'rgba(255, 255, 255, 0.55)',
-              letterSpacing: '0.06em',
+              fontSize: 14,
+              color: 'rgba(255, 255, 255, 0.50)',
+              letterSpacing: '0.12em',
               textTransform: 'uppercase',
             }}
           >
             <span>Sonido</span>
-            <span style={{ color: 'rgba(255, 255, 255, 0.25)' }}>·</span>
+            <span style={{ color: 'rgba(255, 255, 255, 0.22)' }}>·</span>
             <span>Iluminación</span>
-            <span style={{ color: 'rgba(255, 255, 255, 0.25)' }}>·</span>
-            <span>Pantallas</span>
-            <span style={{ color: 'rgba(255, 255, 255, 0.25)' }}>·</span>
+            <span style={{ color: 'rgba(255, 255, 255, 0.22)' }}>·</span>
+            <span>Pantallas LED</span>
+            <span style={{ color: 'rgba(255, 255, 255, 0.22)' }}>·</span>
             <span>Streaming</span>
           </div>
         </div>

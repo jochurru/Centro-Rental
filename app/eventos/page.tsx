@@ -6,11 +6,35 @@ import { CTASection } from '@/components/common/cta-section'
 import { SocialPortfolioBridge, type SocialBridgeImage } from '@/components/common/social-portfolio-bridge'
 
 export const metadata: Metadata = {
-  title: 'Eventos y Producciones | Centro Rental',
+  title: 'Eventos y Producciones Audiovisuales | Centro Rental',
   description:
-    'Portfolio de eventos corporativos, festivales, shows y conferencias técnicas producidas por Centro Rental.',
+    'Conocé eventos, congresos, lanzamientos y producciones realizadas por Centro Rental con sonido, iluminación, pantallas y soporte técnico audiovisual.',
   alternates: {
     canonical: '/eventos',
+  },
+  openGraph: {
+    title: 'Eventos Reales & Producciones | Centro Rental',
+    description:
+      'Una selección de eventos y producciones donde Centro Rental estuvo detrás de la tecnología, el montaje y la operación técnica.',
+    url: 'https://centrorental.com.ar/eventos',
+    siteName: 'Centro Rental',
+    locale: 'es_AR',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Centro Rental — Tecnología y Producción para Eventos',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Eventos Reales & Producciones | Centro Rental',
+    description:
+      'Una selección de eventos y producciones donde Centro Rental estuvo detrás de la tecnología, el montaje y la operación técnica.',
+    images: ['/opengraph-image'],
   },
 }
 

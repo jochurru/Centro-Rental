@@ -9,11 +9,35 @@ import { specialServices } from '@/data/site'
 import { CategoryIcon } from '@/components/common/category-icons'
 
 export const metadata: Metadata = {
-  title: 'Servicios Especiales & Operativos | Centro Rental',
+  title: 'Producción Técnica para Eventos en Buenos Aires | Centro Rental',
   description:
-    'Servicios técnicos para eventos: streaming profesional, traducción simultánea, internet satelital Starlink, escenarios, grupos electrógenos y producción integral.',
+    'Producción técnica integral para eventos: streaming, operadores, traducción simultánea, conectividad, escenarios y soporte audiovisual profesional.',
   alternates: {
     canonical: '/servicios',
+  },
+  openGraph: {
+    title: 'Producción Técnica Integral para Eventos | Centro Rental',
+    description:
+      'Operación técnica, streaming, conectividad, traducción y soporte audiovisual para congresos, eventos corporativos y producciones en vivo.',
+    url: 'https://centrorental.com.ar/servicios',
+    siteName: 'Centro Rental',
+    locale: 'es_AR',
+    type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Centro Rental — Tecnología y Producción para Eventos',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Producción Técnica Integral para Eventos | Centro Rental',
+    description:
+      'Operación técnica, streaming, conectividad, traducción y soporte audiovisual para congresos, eventos corporativos y producciones en vivo.',
+    images: ['/opengraph-image'],
   },
 }
 
