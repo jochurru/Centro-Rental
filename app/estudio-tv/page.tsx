@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   title: 'Estudio de TV & Producción Virtual | Centro Rental',
   description:
     'Espacio equipado para grabaciones corporativas, entrevistas, streaming y producciones virtuales con ciclorama verde, iluminación de estudio, control técnico y camarines.',
+  alternates: {
+    canonical: '/estudio-tv',
+  },
 }
 
 // Capacidades respaldadas por evidencia forense e histórica

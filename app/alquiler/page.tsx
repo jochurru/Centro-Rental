@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'Alquiler de Equipamiento | Centro Rental',
   description:
     'Alquiler de sistemas de sonido, iluminación, pantallas LED, streaming y estructuras técnicas para eventos en Buenos Aires.',
+  alternates: {
+    canonical: '/alquiler',
+  },
 }
 
 export default function AlquilerPage() {

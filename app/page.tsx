@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { Hero } from '@/components/sections/hero'
 import { RentalQuickLinks } from '@/components/sections/rental-quick-links'
 import { BusinessUnits } from '@/components/sections/business-units'
@@ -9,6 +10,12 @@ import { SalesPreview } from '@/components/sections/sales-preview'
 import { ShowroomBanner } from '@/components/sections/showroom-banner'
 import { CTASection } from '@/components/common/cta-section'
 import { siteConfig } from '@/data/site'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/',
+  },
+}
 
 export default function HomePage() {
   return (

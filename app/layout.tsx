@@ -2,13 +2,38 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://centrorental.vercel.app'
+// Dominio comercial definitivo para canonicalización SEO absoluta (no depende de Vercel preview)
+const CANONICAL_SITE_URL = 'https://centrorental.com.ar'
+
+// Estrategia Fail-Closed: Solo indexable cuando SEO_INDEXABLE sea explícitamente 'true'
+// En localhost, preview de Vercel y producción previa a la migración emite noindex, nofollow
+const isIndexable = process.env.SEO_INDEXABLE === 'true'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(CANONICAL_SITE_URL),
   title: 'Centro Rental — Producción técnica para eventos',
   description:
     'Soluciones de sonido, iluminación, pantallas y equipamiento técnico para eventos que dejan marca.',
+  robots: isIndexable
+    ? {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
+        },
+      }
+    : {
+        index: false,
+        follow: false,
+        googleBot: {
+          index: false,
+          follow: false,
+        },
+      },
   openGraph: {
     title: 'Centro Rental — Producción técnica para eventos',
     description:
@@ -62,10 +87,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es">
+    <html lang="es-AR">
       <body className="antialiased bg-[#09090b] text-[#f4f4f5] min-h-screen flex flex-col selection:bg-[#B5D448]/30 selection:text-white">
         <Header />
-        <div className="flex-1">{children}</div>
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
         <Footer />
         <WhatsAppFloatingButton />
         {process.env.NODE_ENV === 'production' && <Analytics />}

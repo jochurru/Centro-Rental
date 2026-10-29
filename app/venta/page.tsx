@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Venta de Equipamiento | Centro Rental',
   description:
     'Catálogo de equipamiento profesional audiovisual en venta. Equipos revisados con compra protegida en nuestra tienda oficial de Mercado Libre.',
+  alternates: {
+    canonical: '/venta',
+  },
 }
 
 export default function VentaPage() {

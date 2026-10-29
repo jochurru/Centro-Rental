@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: 'Instalaciones Fijas & Integración | Centro Rental',
   description:
     'Proyectos de integración técnica fija: audio y video corporativo, domótica, automatización, cámaras de seguridad y control de acceso.',
+  alternates: {
+    canonical: '/instalaciones',
+  },
 }
 
 export default function InstalacionesPage() {

@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: 'Eventos y Producciones | Centro Rental',
   description:
     'Portfolio de eventos corporativos, festivales, shows y conferencias técnicas producidas por Centro Rental.',
+  alternates: {
+    canonical: '/eventos',
+  },
 }
 
 interface PortfolioEvent {

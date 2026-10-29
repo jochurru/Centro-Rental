@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   title: 'Contacto | Centro Rental',
   description:
     'Contactá a Centro Rental. Solicitá presupuestos para sonido, iluminación, pantallas y logística técnica para eventos.',
+  alternates: {
+    canonical: '/contacto',
+  },
 }
 
 export default function ContactoPage() {

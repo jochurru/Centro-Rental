@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: 'Nosotros | Centro Rental',
   description:
     'Historia, metodología, capacidad técnica y proceso de trabajo de Centro Rental en producción integral de eventos.',
+  alternates: {
+    canonical: '/nosotros',
+  },
 }
 
 export default function NosotrosPage() {

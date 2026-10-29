@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: 'Clientes y Confianza | Centro Rental',
   description:
     'Marcas, productoras e instituciones que confían en los servicios técnicos y equipamiento de Centro Rental.',
+  alternates: {
+    canonical: '/clientes',
+  },
 }
 
 export default function ClientesPage() {

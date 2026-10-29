@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Servicios Especiales & Operativos | Centro Rental',
   description:
     'Servicios técnicos para eventos: streaming profesional, traducción simultánea, internet satelital Starlink, escenarios, grupos electrógenos y producción integral.',
+  alternates: {
+    canonical: '/servicios',
+  },
 }
 
 const socialBridgeImages: SocialBridgeImage[] = [
