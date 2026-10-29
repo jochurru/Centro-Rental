@@ -1,3 +1,5 @@
+import { JsonLd } from '@/components/seo/json-ld'
+import { pagesSchema } from '@/lib/seo/schema'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { CheckCircle2 } from 'lucide-react'
@@ -45,6 +47,7 @@ export const metadata: Metadata = {
 export default function AlquilerPage() {
   return (
     <div className="min-h-screen">
+      <JsonLd data={pagesSchema.alquiler} />
       <PageHero
         eyebrow="Soluciones de Alquiler"
         title={

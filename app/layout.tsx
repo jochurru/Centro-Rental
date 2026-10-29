@@ -80,6 +80,8 @@ export const viewport: Viewport = {
 import { Header } from '@/components/sections/header'
 import { Footer } from '@/components/sections/footer'
 import { WhatsAppFloatingButton } from '@/components/common/whatsapp-floating-button'
+import { JsonLd } from '@/components/seo/json-ld'
+import { globalSchema } from '@/lib/seo/schema'
 
 export default function RootLayout({
   children,
@@ -89,6 +91,7 @@ export default function RootLayout({
   return (
     <html lang="es-AR">
       <body className="antialiased bg-[#09090b] text-[#f4f4f5] min-h-screen flex flex-col selection:bg-[#B5D448]/30 selection:text-white">
+        <JsonLd data={globalSchema} />
         <Header />
         <main id="main-content" className="flex-1">
           {children}

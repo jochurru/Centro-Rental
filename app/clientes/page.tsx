@@ -1,3 +1,5 @@
+import { JsonLd } from '@/components/seo/json-ld'
+import { pagesSchema } from '@/lib/seo/schema'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ShieldCheck, Award, Zap } from 'lucide-react'
@@ -41,6 +43,7 @@ export const metadata: Metadata = {
 export default function ClientesPage() {
   return (
     <div className="min-h-screen">
+      <JsonLd data={pagesSchema.clientes} />
       <PageHero
         eyebrow="Clientes & Trayectoria"
         title={

@@ -1,3 +1,5 @@
+import { JsonLd } from '@/components/seo/json-ld'
+import { pagesSchema } from '@/lib/seo/schema'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ArrowUpRight, ShieldCheck, Truck, Wrench } from 'lucide-react'
@@ -42,6 +44,7 @@ export const metadata: Metadata = {
 export default function VentaPage() {
   return (
     <div className="min-h-screen">
+      <JsonLd data={pagesSchema.venta} />
       <PageHero
         eyebrow="Venta & Renovación de Parque"
         title={

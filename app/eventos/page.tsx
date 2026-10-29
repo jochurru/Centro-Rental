@@ -1,3 +1,5 @@
+import { JsonLd } from '@/components/seo/json-ld'
+import { pagesSchema } from '@/lib/seo/schema'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ArrowUpRight, Sparkles } from 'lucide-react'
@@ -164,6 +166,7 @@ const socialBridgeImages: SocialBridgeImage[] = [
 export default function EventosPage() {
   return (
     <div className="min-h-screen">
+      <JsonLd data={pagesSchema.eventos} />
       <PageHero
         eyebrow="Portfolio & Casos Reales"
         title={

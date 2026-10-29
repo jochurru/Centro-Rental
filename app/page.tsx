@@ -1,3 +1,5 @@
+import { JsonLd } from '@/components/seo/json-ld'
+import { pagesSchema } from '@/lib/seo/schema'
 import type { Metadata } from 'next'
 import { Hero } from '@/components/sections/hero'
 import { RentalQuickLinks } from '@/components/sections/rental-quick-links'
@@ -47,6 +49,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="overflow-hidden">
+      <JsonLd data={pagesSchema.home} />
       {/* 1. Hero visual con enfoque comercial ampliado */}
       <Hero />
 

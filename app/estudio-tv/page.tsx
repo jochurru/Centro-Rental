@@ -1,3 +1,5 @@
+import { JsonLd } from '@/components/seo/json-ld'
+import { pagesSchema } from '@/lib/seo/schema'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -192,6 +194,7 @@ const relatedServices = [
 export default function EstudioTvPage() {
   return (
     <div className="min-h-screen">
+      <JsonLd data={pagesSchema.estudioTv} />
       {/* Hero */}
       <PageHero
         eyebrow="Infraestructura & Producción"

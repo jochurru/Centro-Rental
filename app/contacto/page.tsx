@@ -1,3 +1,5 @@
+import { JsonLd } from '@/components/seo/json-ld'
+import { pagesSchema } from '@/lib/seo/schema'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import {
@@ -55,6 +57,7 @@ export const metadata: Metadata = {
 export default function ContactoPage() {
   return (
     <div className="min-h-screen">
+      <JsonLd data={pagesSchema.contacto} />
       <PageHero
         eyebrow="Contacto & Presupuestos"
         title={
