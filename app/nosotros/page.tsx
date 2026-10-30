@@ -52,7 +52,7 @@ export default function NosotrosPage() {
             <span className="text-[#B5D448]">todo brille.</span>
           </>
         }
-        description="Centro Rental combina equipamiento audiovisual de vanguardia con un equipo técnico comprometido. Convertimos requerimientos complejos en puestas en escena fluidas y sin estrés."
+        description="Equipo técnico, equipamiento audiovisual de precisión y metodología de ingeniería para eventos y proyectos en Buenos Aires. Cuidamos cada detalle técnico para una ejecución sin fisuras."
       />
 
       {/* Filosofía técnica */}
@@ -121,7 +121,7 @@ export default function NosotrosPage() {
               </h2>
             </div>
             <p className="max-w-[420px] text-sm leading-relaxed text-white/70">
-              Un espacio físico permanente en Balvanera (CABA) para demostraciones de equipamiento, asesoramiento técnico personalizado y logística de retiros.
+              Un espacio físico permanente en Ciudad Autónoma de Buenos Aires para demostraciones de equipamiento, asesoramiento técnico personalizado y logística de retiros.
             </p>
           </div>
 

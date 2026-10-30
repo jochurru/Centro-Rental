@@ -69,11 +69,11 @@ export default function ServiciosPage() {
         eyebrow="Servicios Especiales & Operativos"
         title={
           <>
-            Servicios técnicos para{' '}
-            <span className="text-[#B5D448]">cada escenario.</span>
+            Producción técnica para{' '}
+            <span className="text-[#B5D448]">eventos y producciones.</span>
           </>
         }
-        description="Infraestructura técnica, conectividad y soporte operativo para eventos corporativos, congresos y transmisiones en vivo."
+        description="Operación técnica en vivo, streaming profesional, traducción simultánea, conectividad satelital y soporte audiovisual para eventos corporativos, congresos y transmisiones."
       />
 
       {/* Grid de servicios especiales */}

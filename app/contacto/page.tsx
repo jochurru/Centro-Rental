@@ -66,7 +66,7 @@ export default function ContactoPage() {
             <span className="text-[#B5D448]">tu fecha.</span>
           </>
         }
-        description="Estamos a tu disposición para evaluar requerimientos de riders, disponibilidad de fechas, presupuestos a medida y asesoramiento técnico directo."
+        description="Estamos a tu disposición en Buenos Aires para evaluar requerimientos de riders, disponibilidad de fechas, presupuestos a medida y asesoramiento técnico directo en nuestro showroom."
       />
 
       <section className="section-padding mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">

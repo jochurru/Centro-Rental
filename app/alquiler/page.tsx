@@ -53,11 +53,11 @@ export default function AlquilerPage() {
         eyebrow="Soluciones de Alquiler"
         title={
           <>
-            Equipamiento técnico para{' '}
+            Alquiler de equipamiento audiovisual para{' '}
             <span className="text-[#B5D448]">cada escala.</span>
           </>
         }
-        description="Proveemos sistemas de sonido de precisión, iluminación de diseño, pantallas LED, conectividad satelital y equipamiento audiovisual para eventos corporativos y masivos."
+        description="Proveemos equipamiento profesional de sonido, iluminación, pantallas LED, video y conectividad para eventos corporativos y sociales de distintas escalas en Buenos Aires."
       />
 
       {/* Catálogo ampliado de categorías de alquiler */}

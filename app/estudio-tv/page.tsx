@@ -204,7 +204,7 @@ export default function EstudioTvPage() {
             <span className="text-[#B5D448]">Producción Virtual.</span>
           </>
         }
-        description="Grabaciones, entrevistas, contenidos corporativos, streaming y producciones virtuales en un entorno técnico preparado."
+        description="Estudio profesional en Buenos Aires con ciclorama verde continuo, iluminación dedicada, control técnico y conectividad para streaming, grabaciones, entrevistas y producciones corporativas."
       >
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
           <GlowButton href="/contacto" className="px-7 py-3.5 text-sm font-medium">

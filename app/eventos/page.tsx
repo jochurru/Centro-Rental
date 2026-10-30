@@ -176,7 +176,7 @@ export default function EventosPage() {
             <span className="text-[#B5D448]">dejan marca.</span>
           </>
         }
-        description="Desde congresos y galas corporativas hasta recitales y lanzamientos exclusivos. Conocé cómo desplegamos nuestra infraestructura técnica en cada escenario."
+        description="Casos reales donde desplegamos producción técnica integral, sonido de precisión, iluminación, pantallas LED, estructuras y operación en vivo para eventos corporativos, institucionales y artísticos."
       />
 
       {/* Grid de eventos */}

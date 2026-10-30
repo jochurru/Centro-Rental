@@ -116,7 +116,7 @@ export function Hero() {
 
           {/* Bajada comercial */}
           <p className="mt-4 sm:mt-6 max-w-[580px] text-sm sm:text-base leading-relaxed text-white/75 sm:text-lg">
-            Alquiler de tecnología audiovisual, sonido, iluminación, pantallas, conectividad y soluciones técnicas para eventos, empresas e instalaciones.
+            Producción técnica audiovisual, alquiler de equipamiento e instalaciones para eventos y espacios profesionales en Buenos Aires. Soluciones de sonido, iluminación, pantallas y conectividad con respaldo operativo integral.
           </p>
 
           {/* CTAs principales */}

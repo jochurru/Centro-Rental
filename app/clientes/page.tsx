@@ -52,7 +52,7 @@ export default function ClientesPage() {
             <span className="text-[#B5D448]">no pueden fallar.</span>
           </>
         }
-        description="Trabajamos junto a productoras, instituciones, empresas y hoteles de primer nivel. En eventos de alta visibilidad, la solvencia técnica y el backup en vivo son indispensables."
+        description="Empresas, productoras, agencias, hoteles e instituciones que confían en Centro Rental para sus eventos más exigentes. Solvencia técnica, equipamiento verificado y respaldo en vivo donde no hay margen de error."
       />
 
       {/* Grid de clientes y sectores */}

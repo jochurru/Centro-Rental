@@ -54,7 +54,7 @@ export default function InstalacionesPage() {
             <span className="text-[#B5D448]">espacios corporativos.</span>
           </>
         }
-        description="Diseño, provisión y montaje de equipamiento permanente para salas de conferencias, auditorios, oficinas y espacios comerciales."
+        description="Instalaciones audiovisuales permanentes e integración B2B de sistemas de audio, video y automatización para auditorios, salas de reunión y espacios corporativos en Buenos Aires."
       />
 
       {/* Grid de servicios de instalaciones fijas */}

@@ -49,11 +49,11 @@ export default function VentaPage() {
         eyebrow="Venta & Renovación de Parque"
         title={
           <>
-            Equipamiento profesional{' '}
-            <span className="text-[#B5D448]">en venta.</span>
+            Venta de equipamiento audiovisual{' '}
+            <span className="text-[#B5D448]">profesional.</span>
           </>
         }
-        description="Equipos de audio, iluminación y video profesional de primeras marcas. Operamos como catálogo oficial y canalizamos las compras a través de nuestra tienda protegida en Mercado Libre."
+        description="Equipos de sonido, iluminación y video profesional por renovación de flota técnica. Unidades testeadas con mantenimiento profesional, comercializadas a través de nuestra tienda oficial en Mercado Libre."
       />
 
       {/* Banner oficial Mercado Libre */}
@@ -68,7 +68,7 @@ export default function VentaPage() {
                 Canal Oficial de Venta en Mercado Libre
               </p>
               <p className="text-xs text-white/60">
-                Garantía de compra protegida, financiación y envíos seguros a todo el país.
+                Garantía de compra protegida, opciones de financiación y entrega a través de Mercado Libre.
               </p>
             </div>
           </div>
