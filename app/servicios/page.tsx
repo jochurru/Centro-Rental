@@ -162,7 +162,7 @@ export default function ServiciosPage() {
                     href={service.href || '/contacto'}
                     className="inline-flex items-center gap-1.5 text-xs text-white/50 group-hover:text-[#B5D448] transition-colors"
                   >
-                    {service.href ? 'Ver detalles del estudio' : 'Consultar por este servicio'}
+                    {service.href ? 'Conocer el Estudio de TV y Streaming' : 'Consultar por este servicio'}
                     <ArrowUpRight size={13} />
                   </Link>
                 </div>
@@ -189,7 +189,7 @@ export default function ServiciosPage() {
         description="Escribinos con la fecha, tipo de evento y locación. Nuestro equipo arma una propuesta integral adaptada a tus requerimientos."
         primaryLabel="Solicitar presupuesto"
         primaryHref="/contacto"
-        secondaryLabel="Ver equipamiento en alquiler"
+        secondaryLabel="Ver equipamiento audiovisual en alquiler"
         secondaryHref="/alquiler"
       />
     </div>

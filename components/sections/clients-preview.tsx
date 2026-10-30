@@ -28,7 +28,7 @@ export function ClientsPreview() {
               href="/clientes"
               className="flex items-center gap-1.5 text-xs text-[#B5D448] hover:text-white transition-colors"
             >
-              Ver todos los clientes <ArrowUpRight size={13} />
+              Conocer nuestros clientes y marcas <ArrowUpRight size={13} />
             </Link>
           </div>
         </div>

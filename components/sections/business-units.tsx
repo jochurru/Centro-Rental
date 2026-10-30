@@ -10,7 +10,7 @@ const units = [
     description:
       'Equipamiento audiovisual, informática, conectividad y soporte técnico para empresas, eventos y producciones.',
     href: '/alquiler',
-    cta: 'Explorar alquiler',
+    cta: 'Ver catálogo de alquiler',
     image: '/images/rental/proyector-profesional.webp',
     imageAlt: 'Proyector profesional de alta potencia óptica',
     badge: 'Parque técnico',
@@ -23,7 +23,7 @@ const units = [
     description:
       'Streaming, traducción simultánea, conectividad satelital, escenarios y coordinación técnica para eventos.',
     href: '/servicios',
-    cta: 'Ver servicios',
+    cta: 'Ver servicios de producción',
     image: '/images/services/streaming-operadores.webp',
     imageAlt: 'Operadores técnicos en streaming y conmutación de video',
     badge: 'Operación en vivo',
@@ -36,7 +36,7 @@ const units = [
     description:
       'Integración de audio, video, automatización, seguridad y control de acceso para espacios corporativos y comerciales.',
     href: '/instalaciones',
-    cta: 'Ver instalaciones',
+    cta: 'Conocer instalaciones audiovisuales',
     image: '/images/installations/audio-rack-showroom.webp',
     imageAlt: 'Equipamiento de audio y racks de procesamiento',
     badge: 'Equipamiento e integración',

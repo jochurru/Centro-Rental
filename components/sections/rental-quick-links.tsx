@@ -47,7 +47,7 @@ export function RentalQuickLinks() {
               href="/alquiler"
               className="shrink-0 inline-flex min-h-[44px] sm:min-h-0 items-center gap-1 pl-1.5 pr-4 sm:pr-0 text-xs font-medium text-[#B5D448] transition-colors hover:text-white active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              <span>Ver catálogo completo</span>
+              <span>Ver catálogo de alquiler</span>
               <ArrowUpRight size={13} />
             </Link>
           </div>

@@ -30,7 +30,7 @@ export function Events() {
             href="/eventos"
             className="flex items-center gap-1.5 text-xs text-[#B5D448] hover:text-white transition-colors"
           >
-            Ver todos los eventos <ArrowUpRight size={13} />
+            Ver producciones y eventos realizados <ArrowUpRight size={13} />
           </Link>
         </div>
       </div>

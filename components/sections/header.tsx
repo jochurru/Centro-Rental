@@ -146,7 +146,7 @@ export function Header() {
                 setMoreOpen((prev) => !prev)
               }}
               aria-expanded={moreOpen}
-              aria-haspopup="menu"
+              aria-controls="more-navigation"
               className={`relative flex items-center gap-1 py-1 text-[12px] transition-colors ${
                 isMoreActive
                   ? 'font-medium text-white'
@@ -165,46 +165,49 @@ export function Header() {
               )}
             </button>
 
-            {moreOpen && (
+            <div
+              id="more-navigation"
+              className={`absolute right-0 top-full pt-2 z-50 transition-all duration-150 motion-reduce:transition-none ${
+                moreOpen
+                  ? 'opacity-100 translate-y-0 pointer-events-auto visible'
+                  : 'opacity-0 -translate-y-1 pointer-events-none invisible'
+              }`}
+              aria-hidden={!moreOpen}
+              onMouseEnter={openMoreMenu}
+              onMouseLeave={scheduleCloseMoreMenu}
+            >
               <div
-                className="absolute right-0 top-full pt-2 z-50 animate-menu-dropdown"
-                onMouseEnter={openMoreMenu}
-                onMouseLeave={scheduleCloseMoreMenu}
+                className="w-44 rounded-xl border border-white/10 bg-[#09090b]/95 p-1.5 shadow-2xl backdrop-blur-xl"
               >
-                <div
-                  role="menu"
-                  className="w-44 rounded-xl border border-white/10 bg-[#09090b]/95 p-1.5 shadow-2xl backdrop-blur-xl"
-                >
-                  {moreNavItems.map((subItem) => {
-                    const isSubActive = pathname.startsWith(subItem.href)
-                    return (
-                      <Link
-                        key={subItem.label}
-                        href={subItem.href}
-                        role="menuitem"
-                        onClick={() => {
-                          if (closeTimeoutRef.current) {
-                            clearTimeout(closeTimeoutRef.current)
-                            closeTimeoutRef.current = null
-                          }
-                          setMoreOpen(false)
-                        }}
-                        className={`flex items-center justify-between rounded-lg px-3 py-2 text-[12px] transition-colors ${
-                          isSubActive
-                            ? 'bg-white/[0.08] font-medium text-white'
-                            : 'text-white/70 hover:bg-white/[0.04] hover:text-white'
-                        }`}
-                      >
-                        <span>{subItem.label}</span>
-                        {isSubActive && (
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448] shadow-[0_0_6px_#B5D448]" />
-                        )}
-                      </Link>
-                    )
-                  })}
-                </div>
+                {moreNavItems.map((subItem) => {
+                  const isSubActive = pathname.startsWith(subItem.href)
+                  return (
+                    <Link
+                      key={subItem.label}
+                      href={subItem.href}
+                      tabIndex={moreOpen ? 0 : -1}
+                      onClick={() => {
+                        if (closeTimeoutRef.current) {
+                          clearTimeout(closeTimeoutRef.current)
+                          closeTimeoutRef.current = null
+                        }
+                        setMoreOpen(false)
+                      }}
+                      className={`flex items-center justify-between rounded-lg px-3 py-2 text-[12px] transition-colors ${
+                        isSubActive
+                          ? 'bg-white/[0.08] font-medium text-white'
+                          : 'text-white/70 hover:bg-white/[0.04] hover:text-white'
+                      }`}
+                    >
+                      <span>{subItem.label}</span>
+                      {isSubActive && (
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#B5D448] shadow-[0_0_6px_#B5D448]" />
+                      )}
+                    </Link>
+                  )
+                })}
               </div>
-            )}
+            </div>
           </div>
         </nav>
 

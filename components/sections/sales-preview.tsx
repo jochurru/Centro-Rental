@@ -15,9 +15,9 @@ export function SalesPreview() {
               <ShoppingBag size={14} />
               <span>Renovación de parque</span>
             </div>
-            <h3 className="mt-2 text-xl font-medium tracking-tight text-white sm:text-2xl">
+            <h2 className="mt-2 text-xl font-medium tracking-tight text-white sm:text-2xl">
               Equipamiento en venta por renovación de parque.
-            </h3>
+            </h2>
             <p className="mt-2 text-sm leading-relaxed text-white/60">
               Consultá el stock actualizado de consolas, sonido, iluminación y pantallas en nuestra tienda oficial con compra protegida.
             </p>
@@ -40,7 +40,7 @@ export function SalesPreview() {
               href="/venta"
               className="inline-flex items-center gap-1.5 px-2 py-1 text-xs text-white/50 transition-colors hover:text-white"
             >
-              Ver detalles de catálogo
+              Ver catálogo de equipamiento en venta
             </Link>
           </div>
         </div>

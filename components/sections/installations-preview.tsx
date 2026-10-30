@@ -68,7 +68,7 @@ export function InstallationsPreview() {
                     />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-sm font-medium text-white">{pillar.title}</h4>
+                    <h3 className="text-sm font-medium text-white">{pillar.title}</h3>
                     <p className="mt-0.5 text-xs leading-relaxed text-white/65">{pillar.desc}</p>
                   </div>
                 </div>
@@ -80,7 +80,7 @@ export function InstallationsPreview() {
                 href="/instalaciones"
                 className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-[border-color,background-color,color,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/5 hover:text-white active:scale-[0.98] motion-reduce:active:scale-100"
               >
-                Conocer instalaciones
+                Conocer instalaciones audiovisuales
                 <ArrowUpRight
                   size={15}
                   className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

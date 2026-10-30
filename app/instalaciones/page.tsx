@@ -163,9 +163,9 @@ export default function InstalacionesPage() {
         eyebrow="Asesoramiento técnico"
         title="Contanos las necesidades de tu espacio."
         description="Analizamos los requerimientos de uso de cada espacio para proponer el equipamiento e instalación técnica correspondiente."
-        primaryLabel="Solicitar presupuesto"
+        primaryLabel="Solicitar asesoramiento para una instalación audiovisual"
         primaryHref="/contacto"
-        secondaryLabel="Ver servicios de eventos"
+        secondaryLabel="Ver servicios de producción técnica"
         secondaryHref="/servicios"
       />
     </div>

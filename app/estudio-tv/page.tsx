@@ -393,7 +393,7 @@ export default function EstudioTvPage() {
                   </div>
 
                   <div className="mt-6 flex items-center gap-1.5 text-xs text-white/40 group-hover:text-[#B5D448] transition-colors">
-                    <span>Ver más</span>
+                    <span>Ver servicio técnico</span>
                     <ArrowUpRight size={12} />
                   </div>
                 </Link>
@@ -408,7 +408,7 @@ export default function EstudioTvPage() {
         eyebrow="Producción audiovisual"
         title="Contanos qué contenido necesitás producir."
         description="Te asesoramos en la planificación de tu grabación y requerimientos técnicos en estudio."
-        primaryLabel="Consultar disponibilidad"
+        primaryLabel="Consultar disponibilidad del estudio"
         primaryHref="/contacto"
         secondaryLabel="Ver todos los servicios"
         secondaryHref="/servicios"

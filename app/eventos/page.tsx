@@ -2,6 +2,7 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { pagesSchema } from '@/lib/seo/schema'
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { ArrowUpRight, Sparkles } from 'lucide-react'
 import { PageHero } from '@/components/common/page-hero'
 import { CTASection } from '@/components/common/cta-section'
@@ -180,10 +181,15 @@ export default function EventosPage() {
 
       {/* Grid de eventos */}
       <section className="section-padding mx-auto max-w-[1320px] px-4 sm:px-5 lg:px-8">
-        <div className="mb-8 flex items-center justify-between">
-          <p className="text-xs uppercase tracking-widest text-white/40">
-            Mostrando casos seleccionados
-          </p>
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-medium tracking-tight text-white">
+              Producciones y eventos destacados
+            </h2>
+            <p className="mt-1 text-xs uppercase tracking-widest text-white/40">
+              Mostrando casos seleccionados
+            </p>
+          </div>
           <div className="flex items-center gap-2 text-xs text-[#B5D448]">
             <Sparkles size={13} />
             <span>Producción técnica integral</span>
@@ -224,9 +230,9 @@ export default function EventosPage() {
                   <p className="text-xs font-medium uppercase tracking-wider text-white/60">
                     {item.location}
                   </p>
-                  <h2 className="mt-2 text-xl font-medium tracking-tight text-white group-hover:text-zinc-100 transition-colors">
+                  <h3 className="mt-2 text-xl font-medium tracking-tight text-white group-hover:text-zinc-100 transition-colors">
                     {item.title}
-                  </h2>
+                  </h3>
                 </div>
 
                 <div className="mt-5 flex flex-wrap gap-2 pt-4 border-t border-white/[0.06]">
@@ -242,6 +248,20 @@ export default function EventosPage() {
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Puente contextual: Eventos -> Servicios de producción técnica */}
+        <div className="mt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-xl border border-white/[0.06] bg-white/[0.015] p-5">
+          <p className="text-sm text-white/60">
+            ¿Buscás asesoramiento técnico integral para tu próximo evento o convención?
+          </p>
+          <Link
+            href="/servicios"
+            className="group shrink-0 inline-flex items-center gap-1.5 text-xs font-medium text-[#B5D448] hover:text-white transition-colors"
+          >
+            <span>Conocer nuestros servicios de producción técnica</span>
+            <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
         </div>
       </section>
 
@@ -262,7 +282,7 @@ export default function EventosPage() {
         description="Coordinamos sonido, iluminación, pantallas y logística técnica para que tu producción brille con tranquilidad absoluta."
         primaryLabel="Solicitar presupuesto"
         primaryHref="/contacto"
-        secondaryLabel="Ver equipamiento disponible"
+        secondaryLabel="Ver equipamiento audiovisual disponible"
         secondaryHref="/alquiler"
       />
     </div>

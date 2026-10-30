@@ -18,9 +18,9 @@ export function ShowroomBanner() {
                 <span>Espacio físico & retiros</span>
               </div>
 
-              <h3 className="mt-2.5 sm:mt-3 text-2xl font-medium tracking-tight text-white sm:text-3xl">
+              <h2 className="mt-2.5 sm:mt-3 text-2xl font-medium tracking-tight text-white sm:text-3xl">
                 Visitá nuestro showroom en CABA.
-              </h3>
+              </h2>
 
               <p className="mt-2.5 sm:mt-3 text-sm leading-relaxed text-white/70 sm:text-base">
                 Conocé equipamiento en exhibición, coordiná retiros de rental o conversá tu proyecto con nuestro equipo técnico.

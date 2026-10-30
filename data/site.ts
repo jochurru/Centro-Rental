@@ -120,6 +120,7 @@ export const primaryNavItems: NavItem[] = [
 export const moreNavItems: NavItem[] = [
   { label: 'Clientes', href: '/clientes' },
   { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Estudio TV', href: '/estudio-tv' },
   { label: 'Contacto', href: '/contacto' },
 ]
 
@@ -130,8 +131,11 @@ export const navItems: NavItem[] = [
 
 export const footerNavItems: NavItem[] = [
   { label: 'Inicio', href: '/' },
-  { label: 'Eventos', href: '/eventos' },
   { label: 'Alquiler', href: '/alquiler' },
+  { label: 'Servicios', href: '/servicios' },
+  { label: 'Instalaciones', href: '/instalaciones' },
+  { label: 'Estudio TV', href: '/estudio-tv' },
+  { label: 'Eventos', href: '/eventos' },
   { label: 'Venta', href: '/venta' },
   { label: 'Clientes', href: '/clientes' },
   { label: 'Nosotros', href: '/nosotros' },

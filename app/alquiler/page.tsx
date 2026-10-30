@@ -2,7 +2,8 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { pagesSchema } from '@/lib/seo/schema'
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { CheckCircle2 } from 'lucide-react'
+import Link from 'next/link'
+import { CheckCircle2, ArrowUpRight } from 'lucide-react'
 import { PageHero } from '@/components/common/page-hero'
 import { CTASection } from '@/components/common/cta-section'
 import { rentalCategories, equipment } from '@/data/site'
@@ -177,6 +178,27 @@ export default function AlquilerPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Puente contextual: Alquiler -> Servicios de producción técnica */}
+      <section className="mx-auto max-w-[1320px] px-4 sm:px-5 pb-6 pt-2 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-7">
+          <div className="max-w-[640px]">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-[#B5D448]">
+              Soporte y operación técnica
+            </span>
+            <p className="mt-1 text-sm text-white/70">
+              ¿Además del equipamiento necesitás personal técnico calificado para montaje, operación de sonido, luces o streaming durante el evento?
+            </p>
+          </div>
+          <Link
+            href="/servicios"
+            className="group shrink-0 inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-[border-color,background-color,color,box-shadow,transform] duration-150 hover:border-[#B5D448]/50 hover:bg-white/10 hover:text-white hover:shadow-[0_0_20px_-4px_rgba(181,212,72,0.3)] active:scale-[0.98] motion-reduce:active:scale-100"
+          >
+            Ver servicios de producción técnica
+            <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
         </div>
       </section>
 
