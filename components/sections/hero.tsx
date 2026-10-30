@@ -26,15 +26,11 @@ function HeroFallback() {
   )
 }
 
-// Carga client-only de la escena WebGL Three.js / React Three Fiber
-const HeroCurvedPanels = dynamic(
-  () =>
-    import('./hero-curved-panels').then((mod) => mod.HeroCurvedPanels),
-  {
-    ssr: false,
-    loading: () => <HeroFallback />,
-  }
-)
+// DIAGNÓSTICO PERF FASE 6.0: Event Wall WebGL desactivado temporalmente para comparación A/B en Lighthouse
+// Reemplazado por un placeholder estático que conserva exactamente el mismo espacio sin ejecutar WebGL/Three.js.
+function HeroCurvedPanels() {
+  return <div aria-hidden="true" className="w-full h-full bg-[#09090B]" />
+}
 
 // =============================================================================
 // HERO CENTRO RENTAL 2.0 — EVENT WALL WEBGL
