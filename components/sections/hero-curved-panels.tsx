@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState, useMemo } from 'react'
+import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -101,6 +101,35 @@ const MOBILE_ARC_CONFIG = {
 }
 
 // =============================================================================
+// PRECOMPUTACIÓN DE CONSTANTES MATEMÁTICAS FUERA DEL RENDER LOOP
+// =============================================================================
+const DESKTOP_MATH = (() => {
+  const N = DESKTOP_PANELS_DATA.length
+  const config = DESKTOP_ARC_CONFIG
+  const eventAngle = 2 * Math.asin(config.eventWidth / (2 * config.radius))
+  const eventGapAngle = config.eventGap / config.radius
+  const eventStep = eventAngle + eventGapAngle
+  const totalSpan = N * eventStep
+  const halfSpan = totalSpan / 2
+  const minAngle = config.centerAngle - halfSpan
+  const angularSpeed = eventStep / config.cycleDuration
+  return { N, config, eventStep, totalSpan, halfSpan, minAngle, angularSpeed }
+})()
+
+const MOBILE_MATH = (() => {
+  const N = MOBILE_PANELS_DATA.length
+  const config = MOBILE_ARC_CONFIG
+  const eventAngle = 2 * Math.asin(config.eventWidth / (2 * config.radius))
+  const eventGapAngle = config.eventGap / config.radius
+  const eventStep = eventAngle + eventGapAngle
+  const totalSpan = N * eventStep
+  const halfSpan = totalSpan / 2
+  const minAngle = config.centerAngle - halfSpan
+  const angularSpeed = eventStep / config.cycleDuration
+  return { N, config, eventStep, totalSpan, halfSpan, minAngle, angularSpeed }
+})()
+
+// =============================================================================
 // CREACIÓN DE GEOMETRÍA CURVA CONTINUA INTERNA POR EVENTO
 // =============================================================================
 function createCurvedEventGeometry(
@@ -131,32 +160,21 @@ function createCurvedEventGeometry(
 }
 
 // =============================================================================
-// PANEL INDIVIDUAL (SHARED MATERIAL & TEXTURE DISPOSAL)
+// PANEL INDIVIDUAL DESKTOP (REGISTRO DIRECTO DE MESH SIN USEFRAME HIJO)
 // =============================================================================
 interface CurvedEventItemProps {
   index: number
   src: string
-  globalOffsetRef: React.MutableRefObject<number>
-  eventStep: number
-  totalSpan: number
-  halfSpan: number
-  centerAngle: number
-  radius: number
   geometry: THREE.PlaneGeometry
+  onMeshMount: (index: number, mesh: THREE.Mesh | null) => void
 }
 
 function CurvedEventItem({
   index,
   src,
-  globalOffsetRef,
-  eventStep,
-  totalSpan,
-  halfSpan,
-  centerAngle,
-  radius,
   geometry,
+  onMeshMount,
 }: CurvedEventItemProps) {
-  const meshRef = useRef<THREE.Mesh>(null!)
   const [texture, setTexture] = useState<THREE.Texture | null>(null)
 
   useEffect(() => {
@@ -202,51 +220,34 @@ function CurvedEventItem({
     }
   }, [material])
 
-  useFrame(() => {
-    if (typeof document !== 'undefined' && document.visibilityState !== 'visible') {
-      return
-    }
-    if (!meshRef.current) return
-
-    const offset = globalOffsetRef.current
-    const baseAngle = index * eventStep - offset
-
-    const minAngle = centerAngle - halfSpan
-    const eventAngle =
-      (((baseAngle - minAngle) % totalSpan + totalSpan) % totalSpan) + minAngle
-
-    const x = Math.sin(eventAngle) * radius
-    const z = Math.cos(eventAngle) * radius - radius
-
-    meshRef.current.position.set(x, 0, z)
-    meshRef.current.rotation.y = eventAngle
-  })
-
   if (!material) return null
 
-  return <mesh ref={meshRef} geometry={geometry} material={material} />
+  return (
+    <mesh
+      ref={(mesh) => onMeshMount(index, mesh)}
+      geometry={geometry}
+      material={material}
+    />
+  )
 }
 
 // =============================================================================
-// ESCENA DESKTOP (7 FOTOGRAFÍAS, R=22, 10 SEGMENTOS) — 100% INTACTA
+// ESCENA DESKTOP OPTIMIZADA: SINGLE USEFRAME COORDINADO A ~30 FPS
 // =============================================================================
 interface SceneProps {
   reducedMotion: boolean
-  isVisibleRef: React.MutableRefObject<boolean>
+  isActiveRef: React.MutableRefObject<boolean>
 }
 
-function DesktopCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
-  const N = DESKTOP_PANELS_DATA.length
-  const config = DESKTOP_ARC_CONFIG
-
-  const eventAngle = 2 * Math.asin(config.eventWidth / (2 * config.radius))
-  const eventGapAngle = config.eventGap / config.radius
-  const eventStep = eventAngle + eventGapAngle
-  const totalSpan = N * eventStep
-  const halfSpan = totalSpan / 2
-  const angularSpeed = eventStep / config.cycleDuration
+function DesktopCurvedPanelsScene({ reducedMotion, isActiveRef }: SceneProps) {
+  const { N, config, eventStep, totalSpan, minAngle, angularSpeed } = DESKTOP_MATH
+  const radius = config.radius
 
   const globalOffsetRef = useRef(0)
+  const meshRefs = useRef<(THREE.Mesh | null)[]>([])
+  const lastRenderTimeRef = useRef(0)
+  const lastTimeRef = useRef<number | null>(null)
+  const hasRenderedStaticRef = useRef(false)
 
   const sharedGeometry = useMemo(
     () =>
@@ -265,15 +266,90 @@ function DesktopCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
     }
   }, [sharedGeometry])
 
-  useFrame((_, delta) => {
-    if (typeof document !== 'undefined' && document.visibilityState !== 'visible') {
+  const onMeshMount = useCallback(
+    (index: number, mesh: THREE.Mesh | null) => {
+      meshRefs.current[index] = mesh
+      if (mesh) {
+        const offset = globalOffsetRef.current
+        const baseAngle = index * eventStep - offset
+        const eventAngle =
+          (((baseAngle - minAngle) % totalSpan + totalSpan) % totalSpan) + minAngle
+        mesh.position.set(
+          Math.sin(eventAngle) * radius,
+          0,
+          Math.cos(eventAngle) * radius - radius
+        )
+        mesh.rotation.y = eventAngle
+        hasRenderedStaticRef.current = false
+      }
+    },
+    [eventStep, minAngle, totalSpan, radius]
+  )
+
+  // Bucle de renderizado único coordinado con Priority 1 (30 FPS controlado)
+  useFrame((state) => {
+    // 1. Si el Hero está fuera del viewport o la pestaña oculta, detener todo cálculo y render
+    if (!isActiveRef.current) {
+      lastTimeRef.current = null
       return
     }
-    if (!reducedMotion && isVisibleRef.current) {
-      globalOffsetRef.current =
-        (globalOffsetRef.current + angularSpeed * delta) % totalSpan
+
+    // 2. Modo accesibilidad prefers-reduced-motion: render estático único, cero animación
+    if (reducedMotion) {
+      if (!hasRenderedStaticRef.current) {
+        state.gl.render(state.scene, state.camera)
+        hasRenderedStaticRef.current = true
+      }
+      return
     }
-  })
+
+    const now = performance.now()
+
+    // Inicialización suave en el primer frame tras montar o reanudar (evita saltos temporales)
+    if (lastTimeRef.current === null) {
+      lastTimeRef.current = now
+      lastRenderTimeRef.current = now
+      state.gl.render(state.scene, state.camera)
+      return
+    }
+
+    // Throttling preciso a ~30 FPS (~33.33ms entre cuadros, margen de 1.5ms)
+    const elapsedSinceRender = now - lastRenderTimeRef.current
+    if (elapsedSinceRender < 31.8) {
+      return // Omite cuadro sin consumo de CPU/GPU
+    }
+
+    // Separación estricta entre cadencia de render y velocidad temporal de rotación
+    const elapsedDelta = Math.min((now - lastTimeRef.current) / 1000, 0.1)
+    lastTimeRef.current = now
+    lastRenderTimeRef.current = now - (elapsedSinceRender % 33.33)
+
+    // Avance angular continuo exactamente al ritmo visual aprobado
+    globalOffsetRef.current =
+      (globalOffsetRef.current + angularSpeed * elapsedDelta) % totalSpan
+    const offset = globalOffsetRef.current
+
+    // Actualización de posición y orientación en un solo for-loop sin asignación de objetos
+    const meshes = meshRefs.current
+    for (let i = 0; i < N; i++) {
+      const mesh = meshes[i]
+      if (!mesh) continue
+
+      const baseAngle = i * eventStep - offset
+      const eventAngle =
+        (((baseAngle - minAngle) % totalSpan + totalSpan) % totalSpan) + minAngle
+
+      mesh.position.set(
+        Math.sin(eventAngle) * radius,
+        0,
+        Math.cos(eventAngle) * radius - radius
+      )
+      mesh.rotation.y = eventAngle
+    }
+
+    // Renderizado único hacia WebGL
+    state.gl.render(state.scene, state.camera)
+  }, 1)
 
   return (
     <group>
@@ -282,13 +358,8 @@ function DesktopCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
           key={panel.id}
           index={idx}
           src={panel.src}
-          globalOffsetRef={globalOffsetRef}
-          eventStep={eventStep}
-          totalSpan={totalSpan}
-          halfSpan={halfSpan}
-          centerAngle={config.centerAngle}
-          radius={config.radius}
           geometry={sharedGeometry}
+          onMeshMount={onMeshMount}
         />
       ))}
     </group>
@@ -296,36 +367,25 @@ function DesktopCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
 }
 
 // =============================================================================
-// ESCENA MOBILE V4.3.2 (5 FOTOGRAFÍAS, R=12, 16 SEGMENTOS, COVER UV, ANTIALIAS)
+// PANEL INDIVIDUAL MOBILE (SHARED MATERIAL & COVER MAPPING)
 // =============================================================================
 interface MobileCurvedEventItemProps {
   index: number
   src: string
-  globalOffsetRef: React.MutableRefObject<number>
-  eventStep: number
-  totalSpan: number
-  halfSpan: number
-  centerAngle: number
-  radius: number
   geometry: THREE.PlaneGeometry
   panelWidth: number
   panelHeight: number
+  onMeshMount: (index: number, mesh: THREE.Mesh | null) => void
 }
 
 function MobileCurvedEventItem({
   index,
   src,
-  globalOffsetRef,
-  eventStep,
-  totalSpan,
-  halfSpan,
-  centerAngle,
-  radius,
   geometry,
   panelWidth,
   panelHeight,
+  onMeshMount,
 }: MobileCurvedEventItemProps) {
-  const meshRef = useRef<THREE.Mesh>(null!)
   const [texture, setTexture] = useState<THREE.Texture | null>(null)
 
   useEffect(() => {
@@ -350,12 +410,10 @@ function MobileCurvedEventItem({
         const imgAspect = img.width / img.height
         const panelAspect = panelWidth / panelHeight
         if (imgAspect > panelAspect) {
-          // La imagen es más ancha que el panel: ajusta altura al 100%, recorta costados
           const scaleU = panelAspect / imgAspect
           tex.repeat.set(scaleU, 1)
           tex.offset.set((1 - scaleU) / 2, 0)
         } else {
-          // La imagen es más alta que el panel: ajusta ancho al 100%, recorta arriba/abajo
           const scaleV = imgAspect / panelAspect
           tex.repeat.set(1, scaleV)
           tex.offset.set(0, (1 - scaleV) / 2)
@@ -391,43 +449,29 @@ function MobileCurvedEventItem({
     }
   }, [material])
 
-  useFrame(() => {
-    if (typeof document !== 'undefined' && document.visibilityState !== 'visible') {
-      return
-    }
-    if (!meshRef.current) return
-
-    const offset = globalOffsetRef.current
-    const baseAngle = index * eventStep - offset
-
-    const minAngle = centerAngle - halfSpan
-    const eventAngle =
-      (((baseAngle - minAngle) % totalSpan + totalSpan) % totalSpan) + minAngle
-
-    const x = Math.sin(eventAngle) * radius
-    const z = Math.cos(eventAngle) * radius - radius
-
-    meshRef.current.position.set(x, 0, z)
-    meshRef.current.rotation.y = eventAngle
-  })
-
   if (!material) return null
 
-  return <mesh ref={meshRef} geometry={geometry} material={material} />
+  return (
+    <mesh
+      ref={(mesh) => onMeshMount(index, mesh)}
+      geometry={geometry}
+      material={material}
+    />
+  )
 }
 
-function MobileCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
-  const N = MOBILE_PANELS_DATA.length
-  const config = MOBILE_ARC_CONFIG
-
-  const eventAngle = 2 * Math.asin(config.eventWidth / (2 * config.radius))
-  const eventGapAngle = config.eventGap / config.radius
-  const eventStep = eventAngle + eventGapAngle
-  const totalSpan = N * eventStep
-  const halfSpan = totalSpan / 2
-  const angularSpeed = eventStep / config.cycleDuration
+// =============================================================================
+// ESCENA MOBILE OPTIMIZADA: SINGLE USEFRAME COORDINADO A ~30 FPS
+// =============================================================================
+function MobileCurvedPanelsScene({ reducedMotion, isActiveRef }: SceneProps) {
+  const { N, config, eventStep, totalSpan, minAngle, angularSpeed } = MOBILE_MATH
+  const radius = config.radius
 
   const globalOffsetRef = useRef(0)
+  const meshRefs = useRef<(THREE.Mesh | null)[]>([])
+  const lastRenderTimeRef = useRef(0)
+  const lastTimeRef = useRef<number | null>(null)
+  const hasRenderedStaticRef = useRef(false)
 
   const sharedGeometry = useMemo(
     () =>
@@ -446,15 +490,81 @@ function MobileCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
     }
   }, [sharedGeometry])
 
-  useFrame((_, delta) => {
-    if (typeof document !== 'undefined' && document.visibilityState !== 'visible') {
+  const onMeshMount = useCallback(
+    (index: number, mesh: THREE.Mesh | null) => {
+      meshRefs.current[index] = mesh
+      if (mesh) {
+        const offset = globalOffsetRef.current
+        const baseAngle = index * eventStep - offset
+        const eventAngle =
+          (((baseAngle - minAngle) % totalSpan + totalSpan) % totalSpan) + minAngle
+        mesh.position.set(
+          Math.sin(eventAngle) * radius,
+          0,
+          Math.cos(eventAngle) * radius - radius
+        )
+        mesh.rotation.y = eventAngle
+        hasRenderedStaticRef.current = false
+      }
+    },
+    [eventStep, minAngle, totalSpan, radius]
+  )
+
+  useFrame((state) => {
+    if (!isActiveRef.current) {
+      lastTimeRef.current = null
       return
     }
-    if (!reducedMotion && isVisibleRef.current) {
-      globalOffsetRef.current =
-        (globalOffsetRef.current + angularSpeed * delta) % totalSpan
+
+    if (reducedMotion) {
+      if (!hasRenderedStaticRef.current) {
+        state.gl.render(state.scene, state.camera)
+        hasRenderedStaticRef.current = true
+      }
+      return
     }
-  })
+
+    const now = performance.now()
+
+    if (lastTimeRef.current === null) {
+      lastTimeRef.current = now
+      lastRenderTimeRef.current = now
+      state.gl.render(state.scene, state.camera)
+      return
+    }
+
+    const elapsedSinceRender = now - lastRenderTimeRef.current
+    if (elapsedSinceRender < 31.8) {
+      return
+    }
+
+    const elapsedDelta = Math.min((now - lastTimeRef.current) / 1000, 0.1)
+    lastTimeRef.current = now
+    lastRenderTimeRef.current = now - (elapsedSinceRender % 33.33)
+
+    globalOffsetRef.current =
+      (globalOffsetRef.current + angularSpeed * elapsedDelta) % totalSpan
+    const offset = globalOffsetRef.current
+
+    const meshes = meshRefs.current
+    for (let i = 0; i < N; i++) {
+      const mesh = meshes[i]
+      if (!mesh) continue
+
+      const baseAngle = i * eventStep - offset
+      const eventAngle =
+        (((baseAngle - minAngle) % totalSpan + totalSpan) % totalSpan) + minAngle
+
+      mesh.position.set(
+        Math.sin(eventAngle) * radius,
+        0,
+        Math.cos(eventAngle) * radius - radius
+      )
+      mesh.rotation.y = eventAngle
+    }
+
+    state.gl.render(state.scene, state.camera)
+  }, 1)
 
   return (
     <group scale={1.30} position={[0, 0.12, 0]}>
@@ -463,15 +573,10 @@ function MobileCurvedPanelsScene({ reducedMotion, isVisibleRef }: SceneProps) {
           key={panel.id}
           index={idx}
           src={panel.src}
-          globalOffsetRef={globalOffsetRef}
-          eventStep={eventStep}
-          totalSpan={totalSpan}
-          halfSpan={halfSpan}
-          centerAngle={config.centerAngle}
-          radius={config.radius}
           geometry={sharedGeometry}
           panelWidth={config.eventWidth}
           panelHeight={config.panelHeight}
+          onMeshMount={onMeshMount}
         />
       ))}
     </group>
@@ -511,10 +616,11 @@ function isWebGLSupported(): boolean {
 // COMPONENTE PRINCIPAL R3F CANVAS CLIENT-SIDE
 // =============================================================================
 export function HeroCurvedPanels() {
+  const containerRef = useRef<HTMLDivElement>(null)
   const [reducedMotion, setReducedMotion] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [webGLAvailable, setWebGLAvailable] = useState(true)
-  const isVisibleRef = useRef(true)
+  const isActiveRef = useRef(true)
 
   useEffect(() => {
     // 1. Detección de soporte WebGL
@@ -542,11 +648,36 @@ export function HeroCurvedPanels() {
     window.addEventListener('resize', checkMobile, { passive: true })
     window.addEventListener('orientationchange', checkMobile, { passive: true })
 
-    // 4. Pausar animación cuando la pestaña o app no está visible (Page Visibility API)
+    // 4. Control coordinado de actividad: IntersectionObserver (viewport) + Page Visibility API (pestaña)
+    let isIntersecting = true
+    let isTabVisible = document.visibilityState === 'visible'
+
+    const updateActiveState = () => {
+      isActiveRef.current = isIntersecting && isTabVisible
+    }
+
     const handleVisibility = () => {
-      isVisibleRef.current = document.visibilityState === 'visible'
+      isTabVisible = document.visibilityState === 'visible'
+      updateActiveState()
     }
     document.addEventListener('visibilitychange', handleVisibility)
+
+    let observer: IntersectionObserver | null = null
+    if ('IntersectionObserver' in window && containerRef.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0]
+          isIntersecting = entry ? entry.isIntersecting : true
+          updateActiveState()
+        },
+        {
+          root: null,
+          rootMargin: '100px 0px 100px 0px', // Pre-activa 100px antes para reanudar sin parpadeos
+          threshold: 0,
+        }
+      )
+      observer.observe(containerRef.current)
+    }
 
     return () => {
       mediaQuery.removeEventListener('change', handleMotionChange)
@@ -554,6 +685,7 @@ export function HeroCurvedPanels() {
       window.removeEventListener('resize', checkMobile)
       window.removeEventListener('orientationchange', checkMobile)
       document.removeEventListener('visibilitychange', handleVisibility)
+      if (observer) observer.disconnect()
     }
   }, [])
 
@@ -567,7 +699,7 @@ export function HeroCurvedPanels() {
   // ===========================================================================
   if (isMobile) {
     return (
-      <div className="relative w-full h-full">
+      <div ref={containerRef} className="relative w-full h-full">
         <Canvas
           camera={{
             // CÁMARA MOBILE VERTICAL V4.3.2 (PROTAGONISTA, SUAVE Y NÍTIDA):
@@ -592,7 +724,7 @@ export function HeroCurvedPanels() {
         >
           <MobileCurvedPanelsScene
             reducedMotion={reducedMotion}
-            isVisibleRef={isVisibleRef}
+            isActiveRef={isActiveRef}
           />
         </Canvas>
       </div>
@@ -601,7 +733,7 @@ export function HeroCurvedPanels() {
 
   // DESKTOP/TABLET (>= 640px): Escena monumental completa de 7 eventos (100% INTACTA)
   return (
-    <div className="relative w-full h-full">
+    <div ref={containerRef} className="relative w-full h-full">
       <Canvas
         camera={{
           position: [-2.2, 0.05, 9.2],
@@ -625,7 +757,7 @@ export function HeroCurvedPanels() {
       >
         <DesktopCurvedPanelsScene
           reducedMotion={reducedMotion}
-          isVisibleRef={isVisibleRef}
+          isActiveRef={isActiveRef}
         />
       </Canvas>
     </div>
