@@ -1,12 +1,13 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Send, CheckCircle2 } from 'lucide-react'
+import { Send, CheckCircle2, MessageSquare } from 'lucide-react'
 import { GlowButton } from '@/components/common/glow-button'
 import { siteConfig } from '@/data/site'
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [whatsappHref, setWhatsappHref] = useState('')
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -18,11 +19,12 @@ export function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // En esta fase de prototipo comercial, derivamos a WhatsApp con los datos o confirmamos en pantalla
     const message = encodeURIComponent(
       `Hola Centro Rental! Consulta de presupuesto:\nNombre: ${formData.name}\nTeléfono: ${formData.phone}\nEmail: ${formData.email}\nTipo de evento: ${formData.eventType}\nFecha/Locación: ${formData.dateLocation}\nDetalles: ${formData.details}`
     )
-    window.open(`https://wa.me/${siteConfig.whatsappPhone}?text=${message}`, '_blank')
+    const targetUrl = `https://wa.me/${siteConfig.whatsappPhone}?text=${message}`
+    setWhatsappHref(targetUrl)
+    window.open(targetUrl, '_blank')
     setSubmitted(true)
   }
 
@@ -33,18 +35,46 @@ export function ContactForm() {
         Solicitá tu presupuesto
       </h3>
       <p className="mt-2 text-sm text-white/50">
-        Completá los datos básicos del evento y te responderemos con una propuesta formal.
+        Completá los datos básicos del evento y conectate directamente con nuestro equipo técnico.
       </p>
 
       {submitted ? (
         <div className="mt-8 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-6 text-center">
           <CheckCircle2 className="mx-auto h-10 w-10 text-emerald-400" />
           <h4 className="mt-3 text-lg font-medium text-white">
-            ¡Consulta enviada!
+            ¡Consulta preparada en WhatsApp!
           </h4>
           <p className="mt-2 text-xs text-white/80">
-            Se abrió WhatsApp para conectar directamente con nuestro equipo técnico. También te responderemos a tu correo.
+            Se abrió WhatsApp con todos los datos técnicos de tu evento listos para enviar a nuestro equipo de guardia.
           </p>
+          <div className="mt-5 flex flex-col items-center gap-3">
+            <a
+              href={whatsappHref || `https://wa.me/${siteConfig.whatsappPhone}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-4 py-2.5 text-xs font-semibold text-black transition-colors hover:bg-[#20ba5a]"
+            >
+              <MessageSquare size={14} />
+              Abrir WhatsApp nuevamente
+            </a>
+            <button
+              type="button"
+              onClick={() => {
+                setSubmitted(false)
+                setFormData({
+                  name: '',
+                  phone: '',
+                  email: '',
+                  eventType: 'corporativo',
+                  dateLocation: '',
+                  details: '',
+                })
+              }}
+              className="text-[11px] text-white/50 underline hover:text-white"
+            >
+              Completar otra consulta
+            </button>
+          </div>
         </div>
       ) : (
         <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
@@ -145,10 +175,10 @@ export function ContactForm() {
               className="w-full justify-center py-4 text-sm"
             >
               <Send size={15} />
-              Enviar solicitud de presupuesto
+              Enviar consulta por WhatsApp
             </GlowButton>
             <p className="mt-3 text-center text-[11px] text-white/60">
-              Tus datos se utilizarán exclusivamente para elaborar la cotización técnica.
+              Al enviar, se abrirá WhatsApp con el resumen de tu evento para recibir atención técnica directa.
             </p>
           </div>
         </form>
