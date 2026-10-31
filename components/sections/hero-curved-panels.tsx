@@ -167,6 +167,7 @@ interface CurvedEventItemProps {
   src: string
   geometry: THREE.PlaneGeometry
   onMeshMount: (index: number, mesh: THREE.Mesh | null) => void
+  onTextureLoad?: (index: number) => void
 }
 
 function CurvedEventItem({
@@ -174,6 +175,7 @@ function CurvedEventItem({
   src,
   geometry,
   onMeshMount,
+  onTextureLoad,
 }: CurvedEventItemProps) {
   const [texture, setTexture] = useState<THREE.Texture | null>(null)
 
@@ -193,11 +195,12 @@ function CurvedEventItem({
       tex.generateMipmaps = true
       tex.needsUpdate = true
       setTexture(tex)
+      onTextureLoad?.(index)
     })
     return () => {
       active = false
     }
-  }, [src])
+  }, [src, onTextureLoad, index])
 
   useEffect(() => {
     return () => {
@@ -232,22 +235,32 @@ function CurvedEventItem({
 }
 
 // =============================================================================
-// ESCENA DESKTOP ESTABILIZADA (FASE 6.2):
-// Render loop administrado nativamente por React Three Fiber (Priority 0).
-// Elimina Priority 1 y gl.render manual para erradicar el agrupamiento de Long Tasks.
-// Un solo coordinador sin hooks hijos, precomputación analítica y cero asignaciones.
+// ESCENA DESKTOP ESTABILIZADA (FASE 6.3):
+// Render loop nativo R3F (Priority 0) con detección progresiva de carga.
+// Notifica onSceneReady cuando las texturas y el primer frame están listos,
+// permitiendo una transición suave desde el fallback sin bloquear la carga crítica.
 // =============================================================================
 interface SceneProps {
   reducedMotion: boolean
   isActiveRef: React.MutableRefObject<boolean>
 }
 
-function DesktopCurvedPanelsScene({ reducedMotion, isActiveRef }: SceneProps) {
+interface DesktopSceneProps extends SceneProps {
+  onSceneReady?: () => void
+}
+
+function DesktopCurvedPanelsScene({
+  reducedMotion,
+  isActiveRef,
+  onSceneReady,
+}: DesktopSceneProps) {
   const { N, config, eventStep, totalSpan, minAngle, angularSpeed } = DESKTOP_MATH
   const radius = config.radius
 
   const globalOffsetRef = useRef(0)
   const meshRefs = useRef<(THREE.Mesh | null)[]>([])
+  const loadedCountRef = useRef(0)
+  const hasReportedReadyRef = useRef(false)
 
   const sharedGeometry = useMemo(
     () =>
@@ -285,10 +298,39 @@ function DesktopCurvedPanelsScene({ reducedMotion, isActiveRef }: SceneProps) {
     [eventStep, minAngle, totalSpan, radius]
   )
 
+  const handleTextureLoad = useCallback(() => {
+    loadedCountRef.current++
+    if (!hasReportedReadyRef.current && loadedCountRef.current >= 2) {
+      hasReportedReadyRef.current = true
+      requestAnimationFrame(() => {
+        onSceneReady?.()
+      })
+    }
+  }, [onSceneReady])
+
+  useEffect(() => {
+    // Safety fallback: si por retraso de red no cargan 2 texturas antes de 1200ms, notificar de todos modos
+    const timer = setTimeout(() => {
+      if (!hasReportedReadyRef.current) {
+        hasReportedReadyRef.current = true
+        onSceneReady?.()
+      }
+    }, 1200)
+    return () => clearTimeout(timer)
+  }, [onSceneReady])
+
   // Bucle de animación coordinado con Priority 0 (scheduler nativo de R3F).
   // Permite que el browser y Three.js distribuyan la carga de carga/compilación
   // de texturas suavemente entre rAF ticks sin monopolizar el main thread.
   useFrame((_, delta) => {
+    // Si ya cargó al menos una textura y no se reportó ready, notificar tras el primer frame
+    if (!hasReportedReadyRef.current && loadedCountRef.current >= 1) {
+      hasReportedReadyRef.current = true
+      requestAnimationFrame(() => {
+        onSceneReady?.()
+      })
+    }
+
     // 1. Pausa inmediata fuera del viewport o con pestaña oculta
     if (!isActiveRef.current) return
 
@@ -331,6 +373,7 @@ function DesktopCurvedPanelsScene({ reducedMotion, isActiveRef }: SceneProps) {
           src={panel.src}
           geometry={sharedGeometry}
           onMeshMount={onMeshMount}
+          onTextureLoad={handleTextureLoad}
         />
       ))}
     </group>
@@ -555,16 +598,20 @@ function MobileCurvedPanelsScene({ reducedMotion, isActiveRef }: SceneProps) {
 }
 
 // =============================================================================
-// FALLBACK ELEGANTE EN CSS (SOLO ANTE FALLA REAL DE WEBGL)
+// FALLBACK ELEGANTE EN CSS (CAPA INMEDIATA Y RESILIENTE ANTE INACTIVIDAD/FALLA)
 // =============================================================================
 function LocalHeroFallback() {
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[#09090B]">
+    <div
+      aria-hidden="true"
+      className="absolute inset-0 bg-[#09090B] overflow-hidden pointer-events-none select-none"
+    >
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-60"
+        className="absolute inset-0 bg-cover bg-center opacity-40 transition-opacity duration-700"
         style={{ backgroundImage: `url('/images/rental/pantalla-led-congreso.webp')` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#09090B] via-[#09090B]/80 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#09090B] via-[#09090B]/90 via-35% to-transparent" />
+      <div className="hero-grid absolute inset-0 opacity-15 hidden sm:block" />
     </div>
   )
 }
@@ -591,6 +638,8 @@ export function HeroCurvedPanels() {
   const [reducedMotion, setReducedMotion] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [webGLAvailable, setWebGLAvailable] = useState(true)
+  const [webGLDeferred, setWebGLDeferred] = useState(false)
+  const [webGLReady, setWebGLReady] = useState(false)
   const isActiveRef = useRef(true)
 
   useEffect(() => {
@@ -609,12 +658,48 @@ export function HeroCurvedPanels() {
 
     // 3. Detección de viewport móvil reactiva vía matchMedia y resize
     const mobileQuery = window.matchMedia('(max-width: 639px)')
-    setIsMobile(mobileQuery.matches)
-    const handleMobileChange = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    const initialIsMobile = window.innerWidth < 640 || mobileQuery.matches
+    setIsMobile(initialIsMobile)
+
+    let idleId: number | null = null
+    let timerId: NodeJS.Timeout | null = null
+
+    if (initialIsMobile) {
+      // Mobile: Montaje inmediato sin diferir para preservar Performance 90 / TBT 370ms
+      setWebGLDeferred(true)
+      setWebGLReady(true)
+    } else {
+      // Desktop/Tablet: Difiere el montaje del Canvas fuera del camino crítico de carga
+      if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+        idleId = (window as any).requestIdleCallback(
+          () => {
+            setWebGLDeferred(true)
+          },
+          { timeout: 1000 }
+        )
+      } else {
+        timerId = setTimeout(() => {
+          setWebGLDeferred(true)
+        }, 500)
+      }
+    }
+
+    const handleMobileChange = (e: MediaQueryListEvent) => {
+      setIsMobile(e.matches)
+      if (e.matches) {
+        setWebGLDeferred(true)
+        setWebGLReady(true)
+      }
+    }
     mobileQuery.addEventListener('change', handleMobileChange)
 
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640 || mobileQuery.matches)
+      const isMob = window.innerWidth < 640 || mobileQuery.matches
+      setIsMobile(isMob)
+      if (isMob) {
+        setWebGLDeferred(true)
+        setWebGLReady(true)
+      }
     }
     window.addEventListener('resize', checkMobile, { passive: true })
     window.addEventListener('orientationchange', checkMobile, { passive: true })
@@ -657,6 +742,12 @@ export function HeroCurvedPanels() {
       window.removeEventListener('orientationchange', checkMobile)
       document.removeEventListener('visibilitychange', handleVisibility)
       if (observer) observer.disconnect()
+      if (idleId !== null && typeof window !== 'undefined' && 'cancelIdleCallback' in window) {
+        ;(window as any).cancelIdleCallback(idleId)
+      }
+      if (timerId !== null) {
+        clearTimeout(timerId)
+      }
     }
   }, [])
 
@@ -702,35 +793,48 @@ export function HeroCurvedPanels() {
     )
   }
 
-  // DESKTOP/TABLET (>= 640px): Escena monumental completa de 7 eventos (100% INTACTA)
+  // DESKTOP/TABLET (>= 640px): Escena monumental diferida fuera del camino crítico
   return (
     <div ref={containerRef} className="relative w-full h-full">
-      <Canvas
-        camera={{
-          position: [-2.2, 0.05, 9.2],
-          fov: 40,
-        }}
-        dpr={[1, 1.5]}
-        gl={{
-          antialias: true,
-          powerPreference: 'high-performance',
-          alpha: true,
-        }}
-        onCreated={({ camera, gl }) => {
-          camera.lookAt(1.4, 0.0, -0.4)
-          camera.updateMatrixWorld()
-          gl.domElement.addEventListener('webglcontextlost', (e) => {
-            e.preventDefault()
-            setWebGLAvailable(false)
-          })
-        }}
-        style={{ width: '100%', height: '100%' }}
-      >
-        <DesktopCurvedPanelsScene
-          reducedMotion={reducedMotion}
-          isActiveRef={isActiveRef}
-        />
-      </Canvas>
+      {/* 1. Capa de Fallback Inicial Inmediata (garantiza FCP/LCP instantáneo, CLS=0 y contraste continuo) */}
+      <LocalHeroFallback />
+
+      {/* 2. Escena WebGL 3D montada progresivamente tras el render crítico */}
+      {webGLDeferred && (
+        <div
+          className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+            webGLReady ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <Canvas
+            camera={{
+              position: [-2.2, 0.05, 9.2],
+              fov: 40,
+            }}
+            dpr={[1, 1.5]}
+            gl={{
+              antialias: true,
+              powerPreference: 'high-performance',
+              alpha: true,
+            }}
+            onCreated={({ camera, gl }) => {
+              camera.lookAt(1.4, 0.0, -0.4)
+              camera.updateMatrixWorld()
+              gl.domElement.addEventListener('webglcontextlost', (e) => {
+                e.preventDefault()
+                setWebGLAvailable(false)
+              })
+            }}
+            style={{ width: '100%', height: '100%' }}
+          >
+            <DesktopCurvedPanelsScene
+              reducedMotion={reducedMotion}
+              isActiveRef={isActiveRef}
+              onSceneReady={() => setWebGLReady(true)}
+            />
+          </Canvas>
+        </div>
+      )}
     </div>
   )
 }
