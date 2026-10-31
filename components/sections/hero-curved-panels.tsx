@@ -605,14 +605,7 @@ function LocalHeroFallback() {
     <div
       aria-hidden="true"
       className="absolute inset-0 bg-[#09090B] overflow-hidden pointer-events-none select-none"
-    >
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-40 transition-opacity duration-700"
-        style={{ backgroundImage: `url('/images/rental/pantalla-led-congreso.webp')` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#09090B] via-[#09090B]/90 via-35% to-transparent" />
-      <div className="hero-grid absolute inset-0 opacity-15 hidden sm:block" />
-    </div>
+    />
   )
 }
 
