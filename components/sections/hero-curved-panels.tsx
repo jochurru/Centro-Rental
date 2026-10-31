@@ -232,7 +232,10 @@ function CurvedEventItem({
 }
 
 // =============================================================================
-// ESCENA DESKTOP OPTIMIZADA: SINGLE USEFRAME COORDINADO A ~30 FPS
+// ESCENA DESKTOP ESTABILIZADA (FASE 6.2):
+// Render loop administrado nativamente por React Three Fiber (Priority 0).
+// Elimina Priority 1 y gl.render manual para erradicar el agrupamiento de Long Tasks.
+// Un solo coordinador sin hooks hijos, precomputación analítica y cero asignaciones.
 // =============================================================================
 interface SceneProps {
   reducedMotion: boolean
@@ -245,9 +248,6 @@ function DesktopCurvedPanelsScene({ reducedMotion, isActiveRef }: SceneProps) {
 
   const globalOffsetRef = useRef(0)
   const meshRefs = useRef<(THREE.Mesh | null)[]>([])
-  const lastRenderTimeRef = useRef(0)
-  const lastTimeRef = useRef<number | null>(null)
-  const hasRenderedStaticRef = useRef(false)
 
   const sharedGeometry = useMemo(
     () =>
@@ -280,56 +280,30 @@ function DesktopCurvedPanelsScene({ reducedMotion, isActiveRef }: SceneProps) {
           Math.cos(eventAngle) * radius - radius
         )
         mesh.rotation.y = eventAngle
-        hasRenderedStaticRef.current = false
       }
     },
     [eventStep, minAngle, totalSpan, radius]
   )
 
-  // Bucle de renderizado único coordinado con Priority 1 (30 FPS controlado)
-  useFrame((state) => {
-    // 1. Si el Hero está fuera del viewport o la pestaña oculta, detener todo cálculo y render
-    if (!isActiveRef.current) {
-      lastTimeRef.current = null
-      return
-    }
+  // Bucle de animación coordinado con Priority 0 (scheduler nativo de R3F).
+  // Permite que el browser y Three.js distribuyan la carga de carga/compilación
+  // de texturas suavemente entre rAF ticks sin monopolizar el main thread.
+  useFrame((_, delta) => {
+    // 1. Pausa inmediata fuera del viewport o con pestaña oculta
+    if (!isActiveRef.current) return
 
-    // 2. Modo accesibilidad prefers-reduced-motion: render estático único, cero animación
-    if (reducedMotion) {
-      if (!hasRenderedStaticRef.current) {
-        state.gl.render(state.scene, state.camera)
-        hasRenderedStaticRef.current = true
-      }
-      return
-    }
+    // 2. Respeto estricto a prefers-reduced-motion (cero traslación ni cálculo)
+    if (reducedMotion) return
 
-    const now = performance.now()
+    // 3. Delta acotado para estabilidad temporal estricta ante switches de pestaña
+    const safeDelta = Math.min(delta, 0.05)
 
-    // Inicialización suave en el primer frame tras montar o reanudar (evita saltos temporales)
-    if (lastTimeRef.current === null) {
-      lastTimeRef.current = now
-      lastRenderTimeRef.current = now
-      state.gl.render(state.scene, state.camera)
-      return
-    }
-
-    // Throttling preciso a ~30 FPS (~33.33ms entre cuadros, margen de 1.5ms)
-    const elapsedSinceRender = now - lastRenderTimeRef.current
-    if (elapsedSinceRender < 31.8) {
-      return // Omite cuadro sin consumo de CPU/GPU
-    }
-
-    // Separación estricta entre cadencia de render y velocidad temporal de rotación
-    const elapsedDelta = Math.min((now - lastTimeRef.current) / 1000, 0.1)
-    lastTimeRef.current = now
-    lastRenderTimeRef.current = now - (elapsedSinceRender % 33.33)
-
-    // Avance angular continuo exactamente al ritmo visual aprobado
+    // 4. Avance angular continuo exactamente al ritmo visual aprobado
     globalOffsetRef.current =
-      (globalOffsetRef.current + angularSpeed * elapsedDelta) % totalSpan
+      (globalOffsetRef.current + angularSpeed * safeDelta) % totalSpan
     const offset = globalOffsetRef.current
 
-    // Actualización de posición y orientación en un solo for-loop sin asignación de objetos
+    // 5. Actualización atómica de posición y orientación sin asignación de memoria
     const meshes = meshRefs.current
     for (let i = 0; i < N; i++) {
       const mesh = meshes[i]
@@ -346,10 +320,7 @@ function DesktopCurvedPanelsScene({ reducedMotion, isActiveRef }: SceneProps) {
       )
       mesh.rotation.y = eventAngle
     }
-
-    // Renderizado único hacia WebGL
-    state.gl.render(state.scene, state.camera)
-  }, 1)
+  })
 
   return (
     <group>
