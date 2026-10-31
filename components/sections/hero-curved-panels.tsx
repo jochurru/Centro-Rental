@@ -631,14 +631,14 @@ function isWebGLSupported(): boolean {
 }
 
 // =============================================================================
-// COMPONENTE PRINCIPAL R3F CANVAS CLIENT-SIDE
+// COMPONENTE PRINCIPAL R3F CANVAS CLIENT-SIDE (FASE 6.4: INTERACTION-GATED)
 // =============================================================================
 export function HeroCurvedPanels() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [reducedMotion, setReducedMotion] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [webGLAvailable, setWebGLAvailable] = useState(true)
-  const [webGLDeferred, setWebGLDeferred] = useState(false)
+  const [webGLActivated, setWebGLActivated] = useState(false)
   const [webGLReady, setWebGLReady] = useState(false)
   const isActiveRef = useRef(true)
 
@@ -661,33 +661,47 @@ export function HeroCurvedPanels() {
     const initialIsMobile = window.innerWidth < 640 || mobileQuery.matches
     setIsMobile(initialIsMobile)
 
-    let idleId: number | null = null
-    let timerId: NodeJS.Timeout | null = null
+    // Lista de eventos de interacción real del usuario para habilitar WebGL en Desktop
+    const INTERACTION_EVENTS = [
+      'pointermove',
+      'pointerdown',
+      'wheel',
+      'scroll',
+      'keydown',
+      'touchstart',
+    ] as const
+
+    const handleUserInteraction = () => {
+      setWebGLActivated(true)
+      cleanupInteractionListeners()
+    }
+
+    const cleanupInteractionListeners = () => {
+      INTERACTION_EVENTS.forEach((evt) => {
+        window.removeEventListener(evt, handleUserInteraction)
+      })
+    }
 
     if (initialIsMobile) {
-      // Mobile: Montaje inmediato sin diferir para preservar Performance 90 / TBT 370ms
-      setWebGLDeferred(true)
+      // Mobile (< 640px): Montaje inmediato sin diferir para preservar Performance 90 / TBT 370ms
+      setWebGLActivated(true)
       setWebGLReady(true)
     } else {
-      // Desktop/Tablet: Difiere el montaje del Canvas fuera del camino crítico de carga
-      if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-        idleId = (window as any).requestIdleCallback(
-          () => {
-            setWebGLDeferred(true)
-          },
-          { timeout: 1000 }
-        )
-      } else {
-        timerId = setTimeout(() => {
-          setWebGLDeferred(true)
-        }, 500)
-      }
+      // Desktop/Tablet (>= 640px): Interaction-Gated WebGL
+      // NO monta WebGL automáticamente durante la carga inicial.
+      // Se activa únicamente ante la primera señal de interacción real del usuario.
+      INTERACTION_EVENTS.forEach((evt) => {
+        window.addEventListener(evt, handleUserInteraction, {
+          passive: true,
+          once: true,
+        })
+      })
     }
 
     const handleMobileChange = (e: MediaQueryListEvent) => {
       setIsMobile(e.matches)
       if (e.matches) {
-        setWebGLDeferred(true)
+        setWebGLActivated(true)
         setWebGLReady(true)
       }
     }
@@ -697,7 +711,7 @@ export function HeroCurvedPanels() {
       const isMob = window.innerWidth < 640 || mobileQuery.matches
       setIsMobile(isMob)
       if (isMob) {
-        setWebGLDeferred(true)
+        setWebGLActivated(true)
         setWebGLReady(true)
       }
     }
@@ -742,12 +756,7 @@ export function HeroCurvedPanels() {
       window.removeEventListener('orientationchange', checkMobile)
       document.removeEventListener('visibilitychange', handleVisibility)
       if (observer) observer.disconnect()
-      if (idleId !== null && typeof window !== 'undefined' && 'cancelIdleCallback' in window) {
-        ;(window as any).cancelIdleCallback(idleId)
-      }
-      if (timerId !== null) {
-        clearTimeout(timerId)
-      }
+      cleanupInteractionListeners()
     }
   }, [])
 
@@ -793,14 +802,14 @@ export function HeroCurvedPanels() {
     )
   }
 
-  // DESKTOP/TABLET (>= 640px): Escena monumental diferida fuera del camino crítico
+  // DESKTOP/TABLET (>= 640px): Escena monumental diferida ante interacción real del usuario
   return (
     <div ref={containerRef} className="relative w-full h-full">
       {/* 1. Capa de Fallback Inicial Inmediata (garantiza FCP/LCP instantáneo, CLS=0 y contraste continuo) */}
       <LocalHeroFallback />
 
-      {/* 2. Escena WebGL 3D montada progresivamente tras el render crítico */}
-      {webGLDeferred && (
+      {/* 2. Escena WebGL 3D montada exclusivamente tras interacción del usuario */}
+      {webGLActivated && (
         <div
           className={`absolute inset-0 transition-opacity duration-700 ease-out ${
             webGLReady ? 'opacity-100' : 'opacity-0'
